@@ -1,0 +1,12 @@
+C:\Users\marin\OneDrive\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\AstDecoder\obj\Debug\net6.0\AstDecoder.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\marin\OneDrive\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\AstDecoder\obj\Debug\net6.0\AstDecoder.AssemblyInfoInputs.cache
+C:\Users\marin\OneDrive\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\AstDecoder\obj\Debug\net6.0\AstDecoder.AssemblyInfo.cs
+C:\Users\marin\OneDrive\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\AstDecoder\obj\Debug\net6.0\AstDecoder.csproj.CoreCompileInputs.cache
+C:\Users\marin\OneDrive\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\AstDecoder\obj\Debug\net6.0\AstDecoder.sourcelink.json
+C:\Users\marin\OneDrive\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\AstDecoder\bin\Debug\net6.0\AstDecoder.deps.json
+C:\Users\marin\OneDrive\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\AstDecoder\bin\Debug\net6.0\AstDecoder.dll
+C:\Users\marin\OneDrive\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\AstDecoder\bin\Debug\net6.0\AstDecoder.pdb
+C:\Users\marin\OneDrive\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\AstDecoder\obj\Debug\net6.0\AstDecoder.dll
+C:\Users\marin\OneDrive\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\AstDecoder\obj\Debug\net6.0\refint\AstDecoder.dll
+C:\Users\marin\OneDrive\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\AstDecoder\obj\Debug\net6.0\AstDecoder.pdb
+C:\Users\marin\OneDrive\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\AstDecoder\obj\Debug\net6.0\ref\AstDecoder.dll
