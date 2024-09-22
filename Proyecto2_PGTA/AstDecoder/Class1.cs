@@ -9,5 +9,9 @@ namespace AstDecoder
     {
         public string SAC { get; set; }
         public string SIC { get; set; }
+
+        public string iteración { get; set; }
+
     }
+  
 }

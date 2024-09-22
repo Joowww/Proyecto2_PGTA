@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\joelm\\OneDrive\\Escritorio\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj": {}
+    "C:\\Users\\joelm\\OneDrive\\Documentos\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj": {}
   },
   "projects": {
-    "C:\\Users\\joelm\\OneDrive\\Escritorio\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj": {
+    "C:\\Users\\joelm\\OneDrive\\Documentos\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\joelm\\OneDrive\\Escritorio\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj",
+        "projectUniqueName": "C:\\Users\\joelm\\OneDrive\\Documentos\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj",
         "projectName": "AstDecoder",
-        "projectPath": "C:\\Users\\joelm\\OneDrive\\Escritorio\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj",
+        "projectPath": "C:\\Users\\joelm\\OneDrive\\Documentos\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj",
         "packagesPath": "C:\\Users\\joelm\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\joelm\\OneDrive\\Escritorio\\Proyecto2_PGTA\\AstDecoder\\obj\\",
+        "outputPath": "C:\\Users\\joelm\\OneDrive\\Documentos\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\joelm\\AppData\\Roaming\\NuGet\\NuGet.Config",
