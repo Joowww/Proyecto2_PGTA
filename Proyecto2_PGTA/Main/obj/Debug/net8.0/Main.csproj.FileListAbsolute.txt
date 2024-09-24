@@ -13,3 +13,7 @@ C:\Users\marin\OneDrive\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Main\obj\
 C:\Users\marin\OneDrive\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Main\obj\Debug\net8.0\Main.pdb
 C:\Users\marin\OneDrive\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Main\obj\Debug\net8.0\Main.genruntimeconfig.cache
 C:\Users\marin\OneDrive\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Main\obj\Debug\net8.0\ref\Main.dll
+C:\Users\marin\OneDrive\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Main\obj\Debug\net8.0\Main.csproj.AssemblyReference.cache
+C:\Users\marin\OneDrive\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Main\bin\Debug\net8.0\AstDecoder.dll
+C:\Users\marin\OneDrive\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Main\bin\Debug\net8.0\AstDecoder.pdb
+C:\Users\marin\OneDrive\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Main\obj\Debug\net8.0\Main.csproj.Up2Date

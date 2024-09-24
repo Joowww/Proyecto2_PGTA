@@ -259,16 +259,15 @@ namespace AstDecoder
                 //Call function DF140
             }
 
-
-
         }
 
         public void DF010(string bytes2)
         {
             string sac = bytes2.Substring(0, 8);//Get first octet
-            this.SAC = sac; //Assign to SAC
+            CAT048 Variable048 = new CAT048();
+            Variable048.SAC = sac; //Assign to SAC
             string sic = bytes2.Substring(8, 16);//Get first octet
-            this.SIC = sac; //Assign to SIC
+            Variable048.SIC = sic; //Assign to SIC
         }
     }
 

@@ -7,14 +7,30 @@
   "targets": {
     ".NETCoreApp,Version=v8.0": {
       "Main/1.0.0": {
+        "dependencies": {
+          "AstDecoder": "1.0.0"
+        },
         "runtime": {
           "Main.dll": {}
+        }
+      },
+      "AstDecoder/1.0.0": {
+        "runtime": {
+          "AstDecoder.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
   },
   "libraries": {
     "Main/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AstDecoder/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
