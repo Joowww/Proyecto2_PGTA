@@ -94,7 +94,7 @@ namespace Main
                             }
 
                             
-                            if (i >= 3 && endOfFSPEC ==true && contadorDI<=posiciones.Count) //When FSPEC is read, read all Data Item until last one
+                            if (i >= 3 && endOfFSPEC == true && contadorDI<=posiciones.Count) //When FSPEC is read, read all Data Item until last one
                             {
                                     string DataItemRead = Convert.ToString(posiciones[contadorDI] + 1);   //Get what Data Item ID is being processed
 
@@ -140,7 +140,7 @@ namespace Main
                                             }
                                         }
 
-                                    // Case where DataF Item has 4 bytes
+                                    // Case where Data Item has 4 bytes
                                     if (DataItemRead == "4" || DataItemRead == "12" || DataItemRead == "13" || DataItemRead == "15" || DataItemRead == "18" )
                                     {
                                         string octet = Convert.ToString(currentByte, 2).PadLeft(8, '0'); //Convert to string bits

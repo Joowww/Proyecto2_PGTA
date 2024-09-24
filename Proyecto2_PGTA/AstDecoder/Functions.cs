@@ -40,8 +40,8 @@ namespace AstDecoder
         public string FX_020 { get; set; }
 
         //Variables for Data Item (040) [4 Oct]
-        public string RHO { get; set; }
-        public string THETA { get; set; }
+        public int RHO { get; set; }
+        public int THETA { get; set; }
 
         //Variables for Data Item (070) [2 Oct] 
         public string V_070 { get; set; }
@@ -76,17 +76,17 @@ namespace AstDecoder
         public string FX_130 { get; set; }
 
         //Variables for Data Item (220) [3 Oct]
-        public string aircraftAddress { get; set; }
+        public int aircraftAddress { get; set; }
 
         //Variables for Data Item (240) [6 Oct]
-        public string character1 { get; set; }
-        public string character2 { get; set; }
-        public string character3 { get; set; }
-        public string character4 { get; set; }
-        public string character5 { get; set; }
-        public string character6 { get; set; }
-        public string character7 { get; set; }
-        public string character8 { get; set; }
+        public int character1 { get; set; }
+        public int character2 { get; set; }
+        public int character3 { get; set; }
+        public int character4 { get; set; }
+        public int character5 { get; set; }
+        public int character6 { get; set; }
+        public int character7 { get; set; }
+        public int character8 { get; set; }
 
         //Variables for Data Item (250) [1+8*n Oct]
         public string REP { get; set; }
@@ -95,15 +95,15 @@ namespace AstDecoder
         public string BDS2 { get; set; }
 
         //Variables for Data Item (161) [2 Oct]
-        public string trackNumber { get; set; }
+        public int trackNumber { get; set; }
 
         //Variables for Data Item (042) [4 Oct]
-        public string xComponent { get; set; }
-        public string yComponent { get; set; }
+        public int xComponent { get; set; }
+        public int yComponent { get; set; }
 
         //Variables for Data Item (200) [4 Oct]
-        public string calculatedGroundSpeed { get; set; }
-        public string calculatedHeading { get; set; }
+        public int calculatedGroundSpeed { get; set; }
+        public int calculatedHeading { get; set; }
 
         //Variables for Data Item (170) [1+ Oct]
         public string CNF { get; set; }
@@ -118,10 +118,10 @@ namespace AstDecoder
         public string TCC { get; set; }
 
         //Variables for Data Item (210) [4 Oct]
-        public string sigmaX { get; set; }
-        public string sigmaY { get; set; }
-        public string sigmaV { get; set; }
-        public string sigmaH { get; set; }
+        public int sigmaX { get; set; }
+        public int sigmaY { get; set; }
+        public int sigmaV { get; set; }
+        public int sigmaH { get; set; }
 
         //Variables for Data Item (030) [1+ Oct]
         public string code { get; set; }
@@ -170,7 +170,7 @@ namespace AstDecoder
         public string QD4_100 { get; set; }
 
         //Variables for Data Item (110) [2 Oct]
-        public string Height_3D { get; set; }
+        public int Height_3D { get; set; }
 
         //Variables for Data Item (120) [1+ Oct]
         public string CAL1 { get; set; }
@@ -179,17 +179,17 @@ namespace AstDecoder
         public string CAL2 { get; set; }
 
         //Variables for Data Item (230) [2 Oct]
-        public string COM { get; set; }
-        public string STAT { get; set; }
-        public string SI { get; set; }
-        public string MSSC { get; set; }
-        public string ARC { get; set; }
-        public string AIC { get; set; }
-        public string B1A { get; set; }
-        public string B1B { get; set; }
+        public int COM { get; set; }
+        public int STAT { get; set; }
+        public int SI { get; set; }
+        public int MSSC { get; set; }
+        public int ARC { get; set; }
+        public int AIC { get; set; }
+        public int B1A { get; set; }
+        public int B1B { get; set; }
 
         //Variables for Data Item (260) [7 Oct]
-        public string ACASRA { get; set; }
+        public int ACASRA { get; set; }
 
         //Variables for Data Item (055) [1 Oct]
         public string V_055 { get; set; }
@@ -269,20 +269,183 @@ namespace AstDecoder
 
         }
 
-        public void DF010(string bytes2, CAT048 Variable048) //Get SIC and SAC
+        public void DF010 (string bytes2, CAT048 Variable048) //Get SIC and SAC
         {
             string sac = bytes2.Substring(0, 8);//Get first octet
             Variable048.SAC = Convert.ToInt32(sac,2);  //Assign to SAC
-            string sic = bytes2.Substring(8, 15);   //Get first octet
+            string sic = bytes2.Substring(8, 8);   //Get first octet
             Variable048.SIC = Convert.ToInt32(sic, 2);  //Assign to SIC
         }
 
-        public void DF140(string bytes2, CAT048 Variable048) //Get time UTC
+        public void DF140 (string bytes2, CAT048 Variable048) //Get time UTC
         {
             Variable048.UTC_Time = Convert.ToInt32(bytes2, 2);
         }
 
+        public void DF020 (string bytes2, CAT048 Variable048)
+        {
+        }
+
+        public void DF040 (string bytes2, CAT048 Variable048)
+        {
+            string rho = bytes2.Substring(0, 16);//Get two first octets
+            Variable048.RHO = Convert.ToInt32(rho, 2);  //Assign to RHO
+            string theta = bytes2.Substring(16, 16);   //Get two octets
+            Variable048.THETA = Convert.ToInt32(theta, 2);  //Assign to THETA
+        }
+
+        public void DF070 (string bytes2, CAT048 Variable048)
+        {
+        }
+
+        public void DF090 (string bytes2, CAT048 Variable048)
+        {
+        }
+
+        public void DF130 (string bytes2, CAT048 Variable048)
+        {
+        }
+
+        public void DF220 (string bytes2, CAT048 Variable048)
+        {
+            string ad = bytes2.Substring(0, 24);//Get three first octets
+            Variable048.aircraftAddress = Convert.ToInt32(ad, 2);  //Assign to Aircraft Address
+        }
+
+        public void DF240 (string bytes2, CAT048 Variable048)
+        {
+            string c1 = bytes2.Substring(0, 6);
+            Variable048.character1 = Convert.ToInt32(c1, 2);
+            string c2 = bytes2.Substring(6, 6);
+            Variable048.character2 = Convert.ToInt32(c2, 2);
+            string c3 = bytes2.Substring(12, 6);
+            Variable048.character3 = Convert.ToInt32(c3, 2);
+            string c4 = bytes2.Substring(18, 6);
+            Variable048.character4 = Convert.ToInt32(c4, 2);
+            string c5 = bytes2.Substring(24, 6);
+            Variable048.character5 = Convert.ToInt32(c5, 2);
+            string c6 = bytes2.Substring(30, 6);
+            Variable048.character6 = Convert.ToInt32(c6, 2);
+            string c7 = bytes2.Substring(36, 6);
+            Variable048.character7 = Convert.ToInt32(c7, 2);
+            string c8 = bytes2.Substring(42, 6);
+            Variable048.character8 = Convert.ToInt32(c8, 2);
+        }
+
+        public void DF250 (string bytes2, CAT048 Variable048)
+        {
+        }
+
+        public void DF161 (string bytes2, CAT048 Variable048)
+        {
+            string tNumber = bytes2.Substring(4, 12);
+            Variable048.trackNumber = Convert.ToInt32(tNumber, 2);
+        }
+
+        public void DF042 (string bytes2, CAT048 Variable048)
+        {
+            string x = bytes2.Substring(0, 16);
+            Variable048.xComponent = Convert.ToInt32(x, 2);
+            string y = bytes2.Substring(16, 16);
+            Variable048.yComponent = Convert.ToInt32(y, 2);
+        }
+
+        public void DF200 (string bytes2, CAT048 Variable048)
+        {
+            string GS = bytes2.Substring(0, 16);
+            Variable048.calculatedGroundSpeed = Convert.ToInt32(GS, 2);
+            string Head = bytes2.Substring(16, 16);
+            Variable048.calculatedHeading = Convert.ToInt32(Head, 2);
+        }
+
+        public void DF170 (string bytes2, CAT048 Variable048)
+        {
+        }
+
+        public void DF210 (string bytes2, CAT048 Variable048)
+        {
+            string sX = bytes2.Substring(0, 8);
+            Variable048.sigmaX = Convert.ToInt32(sX, 2);
+            string sY = bytes2.Substring(8, 8);
+            Variable048.sigmaY = Convert.ToInt32(sY, 2);
+            string sV = bytes2.Substring(16, 8);
+            Variable048.sigmaV = Convert.ToInt32(sV, 2);
+            string sH = bytes2.Substring(24, 8);
+            Variable048.sigmaH = Convert.ToInt32(sH, 2);
+        }
+
+        public void DF030 (string bytes2, CAT048 Variable048)
+        {
+        }
+
+        public void DF080 (string bytes2, CAT048 Variable048)
+        {
+        }
+
+        public void DF100 (string bytes2, CAT048 Variable048)
+        {
+        }
+
+        public void DF110 (string bytes2, CAT048 Variable048)
+        {
+            string height = bytes2.Substring(2, 14);
+            Variable048.Height_3D = Convert.ToInt32(height, 2);
+        }
+
+        public void DF120 (string bytes2, CAT048 Variable048)
+        {
+        }
+
+        public void DF230 (string bytes2, CAT048 Variable048)
+        {
+            string com = bytes2.Substring(0, 3);
+            Variable048.COM = Convert.ToInt32(com, 2);
+            string stat = bytes2.Substring(3, 3);
+            Variable048.STAT = Convert.ToInt32(stat, 2);
+            string si = bytes2.Substring(6, 1);
+            Variable048.SI = Convert.ToInt32(si, 2);
+            string mssc = bytes2.Substring(8, 1);
+            Variable048.MSSC = Convert.ToInt32(mssc, 2);
+            string arc = bytes2.Substring(9, 1);
+            Variable048.ARC = Convert.ToInt32(arc, 2);
+            string aic = bytes2.Substring(10, 1);
+            Variable048.AIC = Convert.ToInt32(aic, 2);
+            string b1a = bytes2.Substring(11, 1);
+            Variable048.B1A = Convert.ToInt32(b1a, 2);
+            string b1b = bytes2.Substring(12, 4);
+            Variable048.B1B = Convert.ToInt32(b1b, 2);
+        }
+
+    public void DF260 (string bytes2, CAT048 Variable048)
+        {
+            string acasra = bytes2.Substring(0, 56);
+            Variable048.ACASRA = Convert.ToInt32(acasra, 2);
+        }
+
+        public void DF055 (string bytes2, CAT048 Variable048)
+        {
+        }
+
+        public void DF050 (string bytes2, CAT048 Variable048)
+        {
+        }
+
+        public void DF065 (string bytes2, CAT048 Variable048)
+        {
+        }
+
+        public void DF060 (string bytes2, CAT048 Variable048)
+        {
+        }
+
+        public void DFSP (string bytes2, CAT048 Variable048)
+        {
+        }
+
+        public void DFRE (string bytes2, CAT048 Variable048)
+        {
+        }
     }
 
-    }
+ }
 
