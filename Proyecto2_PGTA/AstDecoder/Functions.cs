@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using System.Runtime.InteropServices;
-
+using System.Linq;
 
 namespace AstDecoder
 {
@@ -16,11 +16,11 @@ namespace AstDecoder
         public int Message_length;
 
         //Variables for Data Item (010) [2 Oct]
-        public string SAC { get; set; }
-        public string SIC { get; set; }
+        public int SAC { get; set; }
+        public int SIC { get; set; }
 
         //Variables for Data Item (140) [3 Oct]
-        public string UTC_Time { get; set; }
+        public float UTC_Time { get; set; }
 
         //Variables for Data Item (020) [1+ ("Variable") Oct]
         public string TYP { get; set; }
@@ -247,28 +247,42 @@ namespace AstDecoder
 
     public class Function
     {
-        int DataFieldCounter = 1;
-        public void assignDF(string bytes, string FSPEC) //Assign bytes to DataField
+        // Delegado que representará las funciones que vas a almacenar en el diccionario
+        delegate void MiFuncion(string cadenadebits, CAT048 Variable048);
+
+        // Diccionario que asocia un ID (int) con una función (MiFuncion)
+        Dictionary<int, MiFuncion> DataField_FunctionsDictionary;
+
+        // Constructor de la clase donde se inicializa el diccionario
+        public Function()
         {
-            if (FSPEC[0] == 1)
-            {
-                DF010(bytes); //Call function DF010
-            }
-            if (FSPEC[1] == 1)
-            {
-                //Call function DF140
-            }
+            DataField_FunctionsDictionary = new Dictionary<int, MiFuncion>();
+
+            // Agregar funciones al diccionario
+            DataField_FunctionsDictionary.Add(1, DF010); // DF010 es un ejemplo, puedes agregar más
+        }
+        
+        public void assignDF(string bytes, int contador)//Assign bytes to DataField
+        {
+            CAT048 Variable048 = new CAT048();
+            DataField_FunctionsDictionary[contador+1](bytes, Variable048); //Call the function associated to the ID with the bytes read as input
 
         }
 
-        public void DF010(string bytes2)
+        public void DF010(string bytes2, CAT048 Variable048) //Get SIC and SAC
         {
             string sac = bytes2.Substring(0, 8);//Get first octet
-            CAT048 Variable048 = new CAT048();
-            Variable048.SAC = sac; //Assign to SAC
-            string sic = bytes2.Substring(8, 16);//Get first octet
-            Variable048.SIC = sic; //Assign to SIC
+            Variable048.SAC = Convert.ToInt32(sac,2);  //Assign to SAC
+            string sic = bytes2.Substring(8, 15);   //Get first octet
+            Variable048.SIC = Convert.ToInt32(sic, 2);  //Assign to SIC
         }
+
+        public void DF140(string bytes2, CAT048 Variable048) //Get time UTC
+        {
+            Variable048.UTC_Time = Convert.ToInt32(bytes2, 2);
+        }
+
     }
 
-}
+    }
+
