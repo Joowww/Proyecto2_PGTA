@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Data;
 using System.Diagnostics.Metrics;
 using System.IO;
 using System.Net.Sockets;
+using System.Reflection;
 using AstDecoder;
 
 namespace Main
 {
+
     public class Program
     {
         static void Main()
@@ -15,6 +18,22 @@ namespace Main
 
             // Path where to save bits
             string outputFilePath = "TextFile1.txt";
+
+            // Crear una tabla para almacenar FSPEC y los Data Items
+            DataTable messageTable = new DataTable();
+
+            // Definir las columnas de la tabla
+            messageTable.Columns.Add("MessageObject", typeof(CAT048));
+
+            // Obtener todas las propiedades de CAT048
+            PropertyInfo[] properties = typeof(CAT048).GetProperties();
+
+            // Añadir columnas a la tabla por cada propiedad
+            foreach (PropertyInfo property in properties)
+            {
+                messageTable.Columns.Add(property.Name, Nullable.GetUnderlyingType(property.PropertyType) ?? property.PropertyType);
+            }
+
 
             try
             {
@@ -54,7 +73,9 @@ namespace Main
                         int DataFieldFSPEC = 0;
                         int contadorDI = 0;
 
+                        List<string> currentDataItems = new List<string>();
                         List<int> posiciones = new List<int>();
+                        CAT048 Variable048 = new CAT048();
 
                         for (int i = 1; i < fileBytes.Length; i++)
                         {
@@ -72,7 +93,7 @@ namespace Main
 
                             if (i >= 3 && endOfFSPEC == false)
                             {
-
+                                
                                 string binaryString = Convert.ToString(currentByte, 2).PadLeft(8, '0'); //Convert to string bits
                                 FSPEC += binaryString; // Concatenate binaryString to FSPEC
                                 char FX = binaryString[binaryString.Length - 1]; //Obtain FX
@@ -80,10 +101,11 @@ namespace Main
                                 if (FX == '0')
                                 {
                                     endOfFSPEC = true; // Shifts to true if FX is 0 to contiue reading
-                                                      
+                                    
+
                                     for (int i2 = 0; i2 < FSPEC.Length; i2++)
                                     {
-                                        if (FSPEC[i] == '1')
+                                        if (FSPEC[i2] == '1')
                                         {
                                             posiciones.Add(i2);  //Get positions with a 1, Data Field present
                                         }
@@ -94,7 +116,7 @@ namespace Main
                             }
 
                             
-                            if (i >= 3 && endOfFSPEC == true && contadorDI<=posiciones.Count) //When FSPEC is read, read all Data Item until last one
+                            if (i >= 3 && endOfFSPEC == true) //When FSPEC is read, read all Data Item until last one
                             {
                                     string DataItemRead = Convert.ToString(posiciones[contadorDI] + 1);   //Get what Data Item ID is being processed
 
@@ -110,7 +132,7 @@ namespace Main
                                     }
 
                                     //Case for variable length Data Item (1+)
-                                    if (DataItemRead == "3" ||  DataItemRead == "10" || DataItemRead == "14" || DataItemRead == "16" || DataItemRead == "20")
+                                    if (DataItemRead == "3" || DataItemRead == "14" || DataItemRead == "16" || DataItemRead == "20")
                                     {
                                         string binaryString = Convert.ToString(currentByte, 2).PadLeft(8, '0'); //Convert to string bits
                                         char FX = binaryString[binaryString.Length - 1]; //Obtain FX
@@ -162,38 +184,79 @@ namespace Main
                                         }
                                     }
 
-                                    // Case where DataF Item has 7 bytes
+                                    // Case where Data Item has 7 bytes
                                     if (DataItemRead == "22")
                                         {
                                             string octet = Convert.ToString(currentByte, 2).PadLeft(8, '0'); //Convert to string bits
                                             DataItem += octet; // Concatenate binaryString
-                                            if (DataItem.Length == (7 * 8)) //6*8 bits
+                                            if (DataItem.Length == (7 * 8)) //7*8 bits
                                             {
                                                 endOfDF = true; //Now Data Item is complete
                                             }
                                         }
 
+                                    if (DataItemRead == "10")
+                                    {
+                                        string octet = Convert.ToString(currentByte, 2).PadLeft(8, '0'); //Convert to string bits
+                                        DataItem += octet; // Concatenate binaryString
+                                            if (DataItem.Length == (9 * 8)) //9*8 bits
+                                            {
+                                            endOfDF = true; //Now Data Item is complete
+                                            }
+                                    }
+
 
                                 //Once Data Item is all read, call function 
                                 if (endOfDF == true)
                                 {
-                                    Function function = new Function();  // Iniciate a class from the othe namItem
+                                    Function function = new Function();  // Iniciate a class from the other namespace
+                                    function.assignDF(DataItem, contadorDI, Variable048);
+                                    
+                                    
                                     endOfDF = false;   //Set end of DF to false
                                     DataItem = "";     //Set Data Item to empty again
                                     contadorDI += 1;   //Increase number of Data Item read
 
-                                    if (contadorDI == posiciones.Count)
+                                    if (contadorDI == (posiciones.Count-1))
                                     {
+                                        // Cuando se ha leído todo el mensaje (FSPEC y Data Items)
+                                        //string concatenatedDataItems = string.Join(", ", currentDataItems);
+                                        // Añadir una nueva fila a la tabla con el FSPEC y los Data Items
+
+                                        // Crear una nueva fila
+                                        DataRow newRow = messageTable.NewRow();
+
+                                        // Asignar valores de variable048 a la fila
+                                        foreach (PropertyInfo property in properties)
+                                        {
+                                            newRow[property.Name] = property.GetValue(Variable048) ?? DBNull.Value; // Usa DBNull para valores null
+                                        }
+
+                                        // Añadir la fila a la tabla
+                                        messageTable.Rows.Add(newRow);
                                         endOfFSPEC = false; //Initalize a new message with new FSPEC and new Data Items
+                                        FSPEC = "";
+                                        DataItem = "";
+                                        contadorDI = 0;
+                                        endOfDF = false;
+                                        
+                                        
                                     }
+
                                 }
 
                             }
                         }
                     }
                 }
+                // Mostrar la tabla de mensajes
+                Console.WriteLine("Tabla de mensajes:");
+                foreach (DataRow row in messageTable.Rows)
+                {
+                    Console.WriteLine(row);
+                    
+                }
 
-              
             }
             catch (Exception ex)
             {

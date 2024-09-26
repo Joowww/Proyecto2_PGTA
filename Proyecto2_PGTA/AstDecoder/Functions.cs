@@ -256,15 +256,43 @@ namespace AstDecoder
         // Constructor de la clase donde se inicializa el diccionario
         public Function()
         {
-            DataField_FunctionsDictionary = new Dictionary<int, MiFuncion>();
-
-            // Agregar funciones al diccionario
-            DataField_FunctionsDictionary.Add(1, DF010); // DF010 es un ejemplo, puedes agregar más
+            DataField_FunctionsDictionary = new Dictionary<int, MiFuncion>
+            {
+                { 1, DF010},
+                { 2, DF140},
+                { 3, DF020},
+                { 4, DF040},
+                { 5, DF070},
+                { 6, DF090},
+                { 7, DF130},
+                { 8, DF220},
+                { 9, DF240},
+                { 10, DF250},
+                { 11, DF161},
+                { 12, DF042},
+                { 13, DF200},
+                { 14, DF170},
+                { 15, DF210},
+                { 16, DF030},
+                { 17, DF080},
+                { 18, DF100},
+                { 19, DF110},
+                { 20, DF120},
+                { 21, DF230},
+                { 22, DF260},
+                { 23, DF055},
+                { 24, DF030},
+                { 25, DF050},
+                { 26, DF065},
+                { 27, DF060},
+                { 28, DFSP},
+                { 29, DFRE},
+            };
         }
         
-        public void assignDF(string bytes, int contador)//Assign bytes to DataField
+        public void assignDF(string bytes, int contador, CAT048 Variable048) //Assign bytes to DataField
         {
-            CAT048 Variable048 = new CAT048();
+            
             DataField_FunctionsDictionary[contador+1](bytes, Variable048); //Call the function associated to the ID with the bytes read as input
 
         }
@@ -279,7 +307,8 @@ namespace AstDecoder
 
         public void DF140 (string bytes2, CAT048 Variable048) //Get time UTC
         {
-            Variable048.UTC_Time = Convert.ToInt32(bytes2, 2);
+            Variable048.UTC_Time = (Convert.ToInt32(bytes2, 2)); 
+            Variable048.UTC_Time = Variable048.UTC_Time * 1 / 128;//Get decimals *1/128
         }
 
         public void DF020 (string bytes2, CAT048 Variable048)
@@ -352,10 +381,10 @@ namespace AstDecoder
 
         public void DF200 (string bytes2, CAT048 Variable048)
         {
-            string GS = bytes2.Substring(0, 16);
-            Variable048.calculatedGroundSpeed = Convert.ToInt32(GS, 2);
-            string Head = bytes2.Substring(16, 16);
-            Variable048.calculatedHeading = Convert.ToInt32(Head, 2);
+            //string GS = bytes2.Substring(0, 16);
+            //Variable048.calculatedGroundSpeed = Convert.ToInt32(GS, 2);
+            //string Head = bytes2.Substring(16, 16);
+            //Variable048.calculatedHeading = Convert.ToInt32(Head, 2);
         }
 
         public void DF170 (string bytes2, CAT048 Variable048)
@@ -364,25 +393,25 @@ namespace AstDecoder
 
         public void DF210 (string bytes2, CAT048 Variable048)
         {
-            string sX = bytes2.Substring(0, 8);
-            Variable048.sigmaX = Convert.ToInt32(sX, 2);
-            string sY = bytes2.Substring(8, 8);
-            Variable048.sigmaY = Convert.ToInt32(sY, 2);
-            string sV = bytes2.Substring(16, 8);
-            Variable048.sigmaV = Convert.ToInt32(sV, 2);
-            string sH = bytes2.Substring(24, 8);
-            Variable048.sigmaH = Convert.ToInt32(sH, 2);
+            //string sX = bytes2.Substring(0, 8);
+            //Variable048.sigmaX = Convert.ToInt32(sX, 2);
+            //string sY = bytes2.Substring(8, 8);
+            //Variable048.sigmaY = Convert.ToInt32(sY, 2);
+            //string sV = bytes2.Substring(16, 8);
+            //Variable048.sigmaV = Convert.ToInt32(sV, 2);
+            //string sH = bytes2.Substring(24, 8);
+            //Variable048.sigmaH = Convert.ToInt32(sH, 2);
         }
 
-        public void DF030 (string bytes2, CAT048 Variable048)
+        public void DF030 (string bytes2, CAT048 Variable048) //NOT NECESSARY
         {
         }
 
-        public void DF080 (string bytes2, CAT048 Variable048)
+        public void DF080 (string bytes2, CAT048 Variable048)//NOT NECESSARY
         {
         }
 
-        public void DF100 (string bytes2, CAT048 Variable048)
+        public void DF100 (string bytes2, CAT048 Variable048)//NOT NECESSARY
         {
         }
 
@@ -392,7 +421,7 @@ namespace AstDecoder
             Variable048.Height_3D = Convert.ToInt32(height, 2);
         }
 
-        public void DF120 (string bytes2, CAT048 Variable048)
+        public void DF120 (string bytes2, CAT048 Variable048)//NOT NECESSARY
         {
         }
 
@@ -416,25 +445,25 @@ namespace AstDecoder
             Variable048.B1B = Convert.ToInt32(b1b, 2);
         }
 
-    public void DF260 (string bytes2, CAT048 Variable048)
+    public void DF260 (string bytes2, CAT048 Variable048)//NOT NECESSARY
         {
             string acasra = bytes2.Substring(0, 56);
             Variable048.ACASRA = Convert.ToInt32(acasra, 2);
         }
 
-        public void DF055 (string bytes2, CAT048 Variable048)
+        public void DF055 (string bytes2, CAT048 Variable048)//NOT NECESSARY
         {
         }
 
-        public void DF050 (string bytes2, CAT048 Variable048)
+        public void DF050 (string bytes2, CAT048 Variable048)//NOT NECESSARY
         {
         }
 
-        public void DF065 (string bytes2, CAT048 Variable048)
+        public void DF065 (string bytes2, CAT048 Variable048)//NOT NECESSARY
         {
         }
 
-        public void DF060 (string bytes2, CAT048 Variable048)
+        public void DF060 (string bytes2, CAT048 Variable048)//NOT NECESSARY
         {
         }
 
