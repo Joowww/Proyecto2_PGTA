@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\marin\\OneDrive\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj": {}
+    "C:\\Users\\palmi\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj": {}
   },
   "projects": {
-    "C:\\Users\\marin\\OneDrive\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj": {
+    "C:\\Users\\palmi\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\marin\\OneDrive\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj",
+        "projectUniqueName": "C:\\Users\\palmi\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj",
         "projectName": "AstDecoder",
-        "projectPath": "C:\\Users\\marin\\OneDrive\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj",
-        "packagesPath": "C:\\Users\\marin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\marin\\OneDrive\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\obj\\",
+        "projectPath": "C:\\Users\\palmi\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj",
+        "packagesPath": "C:\\Users\\palmi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\palmi\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\marin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\palmi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

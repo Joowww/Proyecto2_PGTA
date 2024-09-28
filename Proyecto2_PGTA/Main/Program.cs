@@ -72,9 +72,12 @@ namespace Main
 
                         int DataFieldFSPEC = 0;
                         int contadorDI = 0;
+                        int REP = 0;
+                        int DataItemRead2 = 0;
 
                         List<string> currentDataItems = new List<string>();
                         List<int> posiciones = new List<int>();
+                        List<int> posiciones2 = new List<int>();
                         CAT048 Variable048 = new CAT048();
 
                         for (int i = 1; i < fileBytes.Length; i++)
@@ -146,9 +149,23 @@ namespace Main
                                     {
                                         string binaryString = Convert.ToString(currentByte, 2).PadLeft(8, '0'); //Convert to string bits
                                         char FX = binaryString[binaryString.Length - 1]; //Obtain FX
-                                        if (FX == '0')
-                                            endOfDF = true; // Shifts to true if FX is 0 to contiue reading
                                         DataItem += binaryString; // Concatenate binaryString 
+                                        if (DataItem.Length == 8)
+                                        {
+
+                                            for (int i2 = 0; i2 < DataItem.Length; i2++)
+                                            {
+                                                if (DataItem[i2] == '1')
+                                                {
+                                                    posiciones2.Add(i2);  //Get positions with a 1, Data Field present
+                                                }
+                                            }
+                                        }
+
+                                        if (DataItem.Length == (8 + 8*posiciones2.Count)) 
+                                        {
+                                            endOfDF = true;   
+                                        }
                                     }
 
                                     // Case where Data Item has 3 bytes
@@ -195,22 +212,28 @@ namespace Main
                                             }
                                         }
 
+                                    //Repetitive Data Item
                                     if (DataItemRead == "10")
                                     {
                                         string octet = Convert.ToString(currentByte, 2).PadLeft(8, '0'); //Convert to string bits
                                         DataItem += octet; // Concatenate binaryString
-                                            if (DataItem.Length == (9 * 8)) //9*8 bits
-                                            {
+                                        if (DataItem.Length == 8)
+                                        {
+                                            REP = currentByte;
+                                        }
+                                        if (DataItem.Length == (8 + 8*8*REP)) // 1 + 8*n bytes
+                                        {
                                             endOfDF = true; //Now Data Item is complete
-                                            }
+                                        }
                                     }
 
 
                                 //Once Data Item is all read, call function 
                                 if (endOfDF == true)
                                 {
+                                    DataItemRead2 = Convert.ToInt32(DataItemRead);
                                     Function function = new Function();  // Iniciate a class from the other namespace
-                                    function.assignDF(DataItem, contadorDI, Variable048);
+                                    function.assignDF(DataItem, DataItemRead2, Variable048);
                                     
                                     
                                     endOfDF = false;   //Set end of DF to false
@@ -239,8 +262,11 @@ namespace Main
                                         DataItem = "";
                                         contadorDI = 0;
                                         endOfDF = false;
-                                        
-                                        
+                                        REP = 0;
+                                        posiciones.Clear();
+                                        posiciones2.Clear();
+
+
                                     }
 
                                 }
