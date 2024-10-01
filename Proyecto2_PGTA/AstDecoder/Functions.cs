@@ -20,7 +20,7 @@ namespace AstDecoder
         public int SIC { get; set; }
 
         //Variables for Data Item (140) [3 Oct]
-        public float UTC_Time { get; set; }
+        public string UTC_Time { get; set; }
 
         //Variables for Data Item (020) [1+ ("Variable") Oct]
         public string TYP { get; set; }
@@ -77,9 +77,10 @@ namespace AstDecoder
 
         //Variables for Data Item (250) [1+8*n Oct]
         public int REP { get; set; }
-        public int BDSDATA { get; set; }
-        public int BDS1 { get; set; }
-        public int BDS2 { get; set; }
+        public List<UInt64> BDSDATA { get; set; } = new List<UInt64>();
+
+        public List<int> BDS1 { get; set; } = new List<int>();
+        public List<int> BDS2 { get; set; } = new List<int>();
 
         //Variables for Data Item (161) [2 Oct]
         public int trackNumber { get; set; }
@@ -98,7 +99,7 @@ namespace AstDecoder
         public string DOU { get; set; }
         public string MAH { get; set; }
         public string CDM { get; set; }
-        public string FX_170_1 { get; set; }
+        public int FX_170 { get; set; }
         public string TRE { get; set; }
         public string GHO { get; set; }
         public string SUP { get; set; }
@@ -294,8 +295,9 @@ namespace AstDecoder
 
         public void DF140(string bytes2, CAT048 Variable048) //Get time UTC
         {
-            Variable048.UTC_Time = (Convert.ToInt32(bytes2, 2));
-            Variable048.UTC_Time = Variable048.UTC_Time * 1 / 128;//Get decimals *1/128
+            decimal time = (Convert.ToInt32(bytes2, 2)) * 1m / 128m; //Get decimals *1/128
+            TimeSpan Time = TimeSpan.FromSeconds((double)time);
+            Variable048.UTC_Time = Time.ToString(@"hh\:mm\:ss\:fff");
         }
 
         public void DF020(string bytes2, CAT048 Variable048)
@@ -455,8 +457,23 @@ namespace AstDecoder
             string G = bytes2.Substring(1, 1);
             double FL = Convert.ToInt32(bytes2.Substring(2, 14), 2);
             Variable048.flightLevel = FL * 0.25;
-            Variable048.V_090 = V;
-            Variable048.G_090 = G;
+            if (V == "0")
+            {
+                Variable048.V_090 = "Code validated";
+            }
+            else
+            {
+                Variable048.V_090 = "Code not validated";
+            }
+            if (G == "0")
+            {
+                Variable048.G_090 = "Default";
+            }
+            else
+            {
+                Variable048.G_090 = "Garbled code";
+            }
+
         }
 
         public void DF130(string bytes2, CAT048 Variable048) 
@@ -583,7 +600,24 @@ namespace AstDecoder
 
         public void DF250(string bytes2, CAT048 Variable048)
         {
-            
+            string rep = bytes2.Substring(0, 8);
+            Variable048.REP = Convert.ToInt32(rep, 2);
+            int index = 0;
+            if (Variable048.BDSDATA == null)
+            {
+                Variable048.BDSDATA = new List<UInt64>(); // Inicializar si está nula
+            }
+            for (int l = 0; l < Variable048.REP; l++)
+            {
+                string bdsdata = bytes2.Substring(index + 8, 56);
+                Variable048.BDSDATA.Add(Convert.ToUInt64(bdsdata, 2));
+                string bds1 = bytes2.Substring(index + 64, 4);
+                Variable048.BDS1.Add(Convert.ToInt32(bds1, 2));
+                string bds2 = bytes2.Substring(index + 68, 4);
+                Variable048.BDS2.Add(Convert.ToInt32(bds2, 2));
+                index += 64;
+            }
+
         }
         public void DF161(string bytes2, CAT048 Variable048)
         {
@@ -609,6 +643,83 @@ namespace AstDecoder
 
         public void DF170(string bytes2, CAT048 Variable048)
         {
+        
+            bool endDF = false;
+            while (endDF == false)
+            {
+                string cnf = bytes2.Substring(0, 1);
+                if (cnf == "0")
+                {
+                    Variable048.CNF = "Confirmed Track";
+                }
+                else
+                {
+                    Variable048.CNF = "Tentative Track";
+                }
+
+                string rad = bytes2.Substring(1, 2);
+                if (rad == "00")
+                {
+                    Variable048.RAD = "Combined Track";
+                }
+                else if (rad == "01")
+                {
+                    Variable048.RAD = "PSR Track";
+                }
+                else if (rad == "10")
+                {
+                    Variable048.RAD = "SSR / Mode S Track";
+                }
+                else
+                {
+                    Variable048.RAD = "Invalid";
+                }
+
+                string dou = bytes2.Substring(3, 1);
+                if (dou == "0")
+                {
+                    Variable048.DOU = "Normal confidence";
+                }
+                else
+                {
+                    Variable048.DOU = "Low confidence in plot to track association.";
+                }
+
+                string mah = bytes2.Substring(4, 1);
+                if (mah == "0")
+                {
+                    Variable048.MAH = "No horizontal man.sensed";
+                }
+                else
+                {
+                    Variable048.MAH = "Horizontal man. sensed";
+                }
+
+                string cdm = bytes2.Substring(5, 2);
+                if (cdm == "00")
+                {
+                    Variable048.CDM = "Maintaining";
+                }
+                else if (cdm == "01")
+                {
+                    Variable048.CDM = "Climbing";
+                }
+                else if (cdm == "10")
+                {
+                    Variable048.CDM = "Descending";
+                }
+                else
+                {
+                    Variable048.CDM = "Unknown";
+                }
+
+                string fx = bytes2.Substring(7, 1);
+                Variable048.FX_170 = Convert.ToInt32(fx, 2);
+                if (Variable048.FX_170 == 0)
+                {
+                    endDF = true;
+                }
+            }
         }
 
         public void DF210(string bytes2, CAT048 Variable048)

@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = AstDecoder
-build_property.ProjectDir = C:\Users\palmi\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\AstDecoder\
+build_property.ProjectDir = C:\Users\paula\OneDrive\Escritorio\4A\PGTA\Proyecto2_PGTA\Proyecto2_PGTA\AstDecoder\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

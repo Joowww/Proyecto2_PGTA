@@ -8,19 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\palmi\\.nuget\\packages\\": {}
+    "C:\\Users\\paula\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\palmi\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj",
+      "projectUniqueName": "C:\\Users\\paula\\OneDrive\\Escritorio\\4A\\PGTA\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj",
       "projectName": "AstDecoder",
-      "projectPath": "C:\\Users\\palmi\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj",
-      "packagesPath": "C:\\Users\\palmi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\palmi\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\obj\\",
+      "projectPath": "C:\\Users\\paula\\OneDrive\\Escritorio\\4A\\PGTA\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj",
+      "packagesPath": "C:\\Users\\paula\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\paula\\OneDrive\\Escritorio\\4A\\PGTA\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\palmi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\paula\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

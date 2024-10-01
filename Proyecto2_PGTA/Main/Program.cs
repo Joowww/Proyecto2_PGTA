@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Data;
 using System.Diagnostics.Metrics;
+using System.Formats.Asn1;
+using System.Globalization;
 using System.IO;
 using System.Net.Sockets;
 using System.Reflection;
@@ -96,7 +98,6 @@ namespace Main
 
                             if (i >= 3 && endOfFSPEC == false)
                             {
-                                
                                 string binaryString = Convert.ToString(currentByte, 2).PadLeft(8, '0'); //Convert to string bits
                                 FSPEC += binaryString; // Concatenate binaryString to FSPEC
                                 char FX = binaryString[binaryString.Length - 1]; //Obtain FX
@@ -289,8 +290,8 @@ namespace Main
                 Console.WriteLine("Error al leer el archivo AST: " + ex.Message);
             }
 
-
+            
         }
-    }
   
+}
 }

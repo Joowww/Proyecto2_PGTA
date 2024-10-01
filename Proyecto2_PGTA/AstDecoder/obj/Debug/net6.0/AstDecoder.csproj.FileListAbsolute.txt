@@ -34,3 +34,15 @@ C:\Users\palmi\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\AstDecoder\obj\Deb
 C:\Users\palmi\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\AstDecoder\obj\Debug\net6.0\refint\AstDecoder.dll
 C:\Users\palmi\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\AstDecoder\obj\Debug\net6.0\AstDecoder.pdb
 C:\Users\palmi\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\AstDecoder\obj\Debug\net6.0\ref\AstDecoder.dll
+C:\Users\paula\OneDrive\Escritorio\4A\PGTA\Proyecto2_PGTA\Proyecto2_PGTA\AstDecoder\bin\Debug\net6.0\AstDecoder.deps.json
+C:\Users\paula\OneDrive\Escritorio\4A\PGTA\Proyecto2_PGTA\Proyecto2_PGTA\AstDecoder\bin\Debug\net6.0\AstDecoder.dll
+C:\Users\paula\OneDrive\Escritorio\4A\PGTA\Proyecto2_PGTA\Proyecto2_PGTA\AstDecoder\bin\Debug\net6.0\AstDecoder.pdb
+C:\Users\paula\OneDrive\Escritorio\4A\PGTA\Proyecto2_PGTA\Proyecto2_PGTA\AstDecoder\obj\Debug\net6.0\AstDecoder.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\paula\OneDrive\Escritorio\4A\PGTA\Proyecto2_PGTA\Proyecto2_PGTA\AstDecoder\obj\Debug\net6.0\AstDecoder.AssemblyInfoInputs.cache
+C:\Users\paula\OneDrive\Escritorio\4A\PGTA\Proyecto2_PGTA\Proyecto2_PGTA\AstDecoder\obj\Debug\net6.0\AstDecoder.AssemblyInfo.cs
+C:\Users\paula\OneDrive\Escritorio\4A\PGTA\Proyecto2_PGTA\Proyecto2_PGTA\AstDecoder\obj\Debug\net6.0\AstDecoder.csproj.CoreCompileInputs.cache
+C:\Users\paula\OneDrive\Escritorio\4A\PGTA\Proyecto2_PGTA\Proyecto2_PGTA\AstDecoder\obj\Debug\net6.0\AstDecoder.sourcelink.json
+C:\Users\paula\OneDrive\Escritorio\4A\PGTA\Proyecto2_PGTA\Proyecto2_PGTA\AstDecoder\obj\Debug\net6.0\AstDecoder.dll
+C:\Users\paula\OneDrive\Escritorio\4A\PGTA\Proyecto2_PGTA\Proyecto2_PGTA\AstDecoder\obj\Debug\net6.0\refint\AstDecoder.dll
+C:\Users\paula\OneDrive\Escritorio\4A\PGTA\Proyecto2_PGTA\Proyecto2_PGTA\AstDecoder\obj\Debug\net6.0\AstDecoder.pdb
+C:\Users\paula\OneDrive\Escritorio\4A\PGTA\Proyecto2_PGTA\Proyecto2_PGTA\AstDecoder\obj\Debug\net6.0\ref\AstDecoder.dll
