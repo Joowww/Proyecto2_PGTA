@@ -111,10 +111,11 @@ namespace Main
                                     {
                                         if (FSPEC[i2] == '1')
                                         {
-                                            posiciones.Add(i2);  //Get positions with a 1, Data Field present
+                                            posiciones.Add(i2+1);  //Get positions with a 1, Data Field present
                                         }
                                     }
                                     continue;
+                                    
                                 }
                                 
                             }
@@ -122,7 +123,8 @@ namespace Main
                             
                             if (i >= 3 && endOfFSPEC == true) //When FSPEC is read, read all Data Item until last one
                             {
-                                    string DataItemRead = Convert.ToString(posiciones[contadorDI] + 1);   //Get what Data Item ID is being processed
+                                
+                                    string DataItemRead = Convert.ToString(posiciones[contadorDI]);   //Get what Data Item ID is being processed
 
                                     //Case where Data Item has 2 bytes
                                     if (DataItemRead == "1" || DataItemRead == "5" || DataItemRead == "6" || DataItemRead == "11" || DataItemRead == "17" || DataItemRead == "19" || DataItemRead == "21" || DataItemRead == "24" || DataItemRead == "26")
@@ -227,6 +229,13 @@ namespace Main
                                             endOfDF = true; //Now Data Item is complete
                                         }
                                     }
+                                    if (DataItemRead == "23")
+                                    {
+                                        string octet = Convert.ToString(currentByte, 2).PadLeft(8, '0'); //Convert to string bits
+                                        DataItem += octet;
+                                        endOfDF = true;
+
+                                    }
 
 
                                 //Once Data Item is all read, call function 
@@ -241,7 +250,7 @@ namespace Main
                                     DataItem = "";     //Set Data Item to empty again
                                     contadorDI += 1;   //Increase number of Data Item read
 
-                                    if (contadorDI == (posiciones.Count-1))
+                                    if (contadorDI == (posiciones.Count))
                                     {
                                         // Cuando se ha leído todo el mensaje (FSPEC y Data Items)
                                         //string concatenatedDataItems = string.Join(", ", currentDataItems);
@@ -266,6 +275,7 @@ namespace Main
                                         REP = 0;
                                         posiciones.Clear();
                                         posiciones2.Clear();
+                                        
 
 
                                     }
