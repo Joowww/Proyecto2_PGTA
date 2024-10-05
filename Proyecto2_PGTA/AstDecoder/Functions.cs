@@ -60,27 +60,40 @@ namespace AstDecoder
         public double PAM { get; set; }
         public double RPD { get; set; }
         public double APD { get; set; }
-        public string FX_130 { get; set; }
-
+       
         //Variables for Data Item (220) [3 Oct]
-        public int aircraftAddress { get; set; }
+        public string TA { get; set; }
 
         //Variables for Data Item (240) [6 Oct]
-        public int character1 { get; set; }
-        public int character2 { get; set; }
-        public int character3 { get; set; }
-        public int character4 { get; set; }
-        public int character5 { get; set; }
-        public int character6 { get; set; }
-        public int character7 { get; set; }
-        public int character8 { get; set; }
+        public string TI { get; set; }
 
         //Variables for Data Item (250) [1+8*n Oct]
         public int REP { get; set; }
-        public List<UInt64> BDSDATA { get; set; } = new List<UInt64>();
+        public string BDSDATA { get; set; }
 
-        public List<int> BDS1 { get; set; } = new List<int>();
-        public List<int> BDS2 { get; set; } = new List<int>();
+        public int BDS1 { get; set; }
+        public int BDS2 { get; set; }
+
+        public double LAT {  get; set; }
+        public double LON { get; set; }
+        public double MCP_ALT { get; set; }
+        public double FMS_ALT {get; set; }
+        public double BP {  get; set; }
+        public char VNAV { get; set; }
+        public char ALT_HOLD { get; set; }
+        public char APP {  get; set; }
+        public double TARGETR_ALT { get; set; }
+        public double RA { get; set; }
+        public double TTA { get; set; }
+        public double GS { get; set; }
+        public double TAR { get; set; }
+        public double TAS { get; set; }
+        public double IVV { get; set; }
+        public double HDG { get; set; }
+        public double IAS { get; set; }
+        public double MACH { get; set; }
+        public double BAR { get; set; }
+
 
         //Variables for Data Item (161) [2 Oct]
         public int trackNumber { get; set; }
@@ -476,7 +489,7 @@ namespace AstDecoder
 
         }
 
-        public void DF130(string bytes2, CAT048 Variable048) 
+        public void DF130(string bytes2, CAT048 Variable048)
         {
             bool SRLbool = false;
             bool SRRbool = false;
@@ -537,7 +550,7 @@ namespace AstDecoder
                     }
                     else if (SAMbool)
                     {
-                        
+
                         Variable048.SAM = ComplementA2(oct2);
                         SAMbool = false;
                     }
@@ -574,28 +587,62 @@ namespace AstDecoder
 
         public void DF220(string bytes2, CAT048 Variable048)
         {
-            string ad = bytes2.Substring(0, 24);     //Get three first octets
-            Variable048.aircraftAddress = Convert.ToInt32(ad, 2);  //Assign to Aircraft Address
+            string byte1TA = bytes2.Substring(0, 8);
+            string byte2TA = bytes2.Substring(8, 8);
+            string byte3TA = bytes2.Substring(16, 8);
+
+            //To hex
+            byte byte1 = Convert.ToByte(byte1TA, 2);
+            byte byte2 = Convert.ToByte(byte2TA, 2);
+            byte byte3 = Convert.ToByte(byte3TA, 2);
+
+            string hexresult = byte1.ToString("X2") + byte2.ToString("X2") + byte3.ToString("X2");
+
+            Variable048.TA = hexresult;
         }
 
         public void DF240(string bytes2, CAT048 Variable048)
         {
             string c1 = bytes2.Substring(0, 6);
-            Variable048.character1 = Convert.ToInt32(c1, 2);
+            int character1 = Convert.ToInt32(c1, 2);
             string c2 = bytes2.Substring(6, 6);
-            Variable048.character2 = Convert.ToInt32(c2, 2);
+            int character2 = Convert.ToInt32(c2, 2);
             string c3 = bytes2.Substring(12, 6);
-            Variable048.character3 = Convert.ToInt32(c3, 2);
+            int character3 = Convert.ToInt32(c3, 2);
             string c4 = bytes2.Substring(18, 6);
-            Variable048.character4 = Convert.ToInt32(c4, 2);
+            int character4 = Convert.ToInt32(c4, 2);
             string c5 = bytes2.Substring(24, 6);
-            Variable048.character5 = Convert.ToInt32(c5, 2);
+            int character5 = Convert.ToInt32(c5, 2);
             string c6 = bytes2.Substring(30, 6);
-            Variable048.character6 = Convert.ToInt32(c6, 2);
+            int character6 = Convert.ToInt32(c6, 2);
             string c7 = bytes2.Substring(36, 6);
-            Variable048.character7 = Convert.ToInt32(c7, 2);
+            int character7 = Convert.ToInt32(c7, 2);
             string c8 = bytes2.Substring(42, 6);
-            Variable048.character8 = Convert.ToInt32(c8, 2);
+            int character8 = Convert.ToInt32(c8, 2);
+
+            int[] charactersTI = { character1, character2, character3, character4, character5, character6, character7, character8 };
+            char[] identification = new char[8];
+
+            for (int i = 0; i < 8; i++)
+            {
+                int value = charactersTI[i];                    //For each character of 6 bits convert to letter o number
+                if (value >= 1 && value <= 26)
+                {
+                    identification[i] = (char)('A' + value - 1); //  A-Z
+                }
+                else if (value >= 48 && value <= 57)
+                {
+                    identification[i] = (char)('0' + value - 48); // s 0-9
+                }
+                else
+                {
+                    identification[i] = ' ';
+                }
+            }
+
+            string ti = new string(identification);
+            Variable048.TI = ti;
+
         }
 
         public void DF250(string bytes2, CAT048 Variable048)
@@ -603,20 +650,24 @@ namespace AstDecoder
             string rep = bytes2.Substring(0, 8);
             Variable048.REP = Convert.ToInt32(rep, 2);
             int index = 0;
-            if (Variable048.BDSDATA == null)
-            {
-                Variable048.BDSDATA = new List<UInt64>(); // Inicializar si está nula
-            }
+            
             for (int l = 0; l < Variable048.REP; l++)
             {
                 string bdsdata = bytes2.Substring(index + 8, 56);
-                Variable048.BDSDATA.Add(Convert.ToUInt64(bdsdata, 2));
+                Variable048.BDSDATA = bdsdata;
                 string bds1 = bytes2.Substring(index + 64, 4);
-                Variable048.BDS1.Add(Convert.ToInt32(bds1, 2));
+                int BDS1 = Convert.ToInt32(bds1, 2);
+                Variable048.BDS1 = BDS1;
                 string bds2 = bytes2.Substring(index + 68, 4);
-                Variable048.BDS2.Add(Convert.ToInt32(bds2, 2));
+                int BDS2= Convert.ToInt32(bds2, 2);
+                Variable048.BDS2 = BDS2;
                 index += 64;
+
+                DecodeBDS(BDS1, BDS2, bdsdata, Variable048);
             }
+
+
+
 
         }
         public void DF161(string bytes2, CAT048 Variable048)
@@ -643,7 +694,7 @@ namespace AstDecoder
 
         public void DF170(string bytes2, CAT048 Variable048)
         {
-        
+
             bool endDF = false;
             while (endDF == false)
             {
@@ -834,7 +885,7 @@ namespace AstDecoder
                 moreData = (Convert.ToInt32(reData.Substring(7, 1), 2) == 1);  // Si el bit FX es 1, continua
             }
         }
-        
+
 
         public void ReemplazarNulosConNA()
         {
@@ -881,13 +932,126 @@ namespace AstDecoder
                 int invertedNumber = Convert.ToInt32(new string(invertedBits), 2);
                 int complementA2Number = invertedNumber + 1;
 
-                result = - complementA2Number;
+                result = -complementA2Number;
             }
 
             return result;
 
 
         }
+
+        public void DecodeBDS(int bds1, int bds2, string bdsdata, CAT048 Variable048)
+        {
+            if (bds1 == 4 & bds2 == 0)
+            {
+                string mcpalt_bits = bdsdata.Substring(1, 12); // 12 bits MCP ALT
+                int mcp_alt = Convert.ToInt32(mcpalt_bits, 2);
+                mcp_alt = mcp_alt * 16;
+                Variable048.MCP_ALT = mcp_alt;
+
+                string fmsalt_bits = bdsdata.Substring(14, 12); //bits FMS ALT
+                int fms_alt = Convert.ToInt32(fmsalt_bits, 2);
+                fms_alt = fms_alt * 16;
+                Variable048.FMS_ALT = fms_alt;
+
+                string baro = bdsdata.Substring(27, 12);
+                double baro_alt = Convert.ToInt32(baro, 2);
+                baro_alt = (baro_alt*0.1 + 800);
+                Variable048.BP = baro_alt;
+
+                Variable048.VNAV = (bdsdata[48]);
+                Variable048.ALT_HOLD = (bdsdata[49]);
+                Variable048.APP = (bdsdata[50]);
+
+            }
+
+            if (bds1 == 5 & bds2 == 0)
+            {
+                string ra_bits = bdsdata.Substring(2, 9);
+                double ra = ComplementA2(ra_bits);
+                ra = (ra * 45) / 256;
+                Variable048.RA = ra;
+
+                string tta_bits;
+                double tta;
+                char statusTTA = bdsdata[12];
+                if (statusTTA == '1')
+                {
+                    tta_bits = bdsdata.Substring(12, 11);
+                    tta = ComplementA2(tta_bits);
+                }
+                else
+                {
+                    tta_bits = bdsdata.Substring(13, 10);
+                    tta = Convert.ToInt32(tta_bits, 2);
+                }
+                tta = (tta * 90);
+                tta = tta / 512;
+                Variable048.TTA = tta;
+
+                string gs_bits = bdsdata.Substring(24, 10);
+                double gs = ComplementA2(gs_bits);
+                gs = (gs * 1024) / 512;
+                Variable048.GS = gs;
+
+                string tar_bits = bdsdata.Substring(36, 9);
+                double tar = ComplementA2(tar_bits);
+                tar = tar / 8;
+                tar= tar / 256;
+                Variable048.TAR = tar;
+
+                string tas_bits = bdsdata.Substring(46, 10);
+                double tas = ComplementA2(tas_bits);
+                tas = tas * 2;
+                Variable048.TAS = tas;
+            }
+
+            if (bds1 == 6 & bds2 == 0)
+            {
+                string hdg_bits;
+                double hdg;
+                char statusHDG = bdsdata[1];
+                if (statusHDG == '1')
+                {
+                    hdg_bits = bdsdata.Substring(1, 11);
+                    hdg = ComplementA2(hdg_bits);
+                }
+                else
+                {
+                    hdg_bits = bdsdata.Substring(2, 10);
+                    hdg = Convert.ToInt32(hdg_bits, 2);
+                }
+               
+                hdg = (hdg * 90) / 512;
+                Variable048.HDG = hdg;
+
+                string IAS_bits = bdsdata.Substring (13, 10);
+                double ias = ComplementA2(IAS_bits);
+                Variable048.IAS = ias;
+
+                string mach_bits = bdsdata.Substring(24, 10);
+                double mach = ComplementA2(mach_bits);
+                mach = (mach * 2.048) / 512;
+                Variable048.MACH = mach;
+
+                string bar_bits = bdsdata.Substring(36, 9);
+                double bar = ComplementA2(bar_bits);
+                bar = bar * 32;
+                Variable048.BAR = bar;
+
+                string ivv_bits = bdsdata.Substring(47, 9);
+                double ivv = ComplementA2(ivv_bits);
+                ivv = (ivv * 32);
+                Variable048.IVV = ivv;
+
+
+            }
+
+   
+
+
+        }
+
 
     }
 }
