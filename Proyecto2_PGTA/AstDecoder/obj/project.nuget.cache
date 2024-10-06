@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Veg9G5BBOUU=",
+  "dgSpecHash": "mU3CI5LEAso=",
   "success": true,
   "projectFilePath": "C:\\Users\\palmi\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\palmi\\.nuget\\packages\\accord\\3.8.0\\accord.3.8.0.nupkg.sha512",
+    "C:\\Users\\palmi\\.nuget\\packages\\accord.math\\3.8.0\\accord.math.3.8.0.nupkg.sha512",
+    "C:\\Users\\palmi\\.nuget\\packages\\visioforge.dotnet.core.redist.base.x64\\15.10.21\\visioforge.dotnet.core.redist.base.x64.15.10.21.nupkg.sha512",
     "C:\\Users\\palmi\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.33\\microsoft.windowsdesktop.app.ref.6.0.33.nupkg.sha512",
     "C:\\Users\\palmi\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.33\\microsoft.netcore.app.ref.6.0.33.nupkg.sha512",
     "C:\\Users\\palmi\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.33\\microsoft.aspnetcore.app.ref.6.0.33.nupkg.sha512"

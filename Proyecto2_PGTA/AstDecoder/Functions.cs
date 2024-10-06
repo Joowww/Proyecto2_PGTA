@@ -814,6 +814,7 @@ namespace AstDecoder
         /// <param name="Variable048"></param>
         public void DF230(string bytes2, CAT048 Variable048)
         {
+
             string com = bytes2.Substring(0, 3);
             Variable048.COM = Convert.ToInt32(com, 2);
             string stat = bytes2.Substring(3, 3);
@@ -1047,6 +1048,7 @@ namespace AstDecoder
 
             }
 
+           
    
 
 

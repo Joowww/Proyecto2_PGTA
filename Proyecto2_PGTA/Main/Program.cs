@@ -110,6 +110,7 @@ namespace Main
                                     for (int i2 = 0; i2 < FSPEC.Length; i2++)
                                     {
                                         if (FSPEC[i2] == '1')
+                                        if (FSPEC[i2] == '1')
                                         {
                                             posiciones.Add(i2+1);  //Get positions with a 1, Data Field present
                                         }
@@ -229,6 +230,8 @@ namespace Main
                                             endOfDF = true; //Now Data Item is complete
                                         }
                                     }
+
+                                    //One byte
                                     if (DataItemRead == "23")
                                     {
                                         string octet = Convert.ToString(currentByte, 2).PadLeft(8, '0'); //Convert to string bits
@@ -275,7 +278,7 @@ namespace Main
                                         REP = 0;
                                         posiciones.Clear();
                                         posiciones2.Clear();
-                                        
+                                        Variable048 = new CAT048();
 
 
                                     }

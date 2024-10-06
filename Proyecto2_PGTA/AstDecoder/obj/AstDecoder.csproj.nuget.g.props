@@ -12,4 +12,7 @@
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <SourceRoot Include="C:\Users\palmi\.nuget\packages\" />
   </ItemGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgVisioForge_DotNet_Core_Redist_Base_x64 Condition=" '$(PkgVisioForge_DotNet_Core_Redist_Base_x64)' == '' ">C:\Users\palmi\.nuget\packages\visioforge.dotnet.core.redist.base.x64\15.10.21</PkgVisioForge_DotNet_Core_Redist_Base_x64>
+  </PropertyGroup>
 </Project>
