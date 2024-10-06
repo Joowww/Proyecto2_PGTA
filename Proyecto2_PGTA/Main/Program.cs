@@ -105,14 +105,18 @@ namespace Main
                                 if (FX == '0')
                                 {
                                     endOfFSPEC = true; // Shifts to true if FX is 0 to contiue reading
-                                    
 
+                                    int i3 = 1;
                                     for (int i2 = 0; i2 < FSPEC.Length; i2++)
                                     {
-                                        if (FSPEC[i2] == '1')
-                                        if (FSPEC[i2] == '1')
+
+                                        if (i2 % 8 != 7)
                                         {
-                                            posiciones.Add(i2+1);  //Get positions with a 1, Data Field present
+                                            if (FSPEC[i2] == '1')
+                                            {
+                                                posiciones.Add(i3);  //Get positions with a 1, Data Field present
+                                                i3++;
+                                            }
                                         }
                                     }
                                     continue;

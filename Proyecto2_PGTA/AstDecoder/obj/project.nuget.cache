@@ -1,15 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "mU3CI5LEAso=",
+  "dgSpecHash": "2Lfs2RJY4/L2HxPOlSzEmupsxdAqTESRDr87trRCZDkEqDUYBfBEDBcVgZfBpjt1FTJ45KXFwJHqVy8tFb4oFQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\palmi\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj",
+  "projectFilePath": "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\palmi\\.nuget\\packages\\accord\\3.8.0\\accord.3.8.0.nupkg.sha512",
-    "C:\\Users\\palmi\\.nuget\\packages\\accord.math\\3.8.0\\accord.math.3.8.0.nupkg.sha512",
-    "C:\\Users\\palmi\\.nuget\\packages\\visioforge.dotnet.core.redist.base.x64\\15.10.21\\visioforge.dotnet.core.redist.base.x64.15.10.21.nupkg.sha512",
-    "C:\\Users\\palmi\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.33\\microsoft.windowsdesktop.app.ref.6.0.33.nupkg.sha512",
-    "C:\\Users\\palmi\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.33\\microsoft.netcore.app.ref.6.0.33.nupkg.sha512",
-    "C:\\Users\\palmi\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.33\\microsoft.aspnetcore.app.ref.6.0.33.nupkg.sha512"
+    "C:\\Users\\34652\\.nuget\\packages\\accord\\3.8.0\\accord.3.8.0.nupkg.sha512",
+    "C:\\Users\\34652\\.nuget\\packages\\accord.math\\3.8.0\\accord.math.3.8.0.nupkg.sha512",
+    "C:\\Users\\34652\\.nuget\\packages\\visioforge.dotnet.core.redist.base.x64\\15.10.21\\visioforge.dotnet.core.redist.base.x64.15.10.21.nupkg.sha512"
   ],
   "logs": []
 }
