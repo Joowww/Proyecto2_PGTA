@@ -99,25 +99,24 @@ namespace Main
                             if (i >= 3 && endOfFSPEC == false)
                             {
                                 string binaryString = Convert.ToString(currentByte, 2).PadLeft(8, '0'); //Convert to string bits
-                                FSPEC += binaryString; // Concatenate binaryString to FSPEC
+                                FSPEC += binaryString.Substring(0, 7); // Concatenate binaryString to FSPEC
                                 char FX = binaryString[binaryString.Length - 1]; //Obtain FX
 
                                 if (FX == '0')
                                 {
                                     endOfFSPEC = true; // Shifts to true if FX is 0 to contiue reading
 
-                                    int i3 = 1;
+                                    
                                     for (int i2 = 0; i2 < FSPEC.Length; i2++)
                                     {
 
-                                        if (i2 % 8 != 7)
+                                       
+                                        if (FSPEC[i2] == '1')
                                         {
-                                            if (FSPEC[i2] == '1')
-                                            {
-                                                posiciones.Add(i3);  //Get positions with a 1, Data Field present
-                                                i3++;
-                                            }
+                                            posiciones.Add(i2+1);  //Get positions with a 1, Data Field present
+                                                
                                         }
+                                        
                                     }
                                     continue;
                                     

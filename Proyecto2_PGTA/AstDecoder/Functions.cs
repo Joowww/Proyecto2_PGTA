@@ -118,66 +118,8 @@ namespace AstDecoder
         public string SUP { get; set; }
         public string TCC { get; set; }
 
-        //Variables for Data Item (210) [4 Oct]
-        public int sigmaX { get; set; }
-        public int sigmaY { get; set; }
-        public int sigmaV { get; set; }
-        public int sigmaH { get; set; }
-
-        //Variables for Data Item (030) [1+ Oct]
-        public string code { get; set; }
-        public string FX_030 { get; set; }
-
-        //Variables for Data Item (080) [2 Oct]
-        public string QA4_080 { get; set; }
-        public string QA2_080 { get; set; }
-        public string QA1_080 { get; set; }
-        public string QB4_080 { get; set; }
-        public string QB2_080 { get; set; }
-        public string QB1_080 { get; set; }
-        public string QC4_080 { get; set; }
-        public string QC2__080 { get; set; }
-        public string QC1__080 { get; set; }
-        public string QD4__080 { get; set; }
-        public string QD2__080 { get; set; }
-        public string QD1__080 { get; set; }
-
-        //Variables for Data Item (100) [4 Oct]
-        public string V__100 { get; set; }
-        public string G__100 { get; set; }
-        public string C1_100 { get; set; }
-        public string A1_100 { get; set; }
-        public string C2_100 { get; set; }
-        public string A2_100 { get; set; }
-        public string C4_100 { get; set; }
-        public string A4_100 { get; set; }
-        public string B1_100 { get; set; }
-        public string D1__100 { get; set; }
-        public string B2_100 { get; set; }
-        public string D2_100 { get; set; }
-        public string B4_100 { get; set; }
-        public string D4_100 { get; set; }
-        public string QC1_100 { get; set; }
-        public string QA1_100 { get; set; }
-        public string QC2_100 { get; set; }
-        public string QA2_100 { get; set; }
-        public string QC4_100 { get; set; }
-        public string QA4_100 { get; set; }
-        public string QB1_100 { get; set; }
-        public string QD1__100 { get; set; }
-        public string QB2_100 { get; set; }
-        public string QD2_100 { get; set; }
-        public string QB4_100 { get; set; }
-        public string QD4_100 { get; set; }
-
         //Variables for Data Item (110) [2 Oct]
         public int Height_3D { get; set; }
-
-        //Variables for Data Item (120) [1+ Oct]
-        public string CAL1 { get; set; }
-        public string RDS { get; set; }
-        public string D { get; set; }
-        public string CAL2 { get; set; }
 
         //Variables for Data Item (230) [2 Oct]
         public int COM { get; set; }
@@ -188,62 +130,6 @@ namespace AstDecoder
         public int AIC { get; set; }
         public int B1A { get; set; }
         public int B1B { get; set; }
-
-        //Variables for Data Item (260) [7 Oct]
-        public int ACASRA { get; set; }
-
-        //Variables for Data Item (055) [1 Oct]
-        public string V_055 { get; set; }
-        public string G_055 { get; set; }
-        public string L_055 { get; set; }
-        public string A4_055 { get; set; }
-        public string A2_055 { get; set; }
-        public string A1_055 { get; set; }
-        public string B2_055 { get; set; }
-        public string B1_055 { get; set; }
-
-        //Variables for Data Item (050) [2 Oct]
-        public string V__050 { get; set; }
-        public string G__050 { get; set; }
-        public string L_050 { get; set; }
-        public string A4_050 { get; set; }
-        public string A2_050 { get; set; }
-        public string A1_050 { get; set; }
-        public string B4_050 { get; set; }
-        public string B2_050 { get; set; }
-        public string B1_050 { get; set; }
-        public string C4_050 { get; set; }
-        public string C2_050 { get; set; }
-        public string C1_050 { get; set; }
-        public string D4_050 { get; set; }
-        public string D2_050 { get; set; }
-        public string D1_050 { get; set; }
-
-        //Variables for Data Item (065) [1 Oct]
-        public string QA4_065 { get; set; }
-        public string QA2_065 { get; set; }
-        public string QA1_065 { get; set; }
-        public string QB2_065 { get; set; }
-        public string QB1_065 { get; set; }
-
-        //Variables for Data Item (060) [2 Oct]
-        public string QA4_060 { get; set; }
-        public string QA2_060 { get; set; }
-        public string QA1_060 { get; set; }
-        public string QB4_060 { get; set; }
-        public string QB2_060 { get; set; }
-        public string QB1_060 { get; set; }
-        public string QC4_060 { get; set; }
-        public string QC2__060 { get; set; }
-        public string QC1__060 { get; set; }
-        public string QD4__060 { get; set; }
-        public string QD2__060 { get; set; }
-        public string QD1__060 { get; set; }
-
-        //Variables for Data Item (SP) [1+1+ Oct]
-
-        //Variables for Data Item (RE) [1+1+ Oct]
-
     }
 
     public class Function
@@ -775,14 +661,6 @@ namespace AstDecoder
 
         public void DF210(string bytes2, CAT048 Variable048)
         {
-            string sX = bytes2.Substring(0, 8);
-            Variable048.sigmaX = Convert.ToInt32(sX, 2);
-            string sY = bytes2.Substring(8, 8);
-            Variable048.sigmaY = Convert.ToInt32(sY, 2);
-            string sV = bytes2.Substring(16, 8);
-            Variable048.sigmaV = Convert.ToInt32(sV, 2);
-            string sH = bytes2.Substring(24, 8);
-            Variable048.sigmaH = Convert.ToInt32(sH, 2);
         }
 
         public void DF030(string bytes2, CAT048 Variable048) //NOT NECESSARY
@@ -835,8 +713,6 @@ namespace AstDecoder
 
         public void DF260(string bytes2, CAT048 Variable048) //NOT NECESSARY
         {
-            string acasra = bytes2.Substring(0, 56);
-            Variable048.ACASRA = Convert.ToInt32(acasra, 2);
         }
 
         public void DF055(string bytes2, CAT048 Variable048) //NOT NECESSARY
