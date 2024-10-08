@@ -279,6 +279,7 @@ namespace Main
                                         contadorDI = 0;
                                         endOfDF = false;
                                         REP = 0;
+                                        i = i + 3;
                                         posiciones.Clear();
                                         posiciones2.Clear();
                                         Variable048 = new CAT048();
