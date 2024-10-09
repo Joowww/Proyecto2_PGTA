@@ -40,7 +40,7 @@
           }
         }
       },
-      "VisioForge.DotNet.Core.Redist.Base.x64/15.10.21": {
+      "VisioForge.DotNet.Core.Redist.Base.x64/15.10.22": {
         "type": "package",
         "build": {
           "build/VisioForge.DotNet.Core.Redist.Base.x64.targets": {}
@@ -52,7 +52,7 @@
         "dependencies": {
           "Accord": "3.8.0",
           "Accord.Math": "3.8.0",
-          "VisioForge.DotNet.Core.Redist.Base.x64": "15.10.21"
+          "VisioForge.DotNet.Core.Redist.Base.x64": "15.10.22"
         },
         "compile": {
           "bin/placeholder/AstDecoder.dll": {}
@@ -154,10 +154,10 @@
         "lib/netstandard2.0/Accord.Math.xml"
       ]
     },
-    "VisioForge.DotNet.Core.Redist.Base.x64/15.10.21": {
-      "sha512": "vkv+GP1XBmrYqcQx54rcl32s7+szsrncZKXAjHMwYK6IXjOLOyaHnGwLcD7CJFuWHiZnW64EJoD0xEY6Q2Ao4g==",
+    "VisioForge.DotNet.Core.Redist.Base.x64/15.10.22": {
+      "sha512": "B2Hibau9xCdR8/Jnv+FwU4jl1d/lE6TM7ei88fKLY7eEb7GLylFoYIG7tUzHCjf4YC8TtLZImA6C++sF67qx/A==",
       "type": "package",
-      "path": "visioforge.dotnet.core.redist.base.x64/15.10.21",
+      "path": "visioforge.dotnet.core.redist.base.x64/15.10.22",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -187,7 +187,7 @@
         "build/vcruntime140.dll",
         "build/vcruntime140_1.dll",
         "tools/redist-readme.txt",
-        "visioforge.dotnet.core.redist.base.x64.15.10.21.nupkg.sha512",
+        "visioforge.dotnet.core.redist.base.x64.15.10.22.nupkg.sha512",
         "visioforge.dotnet.core.redist.base.x64.nuspec"
       ]
     },
@@ -202,23 +202,23 @@
       "Accord >= 3.8.0",
       "Accord.Math >= 3.8.0",
       "AstDecoder >= 1.0.0",
-      "VisioForge.DotNet.Core.Redist.Base.x64 >= 15.10.21"
+      "visioforge.dotnet.core.redist.base.x64 >= 15.10.22"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\paula\\.nuget\\packages\\": {}
+    "C:\\Users\\34652\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\paula\\OneDrive\\Escritorio\\4A\\PGTA\\Proyecto2_PGTA\\Proyecto2_PGTA\\Main\\Main.csproj",
+      "projectUniqueName": "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Main\\Main.csproj",
       "projectName": "Main",
-      "projectPath": "C:\\Users\\paula\\OneDrive\\Escritorio\\4A\\PGTA\\Proyecto2_PGTA\\Proyecto2_PGTA\\Main\\Main.csproj",
-      "packagesPath": "C:\\Users\\paula\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\paula\\OneDrive\\Escritorio\\4A\\PGTA\\Proyecto2_PGTA\\Proyecto2_PGTA\\Main\\obj\\",
+      "projectPath": "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Main\\Main.csproj",
+      "packagesPath": "C:\\Users\\34652\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Main\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\paula\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\34652\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -232,8 +232,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\paula\\OneDrive\\Escritorio\\4A\\PGTA\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj": {
-              "projectPath": "C:\\Users\\paula\\OneDrive\\Escritorio\\4A\\PGTA\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj"
+            "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj": {
+              "projectPath": "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj"
             }
           }
         }
@@ -242,11 +242,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -261,9 +256,9 @@
             "target": "Package",
             "version": "[3.8.0, )"
           },
-          "VisioForge.DotNet.Core.Redist.Base.x64": {
+          "visioforge.dotnet.core.redist.base.x64": {
             "target": "Package",
-            "version": "[15.10.21, )"
+            "version": "[15.10.22, )"
           }
         },
         "imports": [
@@ -277,30 +272,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[6.0.33, 6.0.33]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[6.0.33, 6.0.33]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[6.0.33, 6.0.33]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[6.0.33, 6.0.33]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

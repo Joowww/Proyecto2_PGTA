@@ -262,6 +262,9 @@ namespace Main
                                         //string concatenatedDataItems = string.Join(", ", currentDataItems);
                                         // Añadir una nueva fila a la tabla con el FSPEC y los Data Items
 
+                                        Function h = new Function();
+                                        h.H(Variable048);
+
                                         // Crear una nueva fila
                                         DataRow newRow = messageTable.NewRow();
 

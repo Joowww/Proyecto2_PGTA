@@ -1,16 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "gq+HTKIVl+c=",
+  "dgSpecHash": "/FnjK5tV/73ljzgf4XjMvqBM+rwhH+I6HZbkiC/m2A2svVRy72hsDhOaTc/Gn09muDeijOoW0gGHfUBy/dED+w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\paula\\OneDrive\\Escritorio\\4A\\PGTA\\Proyecto2_PGTA\\Proyecto2_PGTA\\Main\\Main.csproj",
+  "projectFilePath": "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Main\\Main.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\paula\\.nuget\\packages\\accord\\3.8.0\\accord.3.8.0.nupkg.sha512",
-    "C:\\Users\\paula\\.nuget\\packages\\accord.math\\3.8.0\\accord.math.3.8.0.nupkg.sha512",
-    "C:\\Users\\paula\\.nuget\\packages\\visioforge.dotnet.core.redist.base.x64\\15.10.21\\visioforge.dotnet.core.redist.base.x64.15.10.21.nupkg.sha512",
-    "C:\\Users\\paula\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.33\\microsoft.windowsdesktop.app.ref.6.0.33.nupkg.sha512",
-    "C:\\Users\\paula\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.33\\microsoft.netcore.app.ref.6.0.33.nupkg.sha512",
-    "C:\\Users\\paula\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.33\\microsoft.aspnetcore.app.ref.6.0.33.nupkg.sha512",
-    "C:\\Users\\paula\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.33\\microsoft.netcore.app.host.win-x64.6.0.33.nupkg.sha512"
+    "C:\\Users\\34652\\.nuget\\packages\\accord\\3.8.0\\accord.3.8.0.nupkg.sha512",
+    "C:\\Users\\34652\\.nuget\\packages\\accord.math\\3.8.0\\accord.math.3.8.0.nupkg.sha512",
+    "C:\\Users\\34652\\.nuget\\packages\\visioforge.dotnet.core.redist.base.x64\\15.10.22\\visioforge.dotnet.core.redist.base.x64.15.10.22.nupkg.sha512"
   ],
   "logs": []
 }

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Linq;
+using MultiCAT6.Utils;
+using System.Globalization;
+using System.Security.Cryptography.X509Certificates;
 
 namespace AstDecoder
 {
@@ -59,7 +62,7 @@ namespace AstDecoder
         public double FL { get; set; }
 
         //Mode C corrected
-        public double ModeC_corrected { get; set; }
+        public string ModeC_corrected { get; set; }
 
         //Variables for Data Item (130) [1+ 1+ Oct]
         public double SRL { get; set; }
@@ -355,8 +358,8 @@ namespace AstDecoder
         {
             string V = bytes2.Substring(0, 1);
             string G = bytes2.Substring(1, 1);
-            double FL = Convert.ToInt32(bytes2.Substring(2, 14), 2);
-            Variable048.FL = FL * 0.25;
+            double FL = (Convert.ToInt32(bytes2.Substring(2, 14), 2)) * 0.25;
+            Variable048.FL = FL;
             if (V == "0")
             {
                 Variable048.V_090 = "Code validated";
@@ -1001,17 +1004,86 @@ namespace AstDecoder
                 double ivv = ComplementA2(ivv_bits);
                 ivv = (ivv * 32);
                 Variable048.IVV = ivv;
-
-
             }
-
-           
-   
-
-
         }
 
+        // Function to convert coordinates to decimal degrees
+        public double Get_Minutes_To_Degrees(double degrees, double minutes, double seconds, string cardinalpoints)
+        {
+            if (cardinalpoints == "N" || cardinalpoints == "E")
+                cardinalpoints = "1";
+            if (cardinalpoints == "S" || cardinalpoints == "W")
+                cardinalpoints = "-1";
+            double convert = (degrees + (minutes / 60) + (seconds / 3600)) * Convert.ToInt32(cardinalpoints);
+            return convert;
+        }
+        public void H (CAT048 data048)
+        {
+            double barometricPressure = data048.BP;
+            double correctedAltitude = 0;
+            double flightLevel = data048.FL;
 
+            if (flightLevel != 0)
+            {
+                double altitude = Convert.ToDouble(flightLevel) * 100; // Convert to feet
+                correctedAltitude = altitude * 0.3048;
+                bool PRES = false;
+
+                if ((barometricPressure >= 1013 && barometricPressure <= 1013.3) || (barometricPressure == 0))
+                {
+                    PRES = true;
+                }
+                // QNH correction if the altitude is less than 6000 feet
+                if (PRES == false && altitude < 6000 && barometricPressure != 0)
+                {
+                    correctedAltitude = (altitude + (Convert.ToDouble(barometricPressure) - 1013.2) * 30) * 0.3048;
+                }
+            }
+            data048.H = correctedAltitude;
+            LatitudeLongitud(data048, correctedAltitude);
+        }
+        public void LatitudeLongitud(CAT048 data048, double correctedAltitude)
+        {
+            // Radar variables
+            double latRadar = Get_Minutes_To_Degrees(41.0, 18.0, 2.5284, "N");
+            string radar_Latitude = latRadar.ToString();
+
+            double lonRadar = Get_Minutes_To_Degrees(2.0, 6.0, 7.4095, "E");
+            string radar_Longitude = lonRadar.ToString();
+
+            double terrainElevation = 2.007;
+            double antennaHeight = 25.25;
+            double earthRadius = 6371000.0;
+
+            GeoUtils GeoUs = new GeoUtils();
+
+            // Save the radar coordinates (in WGS84)
+            CoordinatesWGS84 radarPosition = new CoordinatesWGS84 (radar_Latitude, radar_Longitude, terrainElevation);
+
+            // From polar coordinates to cartesian coordinates
+            double cordenateRadarX = Convert.ToDouble(data048.RHO) * Math.Sin(Convert.ToDouble(data048.THETA) * Math.PI / 180.0) * 1852.0; // From NM to m (* 1852)
+            double cordenateRadarY = Convert.ToDouble(data048.RHO) * Math.Cos(Convert.ToDouble(data048.THETA) * Math.PI / 180.0) * 1852.0;
+
+            // From cartesian coordinates to spherical coordinates
+            double azimuth = GeoUtils.CalculateAzimuth(cordenateRadarX, cordenateRadarY);
+            double range = Math.Sqrt(cordenateRadarX * cordenateRadarX + cordenateRadarY * cordenateRadarY);
+            double elevation = Math.Asin((2 * earthRadius * (correctedAltitude - antennaHeight) + correctedAltitude * correctedAltitude - antennaHeight * antennaHeight - range * range) / (2 * range * (earthRadius + antennaHeight)));
+
+            // Transform to polar coordinates
+            CoordinatesPolar polarCoords = new CoordinatesPolar(range, azimuth, elevation);
+
+            // Transform to Cartesian coordinates
+            CoordinatesXYZ cartCoords = GeoUtils.change_radar_spherical2radar_cartesian(polarCoords);
+
+            // Transform to geocentric coordinates
+            CoordinatesXYZ geocCoords = GeoUs.change_radar_cartesian2geocentric(radarPosition, cartCoords);
+
+            // Transform to geodesic coordinates
+            CoordinatesWGS84 geodCoords = GeoUs.change_geocentric2geodesic(geocCoords);
+
+            data048.LAT = geodCoords.Lat * 180 / Math.PI;
+            data048.LON = geodCoords.Lon * 180 / Math.PI;
+        }
     }
 }
 

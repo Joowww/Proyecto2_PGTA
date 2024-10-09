@@ -11,7 +11,7 @@
           "Accord": "3.8.0",
           "Accord.Math": "3.8.0",
           "AstDecoder": "1.0.0",
-          "VisioForge.DotNet.Core.Redist.Base.x64": "15.10.21"
+          "VisioForge.DotNet.Core.Redist.Base.x64": "15.10.22"
         },
         "runtime": {
           "Main.dll": {}
@@ -40,18 +40,15 @@
           }
         }
       },
-      "VisioForge.DotNet.Core.Redist.Base.x64/15.10.21": {},
+      "VisioForge.DotNet.Core.Redist.Base.x64/15.10.22": {},
       "AstDecoder/1.0.0": {
         "dependencies": {
           "Accord": "3.8.0",
           "Accord.Math": "3.8.0",
-          "VisioForge.DotNet.Core.Redist.Base.x64": "15.10.21"
+          "VisioForge.DotNet.Core.Redist.Base.x64": "15.10.22"
         },
         "runtime": {
-          "AstDecoder.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "AstDecoder.dll": {}
         }
       }
     }
@@ -76,12 +73,12 @@
       "path": "accord.math/3.8.0",
       "hashPath": "accord.math.3.8.0.nupkg.sha512"
     },
-    "VisioForge.DotNet.Core.Redist.Base.x64/15.10.21": {
+    "VisioForge.DotNet.Core.Redist.Base.x64/15.10.22": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-vkv+GP1XBmrYqcQx54rcl32s7+szsrncZKXAjHMwYK6IXjOLOyaHnGwLcD7CJFuWHiZnW64EJoD0xEY6Q2Ao4g==",
-      "path": "visioforge.dotnet.core.redist.base.x64/15.10.21",
-      "hashPath": "visioforge.dotnet.core.redist.base.x64.15.10.21.nupkg.sha512"
+      "sha512": "sha512-B2Hibau9xCdR8/Jnv+FwU4jl1d/lE6TM7ei88fKLY7eEb7GLylFoYIG7tUzHCjf4YC8TtLZImA6C++sF67qx/A==",
+      "path": "visioforge.dotnet.core.redist.base.x64/15.10.22",
+      "hashPath": "visioforge.dotnet.core.redist.base.x64.15.10.22.nupkg.sha512"
     },
     "AstDecoder/1.0.0": {
       "type": "project",
