@@ -122,14 +122,14 @@ namespace AstDecoder
         public int Height_3D { get; set; }
 
         //Variables for Data Item (230) [2 Oct]
-        public int COM { get; set; }
-        public int STAT { get; set; }
-        public int SI { get; set; }
-        public int MSSC { get; set; }
-        public int ARC { get; set; }
-        public int AIC { get; set; }
-        public int B1A { get; set; }
-        public int B1B { get; set; }
+        public string COM { get; set; }
+        public string STAT { get; set; }
+        public string SI { get; set; }
+        public string MSSC { get; set; }
+        public string ARC { get; set; }
+        public string AIC { get; set; }
+        public string B1A { get; set; }
+        public string B1B { get; set; }
     }
 
     public class Function
@@ -686,23 +686,110 @@ namespace AstDecoder
         /// <param name="Variable048"></param>
         public void DF230(string bytes2, CAT048 Variable048)
         {
+            int com = Convert.ToInt16(bytes2.Substring(0, 3),2);
+            if (com == 0)
+            {
+                Variable048.COM = "No communications capability (surveillance only)";
+            }
+            else if (com == 1)
+            {
+                Variable048.COM = "Comm. A and Comm. B capability";
+            }
+            else if (com == 2)
+            {
+                Variable048.COM = "Comm. A and Comm. B and Uplink ELM";
+            }
+            else if (com == 3)
+            {
+                Variable048.COM = "Comm. A and Comm. B, Uplink ELM and Downlink ELM";
+            }
+            else if (com == 4)
+            {
+                Variable048.COM = "Level 5 Transponder capability";
+            }
+            else
+            {
+                Variable048.COM = "Not assigned";
+            }
 
-            string com = bytes2.Substring(0, 3);
-            Variable048.COM = Convert.ToInt32(com, 2);
-            string stat = bytes2.Substring(3, 3);
-            Variable048.STAT = Convert.ToInt32(stat, 2);
-            string si = bytes2.Substring(6, 1);
-            Variable048.SI = Convert.ToInt32(si, 2);
-            string mssc = bytes2.Substring(8, 1);
-            Variable048.MSSC = Convert.ToInt32(mssc, 2);
-            string arc = bytes2.Substring(9, 1);
-            Variable048.ARC = Convert.ToInt32(arc, 2);
-            string aic = bytes2.Substring(10, 1);
-            Variable048.AIC = Convert.ToInt32(aic, 2);
-            string b1a = bytes2.Substring(11, 1);
-            Variable048.B1A = Convert.ToInt32(b1a, 2);
-            string b1b = bytes2.Substring(12, 4);
-            Variable048.B1B = Convert.ToInt32(b1b, 2);
+            int stat = Convert.ToInt16(bytes2.Substring(3, 3), 2);
+            if (stat == 0)
+            {
+                Variable048.STAT = "No alert, no SPI, aircraft airborne";
+            }
+            else if (stat == 1)
+            {
+                Variable048.STAT = "No alert, no SPI, aircraft on ground";
+            }
+            else if (stat == 2)
+            {
+                Variable048.STAT = "Alert, no SPI, aircraft airborne";
+            }
+            else if (stat == 3)
+            {
+                Variable048.STAT = "Alert, no SPI, aircraft on ground";
+            }
+            else if (stat == 4)
+            {
+                Variable048.STAT = "Alert, SPI, aircraft airborne or on ground";
+            }
+            else if (stat == 5)
+            {
+                Variable048.STAT = "No alert, SPI, aircraft airborne or on ground";
+            }
+            else if (stat == 6)
+            {
+                Variable048.STAT = "Not assigned";
+            }
+            else if (stat == 7)
+            {
+                Variable048.STAT = "Unknown";
+            }
+
+            int si = Convert.ToInt16(bytes2.Substring(6, 1), 2);
+            if (si == 0)
+            {
+                Variable048.SI = "SI-Code Capable";
+            }
+            else if (si == 1)
+            {
+                Variable048.SI = "II-Code Capable";
+            }
+
+            int mssc = Convert.ToInt16(bytes2.Substring(8, 1), 2);
+            if (mssc == 0)
+            {
+                Variable048.MSSC = "No";
+            }
+            else if (mssc == 1)
+            {
+                Variable048.MSSC = "Yes";
+            }
+
+            int arc = Convert.ToInt16(bytes2.Substring(8, 1), 2);
+            if (arc == 0)
+            {
+                Variable048.ARC = "100 ft resolution";
+            }
+            else if (arc == 1)
+            {
+                Variable048.ARC = "25 ft resolution";
+            }
+
+            int aic = Convert.ToInt16(bytes2.Substring(9, 1), 2);
+            if (aic == 0)
+            {
+                Variable048.AIC = "No";
+            }
+            else if (aic == 1)
+            {
+                Variable048.AIC = "Yes";
+            }
+
+            string b1a = bytes2.Substring(10, 1);
+            Variable048.B1A = "BDS 1,0 bit 16 = " + b1a;
+            string b1b = bytes2.Substring(11, 4);
+            Variable048.B1B = "BDS 1,0 bits 37/40 = " + b1b;
         }
 
         public void DF260(string bytes2, CAT048 Variable048) //NOT NECESSARY
