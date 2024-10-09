@@ -20,7 +20,13 @@ namespace AstDecoder
         public int SIC { get; set; }
 
         //Variables for Data Item (140) [3 Oct]
-        public string UTC_Time { get; set; }
+        public string UTC_TIME { get; set; }
+        public int UTC_TIME_s { get; set; }
+
+        // LAT, LON, H
+        public double LAT { get; set; }
+        public double LON { get; set; }
+        public double H { get; set; }
 
         //Variables for Data Item (020) [1+ ("Variable") Oct]
         public string TYP { get; set; }
@@ -50,7 +56,10 @@ namespace AstDecoder
         //Variables for Data Item (090) [2 Oct] 
         public string V_090 { get; set; }
         public string G_090 { get; set; }
-        public double flightLevel { get; set; }
+        public double FL { get; set; }
+
+        //Mode C corrected
+        public double ModeC_corrected { get; set; }
 
         //Variables for Data Item (130) [1+ 1+ Oct]
         public double SRL { get; set; }
@@ -68,14 +77,6 @@ namespace AstDecoder
         public string TI { get; set; }
 
         //Variables for Data Item (250) [1+8*n Oct]
-        public int REP { get; set; }
-        public string BDSDATA { get; set; }
-
-        public int BDS1 { get; set; }
-        public int BDS2 { get; set; }
-
-        public double LAT {  get; set; }
-        public double LON { get; set; }
         public double MCP_ALT { get; set; }
         public double FMS_ALT {get; set; }
         public double BP {  get; set; }
@@ -88,15 +89,15 @@ namespace AstDecoder
         public double GS { get; set; }
         public double TAR { get; set; }
         public double TAS { get; set; }
-        public double IVV { get; set; }
         public double HDG { get; set; }
         public double IAS { get; set; }
         public double MACH { get; set; }
         public double BAR { get; set; }
+        public double IVV { get; set; }
 
 
         //Variables for Data Item (161) [2 Oct]
-        public int trackNumber { get; set; }
+        public int TN { get; set; }
 
         //Variables for Data Item (042) [4 Oct]
         public double xComponent { get; set; }
@@ -112,7 +113,6 @@ namespace AstDecoder
         public string DOU { get; set; }
         public string MAH { get; set; }
         public string CDM { get; set; }
-        public int FX_170 { get; set; }
         public string TRE { get; set; }
         public string GHO { get; set; }
         public string SUP { get; set; }
@@ -196,7 +196,8 @@ namespace AstDecoder
         {
             decimal time = (Convert.ToInt32(bytes2, 2)) * 1m / 128m; //Get decimals *1/128
             TimeSpan Time = TimeSpan.FromSeconds((double)time);
-            Variable048.UTC_Time = Time.ToString(@"hh\:mm\:ss\:fff");
+            Variable048.UTC_TIME = Time.ToString(@"hh\:mm\:ss\:fff");
+            Variable048.UTC_TIME_s = (int)Math.Round(time);
         }
 
         public void DF020(string bytes2, CAT048 Variable048)
@@ -355,7 +356,7 @@ namespace AstDecoder
             string V = bytes2.Substring(0, 1);
             string G = bytes2.Substring(1, 1);
             double FL = Convert.ToInt32(bytes2.Substring(2, 14), 2);
-            Variable048.flightLevel = FL * 0.25;
+            Variable048.FL = FL * 0.25;
             if (V == "0")
             {
                 Variable048.V_090 = "Code validated";
@@ -534,32 +535,26 @@ namespace AstDecoder
         public void DF250(string bytes2, CAT048 Variable048)
         {
             string rep = bytes2.Substring(0, 8);
-            Variable048.REP = Convert.ToInt32(rep, 2);
+            int REP = Convert.ToInt32(rep, 2);
             int index = 0;
             
-            for (int l = 0; l < Variable048.REP; l++)
+            for (int l = 0; l < REP; l++)
             {
                 string bdsdata = bytes2.Substring(index + 8, 56);
-                Variable048.BDSDATA = bdsdata;
                 string bds1 = bytes2.Substring(index + 64, 4);
                 int BDS1 = Convert.ToInt32(bds1, 2);
-                Variable048.BDS1 = BDS1;
                 string bds2 = bytes2.Substring(index + 68, 4);
                 int BDS2= Convert.ToInt32(bds2, 2);
-                Variable048.BDS2 = BDS2;
                 index += 64;
 
                 DecodeBDS(BDS1, BDS2, bdsdata, Variable048);
             }
-
-
-
-
         }
+
         public void DF161(string bytes2, CAT048 Variable048)
         {
             string tNumber = bytes2.Substring(4, 12);
-            Variable048.trackNumber = Convert.ToInt32(tNumber, 2);
+            Variable048.TN = Convert.ToInt32(tNumber, 2);
         }
 
         public void DF042(string bytes2, CAT048 Variable048)
@@ -651,8 +646,7 @@ namespace AstDecoder
                 }
 
                 string fx = bytes2.Substring(7, 1);
-                Variable048.FX_170 = Convert.ToInt32(fx, 2);
-                if (Variable048.FX_170 == 0)
+                if (Convert.ToInt32(fx, 2) == 0)
                 {
                     endDF = true;
                 }
