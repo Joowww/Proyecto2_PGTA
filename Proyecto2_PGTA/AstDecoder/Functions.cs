@@ -396,25 +396,12 @@ namespace AstDecoder
             Variable048.FL = (FL);
 
             // Assign the corresponding value for the V bit
-            if (V == "0")
-            {
-                Variable048.V_090 = "Code validated";
-            }
-            else
-            {
-                Variable048.V_090 = "Code not validated";
-            }
+            if (V == "0") { Variable048.V_090 = "Code validated"; }
+            else { Variable048.V_090 = "Code not validated"; }
 
             // Assign the corresponding value for the G bit
-            if (G == "0")
-            {
-                Variable048.G_090 = "Default";
-            }
-            else
-            {
-                Variable048.G_090 = "Garbled code";
-            }
-
+            if (G == "0") { Variable048.G_090 = "Default"; }
+            else { Variable048.G_090 = "Garbled code"; }
         }
 
         /// <summary>
@@ -566,22 +553,13 @@ namespace AstDecoder
             // Converts each group of 6 bits into a corresponding character (letter or number)
             for (int i = 0; i < 8; i++)
             {
-                int value = charactersTI[i];                    
-                if (value >= 1 && value <= 26)
-                {
-                    //  A-Z
-                    identification[i] = (char)('A' + value - 1); 
-                }
-                else if (value >= 48 && value <= 57)
-                {
-                    // s 0-9
-                    identification[i] = (char)('0' + value - 48); 
-                }
-                else
-                {
-                    // Space for invalid values
-                    identification[i] = ' ';
-                }
+                int value = charactersTI[i];
+                //  A-Z
+                if (value >= 1 && value <= 26) { identification[i] = (char)('A' + value - 1); }
+                // s 0-9
+                else if (value >= 48 && value <= 57) { identification[i] = (char)('0' + value - 48); }
+                // Space for invalid values
+                else { identification[i] = ' '; }
             }
 
             // Creates a string from the identified characters and assigns it to TI
@@ -712,173 +690,142 @@ namespace AstDecoder
             }
         }
 
-        public void DF210(string bytes2, CAT048 Variable048)
+        public void DF210(string bytes2, CAT048 Variable048) 
         {
+            //NOT NECESSARY
         }
 
-        public void DF030(string bytes2, CAT048 Variable048) //NOT NECESSARY
+        public void DF030(string bytes2, CAT048 Variable048) 
         {
+            //NOT NECESSARY
         }
 
-        public void DF080(string bytes2, CAT048 Variable048) //NOT NECESSARY
+        public void DF080(string bytes2, CAT048 Variable048) 
         {
+            //NOT NECESSARY
         }
 
-        public void DF100(string bytes2, CAT048 Variable048) //NOT NECESSARY
+        public void DF100(string bytes2, CAT048 Variable048) 
         {
+            //NOT NECESSARY
         }
 
         /// <summary>
-        /// 
+        /// Decodes the 3D height from the DF110 
         /// </summary>
         /// <param name="bytes2"></param>
         /// <param name="Variable048"></param>
         public void DF110(string bytes2, CAT048 Variable048)
         {
+            // Extract 14 bits starting from index 2 of the DF110 data string.
+            // This portion of the binary string represents the height in 3D.
             string height = bytes2.Substring(2, 14);
+            // Convert the extracted binary string (height) into a signed integer using two's complement.
+            // This is necessary to correctly handle potential negative values in the height data.
             Variable048.Height_3D = ComplementA2(height);
         }
 
-        public void DF120(string bytes2, CAT048 Variable048) //NOT NECESSARY
+        public void DF120(string bytes2, CAT048 Variable048) 
         {
+            //NOT NECESSARY
         }
 
         /// <summary>
-        /// 
+        /// Decodes the DF230 binary string and extracts various communication and status information
         /// </summary>
         /// <param name="bytes2"></param>
         /// <param name="Variable048"></param>
         public void DF230(string bytes2, CAT048 Variable048)
         {
+            // Extract the first 3 bits representing communication capability
+            // Decode the communication capability based on the extracted 3-bit value
             int com = Convert.ToInt16(bytes2.Substring(0, 3),2);
-            if (com == 0)
-            {
-                Variable048.COM = "No communications capability (surveillance only)";
-            }
-            else if (com == 1)
-            {
-                Variable048.COM = "Comm. A and Comm. B capability";
-            }
-            else if (com == 2)
-            {
-                Variable048.COM = "Comm. A and Comm. B and Uplink ELM";
-            }
-            else if (com == 3)
-            {
-                Variable048.COM = "Comm. A and Comm. B, Uplink ELM and Downlink ELM";
-            }
-            else if (com == 4)
-            {
-                Variable048.COM = "Level 5 Transponder capability";
-            }
-            else
-            {
-                Variable048.COM = "Not assigned";
-            }
+            if (com == 0) { Variable048.COM = "No communications capability (surveillance only)"; }
+            else if (com == 1) { Variable048.COM = "Comm. A and Comm. B capability"; }
+            else if (com == 2) { Variable048.COM = "Comm. A and Comm. B and Uplink ELM"; }
+            else if (com == 3) { Variable048.COM = "Comm. A and Comm. B, Uplink ELM and Downlink ELM"; }
+            else if (com == 4) { Variable048.COM = "Level 5 Transponder capability"; }
+            else { Variable048.COM = "Not assigned"; }
 
+            // Extract the next 3 bits representing the status (STAT) of the aircraft
+            // Decode the status (STAT) based on the extracted 3-bit value
             int stat = Convert.ToInt16(bytes2.Substring(3, 3), 2);
-            if (stat == 0)
-            {
-                Variable048.STAT = "No alert, no SPI, aircraft airborne";
-            }
-            else if (stat == 1)
-            {
-                Variable048.STAT = "No alert, no SPI, aircraft on ground";
-            }
-            else if (stat == 2)
-            {
-                Variable048.STAT = "Alert, no SPI, aircraft airborne";
-            }
-            else if (stat == 3)
-            {
-                Variable048.STAT = "Alert, no SPI, aircraft on ground";
-            }
-            else if (stat == 4)
-            {
-                Variable048.STAT = "Alert, SPI, aircraft airborne or on ground";
-            }
-            else if (stat == 5)
-            {
-                Variable048.STAT = "No alert, SPI, aircraft airborne or on ground";
-            }
-            else if (stat == 6)
-            {
-                Variable048.STAT = "Not assigned";
-            }
-            else if (stat == 7)
-            {
-                Variable048.STAT = "Unknown";
-            }
+            if (stat == 0){ Variable048.STAT = "No alert, no SPI, aircraft airborne"; }
+            else if (stat == 1) { Variable048.STAT = "No alert, no SPI, aircraft on ground"; }
+            else if (stat == 2) { Variable048.STAT = "Alert, no SPI, aircraft airborne"; }
+            else if (stat == 3) { Variable048.STAT = "Alert, no SPI, aircraft on ground"; }
+            else if (stat == 4) { Variable048.STAT = "Alert, SPI, aircraft airborne or on ground"; }
+            else if (stat == 5) { Variable048.STAT = "No alert, SPI, aircraft airborne or on ground"; }
+            else if (stat == 6) { Variable048.STAT = "Not assigned"; }
+            else if (stat == 7) { Variable048.STAT = "Unknown"; }
 
+            // Extract the next bit representing SI-Code capability
+            // Decode the SI-Code capability based on the extracted bit value
             int si = Convert.ToInt16(bytes2.Substring(6, 1), 2);
-            if (si == 0)
-            {
-                Variable048.SI = "SI-Code Capable";
-            }
-            else if (si == 1)
-            {
-                Variable048.SI = "II-Code Capable";
-            }
+            if (si == 0) { Variable048.SI = "SI-Code Capable"; }
+            else if (si == 1) { Variable048.SI = "II-Code Capable"; }
 
+            // Extract the next bit representing Mode S Subnetwork Capability (MSSC)
+            // Decode the MSSC capability based on the extracted bit value
             int mssc = Convert.ToInt16(bytes2.Substring(8, 1), 2);
-            if (mssc == 0)
-            {
-                Variable048.MSSC = "No";
-            }
-            else if (mssc == 1)
-            {
-                Variable048.MSSC = "Yes";
-            }
+            if (mssc == 0) { Variable048.MSSC = "No"; }
+            else if (mssc == 1) { Variable048.MSSC = "Yes"; }
 
+            // Extract the next bit representing Altitude Reporting Capability (ARC)
+            // Decode the ARC based on the extracted bit value
             int arc = Convert.ToInt16(bytes2.Substring(8, 1), 2);
-            if (arc == 0)
-            {
-                Variable048.ARC = "100 ft resolution";
-            }
-            else if (arc == 1)
-            {
-                Variable048.ARC = "25 ft resolution";
-            }
+            if (arc == 0) { Variable048.ARC = "100 ft resolution"; }
+            else if (arc == 1) { Variable048.ARC = "25 ft resolution"; }
 
+            // Extract the next bit representing Aircraft Identification Capability (AIC)
+            // Decode the AIC capability based on the extracted bit value
             int aic = Convert.ToInt16(bytes2.Substring(9, 1), 2);
-            if (aic == 0)
-            {
-                Variable048.AIC = "No";
-            }
-            else if (aic == 1)
-            {
-                Variable048.AIC = "Yes";
-            }
+            if (aic == 0) { Variable048.AIC = "No"; }
+            else if (aic == 1) { Variable048.AIC = "Yes"; }
 
+            // Extract the BDS 1,0 bit 16 value and store it
             string b1a = bytes2.Substring(10, 1);
             Variable048.B1A = "BDS 1,0 bit 16 = " + b1a;
+            // Extract the BDS 1,0 bits 37/40 value and store it
             string b1b = bytes2.Substring(11, 4);
             Variable048.B1B = "BDS 1,0 bits 37/40 = " + b1b;
         }
 
-        public void DF260(string bytes2, CAT048 Variable048) //NOT NECESSARY
+        public void DF260(string bytes2, CAT048 Variable048) 
         {
+            //NOT NECESSARY
         }
 
-        public void DF055(string bytes2, CAT048 Variable048) //NOT NECESSARY
+        public void DF055(string bytes2, CAT048 Variable048) 
         {
+            //NOT NECESSARY
         }
 
-        public void DF050(string bytes2, CAT048 Variable048) //NOT NECESSARY
+        public void DF050(string bytes2, CAT048 Variable048) 
         {
+            //NOT NECESSARY
         }
 
-        public void DF065(string bytes2, CAT048 Variable048) //NOT NECESSARY
+        public void DF065(string bytes2, CAT048 Variable048) 
         {
+            //NOT NECESSARY
         }
 
-        public void DF060(string bytes2, CAT048 Variable048) //NOT NECESSARY
+        public void DF060(string bytes2, CAT048 Variable048) 
         {
+            //NOT NECESSARY
         }
 
+        /// <summary>
+        /// Processes SP (Signal Processing) data from DFSP
+        /// </summary>
+        /// <param name="bytes2"></param>
+        /// <param name="Variable048"></param>
         public void DFSP(string bytes2, CAT048 Variable048)
         {
+            // Current octet index
             int octetIndex = 0;
+            // Controls the processing loop
             bool moreData = true;
 
             while (moreData)
@@ -894,9 +841,16 @@ namespace AstDecoder
             }
         }
 
+        /// <summary>
+        /// Processes RE (Request Element) data from DFRE
+        /// </summary>
+        /// <param name="bytes2"></param>
+        /// <param name="Variable048"></param>
         public void DFRE(string bytes2, CAT048 Variable048)
         {
+            // Current octet index
             int octetIndex = 0;
+            // Controls the processing loop
             bool moreData = true;
 
             while (moreData)
@@ -913,38 +867,40 @@ namespace AstDecoder
         }
 
 
+        /// <summary>
+        /// Replaces null values in the object's properties with "N/A"
+        /// </summary>
         public void ReemplazarNulosConNA()
         {
-            // Obtiene el tipo del objeto actual
+            // Get the type of the current object
             Type tipoObjeto = this.GetType();
 
-            // Obtiene todas las propiedades del tipo del objeto
+            // Get all properties of the object's type
             foreach (var propiedad in tipoObjeto.GetProperties())
             {
-                // Verifica si la propiedad puede leerse y escribirse
+                // Check if the property can be read and written
                 if (propiedad.CanRead && propiedad.CanWrite)
                 {
-                    // Obtiene el valor actual de la propiedad
+                    // Get the current value of the property
                     var valorPropiedad = propiedad.GetValue(this);
 
-                    // Si el valor es nulo, establece "N/A"
-                    if (valorPropiedad == null)
-                    {
-                        propiedad.SetValue(this, "N/A");
-                    }
+                    // If the value is null, set it to "N/A"
+                    if (valorPropiedad == null) { propiedad.SetValue(this, "N/A"); }
                 }
             }
         }
 
+        /// <summary>
+        /// Calculates the two's complement of a binary string
+        /// </summary>
+        /// <param name="bytesCA2"></param>
+        /// <returns></returns>
         public int ComplementA2(string bytesCA2)
         {
             int result;
+            // First bit to determine if positive or negative
             char firstbit = bytesCA2[0];
-            if (firstbit == '0')
-            {
-                result = Convert.ToInt32(bytesCA2, 2);
-
-            }
+            if (firstbit == '0') { result = Convert.ToInt32(bytesCA2, 2); }
             else
             {
                 // Invert bits
@@ -959,6 +915,7 @@ namespace AstDecoder
                 int invertedNumber = Convert.ToInt32(new string(invertedBits), 2);
                 int complementA2Number = invertedNumber + 1;
 
+                // Return the negative of the complement
                 result = -complementA2Number;
             }
 
@@ -968,109 +925,181 @@ namespace AstDecoder
         }
 
 
+        /// <summary>
+        /// Decodes BDS (Basic Data Source) information based on input parameters
+        /// </summary>
+        /// <param name="bds1"></param>
+        /// <param name="bds2"></param>
+        /// <param name="bdsdata"></param>
+        /// <param name="Variable048"></param>
         public void DecodeBDS(int bds1, int bds2, string bdsdata, CAT048 Variable048)
         {
+            // Check if BDS type is 4 and subtype is 0 (indicating a specific data structure)
             if (bds1 == 4 & bds2 == 0)
             {
-                // 12 bits MCP ALT
-                string mcpalt_bits = bdsdata.Substring(1, 12); 
+                // Decode MCP (Minimum Control Pressure) altitude from the BDS data
+                // Extract 12 bits (MCP ALT) starting from index 1
+                string mcpalt_bits = bdsdata.Substring(1, 12);
+                // Convert binary to integer
                 int mcp_alt = Convert.ToInt32(mcpalt_bits, 2);
+                // Scale adjustment for MCP altitude
                 mcp_alt = mcp_alt * 16;
+                // Store the result in the CAT048 object
                 Variable048.MCP_ALT = mcp_alt;
 
-                //bits FMS ALT
+                // Decode FMS (Flight Management System) altitude
+                // Extract another 12 bits (FMS ALT) starting from index 14
                 string fmsalt_bits = bdsdata.Substring(14, 12); 
                 int fms_alt = Convert.ToInt32(fmsalt_bits, 2);
+                // Scale adjustment for FMS altitude
                 fms_alt = fms_alt * 16;
+                // Store the result
                 Variable048.FMS_ALT = fms_alt;
 
+                // Decode barometric altitude
+                // Extract 12 bits starting from index 27
                 string baro = bdsdata.Substring(27, 12);
+                // Convert binary to integer
                 double baro_alt = Convert.ToInt32(baro, 2);
+                // Adjust based on pressure
                 baro_alt = (baro_alt * 0.1 + 800);
+                // Store barometric altitude
                 Variable048.BP = baro_alt;
+                // Vertical Navigation flag
                 Variable048.VNAV = (bdsdata[48]);
+                // Altitude Hold flag
                 Variable048.ALT_HOLD = (bdsdata[49]);
+                // Approach flag
                 Variable048.APP = (bdsdata[50]);
 
             }
 
+            // Check if BDS type is 5 and subtype is 0
             if (bds1 == 5 & bds2 == 0)
             {
+                // Decode RA (Rate of Climb or Descent)
+                // Extract 9 bits starting from index 2
                 string ra_bits = bdsdata.Substring(2, 9);
+                // Use two's complement to decode
                 double ra = ComplementA2(ra_bits);
+                // Scale adjustment
                 ra = (ra * 45) / 256;
+                // Store Rate of Climb/Descent
                 Variable048.RA = ra;
 
+                // Decode TTA 
                 string tta_bits;
                 double tta;
+                // Status flag for TTA
                 char statusTTA = bdsdata[12];
                 if (statusTTA == '1')
                 {
+                    // Extract TTA bits
                     tta_bits = bdsdata.Substring(12, 11);
+                    // Decode using two's complement
                     tta = ComplementA2(tta_bits);
                 }
                 else
                 {
+                    // Extract alternative TTA bits
                     tta_bits = bdsdata.Substring(13, 10);
+                    // Convert directly to integer
                     tta = Convert.ToInt32(tta_bits, 2);
                 }
+                // Scales adjustments
                 tta = (tta * 90);
                 tta = tta / 512;
+                //Store TTA
                 Variable048.TTA = tta;
 
+                // Decode GS (Ground Speed)
                 string gs_bits = bdsdata.Substring(24, 10);
+                // Decode using two's complement
                 double gs = ComplementA2(gs_bits);
+                // Scale adjustment
                 gs = (gs * 1024) / 512;
+                //Store GS
                 Variable048.GS = gs;
 
+                // Decode TAR (True Airspeed Reference)
                 string tar_bits = bdsdata.Substring(36, 9);
+                // Decode using two's complement
                 double tar = ComplementA2(tar_bits);
+                // Scales adjustments
                 tar = tar / 8;
                 tar= tar / 256;
+                //Store TAR
                 Variable048.TAR = tar;
 
+                // Decode TAS (True Airspeed)
                 string tas_bits = bdsdata.Substring(46, 10);
+                // Decode using two's complement
                 double tas = ComplementA2(tas_bits);
+                // Scale adjustment
                 tas = tas * 2;
+                //Store TAS
                 Variable048.TAS = tas;
             }
-
+            // Check if BDS type is 6 and subtype is 0
             if (bds1 == 6 & bds2 == 0)
             {
+                // Decode HDG 
                 string hdg_bits;
                 double hdg;
+                // Status flag 
                 char statusHDG = bdsdata[1];
                 if (statusHDG == '1')
                 {
+                    // Extract HDG bits
                     hdg_bits = bdsdata.Substring(1, 11);
+                    // Decode using two's complement
                     hdg = ComplementA2(hdg_bits);
                 }
                 else
                 {
+                    // Extract alternative HDG bits
                     hdg_bits = bdsdata.Substring(2, 10);
+                    // Convert directly to integer
                     hdg = Convert.ToInt32(hdg_bits, 2);
                 }
-               
+
+                // Scale adjustment
                 hdg = (hdg * 90) / 512;
+                //Store HDG
                 Variable048.HDG = hdg;
 
+                // Decode IAS (Indicated Airspeed)
                 string IAS_bits = bdsdata.Substring (13, 10);
+                // Decode using two's complement
                 double ias = ComplementA2(IAS_bits);
+                //Store IAS
                 Variable048.IAS = ias;
 
+                // Decode MACH (Mach Number)
                 string mach_bits = bdsdata.Substring(24, 10);
+                // Decode using two's complement
                 double mach = ComplementA2(mach_bits);
+                // Scale adjustment
                 mach = (mach * 2.048) / 512;
+                //Store MACH
                 Variable048.MACH = mach;
 
+                // Decode BAR (Barometric Value)
                 string bar_bits = bdsdata.Substring(36, 9);
+                // Decode using two's complement
                 double bar = ComplementA2(bar_bits);
+                // Scale adjustment
                 bar = bar * 32;
+                //Store BAR
                 Variable048.BAR = bar;
 
+                // Decode IVV (Inertial Vertical Velocity)
                 string ivv_bits = bdsdata.Substring(47, 9);
+                // Decode using two's complement
                 double ivv = ComplementA2(ivv_bits);
+                // Scale adjustment
                 ivv = (ivv * 32);
+                //Store IVV
                 Variable048.IVV = ivv;
             }
         }
@@ -1086,10 +1115,8 @@ namespace AstDecoder
         public double Get_Minutes_To_Degrees(double degrees, double minutes, double seconds, string cardinalpoints)
         {
             // Assigns a numerical value to cardinal points: "N" or "E" as 1, "S" or "W" as -1
-            if (cardinalpoints == "N" || cardinalpoints == "E")
-                cardinalpoints = "1";
-            if (cardinalpoints == "S" || cardinalpoints == "W")
-                cardinalpoints = "-1";
+            if (cardinalpoints == "N" || cardinalpoints == "E") { cardinalpoints = "1"; }
+            if (cardinalpoints == "S" || cardinalpoints == "W") { cardinalpoints = "-1"; }
 
             // Returns the value in degrees
             double convert = (degrees + (minutes / 60) + (seconds / 3600)) * Convert.ToInt32(cardinalpoints);
@@ -1118,15 +1145,10 @@ namespace AstDecoder
                 bool PRES = false;
 
                 // Check if the barometric pressure is within the range of 1013 to 1013.3 hPa or is zero
-                if ((barometricPressure >= 1013 && barometricPressure <= 1013.3) || (barometricPressure == 0))
-                {
-                    // Indicates that the pressure is valid
-                    PRES = true;
-                }
+                if ((barometricPressure >= 1013 && barometricPressure <= 1013.3) || (barometricPressure == 0)) { PRES = true; }
                 // QNH correction if the altitude is less than 6000 feet
                 if (PRES == false && altitude < 6000 && barometricPressure != 0)
                 {
-
                     double modeC = Math.Round(altitude + (Convert.ToDouble(barometricPressure) - 1013.2) * 30);
                     Variable048.ModeC_corrected = modeC;
                     correctedAltitude = modeC * 0.3048;
