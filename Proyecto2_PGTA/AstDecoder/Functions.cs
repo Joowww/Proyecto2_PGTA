@@ -988,13 +988,6 @@ namespace AstDecoder
                 double baro_alt = Convert.ToInt32(baro, 2);
                 baro_alt = (baro_alt * 0.1 + 800);
                 Variable048.BP = baro_alt;
-                if ((Variable048.FL) < 60)
-
-                {
-                    Variable048.ModeC_corrected = Math.Round(Variable048.FL * 100 + (Variable048.BP - 1013.2) * 30);
-                }
-
-
                 Variable048.VNAV = (bdsdata[48]);
                 Variable048.ALT_HOLD = (bdsdata[49]);
                 Variable048.APP = (bdsdata[50]);
@@ -1133,11 +1126,12 @@ namespace AstDecoder
                 // QNH correction if the altitude is less than 6000 feet
                 if (PRES == false && altitude < 6000 && barometricPressure != 0)
                 {
-                    correctedAltitude = (altitude + (Convert.ToDouble(barometricPressure) - 1013.2) * 30) * 0.3048;
+
+                    double modeC = Math.Round(altitude + (Convert.ToDouble(barometricPressure) - 1013.2) * 30);
+                    Variable048.ModeC_corrected = modeC;
+                    correctedAltitude = modeC * 0.3048;
                 }
             }
-            // Assign the corrected altitude to the H variable of the Variable048 object
-            Variable048.H = correctedAltitude;
             // Call LatitudeLongitud function with Variable048 and the corrected altitude
             LatitudeLongitud(Variable048, correctedAltitude);
         }
@@ -1188,6 +1182,10 @@ namespace AstDecoder
 
             data048.LAT = geodCoords.Lat * 180 / Math.PI;
             data048.LON = geodCoords.Lon * 180 / Math.PI;
+            if (data048.ModeC_corrected != 0)
+                data048.H = geodCoords.Height - (data048.ModeC_corrected * 0.3048) + antennaHeight - terrainElevation;
+            else
+                data048.H = geodCoords.Height + antennaHeight - terrainElevation;
         }
     }
 }
