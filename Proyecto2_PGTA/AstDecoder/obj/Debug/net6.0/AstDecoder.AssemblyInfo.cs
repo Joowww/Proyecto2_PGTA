@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AstDecoder")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3ebc4bc7f2b212159eb0f7d31c9a26b5c653371b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("AstDecoder")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AstDecoder")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
