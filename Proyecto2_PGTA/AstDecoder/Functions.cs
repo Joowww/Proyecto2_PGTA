@@ -17,17 +17,17 @@ namespace AstDecoder
         public int Message_length;
 
         // Variables for Data Item (010) [2 Oct]
-        public int SAC { get; set; }
-        public int SIC { get; set; }
+        public string SAC { get; set; }
+        public string SIC { get; set; }
 
         // Variables for Data Item (140) [3 Oct]
         public string UTC_TIME { get; set; }
-        public int UTC_TIME_s { get; set; }
+        public string UTC_TIME_s { get; set; }
 
         // Variables for LAT, LON and H
-        public double LAT { get; set; }
-        public double LON { get; set; }
-        public double H { get; set; }
+        public string LAT { get; set; }
+        public string LON { get; set; }
+        public string H { get; set; }
 
         // Variables for Data Item (020) [1+ ("Variable") Oct]
         public string TYP { get; set; }
@@ -46,8 +46,8 @@ namespace AstDecoder
         public string PAI { get; set; }
 
         // Variables for Data Item (040) [4 Oct]
-        public double RHO { get; set; }
-        public double THETA { get; set; }
+        public string RHO { get; set; }
+        public string THETA { get; set; }
 
         // Variables for Data Item (070) [2 Oct] 
         public string V_070 { get; set; }
@@ -57,19 +57,19 @@ namespace AstDecoder
         // Variables for Data Item (090) [2 Oct] 
         public string V_090 { get; set; }
         public string G_090 { get; set; }
-        public double FL { get; set; }
+        public string FL { get; set; }
 
         // Mode C corrected
-        public double ModeC_corrected { get; set; }
+        public string ModeC_corrected { get; set; }
 
         // Variables for Data Item (130) [1+ 1+ Oct]
-        public double SRL { get; set; }
-        public double SRR { get; set; }
-        public double SAM { get; set; }
-        public double PRL { get; set; }
-        public double PAM { get; set; }
-        public double RPD { get; set; }
-        public double APD { get; set; }
+        public string SRL { get; set; }
+        public string SRR { get; set; }
+        public string SAM { get; set; }
+        public string PRL { get; set; }
+        public string PAM { get; set; }
+        public string RPD { get; set; }
+        public string APD { get; set; }
        
         // Variables for Data Item (220) [3 Oct]
         public string TA { get; set; }
@@ -78,35 +78,35 @@ namespace AstDecoder
         public string TI { get; set; }
 
         // Variables for Data Item (250) [1+8*n Oct]
-        public double MCP_ALT { get; set; }
-        public double FMS_ALT {get; set; }
-        public double BP {  get; set; }
-        public char VNAV { get; set; }
-        public char ALT_HOLD { get; set; }
-        public char APP {  get; set; }
-        public double TARGETR_ALT { get; set; }
-        public double RA { get; set; }
-        public double TTA { get; set; }
-        public double GS { get; set; }
-        public double TAR { get; set; }
-        public double TAS { get; set; }
-        public double HDG { get; set; }
-        public double IAS { get; set; }
-        public double MACH { get; set; }
-        public double BAR { get; set; }
-        public double IVV { get; set; }
+        public string MCP_ALT { get; set; }
+        public string FMS_ALT {get; set; }
+        public string BP {  get; set; }
+        public string VNAV { get; set; }
+        public string ALT_HOLD { get; set; }
+        public string APP {  get; set; }
+        public string TARGET_ALT_SOURCE { get; set; }
+        public string RA { get; set; }
+        public string TTA { get; set; }
+        public string GS { get; set; }
+        public string TAR { get; set; }
+        public string TAS { get; set; }
+        public string HDG { get; set; }
+        public string IAS { get; set; }
+        public string MACH { get; set; }
+        public string BAR { get; set; }
+        public string IVV { get; set; }
 
 
         // Variables for Data Item (161) [2 Oct]
-        public int TN { get; set; }
+        public string TN { get; set; }
 
         // Variables for Data Item (042) [4 Oct]
-        public double xComponent { get; set; }
-        public double yComponent { get; set; }
+        public string xComponent { get; set; }
+        public string yComponent { get; set; }
 
         // Variables for Data Item (200) [4 Oct]
-        public double calculatedGroundSpeed { get; set; }
-        public double calculatedHeading { get; set; }
+        public string GS_KT { get; set; }
+        public string HEADING { get; set; }
 
         // Variables for Data Item (170) [1+ Oct]
         public string CNF { get; set; }
@@ -120,7 +120,7 @@ namespace AstDecoder
         public string TCC { get; set; }
 
         // Variables for Data Item (110) [2 Oct]
-        public int Height_3D { get; set; }
+        public string Height_3D { get; set; }
 
         // Variables for Data Item (230) [2 Oct]
         public string COM { get; set; }
@@ -200,12 +200,14 @@ namespace AstDecoder
         {
             // Get the first octet (8 bits)
             string sac = bytes2.Substring(0, 8);
+            int sac2 = Convert.ToInt32(sac, 2);
             // Assign the converted value to SAC
-            Variable048.SAC = Convert.ToInt32(sac, 2);
+            Variable048.SAC = Convert.ToString(sac2);
             // Get the next octet (8 bits)
             string sic = bytes2.Substring(8, 8);
             // Assign the converted value to SIC
-            Variable048.SIC = Convert.ToInt32(sic, 2);  
+            int sic2 = Convert.ToInt32(sic, 2);
+            Variable048.SIC = Convert.ToString(sic2);  
         }
 
         /// <summary>
@@ -222,7 +224,7 @@ namespace AstDecoder
             // Assigns the time in "hh:mm:ss:fff" format to the UTC_TIME property of the CAT048 object
             Variable048.UTC_TIME = Time.ToString(@"hh\:mm\:ss\:fff");
             // Rounds the decimal value of time and assigns it as an integer to the UTC_TIME_s property
-            Variable048.UTC_TIME_s = (int)Math.Round(time);
+            Variable048.UTC_TIME_s = Convert.ToString((int)Math.Round(time));
         }
 
         /// <summary>
@@ -344,12 +346,14 @@ namespace AstDecoder
         {
             // Get the first two octets (16 bits)
             string rho = bytes2.Substring(0, 16);
+            double rho2 = Convert.ToInt32(rho, 2) * 0.00390625;
             // Assign the converted and adjusted value to RHO
-            Variable048.RHO = Convert.ToInt32(rho, 2) * 0.00390625;
+            Variable048.RHO = Convert.ToString(rho2);
             // Get the next two octets (16 bits)
             string theta = bytes2.Substring(16, 16);
+            double theta2 = Convert.ToInt32(theta, 2) * 0.00549316406;
             // Assign the converted and adjusted value to THETA
-            Variable048.THETA = Convert.ToInt32(theta, 2) * 0.00549316406;  
+            Variable048.THETA = Convert.ToString(theta2);  
         }
 
         /// <summary>
@@ -393,7 +397,7 @@ namespace AstDecoder
             string G = bytes2.Substring(1, 1);
             // Get and convert the next 14 bits to calculate the flight level (FL)
             double FL = ComplementA2(bytes2.Substring(2, 14)) * 0.25;
-            Variable048.FL = (FL);
+            Variable048.FL = Convert.ToString((FL));
 
             // Assign the corresponding value for the V bit
             if (V == "0") { Variable048.V_090 = "Code validated"; }
@@ -447,44 +451,44 @@ namespace AstDecoder
                     if (SRLbool)
                     {
                         // Degrees
-                        Variable048.SRL = Convert.ToInt32(oct2, 2) * 0.044; 
+                        Variable048.SRL = Convert.ToString(Convert.ToInt32(oct2, 2) * 0.044); 
                         SRLbool = false;
                     }
                     else if (SRRbool)
                     {
-                        Variable048.SRR = Convert.ToInt32(oct2, 2);
+                        Variable048.SRR = Convert.ToString(Convert.ToInt32(oct2, 2));
                         SRRbool = false;
                     }
                     else if (SAMbool)
                     {
 
-                        Variable048.SAM = ComplementA2(oct2);
+                        Variable048.SAM = Convert.ToString(ComplementA2(oct2));
                         SAMbool = false;
                     }
                     else if (PRLbool)
                     {
                         // Degrees
-                        Variable048.PRL = Convert.ToInt32(oct2, 2) * 0.044; //dg
+                        Variable048.PRL = Convert.ToString(Convert.ToInt32(oct2, 2) * 0.044); //dg
                         PRLbool = false;
                     }
                     else if (PAMbool)
                     {
                         // dB
-                        Variable048.PAM = ComplementA2(oct2); 
+                        Variable048.PAM = Convert.ToString(ComplementA2(oct2)); 
                         PAMbool = false;
                     }
                     else if (RPDbool)
                     {
                         int rpd = ComplementA2(oct2);
                         // NM
-                        Variable048.RPD = rpd * (0.00390625); 
+                        Variable048.RPD = Convert.ToString(rpd * (0.00390625)); 
                         RPDbool = false;
                     }
                     else if (APDbool)
                     {
                         int apd = ComplementA2(oct2);
                         // Degrees ADD CA2
-                        Variable048.APD = apd * (0.02197265625); 
+                        Variable048.APD = Convert.ToString(apd * (0.02197265625)); 
                         APDbool = false;
                     }
 
@@ -518,7 +522,7 @@ namespace AstDecoder
             string hexresult = byte1.ToString("X2") + byte2.ToString("X2") + byte3.ToString("X2");
 
             // Assigns the hexadecimal result to TA
-            Variable048.TA = hexresult;
+            Variable048.TA = Convert.ToString(hexresult);
         }
 
         /// <summary>
@@ -606,7 +610,8 @@ namespace AstDecoder
         {
             // Extracts the 12 bits for the TNumber and converts it to an integer
             string tNumber = bytes2.Substring(4, 12);
-            Variable048.TN = Convert.ToInt32(tNumber, 2);
+            int tNumber2 = Convert.ToInt32(tNumber, 2);
+            Variable048.TN = Convert.ToString(tNumber2);
         }
         
         /// <summary>
@@ -618,10 +623,10 @@ namespace AstDecoder
         {
             // Extracts and converts the 16 bits for the X component
             string x = bytes2.Substring(0, 16);
-            Variable048.xComponent = ComplementA2(x) * 0.0078125;
+            Variable048.xComponent = Convert.ToString(ComplementA2(x) * 0.0078125);
             // Extracts and converts the 16 bits for the Y component
             string y = bytes2.Substring(16, 16);
-            Variable048.yComponent = ComplementA2(y) * 0.0078125;
+            Variable048.yComponent = Convert.ToString(ComplementA2(y) * 0.0078125);
         }
 
         /// <summary>
@@ -633,10 +638,10 @@ namespace AstDecoder
         {
             // Extracts and converts the 16 bits for ground speed
             string GS = bytes2.Substring(0, 16);
-            Variable048.calculatedGroundSpeed = ((Convert.ToInt32(GS, 2)) * 0.22);
+            Variable048.GS_KT = Convert.ToString(((Convert.ToInt32(GS, 2)) * 0.22));
             // Extracts and converts the 16 bits for heading
             string Head = bytes2.Substring(16, 16);
-            Variable048.calculatedHeading = (Convert.ToInt32(Head, 2) * (0.0055));
+            Variable048.HEADING = Convert.ToString((Convert.ToInt32(Head, 2) * (0.0055)));
         }
 
         /// <summary>
@@ -722,7 +727,7 @@ namespace AstDecoder
             string height = bytes2.Substring(2, 14);
             // Convert the extracted binary string (height) into a signed integer using two's complement.
             // This is necessary to correctly handle potential negative values in the height data.
-            Variable048.Height_3D = ComplementA2(height);
+            Variable048.Height_3D = Convert.ToString(ComplementA2(height));
         }
 
         public void DF120(string bytes2, CAT048 Variable048) 
@@ -945,7 +950,7 @@ namespace AstDecoder
                 // Scale adjustment for MCP altitude
                 mcp_alt = mcp_alt * 16;
                 // Store the result in the CAT048 object
-                Variable048.MCP_ALT = mcp_alt;
+                Variable048.MCP_ALT = Convert.ToString(mcp_alt);
 
                 // Decode FMS (Flight Management System) altitude
                 // Extract another 12 bits (FMS ALT) starting from index 14
@@ -954,7 +959,7 @@ namespace AstDecoder
                 // Scale adjustment for FMS altitude
                 fms_alt = fms_alt * 16;
                 // Store the result
-                Variable048.FMS_ALT = fms_alt;
+                Variable048.FMS_ALT = Convert.ToString(fms_alt);
 
                 // Decode barometric altitude
                 // Extract 12 bits starting from index 27
@@ -964,13 +969,16 @@ namespace AstDecoder
                 // Adjust based on pressure
                 baro_alt = (baro_alt * 0.1 + 800);
                 // Store barometric altitude
-                Variable048.BP = baro_alt;
+                Variable048.BP = Convert.ToString(baro_alt);
                 // Vertical Navigation flag
-                Variable048.VNAV = (bdsdata[48]);
+                Variable048.VNAV = Convert.ToString(bdsdata[48]);
                 // Altitude Hold flag
-                Variable048.ALT_HOLD = (bdsdata[49]);
+                Variable048.ALT_HOLD = Convert.ToString(bdsdata[49]);
                 // Approach flag
-                Variable048.APP = (bdsdata[50]);
+                Variable048.APP = Convert.ToString(bdsdata[50]);
+                // Target Alt Source 
+                string TARalt = bdsdata.Substring(54, 2);
+                Variable048.TARGET_ALT_SOURCE = Convert.ToString(Convert.ToInt32(TARalt, 2));
 
             }
 
@@ -985,7 +993,7 @@ namespace AstDecoder
                 // Scale adjustment
                 ra = (ra * 45) / 256;
                 // Store Rate of Climb/Descent
-                Variable048.RA = ra;
+                Variable048.RA = Convert.ToString(ra);
 
                 // Decode TTA 
                 string tta_bits;
@@ -1010,7 +1018,7 @@ namespace AstDecoder
                 tta = (tta * 90);
                 tta = tta / 512;
                 //Store TTA
-                Variable048.TTA = tta;
+                Variable048.TTA = Convert.ToString(tta);
 
                 // Decode GS (Ground Speed)
                 string gs_bits = bdsdata.Substring(24, 10);
@@ -1019,7 +1027,7 @@ namespace AstDecoder
                 // Scale adjustment
                 gs = (gs * 1024) / 512;
                 //Store GS
-                Variable048.GS = gs;
+                Variable048.GS = Convert.ToString(gs);
 
                 // Decode TAR (True Airspeed Reference)
                 string tar_bits = bdsdata.Substring(36, 9);
@@ -1029,7 +1037,7 @@ namespace AstDecoder
                 tar = tar / 8;
                 tar= tar / 256;
                 //Store TAR
-                Variable048.TAR = tar;
+                Variable048.TAR = Convert.ToString(tar);
 
                 // Decode TAS (True Airspeed)
                 string tas_bits = bdsdata.Substring(46, 10);
@@ -1038,7 +1046,7 @@ namespace AstDecoder
                 // Scale adjustment
                 tas = tas * 2;
                 //Store TAS
-                Variable048.TAS = tas;
+                Variable048.TAS = Convert.ToString(tas);
             }
             // Check if BDS type is 6 and subtype is 0
             if (bds1 == 6 & bds2 == 0)
@@ -1066,14 +1074,14 @@ namespace AstDecoder
                 // Scale adjustment
                 hdg = (hdg * 90) / 512;
                 //Store HDG
-                Variable048.HDG = hdg;
+                Variable048.HDG = Convert.ToString(hdg);
 
                 // Decode IAS (Indicated Airspeed)
                 string IAS_bits = bdsdata.Substring (13, 10);
                 // Decode using two's complement
                 double ias = ComplementA2(IAS_bits);
                 //Store IAS
-                Variable048.IAS = ias;
+                Variable048.IAS = Convert.ToString(ias);
 
                 // Decode MACH (Mach Number)
                 string mach_bits = bdsdata.Substring(24, 10);
@@ -1082,7 +1090,7 @@ namespace AstDecoder
                 // Scale adjustment
                 mach = (mach * 2.048) / 512;
                 //Store MACH
-                Variable048.MACH = mach;
+                Variable048.MACH = Convert.ToString(mach);
 
                 // Decode BAR (Barometric Value)
                 string bar_bits = bdsdata.Substring(36, 9);
@@ -1091,7 +1099,7 @@ namespace AstDecoder
                 // Scale adjustment
                 bar = bar * 32;
                 //Store BAR
-                Variable048.BAR = bar;
+                Variable048.BAR = Convert.ToString(bar);
 
                 // Decode IVV (Inertial Vertical Velocity)
                 string ivv_bits = bdsdata.Substring(47, 9);
@@ -1100,7 +1108,7 @@ namespace AstDecoder
                 // Scale adjustment
                 ivv = (ivv * 32);
                 //Store IVV
-                Variable048.IVV = ivv;
+                Variable048.IVV = Convert.ToString(ivv);
             }
         }
 
@@ -1129,11 +1137,11 @@ namespace AstDecoder
         public void H (CAT048 Variable048)
         {
             // Barometric pressure from variable 048
-            double barometricPressure = Variable048.BP;
+            double barometricPressure = Convert.ToDouble(Variable048.BP);
             // Initialize corrected altitude to 0
             double correctedAltitude = 0;
             // Flight level from variable 048
-            double flightLevel = Variable048.FL;
+            double flightLevel = Convert.ToDouble(Variable048.FL);
 
             if (flightLevel != 0)
             {
@@ -1150,7 +1158,7 @@ namespace AstDecoder
                 if (PRES == false && altitude < 6000 && barometricPressure != 0)
                 {
                     double modeC = Math.Round(altitude + (Convert.ToDouble(barometricPressure) - 1013.2) * 30);
-                    Variable048.ModeC_corrected = modeC;
+                    Variable048.ModeC_corrected = Convert.ToString(modeC);
                     correctedAltitude = modeC * 0.3048;
                 }
             }
@@ -1202,12 +1210,12 @@ namespace AstDecoder
             // Transform to geodesic coordinates
             CoordinatesWGS84 geodCoords = GeoUs.change_geocentric2geodesic(geocCoords);
 
-            data048.LAT = geodCoords.Lat * 180 / Math.PI;
-            data048.LON = geodCoords.Lon * 180 / Math.PI;
-            if (data048.ModeC_corrected != 0)
-                data048.H = geodCoords.Height - (data048.ModeC_corrected * 0.3048) + antennaHeight - terrainElevation;
+            data048.LAT = Convert.ToString(geodCoords.Lat * 180 / Math.PI);
+            data048.LON = Convert.ToString(geodCoords.Lon * 180 / Math.PI);
+            if (Convert.ToDouble(data048.ModeC_corrected) != 0)
+                data048.H = Convert.ToString(geodCoords.Height - (Convert.ToDouble(data048.ModeC_corrected) * 0.3048) + antennaHeight - terrainElevation);
             else
-                data048.H = geodCoords.Height + antennaHeight - terrainElevation;
+                data048.H = Convert.ToString(geodCoords.Height + antennaHeight - terrainElevation);
         }
     }
 }

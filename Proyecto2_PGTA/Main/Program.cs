@@ -314,10 +314,30 @@ namespace Main
                                         DataRow newRow = messageTable.NewRow();
 
                                         // Assign values of variable048 
+                                        // Assign values of variable048 
                                         foreach (PropertyInfo property in properties)
                                         {
-                                            // Use DBNull for null values
-                                            newRow[property.Name] = property.GetValue(Variable048) ?? DBNull.Value; 
+                                            // Get value
+                                            var value_property = property.GetValue(Variable048);
+
+                                            //If empty, assign "N/A"
+                                            if (value_property == null || string.IsNullOrEmpty(value_property.ToString()))
+                                            {
+                                                newRow[property.Name] = "N/A";
+                                            }
+                                            else
+                                            {
+                                                // Check if it is a numeric property
+                                                if (double.TryParse(value_property.ToString(), out double numericValue))
+                                                {
+                                                    // Round to 3 decimals 
+                                                    newRow[property.Name] = Math.Round(numericValue, 3);
+                                                }
+                                                else
+                                                {
+                                                    newRow[property.Name] = value_property.ToString();
+                                                }
+                                            }
                                         }
 
                                         // Add a row to the table
