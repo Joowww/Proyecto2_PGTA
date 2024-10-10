@@ -62,7 +62,7 @@ namespace AstDecoder
         public double FL { get; set; }
 
         //Mode C corrected
-        public string ModeC_corrected { get; set; }
+        public double ModeC_corrected { get; set; }
 
         //Variables for Data Item (130) [1+ 1+ Oct]
         public double SRL { get; set; }
@@ -358,8 +358,8 @@ namespace AstDecoder
         {
             string V = bytes2.Substring(0, 1);
             string G = bytes2.Substring(1, 1);
-            double FL = (Convert.ToInt32(bytes2.Substring(2, 14), 2)) * 0.25;
-            Variable048.FL = FL;
+            double FL = ComplementA2(bytes2.Substring(2, 14)) * 0.25;
+            Variable048.FL = (FL);
             if (V == "0")
             {
                 Variable048.V_090 = "Code validated";
@@ -901,6 +901,7 @@ namespace AstDecoder
 
         }
 
+
         public void DecodeBDS(int bds1, int bds2, string bdsdata, CAT048 Variable048)
         {
             if (bds1 == 4 & bds2 == 0)
@@ -917,8 +918,14 @@ namespace AstDecoder
 
                 string baro = bdsdata.Substring(27, 12);
                 double baro_alt = Convert.ToInt32(baro, 2);
-                baro_alt = (baro_alt*0.1 + 800);
+                baro_alt = (baro_alt * 0.1 + 800);
                 Variable048.BP = baro_alt;
+                if ((Variable048.FL) < 60)
+
+                {
+                    Variable048.ModeC_corrected = Math.Round(Variable048.FL * 100 + (Variable048.BP - 1013.2) * 30);
+                }
+
 
                 Variable048.VNAV = (bdsdata[48]);
                 Variable048.ALT_HOLD = (bdsdata[49]);

@@ -48,7 +48,10 @@
           "VisioForge.DotNet.Core.Redist.Base.x64": "15.10.22"
         },
         "runtime": {
-          "AstDecoder.dll": {}
+          "AstDecoder.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
