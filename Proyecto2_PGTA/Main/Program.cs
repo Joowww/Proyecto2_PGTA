@@ -403,7 +403,7 @@ namespace Main
                     {
                         SW.Write(table.Columns[i].ColumnName);  // Write the current column name
                         if (i < table.Columns.Count - 1)
-                            SW.Write(",");  // Add a comma between columns
+                            SW.Write("\t");  // Add a comma between columns
                     }
                     SW.WriteLine();  // Write a newline after the header row
 
@@ -415,7 +415,7 @@ namespace Main
                             string cellValue = row[i].ToString().Replace("\"", "\"\"");  // searches for instances of a single quote ("), and replaces them with two quotes ("")
                             SW.Write($"\"{cellValue}\"");  // Enclose the cell value in quotes
                             if (i < table.Columns.Count - 1)
-                                SW.Write(",");  // Add a comma between columns
+                                SW.Write("\t");  // Add a comma between columns
                         }
                         SW.WriteLine();  // Write a newline after each row
                     }
