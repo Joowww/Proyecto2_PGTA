@@ -7,6 +7,7 @@ using System.Globalization;
 using System.IO;
 using System.Net.Sockets;
 using System.Reflection;
+using System.Text;
 using AstDecoder;
 
 namespace Main
@@ -109,33 +110,33 @@ namespace Main
                             if (i >= 3 && endOfFSPEC == false)
                             {
                                 // Convert to string bits
-                                string binaryString = Convert.ToString(currentByte, 2).PadLeft(8, '0'); 
+                                string binaryString = Convert.ToString(currentByte, 2).PadLeft(8, '0');
                                 // Concatenate binaryString to FSPEC
-                                FSPEC += binaryString.Substring(0, 7); 
+                                FSPEC += binaryString.Substring(0, 7);
                                 // Obtain FX
-                                char FX = binaryString[binaryString.Length - 1]; 
+                                char FX = binaryString[binaryString.Length - 1];
 
                                 // If FX is 0, FSPEC reading is complete
                                 if (FX == '0')
                                 {
                                     // Shifts to true if FX is 0 to contiue reading
-                                    endOfFSPEC = true; 
+                                    endOfFSPEC = true;
 
                                     for (int i2 = 0; i2 < FSPEC.Length; i2++)
-                                    {  
+                                    {
                                         if (FSPEC[i2] == '1')
                                         {
                                             //Get positions with a 1, Data Field present
-                                            posiciones.Add(i2+1);    
+                                            posiciones.Add(i2 + 1);
                                         }
                                     }
                                     // Continue to the next byte
-                                    continue; 
+                                    continue;
                                 }
                             }
 
                             // Once FSPEC is read, start reading Data Items until the last one
-                            if (i >= 3 && endOfFSPEC == true) 
+                            if (i >= 3 && endOfFSPEC == true)
                             {
                                 //Get what Data Item ID is being processed
                                 string DataItemRead = Convert.ToString(posiciones[contadorDI]);
@@ -143,14 +144,14 @@ namespace Main
                                 //Case where Data Item has 2 bytes
                                 if (DataItemRead == "1" || DataItemRead == "5" || DataItemRead == "6" || DataItemRead == "11" || DataItemRead == "17" || DataItemRead == "19" || DataItemRead == "21" || DataItemRead == "24" || DataItemRead == "26")
                                 {
-                                //Convert to string bits
-                                string octet = Convert.ToString(currentByte, 2).PadLeft(8, '0');
-                                // Concatenate binaryString
-                                DataItem += octet;
+                                    //Convert to string bits
+                                    string octet = Convert.ToString(currentByte, 2).PadLeft(8, '0');
+                                    // Concatenate binaryString
+                                    DataItem += octet;
                                     if (DataItem.Length == 16)
                                     {
-                                    //Now Data Item is complete
-                                    endOfDF = true; 
+                                        //Now Data Item is complete
+                                        endOfDF = true;
                                     }
                                 }
 
@@ -160,23 +161,23 @@ namespace Main
                                     //Convert to string bits
                                     string binaryString = Convert.ToString(currentByte, 2).PadLeft(8, '0');
                                     //Obtain FX
-                                    char FX = binaryString[binaryString.Length - 1]; 
+                                    char FX = binaryString[binaryString.Length - 1];
                                     if (FX == '0')
                                         // Shifts to true if FX is 0 to contiue reading
                                         endOfDF = true;
                                     // Concatenate binaryString 
-                                    DataItem += binaryString; 
+                                    DataItem += binaryString;
                                 }
 
                                 //Case for variable length Data Item (1+ 1+)
-                                if (DataItemRead == "7" || DataItemRead == "27" || DataItemRead == "28" )
+                                if (DataItemRead == "7" || DataItemRead == "27" || DataItemRead == "28")
                                 {
                                     //Convert to string bits
-                                    string binaryString = Convert.ToString(currentByte, 2).PadLeft(8, '0'); 
+                                    string binaryString = Convert.ToString(currentByte, 2).PadLeft(8, '0');
                                     //Obtain FX
-                                    char FX = binaryString[binaryString.Length - 1]; 
+                                    char FX = binaryString[binaryString.Length - 1];
                                     // Concatenate binaryString 
-                                    DataItem += binaryString; 
+                                    DataItem += binaryString;
                                     if (DataItem.Length == 8)
                                     {
                                         for (int i2 = 0; i2 < DataItem.Length; i2++)
@@ -184,106 +185,106 @@ namespace Main
                                             if (DataItem[i2] == '1')
                                             {
                                                 //Get positions with a 1, Data Field present
-                                                posiciones2.Add(i2);  
+                                                posiciones2.Add(i2);
                                             }
                                         }
                                     }
                                     // If length matches expected size, Data Field is complete
-                                    if (DataItem.Length == (8 + 8*posiciones2.Count)) 
+                                    if (DataItem.Length == (8 + 8 * posiciones2.Count))
                                     {
-                                        endOfDF = true;   
+                                        endOfDF = true;
                                     }
                                 }
 
                                 // Case where Data Item has 3 bytes
                                 if (DataItemRead == "2" || DataItemRead == "8")
-                                    {
-                                        //Convert to string bits
-                                        string octet = Convert.ToString(currentByte, 2).PadLeft(8, '0'); 
-                                        // Concatenate binaryString
-                                        DataItem += octet; 
-                                        //3*8 bits
-                                        if (DataItem.Length == (3*8) ) 
-                                        {
-                                            //Now Data Item is complete
-                                            endOfDF = true; 
-                                        }
-                                    }
-
-                                // Case where Data Item has 4 bytes
-                                if (DataItemRead == "4" || DataItemRead == "12" || DataItemRead == "13" || DataItemRead == "15" || DataItemRead == "18" )
                                 {
                                     //Convert to string bits
-                                    string octet = Convert.ToString(currentByte, 2).PadLeft(8, '0'); 
+                                    string octet = Convert.ToString(currentByte, 2).PadLeft(8, '0');
                                     // Concatenate binaryString
-                                    DataItem += octet; 
-                                    //4*8 bits
-                                    if (DataItem.Length == (4 * 8)) 
+                                    DataItem += octet;
+                                    //3*8 bits
+                                    if (DataItem.Length == (3 * 8))
                                     {
                                         //Now Data Item is complete
-                                        endOfDF = true; 
+                                        endOfDF = true;
                                     }
                                 }
 
-                                    // Case where Data Item has 6 bytes
-                                    if (DataItemRead == "9" )
+                                // Case where Data Item has 4 bytes
+                                if (DataItemRead == "4" || DataItemRead == "12" || DataItemRead == "13" || DataItemRead == "15" || DataItemRead == "18")
+                                {
+                                    //Convert to string bits
+                                    string octet = Convert.ToString(currentByte, 2).PadLeft(8, '0');
+                                    // Concatenate binaryString
+                                    DataItem += octet;
+                                    //4*8 bits
+                                    if (DataItem.Length == (4 * 8))
                                     {
-                                        //Convert to string bits
-                                        string octet = Convert.ToString(currentByte, 2).PadLeft(8, '0'); 
-                                        // Concatenate binaryString
-                                        DataItem += octet; 
-                                        //6*8 bits
-                                        if (DataItem.Length == (6 * 8)) 
-                                        {
-                                            //Now Data Item is complete
-                                            endOfDF = true; 
-                                        }
-                                    }
-
-                                    // Case where Data Item has 7 bytes
-                                    if (DataItemRead == "22")
-                                        {
-                                            //Convert to string bits
-                                            string octet = Convert.ToString(currentByte, 2).PadLeft(8, '0'); 
-                                            // Concatenate binaryString
-                                            DataItem += octet;
-                                            //7*8 bits
-                                            if (DataItem.Length == (7 * 8)) 
-                                            {
-                                                //Now Data Item is complete
-                                                endOfDF = true; 
-                                            }
-                                        }
-
-                                    //Repetitive Data Item
-                                    if (DataItemRead == "10")
-                                    {
-                                        //Convert to string bits
-                                        string octet = Convert.ToString(currentByte, 2).PadLeft(8, '0'); 
-                                        // Concatenate binaryString
-                                        DataItem += octet; 
-                                        if (DataItem.Length == 8)
-                                        {
-                                            REP = currentByte;
-                                        }
-                                        // 1 + 8*n bytes
-                                        if (DataItem.Length == (8 + 8*8*REP)) 
-                                        {
-                                            //Now Data Item is complete
-                                            endOfDF = true; 
-                                        }
-                                    }
-
-                                    //One byte
-                                    if (DataItemRead == "23")
-                                    {
-                                        //Convert to string bits
-                                        string octet = Convert.ToString(currentByte, 2).PadLeft(8, '0'); 
-                                        // Concatenate binaryString
-                                        DataItem += octet;
+                                        //Now Data Item is complete
                                         endOfDF = true;
-
                                     }
+                                }
+
+                                // Case where Data Item has 6 bytes
+                                if (DataItemRead == "9")
+                                {
+                                    //Convert to string bits
+                                    string octet = Convert.ToString(currentByte, 2).PadLeft(8, '0');
+                                    // Concatenate binaryString
+                                    DataItem += octet;
+                                    //6*8 bits
+                                    if (DataItem.Length == (6 * 8))
+                                    {
+                                        //Now Data Item is complete
+                                        endOfDF = true;
+                                    }
+                                }
+
+                                // Case where Data Item has 7 bytes
+                                if (DataItemRead == "22")
+                                {
+                                    //Convert to string bits
+                                    string octet = Convert.ToString(currentByte, 2).PadLeft(8, '0');
+                                    // Concatenate binaryString
+                                    DataItem += octet;
+                                    //7*8 bits
+                                    if (DataItem.Length == (7 * 8))
+                                    {
+                                        //Now Data Item is complete
+                                        endOfDF = true;
+                                    }
+                                }
+
+                                //Repetitive Data Item
+                                if (DataItemRead == "10")
+                                {
+                                    //Convert to string bits
+                                    string octet = Convert.ToString(currentByte, 2).PadLeft(8, '0');
+                                    // Concatenate binaryString
+                                    DataItem += octet;
+                                    if (DataItem.Length == 8)
+                                    {
+                                        REP = currentByte;
+                                    }
+                                    // 1 + 8*n bytes
+                                    if (DataItem.Length == (8 + 8 * 8 * REP))
+                                    {
+                                        //Now Data Item is complete
+                                        endOfDF = true;
+                                    }
+                                }
+
+                                //One byte
+                                if (DataItemRead == "23")
+                                {
+                                    //Convert to string bits
+                                    string octet = Convert.ToString(currentByte, 2).PadLeft(8, '0');
+                                    // Concatenate binaryString
+                                    DataItem += octet;
+                                    endOfDF = true;
+
+                                }
 
 
                                 //Once Data Item is all read, call function 
@@ -291,7 +292,7 @@ namespace Main
                                 {
                                     DataItemRead2 = Convert.ToInt32(DataItemRead);
                                     // Iniciate a class from the other namespace
-                                    Function function = new Function();  
+                                    Function function = new Function();
                                     function.assignDF(DataItem, DataItemRead2, Variable048);
 
                                     //Set end of DF to false
@@ -299,7 +300,7 @@ namespace Main
                                     //Set Data Item to empty again
                                     DataItem = "";
                                     //Increase number of Data Item read
-                                    contadorDI += 1;   
+                                    contadorDI += 1;
 
                                     if (contadorDI == (posiciones.Count))
                                     {
@@ -327,8 +328,14 @@ namespace Main
                                             }
                                             else
                                             {
+                                                if (property.Name == "MODE_3A")
+                                                {
+                                                    // Make sure Mode 3A is treated as a string and preserve leading zeros
+                                                    newRow[property.Name] = value_property.ToString().PadLeft(4, '0');
+                                                }
+
                                                 // Check if it is a numeric property
-                                                if (double.TryParse(value_property.ToString(), out double numericValue))
+                                                else if (double.TryParse(value_property.ToString(), out double numericValue))
                                                 {
                                                     // Round to 3 decimals 
                                                     newRow[property.Name] = Math.Round(numericValue, 3);
@@ -343,7 +350,7 @@ namespace Main
                                         // Add a row to the table
                                         messageTable.Rows.Add(newRow);
                                         //Initalize a new message with new FSPEC and new Data Items
-                                        endOfFSPEC = false; 
+                                        endOfFSPEC = false;
                                         FSPEC = "";
                                         DataItem = "";
                                         contadorDI = 0;
@@ -368,8 +375,15 @@ namespace Main
                 foreach (DataRow row in messageTable.Rows)
                 {
                     Console.WriteLine(row);
-                    
+
                 }
+
+
+                // Path where you want to save the CSV file
+                string filePath = @"C:\Users\34652\Desktop\";
+
+                // Call the method to export the table to CSV
+                ExportDataTableToCSV(messageTable, filePath);
 
             }
             catch (Exception ex)
@@ -378,8 +392,37 @@ namespace Main
                 Console.WriteLine("Error al leer el archivo AST: " + ex.Message);
             }
 
-            
+            // Method to export a DataTable to a CSV file
+            static void ExportDataTableToCSV(DataTable table, string filePath)
+            {
+                // Use StreamWriter to create the file at the specified path
+                using (StreamWriter SW = new StreamWriter(filePath))
+                {
+                    // Write the column names in the first line
+                    for (int i = 0; i < table.Columns.Count; i++)
+                    {
+                        SW.Write(table.Columns[i].ColumnName);  // Write the current column name
+                        if (i < table.Columns.Count - 1)
+                            SW.Write(",");  // Add a comma between columns
+                    }
+                    SW.WriteLine();  // Write a newline after the header row
+
+                    // Write the data for each row
+                    foreach (DataRow row in table.Rows)
+                    {
+                        for (int i = 0; i < table.Columns.Count; i++)
+                        {
+                            string cellValue = row[i].ToString().Replace("\"", "\"\"");  // searches for instances of a single quote ("), and replaces them with two quotes ("")
+                            SW.Write($"\"{cellValue}\"");  // Enclose the cell value in quotes
+                            if (i < table.Columns.Count - 1)
+                                SW.Write(",");  // Add a comma between columns
+                        }
+                        SW.WriteLine();  // Write a newline after each row
+                    }
+                }
+            }
+
         }
-  
-}
+
+    }
 }

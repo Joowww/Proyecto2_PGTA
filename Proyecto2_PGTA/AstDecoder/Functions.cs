@@ -7,6 +7,7 @@ using MultiCAT6.Utils;
 using System.Globalization;
 using System.Security.Cryptography.X509Certificates;
 using Accord.Math;
+using System.Data;
 
 namespace AstDecoder
 {
@@ -1212,10 +1213,7 @@ namespace AstDecoder
 
             data048.LAT = Convert.ToString(geodCoords.Lat * 180 / Math.PI);
             data048.LON = Convert.ToString(geodCoords.Lon * 180 / Math.PI);
-            if (Convert.ToDouble(data048.ModeC_corrected) != 0)
-                data048.H = Convert.ToString(geodCoords.Height - (Convert.ToDouble(data048.ModeC_corrected) * 0.3048) + antennaHeight - terrainElevation);
-            else
-                data048.H = Convert.ToString(geodCoords.Height + antennaHeight - terrainElevation);
+            data048.H = Convert.ToString(geodCoords.Height);
         }
     }
 }
