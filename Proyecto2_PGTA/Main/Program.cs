@@ -380,7 +380,7 @@ namespace Main
 
 
                 // Path where you want to save the CSV file
-                string filePath = @"C:\Users\34652\Desktop\";
+                string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "output.csv"); // Save as output.csv in the bin folder
 
                 // Call the method to export the table to CSV
                 ExportDataTableToCSV(messageTable, filePath);
