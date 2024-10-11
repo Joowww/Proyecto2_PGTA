@@ -42,9 +42,6 @@ namespace AstDecoder
         public string ME { get; set; }
         public string MI { get; set; }
         public string FOE_FRI { get; set; }
-        public string ADSB { get; set; }
-        public string SCN { get; set; }
-        public string PAI { get; set; }
 
         // Variables for Data Item (040) [4 Oct]
         public string RHO { get; set; }
@@ -308,33 +305,6 @@ namespace AstDecoder
                 if (foe_fri == "01") Variable048.FOE_FRI = "Friendly target";
                 if (foe_fri == "10") Variable048.FOE_FRI = "Unknown target";
                 if (foe_fri == "11") Variable048.FOE_FRI = "No reply";
-
-                // Extracts the FX2 bit to decide whether to process the third octet
-                string FX2 = oct2.Substring(7, 1);
-
-                if (FX2 == "1")
-                {
-                    // Extracts the third octet (8 bits) and evaluates its bits
-                    string oct3 = bytes2.Substring(16, 8);
-
-                    // Extracts the ADSB bits and assigns the corresponding value to ADSB
-                    string adsb = oct3.Substring(0, 2);
-                    if ((adsb == "00") || (adsb == "10")) Variable048.ADSB = "N/A";
-                    if (adsb == "01") Variable048.ADSB = "ADSB not populated";
-                    if (adsb == "11") Variable048.ADSB = "ADSB populated";
-
-                    // Extracts the SCN bits and assigns the corresponding value to SCN
-                    string scn = oct3.Substring(2, 2);
-                    if ((scn == "00") || (scn == "10")) Variable048.SCN = "N/A";
-                    if (scn == "01") Variable048.SCN = "SCN not populated";
-                    if (scn == "11") Variable048.SCN = "SCN populated";
-
-                    // Extracts the PAI bits and assigns the corresponding value to PAI
-                    string pai = oct3.Substring(4, 2);
-                    if ((pai == "00") || (pai == "10")) Variable048.PAI = "N/A";
-                    if (pai == "01") Variable048.PAI = "PAI not populated";
-                    if (pai == "11") Variable048.PAI = "PAI populated";
-                }
             }
         }
 
@@ -1140,7 +1110,7 @@ namespace AstDecoder
             // Barometric pressure from variable 048
             double barometricPressure = Convert.ToDouble(Variable048.BP);
             // Initialize corrected altitude to 0
-            double correctedAltitude = 0;
+            double Altitude = 0;
             // Flight level from variable 048
             double flightLevel = Convert.ToDouble(Variable048.FL);
 
@@ -1149,22 +1119,23 @@ namespace AstDecoder
                 // Convert to feet
                 double altitude = Convert.ToDouble(flightLevel) * 100;
                 // Convert to meters
-                correctedAltitude = altitude * 0.3048;
+                Altitude = altitude * 0.3048;
                 // Variable to indicate if the pressure is in a specific range
                 bool PRES = false;
 
                 // Check if the barometric pressure is within the range of 1013 to 1013.3 hPa or is zero
                 if ((barometricPressure >= 1013 && barometricPressure <= 1013.3) || (barometricPressure == 0)) { PRES = true; }
                 // QNH correction if the altitude is less than 6000 feet
-                if (PRES == false && altitude < 6000 && barometricPressure != 0)
+                if (PRES == false && altitude < 6000 && barometricPressure != 0 && altitude>0)
                 {
                     double modeC = Math.Round(altitude + (Convert.ToDouble(barometricPressure) - 1013.2) * 30);
                     Variable048.ModeC_corrected = Convert.ToString(modeC);
-                    correctedAltitude = modeC * 0.3048;
                 }
+                if (altitude <= 0)
+                    Altitude = 0;
             }
             // Call LatitudeLongitud function with Variable048 and the corrected altitude
-            LatitudeLongitud(Variable048, correctedAltitude);
+            LatitudeLongitud(Variable048, Altitude);
         }
 
         /// <summary>
@@ -1172,12 +1143,12 @@ namespace AstDecoder
         /// </summary>
         /// <param name="data048"></param>
         /// <param name="correctedAltitude"></param>
-        public void LatitudeLongitud(CAT048 data048, double correctedAltitude)
+        public void LatitudeLongitud(CAT048 data048, double Altitude)
         {
             // Radar variables
             double latRadar = Get_Minutes_To_Degrees(41.0, 18.0, 2.5284, "N");
             string radar_Latitude = latRadar.ToString();
-
+            
             double lonRadar = Get_Minutes_To_Degrees(2.0, 6.0, 7.4095, "E");
             string radar_Longitude = lonRadar.ToString();
 
@@ -1188,7 +1159,7 @@ namespace AstDecoder
             GeoUtils GeoUs = new GeoUtils();
 
             // Save the radar coordinates (in WGS84)
-            CoordinatesWGS84 radarPosition = new CoordinatesWGS84 (radar_Latitude, radar_Longitude, terrainElevation);
+            CoordinatesWGS84 radarPosition = new CoordinatesWGS84 (radar_Latitude, radar_Longitude, terrainElevation + antennaHeight);
 
             // From polar coordinates to cartesian coordinates
             double cordenateRadarX = Convert.ToDouble(data048.RHO) * Math.Sin(Convert.ToDouble(data048.THETA) * Math.PI / 180.0) * 1852.0; // From NM to m (* 1852)
@@ -1197,7 +1168,7 @@ namespace AstDecoder
             // From cartesian coordinates to spherical coordinates
             double azimuth = GeoUtils.CalculateAzimuth(cordenateRadarX, cordenateRadarY);
             double range = Math.Sqrt(cordenateRadarX * cordenateRadarX + cordenateRadarY * cordenateRadarY);
-            double elevation = Math.Asin((2 * earthRadius * (correctedAltitude - antennaHeight) + correctedAltitude * correctedAltitude - antennaHeight * antennaHeight - range * range) / (2 * range * (earthRadius + antennaHeight)));
+            double elevation = Math.Asin((2 * earthRadius * (Altitude - (antennaHeight + terrainElevation)) + Altitude * Altitude - (antennaHeight + terrainElevation) * (antennaHeight + terrainElevation)  - range * range) / (2 * range * (earthRadius + antennaHeight + terrainElevation)));
 
             // Transform to polar coordinates
             CoordinatesPolar polarCoords = new CoordinatesPolar(range, azimuth, elevation);

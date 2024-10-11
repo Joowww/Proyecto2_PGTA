@@ -333,12 +333,14 @@ namespace Main
                                                     // Make sure Mode 3A is treated as a string and preserve leading zeros
                                                     newRow[property.Name] = value_property.ToString().PadLeft(4, '0');
                                                 }
+                                                if (property.Name == "TA")
+                                                    newRow[property.Name] = value_property.ToString();
 
                                                 // Check if it is a numeric property
                                                 else if (double.TryParse(value_property.ToString(), out double numericValue))
                                                 {
                                                     // Round to 3 decimals 
-                                                    newRow[property.Name] = Math.Round(numericValue, 3);
+                                                    newRow[property.Name] = Math.Round(numericValue, 10);
                                                 }
                                                 else
                                                 {
