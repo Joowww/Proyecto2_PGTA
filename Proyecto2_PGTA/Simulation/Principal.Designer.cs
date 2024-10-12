@@ -42,15 +42,14 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // Form1
+            // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(667, 503);
             this.Controls.Add(this.pictureBox1);
-            this.Name = "Form1";
+            this.Name = "Principal";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Simulate_Click);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 

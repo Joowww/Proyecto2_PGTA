@@ -18,9 +18,5 @@ namespace Simulation
             InitializeComponent();
         }
 
-        private void Simulate_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
