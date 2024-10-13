@@ -66,7 +66,7 @@
             // 
             this.pictureBox2.Location = new System.Drawing.Point(965, 132);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(287, 237);
+            this.pictureBox2.Size = new System.Drawing.Size(291, 244);
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
             // 
@@ -78,6 +78,7 @@
             this.button1.TabIndex = 4;
             this.button1.Text = "Simulate";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Principal
             // 

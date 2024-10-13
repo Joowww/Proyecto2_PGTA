@@ -18,3 +18,4 @@ C:\Users\34652\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Simulation\obj\Deb
 C:\Users\34652\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Simulation\obj\Debug\net6.0-windows\Simulation.Principal.resources
 C:\Users\34652\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Simulation\obj\Debug\net6.0-windows\Simulation.csproj.CopyComplete
 C:\Users\34652\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Simulation\bin\Debug\net6.0-windows\Zen.Barcode.Core.dll
+C:\Users\34652\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Simulation\obj\Debug\net6.0-windows\Simulation.Mapa.resources
