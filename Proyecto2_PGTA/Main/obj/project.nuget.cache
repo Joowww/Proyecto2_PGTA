@@ -1,12 +1,24 @@
 {
   "version": 2,
-  "dgSpecHash": "/FnjK5tV/73ljzgf4XjMvqBM+rwhH+I6HZbkiC/m2A2svVRy72hsDhOaTc/Gn09muDeijOoW0gGHfUBy/dED+w==",
+  "dgSpecHash": "zvk91tCkF6JkphknYG2Dx/Kg2C74NdP2/jW3IOmrjAAzPgcku/qIt9QEvl+hJe1A4c3DhCrI/foH5ESn3XX0wQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Main\\Main.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\34652\\.nuget\\packages\\accord\\3.8.0\\accord.3.8.0.nupkg.sha512",
     "C:\\Users\\34652\\.nuget\\packages\\accord.math\\3.8.0\\accord.math.3.8.0.nupkg.sha512",
-    "C:\\Users\\34652\\.nuget\\packages\\visioforge.dotnet.core.redist.base.x64\\15.10.22\\visioforge.dotnet.core.redist.base.x64.15.10.22.nupkg.sha512"
+    "C:\\Users\\34652\\.nuget\\packages\\visioforge.dotnet.core.redist.base.x64\\15.10.22\\visioforge.dotnet.core.redist.base.x64.15.10.22.nupkg.sha512",
+    "C:\\Users\\34652\\.nuget\\packages\\zen.barcode.rendering.framework\\3.1.10729.1\\zen.barcode.rendering.framework.3.1.10729.1.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "El paquete \"Zen.Barcode.Rendering.Framework 3.1.10729.1\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\" en lugar de la plataforma de destino del proyecto \"net6.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
+      "libraryId": "Zen.Barcode.Rendering.Framework",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

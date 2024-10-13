@@ -46,13 +46,23 @@
           "build/VisioForge.DotNet.Core.Redist.Base.x64.targets": {}
         }
       },
+      "Zen.Barcode.Rendering.Framework/3.1.10729.1": {
+        "type": "package",
+        "compile": {
+          "lib/Zen.Barcode.Core.dll": {}
+        },
+        "runtime": {
+          "lib/Zen.Barcode.Core.dll": {}
+        }
+      },
       "AstDecoder/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "Accord": "3.8.0",
           "Accord.Math": "3.8.0",
-          "VisioForge.DotNet.Core.Redist.Base.x64": "15.10.22"
+          "VisioForge.DotNet.Core.Redist.Base.x64": "15.10.22",
+          "Zen.Barcode.Rendering.Framework": "3.1.10729.1"
         },
         "compile": {
           "bin/placeholder/AstDecoder.dll": {}
@@ -191,6 +201,23 @@
         "visioforge.dotnet.core.redist.base.x64.nuspec"
       ]
     },
+    "Zen.Barcode.Rendering.Framework/3.1.10729.1": {
+      "sha512": "84Oi15A4V8eOY7BA51iLhbThxB/bGSxNS0baxbWfhpBcZoF5NBRR4QHrEbDg2VoPI+s2DA82qaO1Z2/TMDo7sg==",
+      "type": "package",
+      "path": "zen.barcode.rendering.framework/3.1.10729.1",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.txt",
+        "lib/Zen.Barcode.Core.dll",
+        "tools/BarcodeRender.exe",
+        "tools/BarcodeRender.exe.config",
+        "tools/Zen.Barcode.Core.dll",
+        "zen.barcode.rendering.framework.3.1.10729.1.nupkg.sha512",
+        "zen.barcode.rendering.framework.nuspec"
+      ]
+    },
     "AstDecoder/1.0.0": {
       "type": "project",
       "path": "../AstDecoder/AstDecoder.csproj",
@@ -202,6 +229,7 @@
       "Accord >= 3.8.0",
       "Accord.Math >= 3.8.0",
       "AstDecoder >= 1.0.0",
+      "Zen.Barcode.Rendering.Framework >= 3.1.10729.1",
       "visioforge.dotnet.core.redist.base.x64 >= 15.10.22"
     ]
   },
@@ -256,6 +284,10 @@
             "target": "Package",
             "version": "[3.8.0, )"
           },
+          "Zen.Barcode.Rendering.Framework": {
+            "target": "Package",
+            "version": "[3.1.10729.1, )"
+          },
           "visioforge.dotnet.core.redist.base.x64": {
             "target": "Package",
             "version": "[15.10.22, )"
@@ -280,5 +312,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "El paquete \"Zen.Barcode.Rendering.Framework 3.1.10729.1\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\" en lugar de la plataforma de destino del proyecto \"net6.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
+      "libraryId": "Zen.Barcode.Rendering.Framework",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

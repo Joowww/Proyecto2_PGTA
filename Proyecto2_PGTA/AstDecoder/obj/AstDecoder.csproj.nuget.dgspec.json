@@ -51,6 +51,10 @@
             "VisioForge.DotNet.Core.Redist.Base.x64": {
               "target": "Package",
               "version": "[15.10.22, )"
+            },
+            "Zen.Barcode.Rendering.Framework": {
+              "target": "Package",
+              "version": "[3.1.10729.1, )"
             }
           },
           "imports": [
