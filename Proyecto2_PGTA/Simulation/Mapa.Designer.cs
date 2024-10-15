@@ -35,7 +35,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.button6 = new System.Windows.Forms.Button();
+            this.CloseBtn = new System.Windows.Forms.Button();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -105,15 +105,15 @@
             this.comboBox2.Size = new System.Drawing.Size(215, 33);
             this.comboBox2.TabIndex = 6;
             // 
-            // button6
+            // CloseBtn
             // 
-            this.button6.Location = new System.Drawing.Point(1245, 594);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(112, 34);
-            this.button6.TabIndex = 7;
-            this.button6.Text = "Close";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.CloseBtn.Location = new System.Drawing.Point(1245, 594);
+            this.CloseBtn.Name = "CloseBtn";
+            this.CloseBtn.Size = new System.Drawing.Size(112, 34);
+            this.CloseBtn.TabIndex = 7;
+            this.CloseBtn.Text = "Close";
+            this.CloseBtn.UseVisualStyleBackColor = true;
+            this.CloseBtn.Click += new System.EventHandler(this.CloseBtn_Click);
             // 
             // trackBar1
             // 
@@ -166,7 +166,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.trackBar1);
-            this.Controls.Add(this.button6);
+            this.Controls.Add(this.CloseBtn);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button5);
@@ -192,7 +192,7 @@
         private Button button5;
         private ComboBox comboBox1;
         private ComboBox comboBox2;
-        private Button button6;
+        private Button CloseBtn;
         private TrackBar trackBar1;
         private Label label1;
         private Label label2;
