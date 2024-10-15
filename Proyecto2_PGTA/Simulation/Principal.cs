@@ -38,7 +38,7 @@ namespace Simulation
             // Oculta el Principal
             this.Hide();
             // Abrir el Mapa
-            mapa.Show();  
+            mapa.Show();
         }
     }
 }

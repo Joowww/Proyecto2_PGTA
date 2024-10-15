@@ -47,7 +47,7 @@ namespace Simulation
 
             // Añadir el overlay de marcadores al control del mapa
             mapControl.Overlays.Add(markersOverlay);
-            mapControl.Zoom = 10;  // Establecer el zoom al nivel deseado
+            mapControl.Zoom = 1000;  // Establecer el zoom al nivel deseado
 
             mapControl.Update();
 
