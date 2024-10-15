@@ -40,6 +40,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -124,7 +125,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(716, 501);
+            this.label1.Location = new System.Drawing.Point(734, 502);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(303, 25);
             this.label1.TabIndex = 9;
@@ -148,11 +149,19 @@
             this.label3.TabIndex = 11;
             this.label3.Text = "label3";
             // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(405, 38);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(952, 431);
+            this.panel1.TabIndex = 12;
+            // 
             // Mapa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1382, 657);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -188,5 +197,6 @@
         private Label label1;
         private Label label2;
         private Label label3;
+        private Panel panel1;
     }
 }
