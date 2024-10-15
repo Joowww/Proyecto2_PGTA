@@ -11,7 +11,6 @@ using System.Text;
 using Accord.Statistics;
 using AstDecoder;
 using static System.Net.Mime.MediaTypeNames;
-using Simulation;
 
 namespace Main
 {
@@ -447,9 +446,6 @@ namespace Main
                 listaDeListas.Add(fila);
 
             }
-            // Llamas al formulario y pasas la lista como parámetro
-            Principal form = new Principal(listaDeListas);
-            form.ShowDialog(); // Muestra el formulario
 
         }
 

@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "Jh0K2+8veClPZm3sU1meuk3eKL1QzLCAm2S7GiSN1YXo3mYrNaNhymBqEdI7nRlneVl3h1jKR/aFZipoAwCeoA==",
-  "success": false,
+  "dgSpecHash": "zvk91tCkF6JkphknYG2Dx/Kg2C74NdP2/jW3IOmrjAAzPgcku/qIt9QEvl+hJe1A4c3DhCrI/foH5ESn3XX0wQ==",
+  "success": true,
   "projectFilePath": "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Main\\Main.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\34652\\.nuget\\packages\\accord\\3.8.0\\accord.3.8.0.nupkg.sha512",
@@ -16,15 +16,6 @@
       "warningLevel": 1,
       "message": "El paquete \"Zen.Barcode.Rendering.Framework 3.1.10729.1\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\" en lugar de la plataforma de destino del proyecto \"net6.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
       "libraryId": "Zen.Barcode.Rendering.Framework",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1201",
-      "level": "Error",
-      "message": "El proyecto Simulation no es compatible con net6.0 (.NETCoreApp,Version=v6.0). El proyecto Simulation admite: net6.0-windows7.0 (.NETCoreApp,Version=v6.0)",
-      "libraryId": "Simulation",
       "targetGraphs": [
         "net6.0"
       ]
