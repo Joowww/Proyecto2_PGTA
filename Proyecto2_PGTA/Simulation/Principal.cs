@@ -1,3 +1,4 @@
+using AstDecoder;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,11 +35,11 @@ namespace Simulation
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Mapa mapa = new Mapa();
+            // Mapa mapa = new Mapa();
             // Oculta el Principal
             this.Hide();
             // Abrir el Mapa
-            mapa.Show();
+            //mapa.Show();
         }
     }
 }

@@ -10,19 +10,23 @@ using System.Windows.Forms;
 using GMap.NET;
 using GMap.NET.WindowsForms.Markers;
 using GMap.NET.WindowsForms;
+using AstDecoder;
+using Accord.Statistics;
 
 namespace Simulation
 {
     public partial class Mapa : Form
     {
-        GMap.NET.WindowsForms.GMapControl mapControl;
-        public Mapa()
+        GMapControl mapControl;
+        public List<CAT048> cat048 { get; set; }
+        public Mapa(List<CAT048> cat048)
         {
             InitializeComponent();
-            
+            this.cat048 = cat048;
+
         }
 
-        private void Mapa_Load(object sender, EventArgs e)
+            private void Mapa_Load(object sender, EventArgs e)
         {
             comboBox1.Items.Add("Option 1");
             comboBox1.Items.Add("Option 2");
@@ -32,7 +36,7 @@ namespace Simulation
             comboBox2.Items.Add("Option 2");
             comboBox2.Items.Add("Option 3");
 
-            mapControl = new GMap.NET.WindowsForms.GMapControl();
+            mapControl = new GMapControl();
             mapControl.MapProvider = GMap.NET.MapProviders.BingMapProvider.Instance;
             mapControl.Dock = DockStyle.Fill;
             GMaps.Instance.Mode = AccessMode.ServerAndCache;
@@ -51,12 +55,30 @@ namespace Simulation
 
             mapControl.Update();
 
+            currentPos(cat048);
+
         }
 
+        static List<List<string[]>> currentPos (List<CAT048> cat048)
+        {
+
+            List<List<string[]>> list = new List<List<string[]>> ();
+            foreach (CAT048 aircraft in cat048)
+            {
+                List<string[]> currentAircraft = new List<string[]>();
+                list.Add(currentAircraft);
+                currentAircraft.Add(new string[]
+                {
+                    aircraft.LAT,
+                    aircraft.LON,
+                    aircraft.TN
+                });
+            }
+            return list;
+        }
         private void button6_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-
     }
 }

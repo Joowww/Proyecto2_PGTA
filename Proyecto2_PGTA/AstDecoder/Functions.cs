@@ -8,6 +8,7 @@ using System.Globalization;
 using System.Security.Cryptography.X509Certificates;
 using Accord.Math;
 using System.Data;
+using Accord.Statistics;
 
 namespace AstDecoder
 {
@@ -1186,6 +1187,8 @@ namespace AstDecoder
             data048.LON = Convert.ToString(geodCoords.Lon * 180 / Math.PI);
             data048.H = Convert.ToString(geodCoords.Height);
         }
+
+
     }
 }
 

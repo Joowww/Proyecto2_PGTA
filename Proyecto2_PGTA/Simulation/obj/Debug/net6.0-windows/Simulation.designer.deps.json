@@ -6,6 +6,29 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
+      "Accord/3.8.0": {
+        "runtime": {
+          "lib/netstandard2.0/Accord.dll": {
+            "assemblyVersion": "3.8.0.0",
+            "fileVersion": "3.8.0.6134"
+          }
+        }
+      },
+      "Accord.Math/3.8.0": {
+        "dependencies": {
+          "Accord": "3.8.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Accord.Math.Core.dll": {
+            "assemblyVersion": "3.8.0.0",
+            "fileVersion": "3.8.0.6134"
+          },
+          "lib/netstandard2.0/Accord.Math.dll": {
+            "assemblyVersion": "3.8.0.0",
+            "fileVersion": "3.8.0.6134"
+          }
+        }
+      },
       "GMap.NET.Core/2.0.0": {
         "dependencies": {
           "Newtonsoft.Json": "12.0.3",
@@ -204,6 +227,7 @@
           }
         }
       },
+      "VisioForge.DotNet.Core.Redist.Base.x64/15.10.22": {},
       "Zen.Barcode.Rendering.Framework/3.1.10729.1": {
         "runtime": {
           "lib/Zen.Barcode.Core.dll": {
@@ -215,6 +239,20 @@
     }
   },
   "libraries": {
+    "Accord/3.8.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7kJrB570dO5ELim+2KWQNozuvWO9/BuZfZspdFy36fcWPNF2CEccblLuILeUlI8QJYd2DlBy0bfK8BlCx/uayA==",
+      "path": "accord/3.8.0",
+      "hashPath": "accord.3.8.0.nupkg.sha512"
+    },
+    "Accord.Math/3.8.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-K3dzeQjDIrwRnoTRoMOoIbul2Uc0B8cnEtdrSlirmIo37C+jVkmYpJzme/z4Kg99XR2Vj5W5TTNlhjn+AKR+8A==",
+      "path": "accord.math/3.8.0",
+      "hashPath": "accord.math.3.8.0.nupkg.sha512"
+    },
     "GMap.NET.Core/2.0.0": {
       "type": "package",
       "serviceable": true,
@@ -312,6 +350,13 @@
       "sha512": "sha512-Mdukseovp0YIGaz16FMH6nbfgZkrCFOJbtXQptv0aeBO9h775Ilb9+TDwLVTKikoW7y7CY7lpoXl9zmZ5G3ndA==",
       "path": "system.security.principal.windows/4.6.0",
       "hashPath": "system.security.principal.windows.4.6.0.nupkg.sha512"
+    },
+    "VisioForge.DotNet.Core.Redist.Base.x64/15.10.22": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-B2Hibau9xCdR8/Jnv+FwU4jl1d/lE6TM7ei88fKLY7eEb7GLylFoYIG7tUzHCjf4YC8TtLZImA6C++sF67qx/A==",
+      "path": "visioforge.dotnet.core.redist.base.x64/15.10.22",
+      "hashPath": "visioforge.dotnet.core.redist.base.x64.15.10.22.nupkg.sha512"
     },
     "Zen.Barcode.Rendering.Framework/3.1.10729.1": {
       "type": "package",

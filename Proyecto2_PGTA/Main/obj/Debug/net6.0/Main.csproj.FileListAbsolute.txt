@@ -226,3 +226,4 @@ C:\Users\marin\OneDrive\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Main\bin\
 C:\Users\marin\OneDrive\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Main\bin\Debug\net6.0\Accord.dll
 C:\Users\marin\OneDrive\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Main\bin\Debug\net6.0\Accord.Math.Core.dll
 C:\Users\marin\OneDrive\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Main\bin\Debug\net6.0\Accord.Math.dll
+C:\Users\34652\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Main\bin\Debug\net6.0\Zen.Barcode.Core.dll
