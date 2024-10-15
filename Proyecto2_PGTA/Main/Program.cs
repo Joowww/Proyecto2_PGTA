@@ -8,7 +8,10 @@ using System.IO;
 using System.Net.Sockets;
 using System.Reflection;
 using System.Text;
+using Accord.Statistics;
 using AstDecoder;
+using static System.Net.Mime.MediaTypeNames;
+using Simulation;
 
 namespace Main
 {
@@ -423,6 +426,30 @@ namespace Main
                     }
                 }
             }
+            // Crear una lista de listas para almacenar las filas
+            List<List<object>> listaDeListas = new List<List<object>>();
+
+            // Recorrer las filas a partir de la fila 1 (índice 1)
+            for (int i = 1; i < messageTable.Rows.Count; i++)
+            {
+                DataRow row = messageTable.Rows[i];
+
+                // Crear una lista para cada fila
+                List<object> fila = new List<object>();
+
+                // Recorrer las columnas a partir de la columna 1 (índice 1)
+                for (int j = 1; j < messageTable.Columns.Count; j++)
+                {
+                    fila.Add(row[j]); // Agregar el valor de la columna j de la fila
+                }
+
+                // Agregar la lista de la fila a la lista principal
+                listaDeListas.Add(fila);
+
+            }
+            // Llamas al formulario y pasas la lista como parámetro
+            Principal form = new Principal(listaDeListas);
+            form.ShowDialog(); // Muestra el formulario
 
         }
 

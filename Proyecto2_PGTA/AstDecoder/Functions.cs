@@ -9,6 +9,7 @@ using System.Security.Cryptography.X509Certificates;
 using Accord.Math;
 using System.Data;
 using Accord.Statistics;
+using Simulation;
 
 namespace AstDecoder
 {

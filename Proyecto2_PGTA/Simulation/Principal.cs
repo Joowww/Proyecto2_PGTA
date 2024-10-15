@@ -14,11 +14,15 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Simulation
 {
+
     public partial class Principal : Form
     {
-        public Principal()
+        // Propiedad para almacenar la lista
+        public List<List<object>> ListaRecibida { get; set; }
+        public Principal(List<List<object>> lista)
         {
             InitializeComponent();
+            ListaRecibida = lista;
         }
 
         private void Form_Load(object sender, EventArgs e)
@@ -35,11 +39,11 @@ namespace Simulation
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // Mapa mapa = new Mapa();
+            Mapa mapa = new Mapa(ListaRecibida);
             // Oculta el Principal
             this.Hide();
             // Abrir el Mapa
-            //mapa.Show();
+            mapa.Show();
         }
     }
 }

@@ -70,6 +70,16 @@
         "runtime": {
           "bin/placeholder/AstDecoder.dll": {}
         }
+      },
+      "Simulation/1.0.0": {
+        "type": "project",
+        "framework": "Unsupported,Version=v0.0",
+        "compile": {
+          "bin/placeholder/Simulation.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Simulation.dll": {}
+        }
       }
     }
   },
@@ -222,6 +232,11 @@
       "type": "project",
       "path": "../AstDecoder/AstDecoder.csproj",
       "msbuildProject": "../AstDecoder/AstDecoder.csproj"
+    },
+    "Simulation/1.0.0": {
+      "type": "project",
+      "path": "../Simulation/Simulation.csproj",
+      "msbuildProject": "../Simulation/Simulation.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -229,6 +244,7 @@
       "Accord >= 3.8.0",
       "Accord.Math >= 3.8.0",
       "AstDecoder >= 1.0.0",
+      "Simulation >= 1.0.0",
       "Zen.Barcode.Rendering.Framework >= 3.1.10729.1",
       "visioforge.dotnet.core.redist.base.x64 >= 15.10.22"
     ]
@@ -262,6 +278,9 @@
           "projectReferences": {
             "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj": {
               "projectPath": "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj"
+            },
+            "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Simulation\\Simulation.csproj": {
+              "projectPath": "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Simulation\\Simulation.csproj"
             }
           }
         }
@@ -320,6 +339,15 @@
       "warningLevel": 1,
       "message": "El paquete \"Zen.Barcode.Rendering.Framework 3.1.10729.1\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\" en lugar de la plataforma de destino del proyecto \"net6.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
       "libraryId": "Zen.Barcode.Rendering.Framework",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1201",
+      "level": "Error",
+      "message": "El proyecto Simulation no es compatible con net6.0 (.NETCoreApp,Version=v6.0). El proyecto Simulation admite: net6.0-windows7.0 (.NETCoreApp,Version=v6.0)",
+      "libraryId": "Simulation",
       "targetGraphs": [
         "net6.0"
       ]

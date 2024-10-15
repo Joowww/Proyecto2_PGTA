@@ -18,12 +18,11 @@ namespace Simulation
     public partial class Mapa : Form
     {
         GMapControl mapControl;
-        public List<CAT048> cat048 { get; set; }
-        public Mapa(List<CAT048> cat048)
+        private List<List<object>> Asterix;
+        public Mapa(List<List<object>> asterix)
         {
             InitializeComponent();
-            this.cat048 = cat048;
-
+            Asterix = asterix;
         }
 
             private void Mapa_Load(object sender, EventArgs e)
@@ -55,24 +54,36 @@ namespace Simulation
 
             mapControl.Update();
 
-            currentPos(cat048);
+            currentPos(Asterix);
 
         }
 
-        static List<List<string[]>> currentPos (List<CAT048> cat048)
+        static List<List<object[]>> currentPos(List<List<object>> cat048)
         {
 
-            List<List<string[]>> list = new List<List<string[]>> ();
-            foreach (CAT048 aircraft in cat048)
+            // Crear la lista que almacenará las listas internas de string[]
+            List<List<object[]>> list = new List<List<object[]>>();
+
+            // Recorrer cada lista de CAT048 en la lista principal
+            foreach (List<object> aircraftList in cat048)
             {
-                List<string[]> currentAircraft = new List<string[]>();
-                list.Add(currentAircraft);
-                currentAircraft.Add(new string[]
+                // Crear una lista de string[] para cada lista de CAT048
+                List<object[]> currentAircraftList = new List<object[]>();
+
+                // Añadir la lista de string[] a la lista principal
+                list.Add(currentAircraftList);
+
+                // Recorrer cada objeto CAT048 en la lista actual
+                foreach (CAT048 aircraft in aircraftList)
                 {
-                    aircraft.LAT,
-                    aircraft.LON,
-                    aircraft.TN
-                });
+                    // Añadir un array de strings con las propiedades LAT, LON y TN de cada aircraft
+                    currentAircraftList.Add(new string[]
+                    {
+                aircraft.LAT,
+                aircraft.LON,
+                aircraft.TN
+                    });
+                }
             }
             return list;
         }

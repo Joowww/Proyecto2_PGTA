@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AstDecoder\AstDecoder.csproj" />
+    <ProjectReference Include="..\Simulation\Simulation.csproj" />
   </ItemGroup>
 
 </Project>
