@@ -16,5 +16,14 @@ namespace Simulation
         {
             InitializeComponent();
         }
+
+        private void StartBtn_Click(object sender, EventArgs e)
+        {
+            Principal principal = new Principal();
+            // Oculta el Principal
+            this.Hide();
+            // Abrir el Mapa
+            principal.Show();
+        }
     }
 }
