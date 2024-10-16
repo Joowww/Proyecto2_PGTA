@@ -63,12 +63,18 @@ namespace Simulation
                     // Separa la línea utilizando el separador de tabulación y limpia las comillas
                     string[] row = line.Split('\t').Select(e => e.Trim('\"')).ToArray();
 
+                    int UTC_time_s = Convert.ToInt32(row[4]);
                     double LAT = Convert.ToDouble(row[5]);
                     double LON = Convert.ToDouble(row[6]);
+                    string TYP = Convert.ToString(row[8]);
+                    string TA = Convert.ToString(row[35]);
 
                     List<object> message = new List<object>();
+                    message.Add(UTC_time_s);
                     message.Add(LAT);
                     message.Add(LON);
+                    message.Add(TYP);
+                    message.Add(TA);
                     allMessages.Add(message);
                 }
 
