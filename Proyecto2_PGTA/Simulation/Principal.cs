@@ -32,6 +32,7 @@ namespace Simulation
             comboBox1.Items.Add("Removing pure blanks");
             comboBox1.Items.Add("Removing fixed transponders");
             comboBox1.Items.Add("Combination of these");
+            comboBox1.SelectedIndex = 0; // Seleccionar la primera opción por defecto
 
             Zen.Barcode.CodeQrBarcodeDraw QR = Zen.Barcode.BarcodeDrawFactory.CodeQr;
             pictureBox2.Image = QR.Draw("HOLA", 10);
@@ -71,6 +72,28 @@ namespace Simulation
                     allMessages.Add(message);
                 }
 
+                string selection = comboBox1.SelectedItem.ToString();
+
+                List<List<object>> filtredData = new List<List<object>>();
+
+                // Ejecutar la función según la opción seleccionada
+                if (selection == "All data")
+                {
+                    filtredData = Option1(allMessages);
+                }
+                else if (selection == "Removing pure blanks")
+                {
+                    filtredData = Option2(allMessages);
+                }
+                else if (selection == "Removing fixed transponders")
+                {
+                    filtredData = Option3(allMessages);
+                }
+                else if (selection == "Combination of these")
+                {
+                    filtredData = Option4(allMessages);
+                }
+
             }
             catch (Exception ex)
             {
@@ -82,6 +105,39 @@ namespace Simulation
             this.Hide();
             // Abrir el Mapa
             mapa.Show();
+        }
+
+        // Funciones correspondientes a cada opción seleccionada
+        private List<List<object>> Option1 (List<List<object>> allMessages)
+        {
+            MessageBox.Show("Executing All data function.", "Simulate", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // For "All data"
+            // Retorno la lista tal cual, no se filtra
+            return allMessages;
+        }
+
+        private List<List<object>> Option2(List<List<object>> allMessages)
+        {
+            MessageBox.Show("Executing Removing pure blanks function.", "Simulate", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // For "Removing pure blanks"
+            // HACER FUNCION DE FILTRADO CORRESPONDIENTE
+            return allMessages; //Se cambiara por el return de la nueva lista
+        }
+
+        private List<List<object>> Option3(List<List<object>> allMessages)
+        {
+            MessageBox.Show("Executing Removing fixed transponders function.", "Simulate", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // For "Removing fixed transponders"
+            // HACER FUNCION DE FILTRADO CORRESPONDIENTE
+            return allMessages; //Se cambiara por el return de la nueva lista
+        }
+
+        private List<List<object>> Option4(List<List<object>> allMessages)
+        {
+            MessageBox.Show("Executing Combination of these function.", "Simulate", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // For "Combination of these"
+            // HACER FUNCION DE FILTRADO CORRESPONDIENTE
+            return allMessages; //Se cambiara por el return de la nueva lista
         }
 
     }
