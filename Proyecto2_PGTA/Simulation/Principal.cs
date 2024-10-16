@@ -41,7 +41,7 @@ namespace Simulation
         {
             try
             {
-                string rutaCSV = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Prueba.csv"); //PONER ASTERIX.csv cuando todo lo del MAIN este en el program de Simulation
+                string rutaCSV = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ASTERIX.csv"); 
 
                 // Verifica si el archivo existe
                 if (!File.Exists(rutaCSV))
