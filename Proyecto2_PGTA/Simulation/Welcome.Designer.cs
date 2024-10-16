@@ -28,127 +28,381 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.aboutUsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.asterixDecoderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.usToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contactToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.privacyPolicyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.videoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1.SuspendLayout();
-            this.SuspendLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Welcome));
+            button1 = new Button();
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            panel3 = new Panel();
+            button2 = new Button();
+            panel1 = new Panel();
+            panel2 = new Panel();
+            button3 = new Button();
+            panel4 = new Panel();
+            button4 = new Button();
+            pictureBox1 = new PictureBox();
+            pictureBox2 = new PictureBox();
+            pictureBox3 = new PictureBox();
+            pictureBox4 = new PictureBox();
+            pictureBox5 = new PictureBox();
+            pictureBox6 = new PictureBox();
+            panel5 = new Panel();
+            button5 = new Button();
+            panel6 = new Panel();
+            button6 = new Button();
+            panel7 = new Panel();
+            button7 = new Button();
+            panel8 = new Panel();
+            button8 = new Button();
+            pictureBox7 = new PictureBox();
+            flowLayoutPanel1.SuspendLayout();
+            panel3.SuspendLayout();
+            panel2.SuspendLayout();
+            panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
+            panel5.SuspendLayout();
+            panel6.SuspendLayout();
+            panel7.SuspendLayout();
+            panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
+            SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(449, 389);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 34);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Start";
-            this.button1.UseVisualStyleBackColor = true;
+            button1.Location = new Point(476, 376);
+            button1.Margin = new Padding(2);
+            button1.Name = "button1";
+            button1.Size = new Size(270, 46);
+            button1.TabIndex = 1;
+            button1.Text = "Start";
+            button1.UseVisualStyleBackColor = true;
             // 
-            // menuStrip1
+            // flowLayoutPanel1
             // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutUsToolStripMenuItem,
-            this.helpToolStripMenuItem,
-            this.languageToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1000, 33);
-            this.menuStrip1.TabIndex = 2;
-            this.menuStrip1.Text = "About us";
+            flowLayoutPanel1.BackColor = Color.FromArgb(35, 40, 45);
+            flowLayoutPanel1.Controls.Add(panel3);
+            flowLayoutPanel1.Controls.Add(panel7);
+            flowLayoutPanel1.Controls.Add(panel6);
+            flowLayoutPanel1.Controls.Add(panel5);
+            flowLayoutPanel1.Controls.Add(panel1);
+            flowLayoutPanel1.Controls.Add(panel2);
+            flowLayoutPanel1.Controls.Add(panel4);
+            flowLayoutPanel1.Controls.Add(panel8);
+            flowLayoutPanel1.Dock = DockStyle.Left;
+            flowLayoutPanel1.Location = new Point(0, 0);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(265, 650);
+            flowLayoutPanel1.TabIndex = 2;
             // 
-            // aboutUsToolStripMenuItem
+            // panel3
             // 
-            this.aboutUsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.asterixDecoderToolStripMenuItem,
-            this.usToolStripMenuItem,
-            this.contactToolStripMenuItem,
-            this.privacyPolicyToolStripMenuItem});
-            this.aboutUsToolStripMenuItem.Name = "aboutUsToolStripMenuItem";
-            this.aboutUsToolStripMenuItem.Size = new System.Drawing.Size(90, 29);
-            this.aboutUsToolStripMenuItem.Text = "About...";
+            panel3.BackColor = Color.Transparent;
+            panel3.Controls.Add(button2);
+            panel3.Location = new Point(3, 3);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(265, 70);
+            panel3.TabIndex = 12;
             // 
-            // asterixDecoderToolStripMenuItem
+            // button2
             // 
-            this.asterixDecoderToolStripMenuItem.Name = "asterixDecoderToolStripMenuItem";
-            this.asterixDecoderToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
-            this.asterixDecoderToolStripMenuItem.Text = "Asterix Decoder";
+            button2.BackColor = Color.Transparent;
+            button2.BackgroundImageLayout = ImageLayout.None;
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button2.ForeColor = Color.White;
+            button2.Location = new Point(10, 8);
+            button2.Name = "button2";
+            button2.Size = new Size(245, 55);
+            button2.TabIndex = 13;
+            button2.Text = "           Home  ";
+            button2.TextAlign = ContentAlignment.MiddleLeft;
+            button2.UseVisualStyleBackColor = false;
             // 
-            // usToolStripMenuItem
+            // panel1
             // 
-            this.usToolStripMenuItem.Name = "usToolStripMenuItem";
-            this.usToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
-            this.usToolStripMenuItem.Text = "Creators";
+            panel1.BackColor = Color.Transparent;
+            panel1.Location = new Point(0, 1);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(265, 140);
+            panel1.TabIndex = 11;
             // 
-            // contactToolStripMenuItem
+            // panel2
             // 
-            this.contactToolStripMenuItem.Name = "contactToolStripMenuItem";
-            this.contactToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
-            this.contactToolStripMenuItem.Text = "@ Contact";
+            panel2.BackColor = Color.Transparent;
+            panel2.Controls.Add(button3);
+            panel2.Location = new Point(3, 215);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(265, 70);
+            panel2.TabIndex = 13;
             // 
-            // privacyPolicyToolStripMenuItem
+            // button3
             // 
-            this.privacyPolicyToolStripMenuItem.Name = "privacyPolicyToolStripMenuItem";
-            this.privacyPolicyToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
-            this.privacyPolicyToolStripMenuItem.Text = "Privacy policy";
+            button3.BackColor = Color.Transparent;
+            button3.BackgroundImageLayout = ImageLayout.None;
+            button3.FlatAppearance.BorderSize = 0;
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button3.ForeColor = Color.White;
+            button3.Location = new Point(10, 9);
+            button3.Name = "button3";
+            button3.Size = new Size(245, 55);
+            button3.TabIndex = 13;
+            button3.Text = "          Seetings";
+            button3.TextAlign = ContentAlignment.MiddleLeft;
+            button3.UseVisualStyleBackColor = false;
             // 
-            // helpToolStripMenuItem
+            // panel4
             // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.videoToolStripMenuItem});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(65, 29);
-            this.helpToolStripMenuItem.Text = "Help";
+            panel4.BackColor = Color.Transparent;
+            panel4.Controls.Add(button4);
+            panel4.Location = new Point(3, 287);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(265, 70);
+            panel4.TabIndex = 14;
             // 
-            // videoToolStripMenuItem
+            // button4
             // 
-            this.videoToolStripMenuItem.Name = "videoToolStripMenuItem";
-            this.videoToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
-            this.videoToolStripMenuItem.Text = "QR video";
+            button4.BackColor = Color.Transparent;
+            button4.BackgroundImageLayout = ImageLayout.None;
+            button4.FlatAppearance.BorderSize = 0;
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button4.ForeColor = Color.White;
+            button4.Location = new Point(10, 9);
+            button4.Name = "button4";
+            button4.Size = new Size(245, 55);
+            button4.TabIndex = 13;
+            button4.Text = "          Help  ";
+            button4.TextAlign = ContentAlignment.MiddleLeft;
+            button4.UseVisualStyleBackColor = false;
             // 
-            // languageToolStripMenuItem
+            // pictureBox1
             // 
-            this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
-            this.languageToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
-            this.languageToolStripMenuItem.Text = "Language";
+            pictureBox1.BackColor = Color.White;
+            pictureBox1.Location = new Point(-2, -22);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(1078, 689);
+            pictureBox1.TabIndex = 3;
+            pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.BackgroundImage = (Image)resources.GetObject("pictureBox2.BackgroundImage");
+            pictureBox2.InitialImage = (Image)resources.GetObject("pictureBox2.InitialImage");
+            pictureBox2.Location = new Point(465, 176);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(189, 36);
+            pictureBox2.TabIndex = 4;
+            pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.BackgroundImage = (Image)resources.GetObject("pictureBox3.BackgroundImage");
+            pictureBox3.Location = new Point(465, 218);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(296, 51);
+            pictureBox3.TabIndex = 5;
+            pictureBox3.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            pictureBox4.BackgroundImage = (Image)resources.GetObject("pictureBox4.BackgroundImage");
+            pictureBox4.Location = new Point(465, 275);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(281, 45);
+            pictureBox4.TabIndex = 6;
+            pictureBox4.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            pictureBox5.BackgroundImage = (Image)resources.GetObject("pictureBox5.BackgroundImage");
+            pictureBox5.Location = new Point(665, 300);
+            pictureBox5.Name = "pictureBox5";
+            pictureBox5.Size = new Size(50, 19);
+            pictureBox5.TabIndex = 7;
+            pictureBox5.TabStop = false;
+            // 
+            // pictureBox6
+            // 
+            pictureBox6.BackgroundImage = (Image)resources.GetObject("pictureBox6.BackgroundImage");
+            pictureBox6.Location = new Point(653, 276);
+            pictureBox6.Name = "pictureBox6";
+            pictureBox6.Size = new Size(81, 21);
+            pictureBox6.TabIndex = 8;
+            pictureBox6.TabStop = false;
+            // 
+            // panel5
+            // 
+            panel5.BackColor = Color.Transparent;
+            panel5.Controls.Add(button5);
+            panel5.Location = new Point(-2, 143);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(265, 70);
+            panel5.TabIndex = 14;
+            // 
+            // button5
+            // 
+            button5.BackColor = Color.Transparent;
+            button5.BackgroundImageLayout = ImageLayout.None;
+            button5.FlatAppearance.BorderSize = 0;
+            button5.FlatStyle = FlatStyle.Flat;
+            button5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button5.ForeColor = Color.White;
+            button5.Location = new Point(10, 9);
+            button5.Name = "button5";
+            button5.Size = new Size(245, 55);
+            button5.TabIndex = 13;
+            button5.Text = "           Home  ";
+            button5.TextAlign = ContentAlignment.MiddleLeft;
+            button5.UseVisualStyleBackColor = false;
+            // 
+            // panel6
+            // 
+            panel6.BackColor = Color.Transparent;
+            panel6.Controls.Add(button6);
+            panel6.Location = new Point(0, 360);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(265, 70);
+            panel6.TabIndex = 14;
+            // 
+            // button6
+            // 
+            button6.BackColor = Color.Transparent;
+            button6.BackgroundImageLayout = ImageLayout.None;
+            button6.FlatAppearance.BorderSize = 0;
+            button6.FlatStyle = FlatStyle.Flat;
+            button6.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button6.ForeColor = Color.White;
+            button6.Location = new Point(10, 9);
+            button6.Name = "button6";
+            button6.Size = new Size(245, 55);
+            button6.TabIndex = 13;
+            button6.Text = "          About";
+            button6.TextAlign = ContentAlignment.MiddleLeft;
+            button6.UseVisualStyleBackColor = false;
+            // 
+            // panel7
+            // 
+            panel7.BackColor = Color.Transparent;
+            panel7.Controls.Add(button7);
+            panel7.Location = new Point(1, 432);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(265, 70);
+            panel7.TabIndex = 14;
+            // 
+            // button7
+            // 
+            button7.BackColor = Color.Transparent;
+            button7.BackgroundImageLayout = ImageLayout.None;
+            button7.FlatAppearance.BorderSize = 0;
+            button7.FlatStyle = FlatStyle.Flat;
+            button7.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button7.ForeColor = Color.White;
+            button7.Location = new Point(10, 9);
+            button7.Name = "button7";
+            button7.Size = new Size(245, 55);
+            button7.TabIndex = 13;
+            button7.Text = "          Privacy policy";
+            button7.TextAlign = ContentAlignment.MiddleLeft;
+            button7.UseVisualStyleBackColor = false;
+            // 
+            // panel8
+            // 
+            panel8.BackColor = Color.Transparent;
+            panel8.Controls.Add(button8);
+            panel8.Location = new Point(0, 603);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(265, 45);
+            panel8.TabIndex = 15;
+            // 
+            // button8
+            // 
+            button8.BackColor = Color.Transparent;
+            button8.BackgroundImageLayout = ImageLayout.None;
+            button8.FlatAppearance.BorderSize = 0;
+            button8.FlatStyle = FlatStyle.Flat;
+            button8.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            button8.ForeColor = Color.White;
+            button8.Location = new Point(10, 5);
+            button8.Name = "button8";
+            button8.Size = new Size(245, 35);
+            button8.TabIndex = 13;
+            button8.Text = "2024 - AsterixDecoder.org";
+            button8.UseVisualStyleBackColor = false;
+            // 
+            // pictureBox7
+            // 
+            pictureBox7.BackgroundImage = (Image)resources.GetObject("pictureBox7.BackgroundImage");
+            pictureBox7.Location = new Point(853, 606);
+            pictureBox7.Name = "pictureBox7";
+            pictureBox7.Size = new Size(216, 44);
+            pictureBox7.TabIndex = 9;
+            pictureBox7.TabStop = false;
             // 
             // Welcome
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1000, 562);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Name = "Welcome";
-            this.Text = "Welcome";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1068, 650);
+            Controls.Add(pictureBox7);
+            Controls.Add(pictureBox6);
+            Controls.Add(pictureBox5);
+            Controls.Add(pictureBox4);
+            Controls.Add(pictureBox3);
+            Controls.Add(pictureBox2);
+            Controls.Add(flowLayoutPanel1);
+            Controls.Add(button1);
+            Controls.Add(pictureBox1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Name = "Welcome";
+            Text = "Welcome";
+            flowLayoutPanel1.ResumeLayout(false);
+            panel3.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
+            panel5.ResumeLayout(false);
+            panel6.ResumeLayout(false);
+            panel7.ResumeLayout(false);
+            panel8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
 
         private Button button1;
-        private MenuStrip menuStrip1;
-        private ToolStripMenuItem aboutUsToolStripMenuItem;
-        private ToolStripMenuItem asterixDecoderToolStripMenuItem;
-        private ToolStripMenuItem usToolStripMenuItem;
-        private ToolStripMenuItem contactToolStripMenuItem;
-        private ToolStripMenuItem privacyPolicyToolStripMenuItem;
-        private ToolStripMenuItem helpToolStripMenuItem;
-        private ToolStripMenuItem videoToolStripMenuItem;
-        private ToolStripMenuItem languageToolStripMenuItem;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private PictureBox pictureBox1;
+        private PictureBox pictureBox2;
+        private PictureBox pictureBox3;
+        private PictureBox pictureBox4;
+        private PictureBox pictureBox5;
+        private PictureBox pictureBox6;
+        private Panel panel3;
+        private Button button2;
+        private Panel panel1;
+        private Panel panel2;
+        private Button button3;
+        private Panel panel4;
+        private Button button4;
+        private Panel panel7;
+        private Button button7;
+        private Panel panel6;
+        private Button button6;
+        private Panel panel5;
+        private Button button5;
+        private Panel panel8;
+        private Button button8;
+        private PictureBox pictureBox7;
     }
 }

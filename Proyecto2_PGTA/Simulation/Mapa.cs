@@ -57,31 +57,31 @@ namespace Simulation
         //static List<List<object[]>> currentPos(List<List<object>> cat048)
         //{
 
-            // Crear la lista que almacenará las listas internas de string[]
-            //List<List<object[]>> list = new List<List<object[]>>();
+        // Crear la lista que almacenará las listas internas de string[]
+        //List<List<object[]>> list = new List<List<object[]>>();
 
-            // Recorrer cada lista de CAT048 en la lista principal
-            //foreach (List<object> aircraftList in cat048)
-            //{
-                // Crear una lista de string[] para cada lista de CAT048
-                //List<object[]> currentAircraftList = new List<object[]>();
+        // Recorrer cada lista de CAT048 en la lista principal
+        //foreach (List<object> aircraftList in cat048)
+        //{
+        // Crear una lista de string[] para cada lista de CAT048
+        //List<object[]> currentAircraftList = new List<object[]>();
 
-                // Añadir la lista de string[] a la lista principal
-                //list.Add(currentAircraftList);
+        // Añadir la lista de string[] a la lista principal
+        //list.Add(currentAircraftList);
 
-                // Recorrer cada objeto CAT048 en la lista actual
-                //foreach (CAT048 aircraft in aircraftList)
-                //{
-                    // Añadir un array de strings con las propiedades LAT, LON y TN de cada aircraft
-                    //currentAircraftList.Add(new string[]
-                    //{
-                //aircraft.LAT,
-                //aircraft.LON,
-                //aircraft.TN
-                   // });
-                //}
-           // }
-            //return list;
+        // Recorrer cada objeto CAT048 en la lista actual
+        //foreach (CAT048 aircraft in aircraftList)
+        //{
+        // Añadir un array de strings con las propiedades LAT, LON y TN de cada aircraft
+        //currentAircraftList.Add(new string[]
+        //{
+        //aircraft.LAT,
+        //aircraft.LON,
+        //aircraft.TN
+        // });
+        //}
+        // }
+        //return list;
         //}
         private void CloseBtn_Click(object sender, EventArgs e)
         {

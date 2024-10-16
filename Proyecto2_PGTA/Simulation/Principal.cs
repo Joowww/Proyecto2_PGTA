@@ -69,8 +69,8 @@ namespace Simulation
                     message.Add(LAT);
                     message.Add(LON);
                     allMessages.Add(message);
-                }         
-                
+                }
+
             }
             catch (Exception ex)
             {
