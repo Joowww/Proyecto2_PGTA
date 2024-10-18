@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.RunBtn = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -44,15 +44,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // RunBtn
             // 
-            this.button1.Location = new System.Drawing.Point(52, 85);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 34);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Run";
-            this.button1.UseVisualStyleBackColor = true;
+            this.RunBtn.Location = new System.Drawing.Point(52, 85);
+            this.RunBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.RunBtn.Name = "RunBtn";
+            this.RunBtn.Size = new System.Drawing.Size(112, 34);
+            this.RunBtn.TabIndex = 0;
+            this.RunBtn.Text = "Run";
+            this.RunBtn.UseVisualStyleBackColor = true;
+            this.RunBtn.Click += new System.EventHandler(this.RunBtn_Click);
             // 
             // button2
             // 
@@ -186,7 +187,7 @@
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.RunBtn);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Mapa";
             this.Text = "Mapa";
@@ -199,7 +200,7 @@
 
         #endregion
 
-        private Button button1;
+        private Button RunBtn;
         private Button button2;
         private Button button3;
         private Button button4;

@@ -12,19 +12,27 @@ using GMap.NET.WindowsForms.Markers;
 using GMap.NET.WindowsForms;
 using AstDecoder;
 using Accord.Statistics;
+using GMap.NET.MapProviders;
 
 namespace Simulation
 {
     public partial class Mapa : Form
     {
         GMapControl mapControl;
-        public Mapa()
+        private List<List<object>> FiltredMessages;
+
+        public Mapa(List<List<object>> filtredMessages)
         {
             InitializeComponent();
-        }
+            FiltredMessages = filtredMessages;
 
-        private void Mapa_Load(object sender, EventArgs e)
-        {
+            mapControl = new GMapControl();
+            mapControl.MapProvider = GMapProviders.GoogleMap;
+            mapControl.Dock = DockStyle.Fill;
+            GMaps.Instance.Mode = AccessMode.ServerAndCache;
+            mapControl.ShowCenter = false;
+            panel1.Controls.Add(mapControl);
+
             comboBox1.Items.Add("Option 1");
             comboBox1.Items.Add("Option 2");
             comboBox1.Items.Add("Option 3");
@@ -32,57 +40,25 @@ namespace Simulation
             comboBox2.Items.Add("Option 1");
             comboBox2.Items.Add("Option 2");
             comboBox2.Items.Add("Option 3");
+        }
 
-            mapControl = new GMapControl();
-            mapControl.MapProvider = GMap.NET.MapProviders.BingMapProvider.Instance;
-            mapControl.Dock = DockStyle.Fill;
-            GMaps.Instance.Mode = AccessMode.ServerAndCache;
-            mapControl.ShowCenter = false;
-            panel1.Controls.Add(mapControl);
+        private void Mapa_Load(object sender, EventArgs e)
+        {
+            mapControl.Position = new PointLatLng(41.298, 2.080);
 
-            // Crear un marcador en la posición inicial
-            PointLatLng InitialPos = new PointLatLng(41.298, 2.080);
-            GMapMarker marker = new GMarkerGoogle(InitialPos, GMarkerGoogleType.red_dot);
-            GMapOverlay markersOverlay = new GMapOverlay("markers");
-            markersOverlay.Markers.Add(marker);
-
-            // Añadir el overlay de marcadores al control del mapa
-            mapControl.Overlays.Add(markersOverlay);
-            mapControl.Zoom = 1000;  // Establecer el zoom al nivel deseado
+            mapControl.MinZoom = 1;
+            mapControl.MaxZoom = 30;
+            mapControl.Zoom = 12;
 
             mapControl.Update();
 
         }
 
-        //static List<List<object[]>> currentPos(List<List<object>> cat048)
-        //{
+        private void RunBtn_Click(object sender, EventArgs e)
+        {
 
-        // Crear la lista que almacenará las listas internas de string[]
-        //List<List<object[]>> list = new List<List<object[]>>();
+        }
 
-        // Recorrer cada lista de CAT048 en la lista principal
-        //foreach (List<object> aircraftList in cat048)
-        //{
-        // Crear una lista de string[] para cada lista de CAT048
-        //List<object[]> currentAircraftList = new List<object[]>();
-
-        // Añadir la lista de string[] a la lista principal
-        //list.Add(currentAircraftList);
-
-        // Recorrer cada objeto CAT048 en la lista actual
-        //foreach (CAT048 aircraft in aircraftList)
-        //{
-        // Añadir un array de strings con las propiedades LAT, LON y TN de cada aircraft
-        //currentAircraftList.Add(new string[]
-        //{
-        //aircraft.LAT,
-        //aircraft.LON,
-        //aircraft.TN
-        // });
-        //}
-        // }
-        //return list;
-        //}
         private void CloseBtn_Click(object sender, EventArgs e)
         {
             Application.Exit();

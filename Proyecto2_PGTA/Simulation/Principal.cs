@@ -40,6 +40,8 @@ namespace Simulation
 
         private void SimulateBtn_Click(object sender, EventArgs e)
         {
+            List<List<object>> filtredMessages = new List<List<object>>();
+
             try
             {
                 string rutaCSV = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ASTERIX.csv"); 
@@ -80,24 +82,22 @@ namespace Simulation
 
                 string selection = comboBox1.SelectedItem.ToString();
 
-                List<List<object>> filtredData = new List<List<object>>();
-
                 // Ejecutar la función según la opción seleccionada
                 if (selection == "All data")
                 {
-                    filtredData = Option1(allMessages);
+                    filtredMessages = Option1(allMessages);
                 }
                 else if (selection == "Removing pure blanks")
                 {
-                    filtredData = Option2(allMessages);
+                    filtredMessages = Option2(allMessages);
                 }
                 else if (selection == "Removing fixed transponders")
                 {
-                    filtredData = Option3(allMessages);
+                    filtredMessages = Option3(allMessages);
                 }
                 else if (selection == "Combination of these")
                 {
-                    filtredData = Option4(allMessages);
+                    filtredMessages = Option4(allMessages);
                 }
 
             }
@@ -106,7 +106,7 @@ namespace Simulation
                 MessageBox.Show("There was an error reading the file: " + ex.Message);
             }
 
-            Mapa mapa = new Mapa();
+            Mapa mapa = new Mapa(filtredMessages);
             // Oculta el Principal
             this.Hide();
             // Abrir el Mapa
@@ -119,7 +119,8 @@ namespace Simulation
             MessageBox.Show("Executing All data function.", "Simulate", MessageBoxButtons.OK, MessageBoxIcon.Information);
             // For "All data"
             // Retorno la lista tal cual, no se filtra
-            return allMessages;
+            List<List<object>> filtredMessages = allMessages;
+            return filtredMessages;
         }
 
         private List<List<object>> Option2(List<List<object>> allMessages)
@@ -127,7 +128,8 @@ namespace Simulation
             MessageBox.Show("Executing Removing pure blanks function.", "Simulate", MessageBoxButtons.OK, MessageBoxIcon.Information);
             // For "Removing pure blanks"
             // HACER FUNCION DE FILTRADO CORRESPONDIENTE
-            return allMessages; //Se cambiara por el return de la nueva lista
+            List<List<object>> filtredMessages = allMessages; 
+            return filtredMessages;
         }
 
         private List<List<object>> Option3(List<List<object>> allMessages)
@@ -135,7 +137,8 @@ namespace Simulation
             MessageBox.Show("Executing Removing fixed transponders function.", "Simulate", MessageBoxButtons.OK, MessageBoxIcon.Information);
             // For "Removing fixed transponders"
             // HACER FUNCION DE FILTRADO CORRESPONDIENTE
-            return allMessages; //Se cambiara por el return de la nueva lista
+            List<List<object>> filtredMessages = allMessages;
+            return filtredMessages;
         }
 
         private List<List<object>> Option4(List<List<object>> allMessages)
@@ -143,7 +146,8 @@ namespace Simulation
             MessageBox.Show("Executing Combination of these function.", "Simulate", MessageBoxButtons.OK, MessageBoxIcon.Information);
             // For "Combination of these"
             // HACER FUNCION DE FILTRADO CORRESPONDIENTE
-            return allMessages; //Se cambiara por el return de la nueva lista
+            List<List<object>> filtredMessages = allMessages;
+            return filtredMessages;
         }
 
     }
