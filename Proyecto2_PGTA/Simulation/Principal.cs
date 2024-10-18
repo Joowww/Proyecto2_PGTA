@@ -68,6 +68,7 @@ namespace Simulation
                     int UTC_time_s = Convert.ToInt32(row[4]);
                     double LAT = Convert.ToDouble(row[5]);
                     double LON = Convert.ToDouble(row[6]);
+                    double H = Convert.ToDouble(row[7]);
                     string TYP = Convert.ToString(row[8]);
                     string TA = Convert.ToString(row[35]);
 
@@ -75,6 +76,7 @@ namespace Simulation
                     message.Add(UTC_time_s);
                     message.Add(LAT);
                     message.Add(LON);
+                    message.Add(H);
                     message.Add(TYP);
                     message.Add(TA);
                     allMessages.Add(message);
