@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using GMap.NET;
 using GMap.NET.WindowsForms.Markers;
 using GMap.NET.WindowsForms;
+using System.Drawing; // Para el tipo Color
 using AstDecoder;
 using Accord.Statistics;
 using GMap.NET.MapProviders;
@@ -24,7 +25,9 @@ namespace Simulation
         private int currentSecond;
         private int maxSecond; // Variable para almacenar el máximo segundo disponible
         private GMapOverlay markersOverlay; // Capa de marcadores
+        private GMapOverlay routesOverlay; // Capa de rutas
         private Dictionary<string, GMarkerGoogle> aircraftMarkers; // Guarda los target address de los aviones pintados
+        private Dictionary<string, List<PointLatLng>> aircraftRoutes; // Almacena las rutas de los aviones
 
         public Mapa(List<List<object>> filtredMessages)
         {
@@ -59,8 +62,11 @@ namespace Simulation
 
             // Inicializar la capa de marcadores
             markersOverlay = new GMapOverlay("markers");
+            routesOverlay = new GMapOverlay("routes");
             mapControl.Overlays.Add(markersOverlay);
+            mapControl.Overlays.Add(routesOverlay);
             aircraftMarkers = new Dictionary<string, GMarkerGoogle>();
+            aircraftRoutes = new Dictionary<string, List<PointLatLng>>(); // Inicializar el diccionario para las rutas
         }
 
         private void Mapa_Load(object sender, EventArgs e)
@@ -74,44 +80,30 @@ namespace Simulation
 
             mapControl.Update();
 
+            // Pintar los primeros 4 segundos desde el tiempo inicial (currentSecond) al cargar el formulario
+            for (int i = 0; i < 4; i++)
+            {
+                List<List<object>> result = AircraftsPerSecond(FiltredMessages, currentSecond + i);
+                PaintAircrafts(result);
+            }
+
+            // Refrescar el mapa
+            mapControl.Refresh();
+
+            // Configurar el segundo de inicio para la simulación
+            currentSecond += 4; // El siguiente segundo será el 5º relativo al primer valor de tiempo
+
         }
 
         private void MoveBtn_Click(object sender, EventArgs e)
         {
             if (currentSecond <= maxSecond)
             {
+                // Obtener los aviones del segundo actual
                 List<List<object>> result = AircraftsPerSecond(FiltredMessages, currentSecond);
 
-                // Recorrer la lista de aviones encontrados y agregar un marcador para cada uno
-                foreach (List<object> aircraft in result)
-                {
-                    // Obtener latitud y longitud del avión
-                    double latitude = Convert.ToDouble(aircraft[1]);
-                    double longitude = Convert.ToDouble(aircraft[2]);
-                    double H = Convert.ToDouble(aircraft[3]);
-                    string TA = Convert.ToString(aircraft[5]);
-
-                    PointLatLng Position = new PointLatLng(latitude, longitude);
-
-                    // Verificar si el TA ya está en el diccionario
-                    if (aircraftMarkers.ContainsKey(TA))
-                    {
-                        // Eliminar el marcador anterior
-                        markersOverlay.Markers.Remove(aircraftMarkers[TA]);
-                    }
-
-                    GMarkerGoogle marker = new GMarkerGoogle(Position, GMarkerGoogleType.green);
-
-                    // Agregar un tooltip al marcador
-                    marker.ToolTip = new GMap.NET.WindowsForms.ToolTips.GMapRoundedToolTip(marker);
-                    marker.ToolTipText = $"{TA}\nLatitude: {latitude}\nLongitude: {longitude}\nHeight: {H}";
-
-                    markersOverlay.Markers.Add(marker);
-
-                    // Actualizar el diccionario con el nuevo marcador
-                    aircraftMarkers[TA] = marker;
-
-                }
+                // Pintar los aviones del segundo actual
+                PaintAircrafts(result);
 
                 // Forzar la actualización del mapa
                 mapControl.Refresh();
@@ -142,15 +134,60 @@ namespace Simulation
             return aircraftsSecond;
         }
 
-        private void ClearMarkers()
+        // Método para pintar los aviones en el mapa
+        private void PaintAircrafts(List<List<object>> aircrafts)
         {
-            // Limpiar los marcadores del mapa
-            markersOverlay.Markers.Clear();
+            foreach (List<object> aircraft in aircrafts)
+            {
+                // Obtener los datos del avión
+                double latitude = Convert.ToDouble(aircraft[1]);
+                double longitude = Convert.ToDouble(aircraft[2]);
+                double H = Convert.ToDouble(aircraft[3]);
+                string TA = Convert.ToString(aircraft[5]);
 
-            // Forzar la actualización del mapa
-            mapControl.Refresh();
+                PointLatLng Position = new PointLatLng(latitude, longitude);
+
+                // Verificar si el TA ya está en el diccionario
+                if (!string.IsNullOrEmpty(TA))
+                {
+                    if (aircraftMarkers.ContainsKey(TA))
+                    {
+                        // Eliminar el marcador anterior
+                        markersOverlay.Markers.Remove(aircraftMarkers[TA]);
+                    }
+
+                    // Crear un nuevo marcador
+                    GMarkerGoogle marker = new GMarkerGoogle(Position, GMarkerGoogleType.green);
+
+                    // Agregar un tooltip al marcador
+                    marker.ToolTip = new GMap.NET.WindowsForms.ToolTips.GMapRoundedToolTip(marker);
+                    marker.ToolTipText = $"{TA}\nLatitude: {latitude}\nLongitude: {longitude}\nHeight: {H}";
+
+                    // Agregar el nuevo marcador a la capa de marcadores
+                    markersOverlay.Markers.Add(marker);
+
+                    // Actualizar el diccionario con el nuevo marcador
+                    aircraftMarkers[TA] = marker;
+
+                    // Agregar la posición actual a la ruta del avión
+                    if (!aircraftRoutes.ContainsKey(TA))
+                    {
+                        aircraftRoutes[TA] = new List<PointLatLng>(); // Inicializar la lista si no existe
+                    }
+                    aircraftRoutes[TA].Add(Position); // Agregar la posición actual
+
+                    // Dibujar la ruta
+                    if (aircraftRoutes[TA].Count > 1)
+                    {
+                        // Crear una polilínea para la ruta
+                        var route = new GMapPolygon(aircraftRoutes[TA], "Ruta " + TA);
+                        route.Stroke = new Pen(Color.Blue, 2); // Configurar el grosor y el color de la línea
+                        routesOverlay.Polygons.Add(route); // Agregar la ruta a la capa de rutas
+                    }
+
+                }
+            }
         }
-
         private void ChangeMapBtn_Click(object sender, EventArgs e)
         {
             string selectedMapType = comboBox1.SelectedItem.ToString();
@@ -183,7 +220,7 @@ namespace Simulation
             // Actualizar el mapa con el nuevo proveedor
             mapControl.Refresh();
         }
-    
+
         private void CloseBtn_Click(object sender, EventArgs e)
         {
             Application.Exit();
