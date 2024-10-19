@@ -57,6 +57,11 @@
             button3 = new Button();
             panel4 = new Panel();
             buttonSettings = new Button();
+            HelpContainer = new Panel();
+            panel13 = new Panel();
+            buttonQRVideoT = new Button();
+            panel12 = new Panel();
+            buttonTutorial = new Button();
             panel5 = new Panel();
             buttonHelp = new Button();
             panel6 = new Panel();
@@ -64,11 +69,6 @@
             SidebarTimer = new System.Windows.Forms.Timer(components);
             AboutUsTimer = new System.Windows.Forms.Timer(components);
             SettingsTimer = new System.Windows.Forms.Timer(components);
-            HelpContainer = new Panel();
-            panel13 = new Panel();
-            buttonQRVideoT = new Button();
-            panel12 = new Panel();
-            buttonTutorial = new Button();
             HelpTimer = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -88,19 +88,19 @@
             panel11.SuspendLayout();
             panel10.SuspendLayout();
             panel4.SuspendLayout();
-            panel5.SuspendLayout();
-            panel6.SuspendLayout();
             HelpContainer.SuspendLayout();
             panel13.SuspendLayout();
             panel12.SuspendLayout();
+            panel5.SuspendLayout();
+            panel6.SuspendLayout();
             SuspendLayout();
             // 
             // button1
             // 
-            button1.Location = new Point(476, 359);
+            button1.Location = new Point(465, 359);
             button1.Margin = new Padding(2);
             button1.Name = "button1";
-            button1.Size = new Size(270, 46);
+            button1.Size = new Size(281, 46);
             button1.TabIndex = 1;
             button1.Text = "Start";
             button1.UseVisualStyleBackColor = true;
@@ -182,7 +182,7 @@
             sidebar.MaximumSize = new Size(250, 650);
             sidebar.MinimumSize = new Size(103, 650);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(250, 650);
+            sidebar.Size = new Size(103, 650);
             sidebar.TabIndex = 10;
             // 
             // panel1
@@ -441,77 +441,6 @@
             buttonSettings.UseVisualStyleBackColor = false;
             buttonSettings.Click += buttonSettings_Click;
             // 
-            // panel5
-            // 
-            panel5.Controls.Add(buttonHelp);
-            panel5.Location = new Point(2, 2);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(272, 60);
-            panel5.TabIndex = 15;
-            // 
-            // buttonHelp
-            // 
-            buttonHelp.BackColor = Color.Transparent;
-            buttonHelp.Dock = DockStyle.Left;
-            buttonHelp.FlatAppearance.BorderColor = Color.FromArgb(35, 40, 45);
-            buttonHelp.FlatStyle = FlatStyle.Flat;
-            buttonHelp.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonHelp.ForeColor = Color.White;
-            buttonHelp.Image = (Image)resources.GetObject("buttonHelp.Image");
-            buttonHelp.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonHelp.Location = new Point(0, 0);
-            buttonHelp.Name = "buttonHelp";
-            buttonHelp.Padding = new Padding(5, 0, 0, 0);
-            buttonHelp.Size = new Size(247, 60);
-            buttonHelp.TabIndex = 11;
-            buttonHelp.Text = "                Help";
-            buttonHelp.TextAlign = ContentAlignment.MiddleLeft;
-            buttonHelp.UseVisualStyleBackColor = false;
-            buttonHelp.Click += buttonHelp_Click;
-            // 
-            // panel6
-            // 
-            panel6.Controls.Add(buttonPPolicy);
-            panel6.Location = new Point(3, 414);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(272, 60);
-            panel6.TabIndex = 16;
-            // 
-            // buttonPPolicy
-            // 
-            buttonPPolicy.BackColor = Color.Transparent;
-            buttonPPolicy.Dock = DockStyle.Left;
-            buttonPPolicy.FlatAppearance.BorderColor = Color.FromArgb(35, 40, 45);
-            buttonPPolicy.FlatStyle = FlatStyle.Flat;
-            buttonPPolicy.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonPPolicy.ForeColor = Color.White;
-            buttonPPolicy.Image = (Image)resources.GetObject("buttonPPolicy.Image");
-            buttonPPolicy.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonPPolicy.Location = new Point(0, 0);
-            buttonPPolicy.Name = "buttonPPolicy";
-            buttonPPolicy.Padding = new Padding(5, 0, 0, 0);
-            buttonPPolicy.Size = new Size(247, 60);
-            buttonPPolicy.TabIndex = 11;
-            buttonPPolicy.Text = "                Privacy Policy";
-            buttonPPolicy.TextAlign = ContentAlignment.MiddleLeft;
-            buttonPPolicy.UseVisualStyleBackColor = false;
-            buttonPPolicy.Click += buttonPPolicy_Click;
-            // 
-            // SidebarTimer
-            // 
-            SidebarTimer.Interval = 10;
-            SidebarTimer.Tick += SidebarTimer_Tick;
-            // 
-            // AboutUsTimer
-            // 
-            AboutUsTimer.Interval = 10;
-            AboutUsTimer.Tick += AboutUsTimer_Tick;
-            // 
-            // SettingsTimer
-            // 
-            SettingsTimer.Interval = 10;
-            SettingsTimer.Tick += SettingsTimer_Tick;
-            // 
             // HelpContainer
             // 
             HelpContainer.BackColor = Color.FromArgb(35, 40, 45);
@@ -583,6 +512,77 @@
             buttonTutorial.UseVisualStyleBackColor = false;
             buttonTutorial.Click += buttonTutorial_Click;
             // 
+            // panel5
+            // 
+            panel5.Controls.Add(buttonHelp);
+            panel5.Location = new Point(2, 2);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(272, 60);
+            panel5.TabIndex = 15;
+            // 
+            // buttonHelp
+            // 
+            buttonHelp.BackColor = Color.Transparent;
+            buttonHelp.Dock = DockStyle.Left;
+            buttonHelp.FlatAppearance.BorderColor = Color.FromArgb(35, 40, 45);
+            buttonHelp.FlatStyle = FlatStyle.Flat;
+            buttonHelp.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonHelp.ForeColor = Color.White;
+            buttonHelp.Image = (Image)resources.GetObject("buttonHelp.Image");
+            buttonHelp.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonHelp.Location = new Point(0, 0);
+            buttonHelp.Name = "buttonHelp";
+            buttonHelp.Padding = new Padding(5, 0, 0, 0);
+            buttonHelp.Size = new Size(247, 60);
+            buttonHelp.TabIndex = 11;
+            buttonHelp.Text = "                Help";
+            buttonHelp.TextAlign = ContentAlignment.MiddleLeft;
+            buttonHelp.UseVisualStyleBackColor = false;
+            buttonHelp.Click += buttonHelp_Click;
+            // 
+            // panel6
+            // 
+            panel6.Controls.Add(buttonPPolicy);
+            panel6.Location = new Point(3, 414);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(272, 60);
+            panel6.TabIndex = 16;
+            // 
+            // buttonPPolicy
+            // 
+            buttonPPolicy.BackColor = Color.Transparent;
+            buttonPPolicy.Dock = DockStyle.Left;
+            buttonPPolicy.FlatAppearance.BorderColor = Color.FromArgb(35, 40, 45);
+            buttonPPolicy.FlatStyle = FlatStyle.Flat;
+            buttonPPolicy.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonPPolicy.ForeColor = Color.White;
+            buttonPPolicy.Image = (Image)resources.GetObject("buttonPPolicy.Image");
+            buttonPPolicy.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonPPolicy.Location = new Point(0, 0);
+            buttonPPolicy.Name = "buttonPPolicy";
+            buttonPPolicy.Padding = new Padding(5, 0, 0, 0);
+            buttonPPolicy.Size = new Size(247, 60);
+            buttonPPolicy.TabIndex = 11;
+            buttonPPolicy.Text = "                Privacy Policy";
+            buttonPPolicy.TextAlign = ContentAlignment.MiddleLeft;
+            buttonPPolicy.UseVisualStyleBackColor = false;
+            buttonPPolicy.Click += buttonPPolicy_Click;
+            // 
+            // SidebarTimer
+            // 
+            SidebarTimer.Interval = 10;
+            SidebarTimer.Tick += SidebarTimer_Tick;
+            // 
+            // AboutUsTimer
+            // 
+            AboutUsTimer.Interval = 10;
+            AboutUsTimer.Tick += AboutUsTimer_Tick;
+            // 
+            // SettingsTimer
+            // 
+            SettingsTimer.Interval = 10;
+            SettingsTimer.Tick += SettingsTimer_Tick;
+            // 
             // HelpTimer
             // 
             HelpTimer.Interval = 10;
@@ -624,11 +624,11 @@
             panel11.ResumeLayout(false);
             panel10.ResumeLayout(false);
             panel4.ResumeLayout(false);
-            panel5.ResumeLayout(false);
-            panel6.ResumeLayout(false);
             HelpContainer.ResumeLayout(false);
             panel13.ResumeLayout(false);
             panel12.ResumeLayout(false);
+            panel5.ResumeLayout(false);
+            panel6.ResumeLayout(false);
             ResumeLayout(false);
         }
 

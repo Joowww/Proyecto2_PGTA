@@ -141,8 +141,7 @@ namespace Simulation
         private void buttonPPolicy_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Group 9 PGTA 2024" +
-                "\n\tAle" +
-                "\n\tmarina.martin.ferrer@estudiantat.upc.edu");
+                "\n\t 2024 AsterixDecoder.org");
         }
 
         private void HelpTimer_Tick(object sender, EventArgs e)
