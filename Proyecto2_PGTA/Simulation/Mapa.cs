@@ -21,6 +21,10 @@ namespace Simulation
         GMapControl mapControl;
         List<List<object>> FiltredMessages { get; set; }
 
+        private int currentSecond;
+        private int maxSecond; // Variable para almacenar el máximo segundo disponible
+        private GMapOverlay markersOverlay; // Capa de marcadores
+
         public Mapa(List<List<object>> filtredMessages)
         {
             InitializeComponent();
@@ -40,6 +44,17 @@ namespace Simulation
             comboBox2.Items.Add("Option 1");
             comboBox2.Items.Add("Option 2");
             comboBox2.Items.Add("Option 3");
+
+            // Establecer el primer segundo como el primero en la lista de aviones
+            if (FiltredMessages.Count > 0)
+            {
+                currentSecond = Convert.ToInt32(FiltredMessages[0][0]);
+                maxSecond = FiltredMessages.Max(aircraft => Convert.ToInt32(aircraft[0])); // Obtener el segundo máximo
+            }
+
+            // Inicializar la capa de marcadores
+            markersOverlay = new GMapOverlay("markers");
+            mapControl.Overlays.Add(markersOverlay);
         }
 
         private void Mapa_Load(object sender, EventArgs e)
@@ -48,7 +63,7 @@ namespace Simulation
 
             mapControl.MinZoom = 1;
             mapControl.MaxZoom = 30;
-            mapControl.Zoom = 10;
+            mapControl.Zoom = 8;
 
             mapControl.Update();
 
@@ -56,52 +71,44 @@ namespace Simulation
 
         private void RunBtn_Click(object sender, EventArgs e)
         {
-            List<List<object>> result = AircraftsPerSecond(FiltredMessages, 28801);
-
-            // Crear un objeto de superposición para los marcadores
-            GMapOverlay markers = new GMapOverlay("markers");
-
-            // Recorrer la lista de aviones encontrados y agregar un marcador para cada uno
-            foreach (List<object> aircraft in result)
+            if (currentSecond <= maxSecond)
             {
-                // Obtener latitud y longitud del avión
-                double latitude = Convert.ToDouble(aircraft[1]);
-                double longitude = Convert.ToDouble(aircraft[2]);
-                double H = Convert.ToDouble(aircraft[3]);
-                string TA = Convert.ToString(aircraft[5]);
+                // Limpiar los marcadores del segundo anterior
+                ClearMarkers();
 
-                PointLatLng Position = new PointLatLng(latitude, longitude);
+                List<List<object>> result = AircraftsPerSecond(FiltredMessages, currentSecond);
 
-                GMarkerGoogle marker = new GMarkerGoogle(Position, GMarkerGoogleType.green);
+                // Recorrer la lista de aviones encontrados y agregar un marcador para cada uno
+                foreach (List<object> aircraft in result)
+                {
+                    // Obtener latitud y longitud del avión
+                    double latitude = Convert.ToDouble(aircraft[1]);
+                    double longitude = Convert.ToDouble(aircraft[2]);
+                    double H = Convert.ToDouble(aircraft[3]);
+                    string TA = Convert.ToString(aircraft[5]);
 
-                // Agregar un tooltip al marcador
-                marker.ToolTip = new GMap.NET.WindowsForms.ToolTips.GMapRoundedToolTip(marker);
-                marker.ToolTipText = $"{TA}\nLatitude: {latitude}\nLongitude: {longitude}\nHeight: {H}";
+                    PointLatLng Position = new PointLatLng(latitude, longitude);
 
-                markers.Markers.Add(marker);
-            }
-            // Agregar el overlay de marcadores al mapa
-            mapControl.Overlays.Add(markers);
+                    GMarkerGoogle marker = new GMarkerGoogle(Position, GMarkerGoogleType.green);
 
-            // Ajustar el zoom y la posición después de agregar los marcadores
-            if (result.Count > 0)
-            {
-                double lat = Convert.ToDouble(result[0][1]);
-                double lon = Convert.ToDouble(result[0][2]);
+                    // Agregar un tooltip al marcador
+                    marker.ToolTip = new GMap.NET.WindowsForms.ToolTips.GMapRoundedToolTip(marker);
+                    marker.ToolTipText = $"{TA}\nLatitude: {latitude}\nLongitude: {longitude}\nHeight: {H}";
 
-                // Centrar el mapa en la primera posición de los aviones
-                mapControl.SetPositionByKeywords($"{lat}, {lon}");
-                mapControl.Zoom = 11;  // Establecer un zoom adecuado para la vista
+                    markersOverlay.Markers.Add(marker);
+
+                }
 
                 // Forzar la actualización del mapa
                 mapControl.Refresh();
+
+                // Incrementar el segundo para la próxima vez que se presione el botón
+                currentSecond++;
             }
-
-        }
-
-        private void CloseBtn_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
+            else
+            {
+                MessageBox.Show("The simulation has finished");
+            }
         }
 
         static List<List<object>> AircraftsPerSecond (List<List<object>> FiltredMessages, int second)
@@ -119,6 +126,20 @@ namespace Simulation
                 }
             }
             return aircraftsSecond;
+        }
+
+        private void ClearMarkers()
+        {
+            // Limpiar los marcadores del mapa
+            markersOverlay.Markers.Clear();
+
+            // Forzar la actualización del mapa
+            mapControl.Refresh();
+        }
+
+        private void CloseBtn_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "v/o0AdmuImSiUMYXKtbzlXU4uYtYqqUQs0E5FDN6Gh5DFZkJ2JPL1vSil71JCmBNyyTinR5dPgI4pxDev6R2Vg==",
+  "dgSpecHash": "n3cIqxm3syN4MRnMKHxgNb7/pMu0RmRRh5xDbaHpPHHuJ981hDKe//YQs3FalK1UPzkbFGkceNnb4GAf2HEerQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\joelm\\OneDrive\\Documentos\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj",
+  "projectFilePath": "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\joelm\\.nuget\\packages\\accord\\3.8.0\\accord.3.8.0.nupkg.sha512",
-    "C:\\Users\\joelm\\.nuget\\packages\\accord.math\\3.8.0\\accord.math.3.8.0.nupkg.sha512",
-    "C:\\Users\\joelm\\.nuget\\packages\\visioforge.dotnet.core.redist.base.x64\\15.10.22\\visioforge.dotnet.core.redist.base.x64.15.10.22.nupkg.sha512",
-    "C:\\Users\\joelm\\.nuget\\packages\\zen.barcode.rendering.framework\\3.1.10729.1\\zen.barcode.rendering.framework.3.1.10729.1.nupkg.sha512"
+    "C:\\Users\\34652\\.nuget\\packages\\accord\\3.8.0\\accord.3.8.0.nupkg.sha512",
+    "C:\\Users\\34652\\.nuget\\packages\\accord.math\\3.8.0\\accord.math.3.8.0.nupkg.sha512",
+    "C:\\Users\\34652\\.nuget\\packages\\visioforge.dotnet.core.redist.base.x64\\15.10.22\\visioforge.dotnet.core.redist.base.x64.15.10.22.nupkg.sha512",
+    "C:\\Users\\34652\\.nuget\\packages\\zen.barcode.rendering.framework\\3.1.10729.1\\zen.barcode.rendering.framework.3.1.10729.1.nupkg.sha512"
   ],
   "logs": [
     {
