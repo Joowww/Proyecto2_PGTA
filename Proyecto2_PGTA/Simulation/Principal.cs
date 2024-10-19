@@ -72,14 +72,20 @@ namespace Simulation
                     string TYP = Convert.ToString(row[8]);
                     string TA = Convert.ToString(row[35]);
 
-                    List<object> message = new List<object>();
-                    message.Add(UTC_time_s);
-                    message.Add(LAT);
-                    message.Add(LON);
-                    message.Add(H);
-                    message.Add(TYP);
-                    message.Add(TA);
-                    allMessages.Add(message);
+                    // Validar que TA no sea null o una cadena vacía antes de agregar a allMessages
+                    if (TA != "N/A")
+                    {
+
+                        List<object> message = new List<object>();
+                        message.Add(UTC_time_s);
+                        message.Add(LAT);
+                        message.Add(LON);
+                        message.Add(H);
+                        message.Add(TYP);
+                        message.Add(TA);
+                        allMessages.Add(message);
+                    }
+
                 }
 
                 string selection = comboBox1.SelectedItem.ToString();

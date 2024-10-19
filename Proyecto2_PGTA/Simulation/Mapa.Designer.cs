@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.RunBtn = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.MoveBtn = new System.Windows.Forms.Button();
+            this.AutomaticBtn = new System.Windows.Forms.Button();
+            this.ReestartBtn = new System.Windows.Forms.Button();
+            this.ChangeMapBtn = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
@@ -44,46 +44,48 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
-            // RunBtn
+            // MoveBtn
             // 
-            this.RunBtn.Location = new System.Drawing.Point(52, 85);
-            this.RunBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.RunBtn.Name = "RunBtn";
-            this.RunBtn.Size = new System.Drawing.Size(112, 34);
-            this.RunBtn.TabIndex = 0;
-            this.RunBtn.Text = "Run";
-            this.RunBtn.UseVisualStyleBackColor = true;
-            this.RunBtn.Click += new System.EventHandler(this.RunBtn_Click);
+            this.MoveBtn.Location = new System.Drawing.Point(52, 85);
+            this.MoveBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.MoveBtn.Name = "MoveBtn";
+            this.MoveBtn.Size = new System.Drawing.Size(112, 34);
+            this.MoveBtn.TabIndex = 0;
+            this.MoveBtn.Text = "Move";
+            this.MoveBtn.UseVisualStyleBackColor = true;
+            this.MoveBtn.Click += new System.EventHandler(this.MoveBtn_Click);
             // 
-            // button2
+            // AutomaticBtn
             // 
-            this.button2.Location = new System.Drawing.Point(52, 128);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(112, 34);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Stop";
-            this.button2.UseVisualStyleBackColor = true;
+            this.AutomaticBtn.Location = new System.Drawing.Point(52, 128);
+            this.AutomaticBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.AutomaticBtn.Name = "AutomaticBtn";
+            this.AutomaticBtn.Size = new System.Drawing.Size(112, 34);
+            this.AutomaticBtn.TabIndex = 1;
+            this.AutomaticBtn.Text = "Automatic";
+            this.AutomaticBtn.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.AutomaticBtn.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // ReestartBtn
             // 
-            this.button3.Location = new System.Drawing.Point(52, 168);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(112, 34);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Reestart";
-            this.button3.UseVisualStyleBackColor = true;
+            this.ReestartBtn.Location = new System.Drawing.Point(52, 168);
+            this.ReestartBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.ReestartBtn.Name = "ReestartBtn";
+            this.ReestartBtn.Size = new System.Drawing.Size(112, 34);
+            this.ReestartBtn.TabIndex = 2;
+            this.ReestartBtn.Text = "Reestart";
+            this.ReestartBtn.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // ChangeMapBtn
             // 
-            this.button4.Location = new System.Drawing.Point(272, 352);
-            this.button4.Margin = new System.Windows.Forms.Padding(2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(112, 34);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Accept";
-            this.button4.UseVisualStyleBackColor = true;
+            this.ChangeMapBtn.Location = new System.Drawing.Point(272, 352);
+            this.ChangeMapBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.ChangeMapBtn.Name = "ChangeMapBtn";
+            this.ChangeMapBtn.Size = new System.Drawing.Size(112, 34);
+            this.ChangeMapBtn.TabIndex = 3;
+            this.ChangeMapBtn.Text = "Accept";
+            this.ChangeMapBtn.UseVisualStyleBackColor = true;
+            this.ChangeMapBtn.Click += new System.EventHandler(this.ChangeMapBtn_Click);
             // 
             // button5
             // 
@@ -184,10 +186,10 @@
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.RunBtn);
+            this.Controls.Add(this.ChangeMapBtn);
+            this.Controls.Add(this.ReestartBtn);
+            this.Controls.Add(this.AutomaticBtn);
+            this.Controls.Add(this.MoveBtn);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Mapa";
             this.Text = "Mapa";
@@ -200,10 +202,10 @@
 
         #endregion
 
-        private Button RunBtn;
-        private Button button2;
-        private Button button3;
-        private Button button4;
+        private Button MoveBtn;
+        private Button AutomaticBtn;
+        private Button ReestartBtn;
+        private Button ChangeMapBtn;
         private Button button5;
         private ComboBox comboBox1;
         private ComboBox comboBox2;

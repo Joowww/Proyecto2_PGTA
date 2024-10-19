@@ -24,6 +24,7 @@ namespace Simulation
         private int currentSecond;
         private int maxSecond; // Variable para almacenar el máximo segundo disponible
         private GMapOverlay markersOverlay; // Capa de marcadores
+        private Dictionary<string, GMarkerGoogle> aircraftMarkers; // Guarda los target address de los aviones pintados
 
         public Mapa(List<List<object>> filtredMessages)
         {
@@ -37,9 +38,13 @@ namespace Simulation
             mapControl.ShowCenter = false;
             panel1.Controls.Add(mapControl);
 
-            comboBox1.Items.Add("Option 1");
-            comboBox1.Items.Add("Option 2");
-            comboBox1.Items.Add("Option 3");
+            // Agregar elementos al ComboBox
+            comboBox1.Items.Add("Google Maps");
+            comboBox1.Items.Add("Bing Maps");
+            comboBox1.Items.Add("OpenStreetMap");
+            comboBox1.Items.Add("Google Hybrid");
+            comboBox1.Items.Add("Google Satellite");
+            comboBox1.SelectedIndex = 0; // Seleccionar la primera opción por defecto
 
             comboBox2.Items.Add("Option 1");
             comboBox2.Items.Add("Option 2");
@@ -55,10 +60,12 @@ namespace Simulation
             // Inicializar la capa de marcadores
             markersOverlay = new GMapOverlay("markers");
             mapControl.Overlays.Add(markersOverlay);
+            aircraftMarkers = new Dictionary<string, GMarkerGoogle>();
         }
 
         private void Mapa_Load(object sender, EventArgs e)
         {
+
             mapControl.Position = new PointLatLng(41.298, 2.080);
 
             mapControl.MinZoom = 1;
@@ -69,13 +76,10 @@ namespace Simulation
 
         }
 
-        private void RunBtn_Click(object sender, EventArgs e)
+        private void MoveBtn_Click(object sender, EventArgs e)
         {
             if (currentSecond <= maxSecond)
             {
-                // Limpiar los marcadores del segundo anterior
-                ClearMarkers();
-
                 List<List<object>> result = AircraftsPerSecond(FiltredMessages, currentSecond);
 
                 // Recorrer la lista de aviones encontrados y agregar un marcador para cada uno
@@ -89,6 +93,13 @@ namespace Simulation
 
                     PointLatLng Position = new PointLatLng(latitude, longitude);
 
+                    // Verificar si el TA ya está en el diccionario
+                    if (aircraftMarkers.ContainsKey(TA))
+                    {
+                        // Eliminar el marcador anterior
+                        markersOverlay.Markers.Remove(aircraftMarkers[TA]);
+                    }
+
                     GMarkerGoogle marker = new GMarkerGoogle(Position, GMarkerGoogleType.green);
 
                     // Agregar un tooltip al marcador
@@ -96,6 +107,9 @@ namespace Simulation
                     marker.ToolTipText = $"{TA}\nLatitude: {latitude}\nLongitude: {longitude}\nHeight: {H}";
 
                     markersOverlay.Markers.Add(marker);
+
+                    // Actualizar el diccionario con el nuevo marcador
+                    aircraftMarkers[TA] = marker;
 
                 }
 
@@ -137,6 +151,39 @@ namespace Simulation
             mapControl.Refresh();
         }
 
+        private void ChangeMapBtn_Click(object sender, EventArgs e)
+        {
+            string selectedMapType = comboBox1.SelectedItem.ToString();
+            // Cambiar el proveedor de mapas según la opción seleccionada con if-else
+            if (selectedMapType == "Google Maps")
+            {
+                mapControl.MapProvider = GMapProviders.GoogleMap;
+            }
+            else if (selectedMapType == "Bing Maps")
+            {
+                mapControl.MapProvider = GMapProviders.BingMap;
+            }
+            else if (selectedMapType == "OpenStreetMap")
+            {
+                mapControl.MapProvider = GMapProviders.OpenStreetMap;
+            }
+            else if (selectedMapType == "Google Hybrid")
+            {
+                mapControl.MapProvider = GMapProviders.GoogleHybridMap;
+            }
+            else if (selectedMapType == "Google Satellite")
+            {
+                mapControl.MapProvider = GMapProviders.GoogleSatelliteMap;
+            }
+            else
+            {
+                MessageBox.Show("Please select a valid map provider");
+            }
+
+            // Actualizar el mapa con el nuevo proveedor
+            mapControl.Refresh();
+        }
+    
         private void CloseBtn_Click(object sender, EventArgs e)
         {
             Application.Exit();
