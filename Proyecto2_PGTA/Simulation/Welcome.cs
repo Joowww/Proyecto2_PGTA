@@ -58,12 +58,6 @@ namespace Simulation
             }
         }
 
-        private void menuButton_Click(object sender, EventArgs e)
-        {
-            // Set timer interval to lowest to make it smoother
-            SidebarTimer.Start();
-        }
-
         private void AboutUsTimer_Tick(object sender, EventArgs e)
         {
             if (AbouUsCollapse)
@@ -84,11 +78,6 @@ namespace Simulation
                     AboutUsTimer.Stop();
                 }
             }
-        }
-
-        private void buttonAboutUs_Click(object sender, EventArgs e)
-        {
-            AboutUsTimer.Start();
         }
 
         private void SettingsTimer_Tick(object sender, EventArgs e)
@@ -113,35 +102,6 @@ namespace Simulation
             }
         }
 
-        private void buttonSettings_Click(object sender, EventArgs e)
-        {
-            SettingsTimer.Start();
-        }
-
-        private void buttonGroup_Click(object sender, EventArgs e)
-        {
-            Group9 Group = new Group9();
-            // Oculta el Principal
-            this.Hide();
-            // Abrir el Mapa
-            Group.Show();
-        }
-
-        private void buttonContactUs_Click(object sender, EventArgs e)
-        {
-            Contact Contact = new Contact();
-            // Oculta el Principal
-            this.Hide();
-            // Abrir el Mapa
-            Contact.Show();
-        }
-
-        private void buttonPPolicy_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Group 9 PGTA 2024" +
-                "\n\t 2024 AsterixDecoder.org");
-        }
-
         private void HelpTimer_Tick(object sender, EventArgs e)
         {
             if (HelpCollapse)
@@ -164,35 +124,65 @@ namespace Simulation
             }
         }
 
-        private void buttonHelp_Click(object sender, EventArgs e)
+        private void Welcome_Load(object sender, EventArgs e)
+        {
+            // Cargar el estado del tema guardado
+            isDarkMode = Properties.Settings1.Default.IsDarkMode;
+
+            // Aplicar el tema al cargar el formulario
+            ApplyTheme();
+
+            // Si el modo oscuro está activo, aplicarlo
+            if (isDarkMode)
+            {
+                Theme.SetDarkMode(this);
+            }
+            else
+            {
+                Theme.SetLightMode(this);
+            }
+        }
+
+        private void ApplyTheme()
+        {
+            // Aplica el tema al formulario actual
+            if (isDarkMode)
+            {
+                this.BackColor = Color.FromArgb(45, 45, 48);
+            }
+            else
+            {
+                this.BackColor = Color.White;
+            }
+        }
+
+        private void buttonSettings_Click_1(object sender, EventArgs e)
+        {
+            SettingsTimer.Start();
+        }
+
+        private void buttonAboutUs_Click_1(object sender, EventArgs e)
+        {
+            AboutUsTimer.Start();
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            MessageBox.Show("Ya estas en la pantalla Home.", "Instrucciones de uso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void buttonHelp_Click_1(object sender, EventArgs e)
         {
             HelpTimer.Start();
         }
 
-        private void buttonQRVideoT_Click(object sender, EventArgs e)
+        private void buttonPPolicy_Click_1(object sender, EventArgs e)
         {
-            VideoTutorial VideoTut = new VideoTutorial();
-            // Oculta el Principal
-            this.Hide();
-            // Abrir el Mapa
-            VideoTut.Show();
+            MessageBox.Show("Group 9 PGTA 2024" +
+                "\n\t 2024 AsterixDecoder.org");
         }
 
-        private void buttonTutorial_Click(object sender, EventArgs e)
-        {
-            Tutorial Tut = new Tutorial();
-            // Oculta el Principal
-            this.Hide();
-            // Abrir el Mapa
-            Tut.Show();
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click_1(object sender, EventArgs e)
         {
             // Cambia el estado del modo oscuro
             isDarkMode = !isDarkMode;
@@ -203,26 +193,46 @@ namespace Simulation
             Properties.Settings1.Default.Save();
         }
 
-        private void Welcome_Load(object sender, EventArgs e)
+        private void buttonGroup_Click_1(object sender, EventArgs e)
         {
-            // Cargar el estado del tema guardado
-            isDarkMode = Properties.Settings1.Default.IsDarkMode;
-
-            // Aplicar el tema al cargar el formulario
-            ApplyTheme();
+            Group9 Group = new Group9();
+            // Oculta el Principal
+            this.Hide();
+            // Abrir el Mapa
+            Group.Show();
         }
 
-        private void ApplyTheme()
+        private void buttonContactUs_Click_1(object sender, EventArgs e)
         {
-            // Aplica el tema al formulario actual
-            if (isDarkMode)
-            {
-                Theme.SetDarkMode(this);
-            }
-            else
-            {
-                Theme.SetLightMode(this);
-            }
+            Contact Contact = new Contact();
+            // Oculta el Principal
+            this.Hide();
+            // Abrir el Mapa
+            Contact.Show();
+        }
+
+        private void buttonTutorial_Click_1(object sender, EventArgs e)
+        {
+            Tutorial Tut = new Tutorial();
+            // Oculta el Principal
+            this.Hide();
+            // Abrir el Mapa
+            Tut.Show();
+        }
+
+        private void buttonQRVideoT_Click_1(object sender, EventArgs e)
+        {
+            VideoTutorial VideoTut = new VideoTutorial();
+            // Oculta el Principal
+            this.Hide();
+            // Abrir el Mapa
+            VideoTut.Show();
+        }
+
+        private void menuButton_Click_1(object sender, EventArgs e)
+        {
+            // Set timer interval to lowest to make it smoother
+            SidebarTimer.Start();
         }
     }
 }

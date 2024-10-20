@@ -18,6 +18,9 @@ namespace Simulation
 
     public partial class Principal : Form
     {
+        bool sidebarExpand;
+        bool SettingsCollapse;
+        bool HelpCollapse;
         private bool isDarkMode;
 
         public Principal()
@@ -185,5 +188,111 @@ namespace Simulation
             }
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Welcome Welc = new Welcome();
+            // Oculta el Principal
+            this.Hide();
+            // Abrir el Mapa
+            Welc.Show();
+        }
+
+        private void buttonHelp_Click(object sender, EventArgs e)
+        {
+            HelpTimer.Start();
+        }
+
+        private void buttonTutorial_Click(object sender, EventArgs e)
+        {
+            Tutorial Tut = new Tutorial();
+            // Oculta el Principal
+            this.Hide();
+            // Abrir el Mapa
+            Tut.Show();
+        }
+
+        private void HelpTimer_Tick(object sender, EventArgs e)
+        {
+            if (HelpCollapse)
+            {
+                HelpContainer.Height += 10;
+                if (HelpContainer.Height == HelpContainer.MaximumSize.Height)
+                {
+                    HelpCollapse = false;
+                    HelpTimer.Stop();
+                }
+            }
+            else
+            {
+                HelpContainer.Height -= 10;
+                if (HelpContainer.Height == HelpContainer.MinimumSize.Height)
+                {
+                    HelpCollapse = true;
+                    HelpTimer.Stop();
+                }
+            }
+        }
+
+        private void SettingsTimer_Tick(object sender, EventArgs e)
+        {
+            if (SettingsCollapse)
+            {
+                SettingsContainer.Height += 10;
+                if (SettingsContainer.Height == SettingsContainer.MaximumSize.Height)
+                {
+                    SettingsCollapse = false;
+                    SettingsTimer.Stop();
+                }
+            }
+            else
+            {
+                SettingsContainer.Height -= 10;
+                if (SettingsContainer.Height == SettingsContainer.MinimumSize.Height)
+                {
+                    SettingsCollapse = true;
+                    SettingsTimer.Stop();
+                }
+            }
+        }
+
+        private void buttonSettings_Click(object sender, EventArgs e)
+        {
+            SettingsTimer.Start();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // Cambia el estado del modo oscuro
+            isDarkMode = !isDarkMode;
+            ApplyTheme(); // Aplica el nuevo tema
+
+            // Guarda el estado del tema
+            Properties.Settings1.Default.IsDarkMode = isDarkMode;
+            Properties.Settings1.Default.Save();
+        }
+
+        private void SidebarTimer_Tick(object sender, EventArgs e)
+        {
+            //SET the Minimum and maximum size of sidebar Panel
+            if (sidebarExpand)
+            {
+                // If sidebar is expand, minimize
+                sidebar.Width -= 10;
+                if (sidebar.Width == sidebar.MinimumSize.Width)
+                {
+                    sidebarExpand = false;
+                    SidebarTimer.Stop();
+                }
+            }
+            else
+            {
+                sidebar.Width += 10;
+                if (sidebar.Width == sidebar.MaximumSize.Width)
+                {
+                    sidebarExpand = true;
+                    SidebarTimer.Stop();
+                }
+            }
+        }
     }
 }

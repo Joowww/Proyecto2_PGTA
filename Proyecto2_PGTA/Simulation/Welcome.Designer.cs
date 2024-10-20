@@ -37,6 +37,10 @@
             pictureBox5 = new PictureBox();
             pictureBox6 = new PictureBox();
             pictureBox7 = new PictureBox();
+            SidebarTimer = new System.Windows.Forms.Timer(components);
+            AboutUsTimer = new System.Windows.Forms.Timer(components);
+            SettingsTimer = new System.Windows.Forms.Timer(components);
+            HelpTimer = new System.Windows.Forms.Timer(components);
             sidebar = new FlowLayoutPanel();
             panel1 = new Panel();
             label1 = new Label();
@@ -66,10 +70,6 @@
             buttonHelp = new Button();
             panel6 = new Panel();
             buttonPPolicy = new Button();
-            SidebarTimer = new System.Windows.Forms.Timer(components);
-            AboutUsTimer = new System.Windows.Forms.Timer(components);
-            SettingsTimer = new System.Windows.Forms.Timer(components);
-            HelpTimer = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
@@ -162,11 +162,31 @@
             pictureBox7.BackColor = Color.White;
             pictureBox7.BackgroundImage = (Image)resources.GetObject("pictureBox7.BackgroundImage");
             pictureBox7.BackgroundImageLayout = ImageLayout.Center;
-            pictureBox7.Location = new Point(853, 606);
+            pictureBox7.Location = new Point(838, 592);
             pictureBox7.Name = "pictureBox7";
             pictureBox7.Size = new Size(216, 44);
             pictureBox7.TabIndex = 9;
             pictureBox7.TabStop = false;
+            // 
+            // SidebarTimer
+            // 
+            SidebarTimer.Interval = 10;
+            SidebarTimer.Tick += SidebarTimer_Tick;
+            // 
+            // AboutUsTimer
+            // 
+            AboutUsTimer.Interval = 10;
+            AboutUsTimer.Tick += AboutUsTimer_Tick;
+            // 
+            // SettingsTimer
+            // 
+            SettingsTimer.Interval = 10;
+            SettingsTimer.Tick += SettingsTimer_Tick;
+            // 
+            // HelpTimer
+            // 
+            HelpTimer.Interval = 10;
+            HelpTimer.Tick += HelpTimer_Tick;
             // 
             // sidebar
             // 
@@ -178,11 +198,11 @@
             sidebar.Controls.Add(HelpContainer);
             sidebar.Controls.Add(panel6);
             sidebar.Location = new Point(0, 0);
-            sidebar.MaximumSize = new Size(250, 650);
-            sidebar.MinimumSize = new Size(250, 650);
+            sidebar.MaximumSize = new Size(250, 648);
+            sidebar.MinimumSize = new Size(115, 648);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(250, 650);
-            sidebar.TabIndex = 10;
+            sidebar.Size = new Size(250, 648);
+            sidebar.TabIndex = 11;
             // 
             // panel1
             // 
@@ -215,7 +235,7 @@
             menuButton.Size = new Size(75, 61);
             menuButton.TabIndex = 11;
             menuButton.TabStop = false;
-            menuButton.Click += menuButton_Click;
+            menuButton.Click += menuButton_Click_1;
             // 
             // panel2
             // 
@@ -245,6 +265,7 @@
             button2.Text = "                Home";
             button2.TextAlign = ContentAlignment.MiddleLeft;
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click_1;
             // 
             // AboutUsContainer
             // 
@@ -287,7 +308,7 @@
             buttonContactUs.Text = "                Contact us";
             buttonContactUs.TextAlign = ContentAlignment.MiddleLeft;
             buttonContactUs.UseVisualStyleBackColor = false;
-            buttonContactUs.Click += buttonContactUs_Click;
+            buttonContactUs.Click += buttonContactUs_Click_1;
             // 
             // panel7
             // 
@@ -317,7 +338,7 @@
             buttonGroup.Text = "                Group 9";
             buttonGroup.TextAlign = ContentAlignment.MiddleLeft;
             buttonGroup.UseVisualStyleBackColor = false;
-            buttonGroup.Click += buttonGroup_Click;
+            buttonGroup.Click += buttonGroup_Click_1;
             // 
             // panel3
             // 
@@ -325,7 +346,7 @@
             panel3.Controls.Add(buttonAboutUs);
             panel3.Location = new Point(0, 0);
             panel3.Name = "panel3";
-            panel3.Size = new Size(230, 61);
+            panel3.Size = new Size(237, 54);
             panel3.TabIndex = 13;
             // 
             // buttonAboutUs
@@ -342,12 +363,12 @@
             buttonAboutUs.Location = new Point(0, 0);
             buttonAboutUs.Name = "buttonAboutUs";
             buttonAboutUs.Padding = new Padding(5, 0, 0, 0);
-            buttonAboutUs.Size = new Size(240, 61);
+            buttonAboutUs.Size = new Size(237, 54);
             buttonAboutUs.TabIndex = 11;
             buttonAboutUs.Text = "                About us";
             buttonAboutUs.TextAlign = ContentAlignment.MiddleLeft;
             buttonAboutUs.UseVisualStyleBackColor = false;
-            buttonAboutUs.Click += buttonAboutUs_Click;
+            buttonAboutUs.Click += buttonAboutUs_Click_1;
             // 
             // SettingsContainer
             // 
@@ -390,7 +411,6 @@
             button9.Text = "                Language";
             button9.TextAlign = ContentAlignment.MiddleLeft;
             button9.UseVisualStyleBackColor = false;
-            button9.Click += button9_Click;
             // 
             // panel10
             // 
@@ -420,7 +440,7 @@
             button3.Text = "                Forms colour";
             button3.TextAlign = ContentAlignment.MiddleLeft;
             button3.UseVisualStyleBackColor = false;
-            button3.Click += button3_Click;
+            button3.Click += button3_Click_1;
             // 
             // panel4
             // 
@@ -428,7 +448,7 @@
             panel4.Controls.Add(buttonSettings);
             panel4.Location = new Point(1, 1);
             panel4.Name = "panel4";
-            panel4.Size = new Size(229, 58);
+            panel4.Size = new Size(229, 60);
             panel4.TabIndex = 14;
             // 
             // buttonSettings
@@ -445,12 +465,12 @@
             buttonSettings.Location = new Point(0, 0);
             buttonSettings.Name = "buttonSettings";
             buttonSettings.Padding = new Padding(5, 0, 0, 0);
-            buttonSettings.Size = new Size(239, 58);
+            buttonSettings.Size = new Size(239, 60);
             buttonSettings.TabIndex = 11;
             buttonSettings.Text = "                Settings";
             buttonSettings.TextAlign = ContentAlignment.MiddleLeft;
             buttonSettings.UseVisualStyleBackColor = false;
-            buttonSettings.Click += buttonSettings_Click;
+            buttonSettings.Click += buttonSettings_Click_1;
             // 
             // HelpContainer
             // 
@@ -492,7 +512,7 @@
             buttonQRVideoT.Text = "                Videotutorial";
             buttonQRVideoT.TextAlign = ContentAlignment.MiddleLeft;
             buttonQRVideoT.UseVisualStyleBackColor = false;
-            buttonQRVideoT.Click += buttonQRVideoT_Click;
+            buttonQRVideoT.Click += buttonQRVideoT_Click_1;
             // 
             // panel12
             // 
@@ -521,7 +541,7 @@
             buttonTutorial.Text = "                Tutorial";
             buttonTutorial.TextAlign = ContentAlignment.MiddleLeft;
             buttonTutorial.UseVisualStyleBackColor = false;
-            buttonTutorial.Click += buttonTutorial_Click;
+            buttonTutorial.Click += buttonTutorial_Click_1;
             // 
             // panel5
             // 
@@ -551,7 +571,7 @@
             buttonHelp.Text = "                Help";
             buttonHelp.TextAlign = ContentAlignment.MiddleLeft;
             buttonHelp.UseVisualStyleBackColor = false;
-            buttonHelp.Click += buttonHelp_Click;
+            buttonHelp.Click += buttonHelp_Click_1;
             // 
             // panel6
             // 
@@ -581,34 +601,14 @@
             buttonPPolicy.Text = "                Privacy Policy";
             buttonPPolicy.TextAlign = ContentAlignment.MiddleLeft;
             buttonPPolicy.UseVisualStyleBackColor = false;
-            buttonPPolicy.Click += buttonPPolicy_Click;
-            // 
-            // SidebarTimer
-            // 
-            SidebarTimer.Interval = 10;
-            SidebarTimer.Tick += SidebarTimer_Tick;
-            // 
-            // AboutUsTimer
-            // 
-            AboutUsTimer.Interval = 10;
-            AboutUsTimer.Tick += AboutUsTimer_Tick;
-            // 
-            // SettingsTimer
-            // 
-            SettingsTimer.Interval = 10;
-            SettingsTimer.Tick += SettingsTimer_Tick;
-            // 
-            // HelpTimer
-            // 
-            HelpTimer.Interval = 10;
-            HelpTimer.Tick += HelpTimer_Tick;
+            buttonPPolicy.Click += buttonPPolicy_Click_1;
             // 
             // Welcome
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.White;
-            ClientSize = new Size(1066, 648);
+            BackColor = SystemColors.Control;
+            ClientSize = new Size(1051, 633);
             Controls.Add(sidebar);
             Controls.Add(pictureBox7);
             Controls.Add(pictureBox6);
@@ -657,38 +657,38 @@
         private PictureBox pictureBox5;
         private PictureBox pictureBox6;
         private PictureBox pictureBox7;
+        private System.Windows.Forms.Timer SidebarTimer;
+        private System.Windows.Forms.Timer AboutUsTimer;
+        private System.Windows.Forms.Timer SettingsTimer;
+        private System.Windows.Forms.Timer HelpTimer;
         private FlowLayoutPanel sidebar;
         private Panel panel1;
-        private Panel panel2;
-        private Button button2;
         private Label label1;
         private PictureBox menuButton;
-        private Panel panel3;
-        private Button buttonAboutUs;
-        private Panel panel4;
-        private Button buttonSettings;
-        private Panel panel5;
-        private Button buttonHelp;
-        private Panel panel6;
-        private Button buttonPPolicy;
-        private System.Windows.Forms.Timer SidebarTimer;
+        private Panel panel2;
+        private Button button2;
         private Panel AboutUsContainer;
         private Panel panel8;
         private Button buttonContactUs;
         private Panel panel7;
         private Button buttonGroup;
-        private System.Windows.Forms.Timer AboutUsTimer;
+        private Panel panel3;
+        private Button buttonAboutUs;
         private Panel SettingsContainer;
         private Panel panel11;
         private Button button9;
         private Panel panel10;
         private Button button3;
-        private System.Windows.Forms.Timer SettingsTimer;
+        private Panel panel4;
+        private Button buttonSettings;
         private Panel HelpContainer;
         private Panel panel13;
         private Button buttonQRVideoT;
         private Panel panel12;
         private Button buttonTutorial;
-        private System.Windows.Forms.Timer HelpTimer;
+        private Panel panel5;
+        private Button buttonHelp;
+        private Panel panel6;
+        private Button buttonPPolicy;
     }
 }
