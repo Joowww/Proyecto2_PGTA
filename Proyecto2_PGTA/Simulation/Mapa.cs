@@ -26,9 +26,9 @@ namespace Simulation
         private int currentSecond;
         private int maxSecond; // Variable para almacenar el máximo segundo disponible
         private GMapOverlay markersOverlay; // Capa de marcadores
-        private GMapOverlay routesOverlay; // Capa de rutas
+        private GMapOverlay routeOverlay;
         private Dictionary<string, GMarkerGoogle> aircraftMarkers; // Guarda los target address de los aviones pintados
-        private Dictionary<string, List<PointLatLng>> aircraftRoutes; // Almacena las rutas de los aviones
+        private Dictionary<string, PointLatLng> previousPositions; // Almacena las posiciones anteriores de los aviones
 
         public Mapa(List<List<object>> filtredMessages)
         {
@@ -63,11 +63,11 @@ namespace Simulation
 
             // Inicializar la capa de marcadores
             markersOverlay = new GMapOverlay("markers");
-            routesOverlay = new GMapOverlay("routes");
             mapControl.Overlays.Add(markersOverlay);
-            mapControl.Overlays.Add(routesOverlay);
             aircraftMarkers = new Dictionary<string, GMarkerGoogle>();
-            aircraftRoutes = new Dictionary<string, List<PointLatLng>>(); // Inicializar el diccionario para las rutas
+            previousPositions = new Dictionary<string, PointLatLng>();
+            routeOverlay = new GMapOverlay("routes");
+            mapControl.Overlays.Add(routeOverlay);
         }
 
         private void Mapa_Load(object sender, EventArgs e)
@@ -116,6 +116,7 @@ namespace Simulation
         {
             if (currentSecond <= maxSecond)
             {
+ 
                 // Obtener los aviones del segundo actual
                 List<List<object>> result = AircraftsPerSecond(FiltredMessages, currentSecond);
 
@@ -173,6 +174,16 @@ namespace Simulation
                         markersOverlay.Markers.Remove(aircraftMarkers[TA]);
                     }
 
+                    // Comprobar si hay una posición anterior
+                    if (previousPositions.ContainsKey(TA))
+                    {
+                        // Obtener la posición anterior
+                        PointLatLng previousPosition = previousPositions[TA];
+
+                        // Dibujar la línea entre la posición anterior y la actual
+                        DrawLine(previousPosition, Position);
+                    }
+
                     // Crear un nuevo marcador
                     GMarkerGoogle marker = new GMarkerGoogle(Position, GMarkerGoogleType.green);
 
@@ -186,25 +197,25 @@ namespace Simulation
                     // Actualizar el diccionario con el nuevo marcador
                     aircraftMarkers[TA] = marker;
 
-                    // Agregar la posición actual a la ruta del avión
-                    if (!aircraftRoutes.ContainsKey(TA))
-                    {
-                        aircraftRoutes[TA] = new List<PointLatLng>(); // Inicializar la lista si no existe
-                    }
-                    aircraftRoutes[TA].Add(Position); // Agregar la posición actual
-
-                    // Dibujar la ruta
-                    if (aircraftRoutes[TA].Count > 1)
-                    {
-                        // Crear una polilínea para la ruta
-                        var route = new GMapPolygon(aircraftRoutes[TA], "Ruta " + TA);
-                        route.Stroke = new Pen(Color.Blue, 2); // Configurar el grosor y el color de la línea
-                        routesOverlay.Polygons.Add(route); // Agregar la ruta a la capa de rutas
-                    }
+                    // Actualizar la posición anterior
+                    previousPositions[TA] = Position;
 
                 }
             }
+            mapControl.Invalidate();
         }
+
+        private void DrawLine(PointLatLng start, PointLatLng end)
+        {
+            var route = new GMapRoute(new List<PointLatLng> { start, end }, "MyRoute");
+            route.Stroke = new Pen(Color.Red, 2); // Color y grosor de la línea
+
+            routeOverlay.Routes.Add(route);
+
+            // Refrescar el mapa para mostrar la nueva línea
+            mapControl.Refresh();
+        }
+
         private void ChangeMapBtn_Click(object sender, EventArgs e)
         {
             string selectedMapType = comboBox1.SelectedItem.ToString();
