@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Mapa));
             this.MoveBtn = new System.Windows.Forms.Button();
             this.AutomaticBtn = new System.Windows.Forms.Button();
-            this.ReestartBtn = new System.Windows.Forms.Button();
+            this.RestartBtn = new System.Windows.Forms.Button();
             this.ChangeMapBtn = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -67,15 +67,16 @@
             this.AutomaticBtn.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.AutomaticBtn.UseVisualStyleBackColor = true;
             // 
-            // ReestartBtn
+            // RestartBtn
             // 
-            this.ReestartBtn.Location = new System.Drawing.Point(52, 168);
-            this.ReestartBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.ReestartBtn.Name = "ReestartBtn";
-            this.ReestartBtn.Size = new System.Drawing.Size(112, 34);
-            this.ReestartBtn.TabIndex = 2;
-            this.ReestartBtn.Text = "Reestart";
-            this.ReestartBtn.UseVisualStyleBackColor = true;
+            this.RestartBtn.Location = new System.Drawing.Point(52, 168);
+            this.RestartBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.RestartBtn.Name = "RestartBtn";
+            this.RestartBtn.Size = new System.Drawing.Size(112, 34);
+            this.RestartBtn.TabIndex = 2;
+            this.RestartBtn.Text = "Restart";
+            this.RestartBtn.UseVisualStyleBackColor = true;
+            this.RestartBtn.Click += new System.EventHandler(this.RestartBtn_Click);
             // 
             // ChangeMapBtn
             // 
@@ -151,9 +152,9 @@
             this.label2.Location = new System.Drawing.Point(52, 324);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 25);
+            this.label2.Size = new System.Drawing.Size(189, 25);
             this.label2.TabIndex = 10;
-            this.label2.Text = "label2";
+            this.label2.Text = "Change map provider:";
             // 
             // label3
             // 
@@ -161,9 +162,9 @@
             this.label3.Location = new System.Drawing.Point(52, 408);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(59, 25);
+            this.label3.Size = new System.Drawing.Size(146, 25);
             this.label3.TabIndex = 11;
-            this.label3.Text = "label3";
+            this.label3.Text = "Change the filter:";
             // 
             // panel1
             // 
@@ -188,7 +189,7 @@
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.ChangeMapBtn);
-            this.Controls.Add(this.ReestartBtn);
+            this.Controls.Add(this.RestartBtn);
             this.Controls.Add(this.AutomaticBtn);
             this.Controls.Add(this.MoveBtn);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -206,7 +207,7 @@
 
         private Button MoveBtn;
         private Button AutomaticBtn;
-        private Button ReestartBtn;
+        private Button RestartBtn;
         private Button ChangeMapBtn;
         private Button button5;
         private ComboBox comboBox1;

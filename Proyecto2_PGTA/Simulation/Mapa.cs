@@ -50,9 +50,11 @@ namespace Simulation
             comboBox1.Items.Add("Google Satellite");
             comboBox1.SelectedIndex = 0; // Seleccionar la primera opción por defecto
 
-            comboBox2.Items.Add("Option 1");
-            comboBox2.Items.Add("Option 2");
-            comboBox2.Items.Add("Option 3");
+            comboBox2.Items.Add("All data");
+            comboBox2.Items.Add("Removing pure blanks");
+            comboBox2.Items.Add("Removing fixed transponders");
+            comboBox2.Items.Add("Combination of these");
+            comboBox2.SelectedIndex = 0; // Seleccionar la primera opción por defecto
 
             // Establecer el primer segundo como el primero en la lista de aviones
             if (FiltredMessages.Count > 0)
@@ -265,6 +267,35 @@ namespace Simulation
         private void CloseBtn_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void RestartSimulation()
+        {
+            // Restablecer el segundo actual a 0 o al primer segundo de la lista
+            currentSecond = Convert.ToInt32(FiltredMessages[0][0]);
+
+            // Limpiar los marcadores y rutas existentes
+            markersOverlay.Markers.Clear();
+            routeOverlay.Routes.Clear();
+
+            // Limpiar los diccionarios
+            aircraftMarkers.Clear();
+            previousPositions.Clear();
+
+            // Pintar los primeros 4 segundos desde el tiempo inicial
+            for (int i = 0; i < 4; i++)
+            {
+                List<List<object>> result = AircraftsPerSecond(FiltredMessages, currentSecond + i);
+                PaintAircrafts(result);
+            }
+
+            // Refrescar el mapa
+            mapControl.Refresh();
+        }
+
+        private void RestartBtn_Click(object sender, EventArgs e)
+        {
+            RestartSimulation();
         }
     }
 }
