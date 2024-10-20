@@ -187,7 +187,25 @@ namespace Simulation
                     }
 
                     // Crear un nuevo marcador
-                    GMarkerGoogle marker = new GMarkerGoogle(Position, GMarkerGoogleType.green);
+                    string point = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Smiley.png");
+                    Bitmap bitmap = (Bitmap)Image.FromFile(point);
+
+                    // Especificar el nuevo tamaño
+                    int newWidth = bitmap.Width / 15; // Cambia el tamaño a la mitad
+                    int newHeight = bitmap.Height / 15;
+
+                    // Crear un nuevo bitmap más pequeño
+                    Bitmap resizedBitmap = new Bitmap(newWidth, newHeight);
+
+                    // Dibujar la imagen original en el nuevo bitmap
+                    using (Graphics g = Graphics.FromImage(resizedBitmap))
+                    {
+                        g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                        g.DrawImage(bitmap, 0, 0, newWidth, newHeight);
+                    }
+
+
+                    GMarkerGoogle marker = new GMarkerGoogle(Position, resizedBitmap);
 
                     // Agregar un tooltip al marcador
                     marker.ToolTip = new GMap.NET.WindowsForms.ToolTips.GMapRoundedToolTip(marker);
