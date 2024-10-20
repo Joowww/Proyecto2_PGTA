@@ -18,6 +18,7 @@ namespace Simulation
 
     public partial class Principal : Form
     {
+        private bool isDarkMode;
 
         public Principal()
         {
@@ -34,8 +35,21 @@ namespace Simulation
             comboBox1.Items.Add("Combination of these");
             comboBox1.SelectedIndex = 0; // Seleccionar la primera opción por defecto
 
-            Zen.Barcode.CodeQrBarcodeDraw QR = Zen.Barcode.BarcodeDrawFactory.CodeQr;
-            pictureBox2.Image = QR.Draw("HOLA", 10);
+            // Cargar el estado del tema guardado
+            isDarkMode = Properties.Settings1.Default.IsDarkMode;
+
+            // Aplicar el tema según el estado guardado
+            ApplyTheme();
+
+            // Si el modo oscuro está activo, aplicarlo
+            if (isDarkMode)
+            {
+                Theme.SetDarkMode(this);
+            }
+            else
+            {
+                Theme.SetLightMode(this);
+            }
         }
 
         private void SimulateBtn_Click(object sender, EventArgs e)
@@ -44,7 +58,7 @@ namespace Simulation
 
             try
             {
-                string rutaCSV = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ASTERIX.csv"); 
+                string rutaCSV = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ASTERIX.csv");
 
                 // Verifica si el archivo existe
                 if (!File.Exists(rutaCSV))
@@ -122,7 +136,7 @@ namespace Simulation
         }
 
         // Funciones correspondientes a cada opción seleccionada
-        private List<List<object>> Option1 (List<List<object>> allMessages)
+        private List<List<object>> Option1(List<List<object>> allMessages)
         {
             MessageBox.Show("Executing All data function.", "Simulate", MessageBoxButtons.OK, MessageBoxIcon.Information);
             // For "All data"
@@ -136,7 +150,7 @@ namespace Simulation
             MessageBox.Show("Executing Removing pure blanks function.", "Simulate", MessageBoxButtons.OK, MessageBoxIcon.Information);
             // For "Removing pure blanks"
             // HACER FUNCION DE FILTRADO CORRESPONDIENTE
-            List<List<object>> filtredMessages = allMessages; 
+            List<List<object>> filtredMessages = allMessages;
             return filtredMessages;
         }
 
@@ -156,6 +170,19 @@ namespace Simulation
             // HACER FUNCION DE FILTRADO CORRESPONDIENTE
             List<List<object>> filtredMessages = allMessages;
             return filtredMessages;
+        }
+
+        private void ApplyTheme()
+        {
+            // Aplica el tema al formulario actual
+            if (isDarkMode)
+            {
+                this.BackColor = Color.FromArgb(45, 45, 48);
+            }
+            else
+            {
+                this.BackColor = Color.White;
+            }
         }
 
     }

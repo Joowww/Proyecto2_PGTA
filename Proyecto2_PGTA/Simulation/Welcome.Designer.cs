@@ -170,28 +170,28 @@
             // 
             // sidebar
             // 
-            sidebar.BackColor = Color.FromArgb(35, 40, 45);
+            sidebar.BackColor = Color.DarkGray;
             sidebar.Controls.Add(panel1);
             sidebar.Controls.Add(panel2);
             sidebar.Controls.Add(AboutUsContainer);
             sidebar.Controls.Add(SettingsContainer);
             sidebar.Controls.Add(HelpContainer);
             sidebar.Controls.Add(panel6);
-            sidebar.Dock = DockStyle.Left;
             sidebar.Location = new Point(0, 0);
             sidebar.MaximumSize = new Size(250, 650);
-            sidebar.MinimumSize = new Size(103, 650);
+            sidebar.MinimumSize = new Size(250, 650);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(103, 650);
+            sidebar.Size = new Size(250, 650);
             sidebar.TabIndex = 10;
             // 
             // panel1
             // 
+            panel1.BackColor = Color.Transparent;
             panel1.Controls.Add(label1);
             panel1.Controls.Add(menuButton);
             panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(250, 141);
+            panel1.Size = new Size(240, 141);
             panel1.TabIndex = 11;
             // 
             // label1
@@ -219,17 +219,19 @@
             // 
             // panel2
             // 
+            panel2.BackColor = Color.Transparent;
             panel2.Controls.Add(button2);
             panel2.Location = new Point(3, 150);
             panel2.Name = "panel2";
-            panel2.Size = new Size(272, 60);
+            panel2.Size = new Size(240, 60);
             panel2.TabIndex = 12;
             // 
             // button2
             // 
             button2.BackColor = Color.Transparent;
             button2.Dock = DockStyle.Left;
-            button2.FlatAppearance.BorderColor = Color.FromArgb(35, 40, 45);
+            button2.FlatAppearance.BorderColor = Color.DarkGray;
+            button2.FlatAppearance.BorderSize = 0;
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button2.ForeColor = Color.White;
@@ -238,7 +240,7 @@
             button2.Location = new Point(0, 0);
             button2.Name = "button2";
             button2.Padding = new Padding(5, 0, 0, 0);
-            button2.Size = new Size(247, 60);
+            button2.Size = new Size(237, 60);
             button2.TabIndex = 11;
             button2.Text = "                Home";
             button2.TextAlign = ContentAlignment.MiddleLeft;
@@ -246,20 +248,20 @@
             // 
             // AboutUsContainer
             // 
-            AboutUsContainer.BackColor = Color.FromArgb(50, 55, 60);
+            AboutUsContainer.BackColor = Color.Gray;
             AboutUsContainer.Controls.Add(panel8);
             AboutUsContainer.Controls.Add(panel7);
             AboutUsContainer.Controls.Add(panel3);
             AboutUsContainer.Location = new Point(3, 216);
-            AboutUsContainer.MaximumSize = new Size(296, 156);
-            AboutUsContainer.MinimumSize = new Size(272, 60);
+            AboutUsContainer.MaximumSize = new Size(240, 156);
+            AboutUsContainer.MinimumSize = new Size(240, 60);
             AboutUsContainer.Name = "AboutUsContainer";
-            AboutUsContainer.Size = new Size(296, 60);
+            AboutUsContainer.Size = new Size(240, 60);
             AboutUsContainer.TabIndex = 11;
             // 
             // panel8
             // 
-            panel8.BackColor = Color.FromArgb(50, 55, 60);
+            panel8.BackColor = Color.Gray;
             panel8.Controls.Add(buttonContactUs);
             panel8.Location = new Point(0, 108);
             panel8.Name = "panel8";
@@ -270,7 +272,8 @@
             // 
             buttonContactUs.BackColor = Color.Transparent;
             buttonContactUs.Dock = DockStyle.Left;
-            buttonContactUs.FlatAppearance.BorderColor = Color.FromArgb(35, 40, 45);
+            buttonContactUs.FlatAppearance.BorderColor = Color.Gray;
+            buttonContactUs.FlatAppearance.BorderSize = 0;
             buttonContactUs.FlatStyle = FlatStyle.Flat;
             buttonContactUs.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             buttonContactUs.ForeColor = Color.White;
@@ -279,7 +282,7 @@
             buttonContactUs.Location = new Point(0, 0);
             buttonContactUs.Name = "buttonContactUs";
             buttonContactUs.Padding = new Padding(5, 0, 0, 0);
-            buttonContactUs.Size = new Size(272, 48);
+            buttonContactUs.Size = new Size(247, 48);
             buttonContactUs.TabIndex = 11;
             buttonContactUs.Text = "                Contact us";
             buttonContactUs.TextAlign = ContentAlignment.MiddleLeft;
@@ -288,7 +291,7 @@
             // 
             // panel7
             // 
-            panel7.BackColor = Color.FromArgb(50, 55, 60);
+            panel7.BackColor = Color.Gray;
             panel7.Controls.Add(buttonGroup);
             panel7.Location = new Point(0, 60);
             panel7.Name = "panel7";
@@ -299,7 +302,8 @@
             // 
             buttonGroup.BackColor = Color.Transparent;
             buttonGroup.Dock = DockStyle.Left;
-            buttonGroup.FlatAppearance.BorderColor = Color.FromArgb(35, 40, 45);
+            buttonGroup.FlatAppearance.BorderColor = Color.Gray;
+            buttonGroup.FlatAppearance.BorderSize = 0;
             buttonGroup.FlatStyle = FlatStyle.Flat;
             buttonGroup.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             buttonGroup.ForeColor = Color.White;
@@ -308,7 +312,7 @@
             buttonGroup.Location = new Point(0, 0);
             buttonGroup.Name = "buttonGroup";
             buttonGroup.Padding = new Padding(5, 0, 0, 0);
-            buttonGroup.Size = new Size(272, 48);
+            buttonGroup.Size = new Size(247, 48);
             buttonGroup.TabIndex = 11;
             buttonGroup.Text = "                Group 9";
             buttonGroup.TextAlign = ContentAlignment.MiddleLeft;
@@ -317,18 +321,19 @@
             // 
             // panel3
             // 
-            panel3.BackColor = Color.FromArgb(35, 40, 45);
+            panel3.BackColor = Color.Transparent;
             panel3.Controls.Add(buttonAboutUs);
             panel3.Location = new Point(0, 0);
             panel3.Name = "panel3";
-            panel3.Size = new Size(272, 60);
+            panel3.Size = new Size(230, 61);
             panel3.TabIndex = 13;
             // 
             // buttonAboutUs
             // 
             buttonAboutUs.BackColor = Color.Transparent;
             buttonAboutUs.Dock = DockStyle.Left;
-            buttonAboutUs.FlatAppearance.BorderColor = Color.FromArgb(35, 40, 45);
+            buttonAboutUs.FlatAppearance.BorderColor = Color.DarkGray;
+            buttonAboutUs.FlatAppearance.BorderSize = 0;
             buttonAboutUs.FlatStyle = FlatStyle.Flat;
             buttonAboutUs.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             buttonAboutUs.ForeColor = Color.Transparent;
@@ -337,7 +342,7 @@
             buttonAboutUs.Location = new Point(0, 0);
             buttonAboutUs.Name = "buttonAboutUs";
             buttonAboutUs.Padding = new Padding(5, 0, 0, 0);
-            buttonAboutUs.Size = new Size(247, 60);
+            buttonAboutUs.Size = new Size(240, 61);
             buttonAboutUs.TabIndex = 11;
             buttonAboutUs.Text = "                About us";
             buttonAboutUs.TextAlign = ContentAlignment.MiddleLeft;
@@ -346,31 +351,32 @@
             // 
             // SettingsContainer
             // 
-            SettingsContainer.BackColor = Color.FromArgb(35, 40, 45);
+            SettingsContainer.BackColor = Color.DarkGray;
             SettingsContainer.Controls.Add(panel11);
             SettingsContainer.Controls.Add(panel10);
             SettingsContainer.Controls.Add(panel4);
             SettingsContainer.Location = new Point(3, 282);
-            SettingsContainer.MaximumSize = new Size(272, 156);
-            SettingsContainer.MinimumSize = new Size(272, 60);
+            SettingsContainer.MaximumSize = new Size(240, 156);
+            SettingsContainer.MinimumSize = new Size(240, 59);
             SettingsContainer.Name = "SettingsContainer";
-            SettingsContainer.Size = new Size(272, 60);
+            SettingsContainer.Size = new Size(240, 59);
             SettingsContainer.TabIndex = 17;
             // 
             // panel11
             // 
-            panel11.BackColor = Color.FromArgb(50, 55, 60);
+            panel11.BackColor = Color.Gray;
             panel11.Controls.Add(button9);
             panel11.Location = new Point(0, 105);
             panel11.Name = "panel11";
-            panel11.Size = new Size(272, 48);
+            panel11.Size = new Size(272, 51);
             panel11.TabIndex = 16;
             // 
             // button9
             // 
             button9.BackColor = Color.Transparent;
             button9.Dock = DockStyle.Left;
-            button9.FlatAppearance.BorderColor = Color.FromArgb(35, 40, 45);
+            button9.FlatAppearance.BorderColor = Color.Gray;
+            button9.FlatAppearance.BorderSize = 0;
             button9.FlatStyle = FlatStyle.Flat;
             button9.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button9.ForeColor = Color.White;
@@ -379,15 +385,16 @@
             button9.Location = new Point(0, 0);
             button9.Name = "button9";
             button9.Padding = new Padding(5, 0, 0, 0);
-            button9.Size = new Size(270, 48);
+            button9.Size = new Size(273, 51);
             button9.TabIndex = 11;
             button9.Text = "                Language";
             button9.TextAlign = ContentAlignment.MiddleLeft;
             button9.UseVisualStyleBackColor = false;
+            button9.Click += button9_Click;
             // 
             // panel10
             // 
-            panel10.BackColor = Color.FromArgb(50, 55, 60);
+            panel10.BackColor = Color.Gray;
             panel10.Controls.Add(button3);
             panel10.Location = new Point(1, 59);
             panel10.Name = "panel10";
@@ -398,7 +405,8 @@
             // 
             button3.BackColor = Color.Transparent;
             button3.Dock = DockStyle.Left;
-            button3.FlatAppearance.BorderColor = Color.FromArgb(35, 40, 45);
+            button3.FlatAppearance.BorderColor = Color.Gray;
+            button3.FlatAppearance.BorderSize = 0;
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button3.ForeColor = Color.White;
@@ -407,25 +415,28 @@
             button3.Location = new Point(0, 0);
             button3.Name = "button3";
             button3.Padding = new Padding(5, 0, 0, 0);
-            button3.Size = new Size(271, 48);
+            button3.Size = new Size(269, 48);
             button3.TabIndex = 11;
             button3.Text = "                Forms colour";
             button3.TextAlign = ContentAlignment.MiddleLeft;
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // panel4
             // 
+            panel4.BackColor = Color.Transparent;
             panel4.Controls.Add(buttonSettings);
             panel4.Location = new Point(1, 1);
             panel4.Name = "panel4";
-            panel4.Size = new Size(272, 60);
+            panel4.Size = new Size(229, 58);
             panel4.TabIndex = 14;
             // 
             // buttonSettings
             // 
             buttonSettings.BackColor = Color.Transparent;
             buttonSettings.Dock = DockStyle.Left;
-            buttonSettings.FlatAppearance.BorderColor = Color.FromArgb(35, 40, 45);
+            buttonSettings.FlatAppearance.BorderColor = Color.DarkGray;
+            buttonSettings.FlatAppearance.BorderSize = 0;
             buttonSettings.FlatStyle = FlatStyle.Flat;
             buttonSettings.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             buttonSettings.ForeColor = Color.White;
@@ -434,7 +445,7 @@
             buttonSettings.Location = new Point(0, 0);
             buttonSettings.Name = "buttonSettings";
             buttonSettings.Padding = new Padding(5, 0, 0, 0);
-            buttonSettings.Size = new Size(243, 60);
+            buttonSettings.Size = new Size(239, 58);
             buttonSettings.TabIndex = 11;
             buttonSettings.Text = "                Settings";
             buttonSettings.TextAlign = ContentAlignment.MiddleLeft;
@@ -443,15 +454,15 @@
             // 
             // HelpContainer
             // 
-            HelpContainer.BackColor = Color.FromArgb(35, 40, 45);
+            HelpContainer.BackColor = Color.Transparent;
             HelpContainer.Controls.Add(panel13);
             HelpContainer.Controls.Add(panel12);
             HelpContainer.Controls.Add(panel5);
-            HelpContainer.Location = new Point(3, 348);
-            HelpContainer.MaximumSize = new Size(272, 157);
-            HelpContainer.MinimumSize = new Size(272, 60);
+            HelpContainer.Location = new Point(3, 347);
+            HelpContainer.MaximumSize = new Size(240, 157);
+            HelpContainer.MinimumSize = new Size(240, 60);
             HelpContainer.Name = "HelpContainer";
-            HelpContainer.Size = new Size(272, 60);
+            HelpContainer.Size = new Size(240, 60);
             HelpContainer.TabIndex = 17;
             // 
             // panel13
@@ -514,17 +525,19 @@
             // 
             // panel5
             // 
+            panel5.BackColor = Color.DarkGray;
             panel5.Controls.Add(buttonHelp);
             panel5.Location = new Point(2, 2);
             panel5.Name = "panel5";
-            panel5.Size = new Size(272, 60);
+            panel5.Size = new Size(235, 58);
             panel5.TabIndex = 15;
             // 
             // buttonHelp
             // 
             buttonHelp.BackColor = Color.Transparent;
             buttonHelp.Dock = DockStyle.Left;
-            buttonHelp.FlatAppearance.BorderColor = Color.FromArgb(35, 40, 45);
+            buttonHelp.FlatAppearance.BorderColor = Color.DarkGray;
+            buttonHelp.FlatAppearance.BorderSize = 0;
             buttonHelp.FlatStyle = FlatStyle.Flat;
             buttonHelp.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             buttonHelp.ForeColor = Color.White;
@@ -533,7 +546,7 @@
             buttonHelp.Location = new Point(0, 0);
             buttonHelp.Name = "buttonHelp";
             buttonHelp.Padding = new Padding(5, 0, 0, 0);
-            buttonHelp.Size = new Size(247, 60);
+            buttonHelp.Size = new Size(238, 58);
             buttonHelp.TabIndex = 11;
             buttonHelp.Text = "                Help";
             buttonHelp.TextAlign = ContentAlignment.MiddleLeft;
@@ -542,17 +555,19 @@
             // 
             // panel6
             // 
+            panel6.BackColor = Color.Transparent;
             panel6.Controls.Add(buttonPPolicy);
-            panel6.Location = new Point(3, 414);
+            panel6.Location = new Point(3, 413);
             panel6.Name = "panel6";
-            panel6.Size = new Size(272, 60);
+            panel6.Size = new Size(240, 60);
             panel6.TabIndex = 16;
             // 
             // buttonPPolicy
             // 
             buttonPPolicy.BackColor = Color.Transparent;
             buttonPPolicy.Dock = DockStyle.Left;
-            buttonPPolicy.FlatAppearance.BorderColor = Color.FromArgb(35, 40, 45);
+            buttonPPolicy.FlatAppearance.BorderColor = Color.DarkGray;
+            buttonPPolicy.FlatAppearance.BorderSize = 0;
             buttonPPolicy.FlatStyle = FlatStyle.Flat;
             buttonPPolicy.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             buttonPPolicy.ForeColor = Color.White;
@@ -561,7 +576,7 @@
             buttonPPolicy.Location = new Point(0, 0);
             buttonPPolicy.Name = "buttonPPolicy";
             buttonPPolicy.Padding = new Padding(5, 0, 0, 0);
-            buttonPPolicy.Size = new Size(247, 60);
+            buttonPPolicy.Size = new Size(237, 60);
             buttonPPolicy.TabIndex = 11;
             buttonPPolicy.Text = "                Privacy Policy";
             buttonPPolicy.TextAlign = ContentAlignment.MiddleLeft;
@@ -593,7 +608,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1068, 650);
+            ClientSize = new Size(1066, 648);
             Controls.Add(sidebar);
             Controls.Add(pictureBox7);
             Controls.Add(pictureBox6);
@@ -605,6 +620,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Welcome";
             Text = "Welcome";
+            Load += Welcome_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();

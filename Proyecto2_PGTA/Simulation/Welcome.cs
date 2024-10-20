@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
+using System.Drawing;
 
 namespace Simulation
 {
@@ -16,6 +18,8 @@ namespace Simulation
         bool AbouUsCollapse;
         bool SettingsCollapse;
         bool HelpCollapse;
+        private bool isDarkMode;
+
         public Welcome()
         {
             InitializeComponent();
@@ -116,26 +120,20 @@ namespace Simulation
 
         private void buttonGroup_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Group 9 PGTA 2024" +
-                "\n\tAlejandro Curiel Molina" +
-                "\n\tMarina Martin Ferrer" +
-                "\n\tJose Carlos Martínez Conde" +
-                "\n\tJoel Moreno de Toro" +
-                "\n\tÈrica Parra Moya" +
-                "\n\tPaula Valle Bové" +
-                "\n\tMireia Viladot Saló");
+            Group9 Group = new Group9();
+            // Oculta el Principal
+            this.Hide();
+            // Abrir el Mapa
+            Group.Show();
         }
 
         private void buttonContactUs_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Group 9 PGTA 2024" +
-                "\n\talejandro.curiel.molina@estudiantat.upc.edu" +
-                "\n\tmarina.martin.ferrer@estudiantat.upc.edu" +
-                "\n\tjose.carlos.martinez.conde@estudiantat.upc.edu" +
-                "\n\tjoel.moreno.de.toro@estudiantat.upc.edu " +
-                "\n\terica.parra@estudiantat.upc.edu" +
-                "\n\tpaula.valle@estudiantat.upc.edu" +
-                "\n\tmireia.viladot@estudiantat.upc.edu");
+            Contact Contact = new Contact();
+            // Oculta el Principal
+            this.Hide();
+            // Abrir el Mapa
+            Contact.Show();
         }
 
         private void buttonPPolicy_Click(object sender, EventArgs e)
@@ -173,14 +171,58 @@ namespace Simulation
 
         private void buttonQRVideoT_Click(object sender, EventArgs e)
         {
-            //Posar QR
+            VideoTutorial VideoTut = new VideoTutorial();
+            // Oculta el Principal
+            this.Hide();
+            // Abrir el Mapa
+            VideoTut.Show();
         }
 
         private void buttonTutorial_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Explicación breve sobre los pasos a seguir para un uso correcto de la aplicación: \n \nPrimero, se deben introducir los datos " +
-                "de los vuelos a simular.  \n \nSegundo, añadimos en parámetros de simulación los datos restantes. \n \nTercero le damos a simular. " +
-                "Aparecerá el formulario simulación.", "Instrucciones de uso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Tutorial Tut = new Tutorial();
+            // Oculta el Principal
+            this.Hide();
+            // Abrir el Mapa
+            Tut.Show();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // Cambia el estado del modo oscuro
+            isDarkMode = !isDarkMode;
+            ApplyTheme(); // Aplica el nuevo tema
+
+            // Guarda el estado del tema
+            Properties.Settings1.Default.IsDarkMode = isDarkMode;
+            Properties.Settings1.Default.Save();
+        }
+
+        private void Welcome_Load(object sender, EventArgs e)
+        {
+            // Cargar el estado del tema guardado
+            isDarkMode = Properties.Settings1.Default.IsDarkMode;
+
+            // Aplicar el tema al cargar el formulario
+            ApplyTheme();
+        }
+
+        private void ApplyTheme()
+        {
+            // Aplica el tema al formulario actual
+            if (isDarkMode)
+            {
+                Theme.SetDarkMode(this);
+            }
+            else
+            {
+                Theme.SetLightMode(this);
+            }
         }
     }
 }

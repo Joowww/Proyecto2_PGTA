@@ -128,3 +128,8 @@ C:\Users\joelm\OneDrive\Documentos\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Simulati
 C:\Users\joelm\OneDrive\Documentos\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Simulation\bin\Debug\net6.0-windows\Accord.Math.dll
 C:\Users\joelm\OneDrive\Documentos\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Simulation\bin\Debug\net6.0-windows\AstDecoder.dll
 C:\Users\joelm\OneDrive\Documentos\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Simulation\bin\Debug\net6.0-windows\AstDecoder.pdb
+C:\Users\joelm\OneDrive\Documentos\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Simulation\bin\Debug\net6.0-windows\Simulation.dll.config
+C:\Users\joelm\OneDrive\Documentos\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Simulation\obj\Debug\net6.0-windows\Simulation.VideoTutorial.resources
+C:\Users\joelm\OneDrive\Documentos\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Simulation\obj\Debug\net6.0-windows\Simulation.Group9.resources
+C:\Users\joelm\OneDrive\Documentos\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Simulation\obj\Debug\net6.0-windows\Simulation.Contact.resources
+C:\Users\joelm\OneDrive\Documentos\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Simulation\obj\Debug\net6.0-windows\Simulation.Tutorial.resources

@@ -21,6 +21,7 @@ namespace Simulation
     {
         GMapControl mapControl;
         List<List<object>> FiltredMessages { get; set; }
+        private bool isDarkMode;
 
         private int currentSecond;
         private int maxSecond; // Variable para almacenar el máximo segundo disponible
@@ -71,6 +72,22 @@ namespace Simulation
 
         private void Mapa_Load(object sender, EventArgs e)
         {
+            // Cargar el estado del tema guardado
+            isDarkMode = Properties.Settings1.Default.IsDarkMode;
+
+            // Aplicar el tema según el estado guardado
+            ApplyTheme();
+
+            // Si el modo oscuro está activo, aplicarlo
+            if (isDarkMode)
+            {
+                Theme.SetDarkMode(this);
+            }
+            else
+            {
+                Theme.SetLightMode(this);
+            }
+
 
             mapControl.Position = new PointLatLng(41.298, 2.080);
 
@@ -117,7 +134,7 @@ namespace Simulation
             }
         }
 
-        static List<List<object>> AircraftsPerSecond (List<List<object>> FiltredMessages, int second)
+        static List<List<object>> AircraftsPerSecond(List<List<object>> FiltredMessages, int second)
         {
             List<List<object>> aircraftsSecond = new List<List<object>>();
             // Recorrer todas las listas de FiltredMessages
@@ -219,6 +236,19 @@ namespace Simulation
 
             // Actualizar el mapa con el nuevo proveedor
             mapControl.Refresh();
+        }
+
+        private void ApplyTheme()
+        {
+            // Aplica el tema al formulario actual
+            if (isDarkMode)
+            {
+                this.BackColor = Color.FromArgb(45, 45, 48);
+            }
+            else
+            {
+                this.BackColor = Color.White;
+            }
         }
 
         private void CloseBtn_Click(object sender, EventArgs e)
