@@ -86,7 +86,7 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(387, 198);
+            comboBox1.Location = new Point(444, 194);
             comboBox1.Margin = new Padding(2);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(222, 28);
@@ -96,10 +96,11 @@
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.White;
+            label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label1.Location = new Point(353, 127);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(288, 20);
+            label1.Size = new Size(400, 28);
             label1.TabIndex = 2;
             label1.Text = "How would you like to import the csv file?";
             // 
@@ -111,7 +112,7 @@
             SimulateBtn.FlatAppearance.MouseOverBackColor = Color.DarkGray;
             SimulateBtn.FlatStyle = FlatStyle.Flat;
             SimulateBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            SimulateBtn.Location = new Point(361, 265);
+            SimulateBtn.Location = new Point(409, 274);
             SimulateBtn.Margin = new Padding(2);
             SimulateBtn.Name = "SimulateBtn";
             SimulateBtn.Size = new Size(280, 50);
@@ -143,7 +144,7 @@
             sidebar.MaximumSize = new Size(249, 650);
             sidebar.MinimumSize = new Size(108, 650);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(108, 650);
+            sidebar.Size = new Size(249, 650);
             sidebar.TabIndex = 11;
             // 
             // panel1
@@ -171,6 +172,7 @@
             // menuButton
             // 
             menuButton.BackgroundImage = (Image)resources.GetObject("menuButton.BackgroundImage");
+            menuButton.BackgroundImageLayout = ImageLayout.Stretch;
             menuButton.Cursor = Cursors.Hand;
             menuButton.InitialImage = (Image)resources.GetObject("menuButton.InitialImage");
             menuButton.Location = new Point(12, 40);
@@ -195,9 +197,9 @@
             // 
             pictureBox8.BackgroundImage = (Image)resources.GetObject("pictureBox8.BackgroundImage");
             pictureBox8.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox8.Location = new Point(12, 0);
+            pictureBox8.Location = new Point(15, 5);
             pictureBox8.Name = "pictureBox8";
-            pictureBox8.Size = new Size(80, 60);
+            pictureBox8.Size = new Size(70, 50);
             pictureBox8.TabIndex = 14;
             pictureBox8.TabStop = false;
             // 
@@ -332,16 +334,16 @@
             panel4.Location = new Point(-1, 0);
             panel4.Margin = new Padding(6, 2, 6, 2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(243, 64);
+            panel4.Size = new Size(266, 64);
             panel4.TabIndex = 14;
             // 
             // pictureBox10
             // 
             pictureBox10.BackgroundImage = (Image)resources.GetObject("pictureBox10.BackgroundImage");
             pictureBox10.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox10.Location = new Point(12, 0);
+            pictureBox10.Location = new Point(15, 5);
             pictureBox10.Name = "pictureBox10";
-            pictureBox10.Size = new Size(80, 60);
+            pictureBox10.Size = new Size(70, 50);
             pictureBox10.TabIndex = 14;
             pictureBox10.TabStop = false;
             // 
@@ -360,7 +362,7 @@
             buttonSettings.Location = new Point(0, 0);
             buttonSettings.Name = "buttonSettings";
             buttonSettings.Padding = new Padding(5, 0, 0, 0);
-            buttonSettings.Size = new Size(243, 64);
+            buttonSettings.Size = new Size(253, 64);
             buttonSettings.TabIndex = 11;
             buttonSettings.Text = "                Settings";
             buttonSettings.TextAlign = ContentAlignment.MiddleLeft;
@@ -443,16 +445,16 @@
             panel5.Location = new Point(0, 0);
             panel5.Margin = new Padding(6, 2, 6, 2);
             panel5.Name = "panel5";
-            panel5.Size = new Size(242, 60);
+            panel5.Size = new Size(252, 60);
             panel5.TabIndex = 15;
             // 
             // pictureBox11
             // 
             pictureBox11.BackgroundImage = (Image)resources.GetObject("pictureBox11.BackgroundImage");
             pictureBox11.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox11.Location = new Point(12, 0);
+            pictureBox11.Location = new Point(15, 5);
             pictureBox11.Name = "pictureBox11";
-            pictureBox11.Size = new Size(80, 60);
+            pictureBox11.Size = new Size(70, 50);
             pictureBox11.TabIndex = 14;
             pictureBox11.TabStop = false;
             // 
@@ -471,7 +473,7 @@
             buttonHelp.Location = new Point(0, 0);
             buttonHelp.Name = "buttonHelp";
             buttonHelp.Padding = new Padding(5, 0, 0, 0);
-            buttonHelp.Size = new Size(242, 60);
+            buttonHelp.Size = new Size(249, 60);
             buttonHelp.TabIndex = 11;
             buttonHelp.Text = "                Help";
             buttonHelp.TextAlign = ContentAlignment.MiddleLeft;

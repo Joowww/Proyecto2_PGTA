@@ -258,9 +258,11 @@
             // 
             // menuButton
             // 
+            menuButton.BackColor = Color.Transparent;
             menuButton.BackgroundImage = (Image)resources.GetObject("menuButton.BackgroundImage");
+            menuButton.BackgroundImageLayout = ImageLayout.Stretch;
             menuButton.Cursor = Cursors.Hand;
-            menuButton.InitialImage = (Image)resources.GetObject("menuButton.InitialImage");
+            menuButton.InitialImage = null;
             menuButton.Location = new Point(12, 40);
             menuButton.Name = "menuButton";
             menuButton.Size = new Size(80, 60);
@@ -283,9 +285,9 @@
             // 
             pictureBox8.BackgroundImage = (Image)resources.GetObject("pictureBox8.BackgroundImage");
             pictureBox8.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox8.Location = new Point(12, 0);
+            pictureBox8.Location = new Point(16, 4);
             pictureBox8.Name = "pictureBox8";
-            pictureBox8.Size = new Size(80, 60);
+            pictureBox8.Size = new Size(70, 50);
             pictureBox8.TabIndex = 13;
             pictureBox8.TabStop = false;
             // 
@@ -384,9 +386,9 @@
             // 
             pictureBox9.BackgroundImage = (Image)resources.GetObject("pictureBox9.BackgroundImage");
             pictureBox9.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox9.Location = new Point(12, 0);
+            pictureBox9.Location = new Point(15, 5);
             pictureBox9.Name = "pictureBox9";
-            pictureBox9.Size = new Size(80, 60);
+            pictureBox9.Size = new Size(70, 50);
             pictureBox9.TabIndex = 13;
             pictureBox9.TabStop = false;
             // 
@@ -405,7 +407,7 @@
             buttonAboutUs.Location = new Point(0, 0);
             buttonAboutUs.Name = "buttonAboutUs";
             buttonAboutUs.Padding = new Padding(5, 0, 0, 0);
-            buttonAboutUs.Size = new Size(237, 60);
+            buttonAboutUs.Size = new Size(242, 60);
             buttonAboutUs.TabIndex = 11;
             buttonAboutUs.Text = "                About us";
             buttonAboutUs.TextAlign = ContentAlignment.MiddleLeft;
@@ -469,7 +471,6 @@
             SettingsContainer.Name = "SettingsContainer";
             SettingsContainer.Size = new Size(237, 60);
             SettingsContainer.TabIndex = 17;
-            SettingsContainer.Paint += SettingsContainer_Paint;
             // 
             // panel10
             // 
@@ -530,9 +531,9 @@
             // 
             pictureBox10.BackgroundImage = (Image)resources.GetObject("pictureBox10.BackgroundImage");
             pictureBox10.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox10.Location = new Point(12, 0);
+            pictureBox10.Location = new Point(15, 5);
             pictureBox10.Name = "pictureBox10";
-            pictureBox10.Size = new Size(80, 60);
+            pictureBox10.Size = new Size(70, 50);
             pictureBox10.TabIndex = 13;
             pictureBox10.TabStop = false;
             // 
@@ -667,16 +668,16 @@
             panel5.Location = new Point(0, 0);
             panel5.Margin = new Padding(6, 2, 6, 2);
             panel5.Name = "panel5";
-            panel5.Size = new Size(250, 61);
+            panel5.Size = new Size(242, 61);
             panel5.TabIndex = 15;
             // 
             // pictureBox11
             // 
             pictureBox11.BackgroundImage = (Image)resources.GetObject("pictureBox11.BackgroundImage");
             pictureBox11.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox11.Location = new Point(12, 0);
+            pictureBox11.Location = new Point(15, 5);
             pictureBox11.Name = "pictureBox11";
-            pictureBox11.Size = new Size(80, 60);
+            pictureBox11.Size = new Size(70, 50);
             pictureBox11.TabIndex = 13;
             pictureBox11.TabStop = false;
             // 
@@ -695,7 +696,7 @@
             buttonHelp.Location = new Point(0, 0);
             buttonHelp.Name = "buttonHelp";
             buttonHelp.Padding = new Padding(5, 0, 0, 0);
-            buttonHelp.Size = new Size(236, 61);
+            buttonHelp.Size = new Size(242, 61);
             buttonHelp.TabIndex = 11;
             buttonHelp.Text = "                Help";
             buttonHelp.TextAlign = ContentAlignment.MiddleLeft;
@@ -761,9 +762,9 @@
             // 
             pictureBox12.BackgroundImage = (Image)resources.GetObject("pictureBox12.BackgroundImage");
             pictureBox12.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox12.Location = new Point(12, 0);
+            pictureBox12.Location = new Point(15, 5);
             pictureBox12.Name = "pictureBox12";
-            pictureBox12.Size = new Size(80, 60);
+            pictureBox12.Size = new Size(70, 50);
             pictureBox12.TabIndex = 13;
             pictureBox12.TabStop = false;
             // 
@@ -786,6 +787,7 @@
             button4.Text = "                Privacy ";
             button4.TextAlign = ContentAlignment.MiddleLeft;
             button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
             // 
             // Welcome
             // 

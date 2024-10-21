@@ -87,7 +87,7 @@ namespace Simulation
                     double LON = Convert.ToDouble(row[6]);
                     double H = Convert.ToDouble(row[7]);
                     string TYP = Convert.ToString(row[8]);
-                    int MODE_3A = Convert.ToInt32(row[23]);
+                    string MODE_3A = Convert.ToString(row[23]);
                     string TA = Convert.ToString(row[35]);
 
                     // Validar que TA no sea null o una cadena vacía antes de agregar a allMessages
@@ -184,10 +184,9 @@ namespace Simulation
             // Recorremos todos los mensajes
             foreach (var message in allMessages)
             {
-                object MODE_3A = message[5]; 
-                int mode_3A = Convert.ToInt32(MODE_3A);
-                
-                if (mode_3A != 7777)
+                object MODE_3A = message[5];
+
+                if (MODE_3A.ToString() != "7777")
                 {
                     filtredMessages.Add(message); // Lo añadimos a la lista filtrada
                 }

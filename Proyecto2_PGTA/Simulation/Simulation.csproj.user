@@ -7,6 +7,9 @@
     <Compile Update="Group9.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Privacy.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Tutorial.cs">
       <SubType>Form</SubType>
     </Compile>

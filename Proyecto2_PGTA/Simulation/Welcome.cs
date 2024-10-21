@@ -235,9 +235,13 @@ namespace Simulation
             SidebarTimer.Start();
         }
 
-        private void SettingsContainer_Paint(object sender, PaintEventArgs e)
+        private void button4_Click(object sender, EventArgs e)
         {
-
+            Privacy PPrivacy = new Privacy();
+            // Oculta el Principal
+            this.Hide();
+            // Abrir el Mapa
+            PPrivacy.Show();
         }
     }
 }
