@@ -204,7 +204,7 @@ namespace Simulation
 
         private void buttonTutorial_Click(object sender, EventArgs e)
         {
-            Tutorial Tut = new Tutorial();
+            Tutorial2 Tut = new Tutorial2();
             // Oculta el Principal
             this.Hide();
             // Abrir el Mapa
@@ -293,6 +293,12 @@ namespace Simulation
                     SidebarTimer.Stop();
                 }
             }
+        }
+
+        private void menuButton_Click(object sender, EventArgs e)
+        {
+            // Set timer interval to lowest to make it smoother
+            SidebarTimer.Start();
         }
     }
 }

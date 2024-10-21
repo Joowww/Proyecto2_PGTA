@@ -234,5 +234,10 @@ namespace Simulation
             // Set timer interval to lowest to make it smoother
             SidebarTimer.Start();
         }
+
+        private void SettingsContainer_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

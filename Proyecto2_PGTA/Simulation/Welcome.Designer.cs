@@ -46,6 +46,7 @@
             label1 = new Label();
             menuButton = new PictureBox();
             panel2 = new Panel();
+            pictureBox8 = new PictureBox();
             button2 = new Button();
             AboutUsContainer = new Panel();
             panel8 = new Panel();
@@ -53,6 +54,7 @@
             panel7 = new Panel();
             buttonGroup = new Button();
             panel3 = new Panel();
+            pictureBox9 = new PictureBox();
             buttonAboutUs = new Button();
             SettingsContainer = new Panel();
             panel11 = new Panel();
@@ -60,6 +62,7 @@
             panel10 = new Panel();
             button3 = new Button();
             panel4 = new Panel();
+            pictureBox10 = new PictureBox();
             buttonSettings = new Button();
             HelpContainer = new Panel();
             panel13 = new Panel();
@@ -67,9 +70,11 @@
             panel12 = new Panel();
             buttonTutorial = new Button();
             panel5 = new Panel();
+            pictureBox11 = new PictureBox();
             buttonHelp = new Button();
-            panel6 = new Panel();
-            buttonPPolicy = new Button();
+            panel9 = new Panel();
+            pictureBox12 = new PictureBox();
+            button4 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
@@ -80,19 +85,24 @@
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)menuButton).BeginInit();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
             AboutUsContainer.SuspendLayout();
             panel8.SuspendLayout();
             panel7.SuspendLayout();
             panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
             SettingsContainer.SuspendLayout();
             panel11.SuspendLayout();
             panel10.SuspendLayout();
             panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
             HelpContainer.SuspendLayout();
             panel13.SuspendLayout();
             panel12.SuspendLayout();
             panel5.SuspendLayout();
-            panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
+            panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox12).BeginInit();
             SuspendLayout();
             // 
             // button1
@@ -196,12 +206,13 @@
             sidebar.Controls.Add(AboutUsContainer);
             sidebar.Controls.Add(SettingsContainer);
             sidebar.Controls.Add(HelpContainer);
-            sidebar.Controls.Add(panel6);
+            sidebar.Controls.Add(panel9);
             sidebar.Location = new Point(0, 0);
-            sidebar.MaximumSize = new Size(250, 648);
-            sidebar.MinimumSize = new Size(115, 648);
+            sidebar.Margin = new Padding(6);
+            sidebar.MaximumSize = new Size(249, 648);
+            sidebar.MinimumSize = new Size(108, 648);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(250, 648);
+            sidebar.Size = new Size(108, 648);
             sidebar.TabIndex = 11;
             // 
             // panel1
@@ -209,9 +220,10 @@
             panel1.BackColor = Color.Transparent;
             panel1.Controls.Add(label1);
             panel1.Controls.Add(menuButton);
-            panel1.Location = new Point(3, 3);
+            panel1.Location = new Point(6, 6);
+            panel1.Margin = new Padding(6, 6, 6, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(240, 141);
+            panel1.Size = new Size(237, 141);
             panel1.TabIndex = 11;
             // 
             // label1
@@ -230,9 +242,9 @@
             menuButton.BackgroundImage = (Image)resources.GetObject("menuButton.BackgroundImage");
             menuButton.Cursor = Cursors.Hand;
             menuButton.InitialImage = (Image)resources.GetObject("menuButton.InitialImage");
-            menuButton.Location = new Point(9, 40);
+            menuButton.Location = new Point(12, 40);
             menuButton.Name = "menuButton";
-            menuButton.Size = new Size(75, 61);
+            menuButton.Size = new Size(80, 60);
             menuButton.TabIndex = 11;
             menuButton.TabStop = false;
             menuButton.Click += menuButton_Click_1;
@@ -240,11 +252,23 @@
             // panel2
             // 
             panel2.BackColor = Color.Transparent;
+            panel2.Controls.Add(pictureBox8);
             panel2.Controls.Add(button2);
-            panel2.Location = new Point(3, 150);
+            panel2.Location = new Point(6, 151);
+            panel2.Margin = new Padding(6, 1, 6, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(240, 60);
+            panel2.Size = new Size(237, 60);
             panel2.TabIndex = 12;
+            // 
+            // pictureBox8
+            // 
+            pictureBox8.BackgroundImage = (Image)resources.GetObject("pictureBox8.BackgroundImage");
+            pictureBox8.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox8.Location = new Point(12, 0);
+            pictureBox8.Name = "pictureBox8";
+            pictureBox8.Size = new Size(80, 60);
+            pictureBox8.TabIndex = 13;
+            pictureBox8.TabStop = false;
             // 
             // button2
             // 
@@ -255,7 +279,6 @@
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button2.ForeColor = Color.White;
-            button2.Image = (Image)resources.GetObject("button2.Image");
             button2.ImageAlign = ContentAlignment.MiddleLeft;
             button2.Location = new Point(0, 0);
             button2.Name = "button2";
@@ -273,11 +296,12 @@
             AboutUsContainer.Controls.Add(panel8);
             AboutUsContainer.Controls.Add(panel7);
             AboutUsContainer.Controls.Add(panel3);
-            AboutUsContainer.Location = new Point(3, 216);
-            AboutUsContainer.MaximumSize = new Size(240, 156);
-            AboutUsContainer.MinimumSize = new Size(240, 60);
+            AboutUsContainer.Location = new Point(6, 215);
+            AboutUsContainer.Margin = new Padding(6, 2, 6, 2);
+            AboutUsContainer.MaximumSize = new Size(237, 156);
+            AboutUsContainer.MinimumSize = new Size(237, 60);
             AboutUsContainer.Name = "AboutUsContainer";
-            AboutUsContainer.Size = new Size(240, 60);
+            AboutUsContainer.Size = new Size(237, 60);
             AboutUsContainer.TabIndex = 11;
             // 
             // panel8
@@ -343,11 +367,23 @@
             // panel3
             // 
             panel3.BackColor = Color.Transparent;
+            panel3.Controls.Add(pictureBox9);
             panel3.Controls.Add(buttonAboutUs);
             panel3.Location = new Point(0, 0);
+            panel3.Margin = new Padding(6, 2, 6, 2);
             panel3.Name = "panel3";
             panel3.Size = new Size(237, 54);
             panel3.TabIndex = 13;
+            // 
+            // pictureBox9
+            // 
+            pictureBox9.BackgroundImage = (Image)resources.GetObject("pictureBox9.BackgroundImage");
+            pictureBox9.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox9.Location = new Point(12, 0);
+            pictureBox9.Name = "pictureBox9";
+            pictureBox9.Size = new Size(80, 60);
+            pictureBox9.TabIndex = 13;
+            pictureBox9.TabStop = false;
             // 
             // buttonAboutUs
             // 
@@ -358,7 +394,6 @@
             buttonAboutUs.FlatStyle = FlatStyle.Flat;
             buttonAboutUs.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             buttonAboutUs.ForeColor = Color.Transparent;
-            buttonAboutUs.Image = (Image)resources.GetObject("buttonAboutUs.Image");
             buttonAboutUs.ImageAlign = ContentAlignment.MiddleLeft;
             buttonAboutUs.Location = new Point(0, 0);
             buttonAboutUs.Name = "buttonAboutUs";
@@ -376,12 +411,14 @@
             SettingsContainer.Controls.Add(panel11);
             SettingsContainer.Controls.Add(panel10);
             SettingsContainer.Controls.Add(panel4);
-            SettingsContainer.Location = new Point(3, 282);
-            SettingsContainer.MaximumSize = new Size(240, 156);
-            SettingsContainer.MinimumSize = new Size(240, 59);
+            SettingsContainer.Location = new Point(6, 279);
+            SettingsContainer.Margin = new Padding(6, 2, 6, 2);
+            SettingsContainer.MaximumSize = new Size(237, 156);
+            SettingsContainer.MinimumSize = new Size(237, 59);
             SettingsContainer.Name = "SettingsContainer";
-            SettingsContainer.Size = new Size(240, 59);
+            SettingsContainer.Size = new Size(237, 59);
             SettingsContainer.TabIndex = 17;
+            SettingsContainer.Paint += SettingsContainer_Paint;
             // 
             // panel11
             // 
@@ -445,11 +482,23 @@
             // panel4
             // 
             panel4.BackColor = Color.Transparent;
+            panel4.Controls.Add(pictureBox10);
             panel4.Controls.Add(buttonSettings);
             panel4.Location = new Point(1, 1);
+            panel4.Margin = new Padding(6, 3, 6, 3);
             panel4.Name = "panel4";
-            panel4.Size = new Size(229, 60);
+            panel4.Size = new Size(236, 60);
             panel4.TabIndex = 14;
+            // 
+            // pictureBox10
+            // 
+            pictureBox10.BackgroundImage = (Image)resources.GetObject("pictureBox10.BackgroundImage");
+            pictureBox10.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox10.Location = new Point(12, 0);
+            pictureBox10.Name = "pictureBox10";
+            pictureBox10.Size = new Size(80, 60);
+            pictureBox10.TabIndex = 13;
+            pictureBox10.TabStop = false;
             // 
             // buttonSettings
             // 
@@ -460,12 +509,11 @@
             buttonSettings.FlatStyle = FlatStyle.Flat;
             buttonSettings.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             buttonSettings.ForeColor = Color.White;
-            buttonSettings.Image = (Image)resources.GetObject("buttonSettings.Image");
             buttonSettings.ImageAlign = ContentAlignment.MiddleLeft;
             buttonSettings.Location = new Point(0, 0);
             buttonSettings.Name = "buttonSettings";
             buttonSettings.Padding = new Padding(5, 0, 0, 0);
-            buttonSettings.Size = new Size(239, 60);
+            buttonSettings.Size = new Size(236, 60);
             buttonSettings.TabIndex = 11;
             buttonSettings.Text = "                Settings";
             buttonSettings.TextAlign = ContentAlignment.MiddleLeft;
@@ -478,11 +526,12 @@
             HelpContainer.Controls.Add(panel13);
             HelpContainer.Controls.Add(panel12);
             HelpContainer.Controls.Add(panel5);
-            HelpContainer.Location = new Point(3, 347);
-            HelpContainer.MaximumSize = new Size(240, 157);
-            HelpContainer.MinimumSize = new Size(240, 60);
+            HelpContainer.Location = new Point(6, 342);
+            HelpContainer.Margin = new Padding(6, 2, 6, 2);
+            HelpContainer.MaximumSize = new Size(237, 157);
+            HelpContainer.MinimumSize = new Size(237, 60);
             HelpContainer.Name = "HelpContainer";
-            HelpContainer.Size = new Size(240, 60);
+            HelpContainer.Size = new Size(237, 60);
             HelpContainer.TabIndex = 17;
             // 
             // panel13
@@ -546,11 +595,23 @@
             // panel5
             // 
             panel5.BackColor = Color.DarkGray;
+            panel5.Controls.Add(pictureBox11);
             panel5.Controls.Add(buttonHelp);
             panel5.Location = new Point(2, 2);
+            panel5.Margin = new Padding(6, 2, 6, 2);
             panel5.Name = "panel5";
             panel5.Size = new Size(235, 58);
             panel5.TabIndex = 15;
+            // 
+            // pictureBox11
+            // 
+            pictureBox11.BackgroundImage = (Image)resources.GetObject("pictureBox11.BackgroundImage");
+            pictureBox11.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox11.Location = new Point(12, 0);
+            pictureBox11.Name = "pictureBox11";
+            pictureBox11.Size = new Size(80, 60);
+            pictureBox11.TabIndex = 13;
+            pictureBox11.TabStop = false;
             // 
             // buttonHelp
             // 
@@ -561,47 +622,55 @@
             buttonHelp.FlatStyle = FlatStyle.Flat;
             buttonHelp.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             buttonHelp.ForeColor = Color.White;
-            buttonHelp.Image = (Image)resources.GetObject("buttonHelp.Image");
             buttonHelp.ImageAlign = ContentAlignment.MiddleLeft;
             buttonHelp.Location = new Point(0, 0);
             buttonHelp.Name = "buttonHelp";
             buttonHelp.Padding = new Padding(5, 0, 0, 0);
-            buttonHelp.Size = new Size(238, 58);
+            buttonHelp.Size = new Size(235, 58);
             buttonHelp.TabIndex = 11;
             buttonHelp.Text = "                Help";
             buttonHelp.TextAlign = ContentAlignment.MiddleLeft;
             buttonHelp.UseVisualStyleBackColor = false;
             buttonHelp.Click += buttonHelp_Click_1;
             // 
-            // panel6
+            // panel9
             // 
-            panel6.BackColor = Color.Transparent;
-            panel6.Controls.Add(buttonPPolicy);
-            panel6.Location = new Point(3, 413);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(240, 60);
-            panel6.TabIndex = 16;
+            panel9.BackColor = Color.Transparent;
+            panel9.Controls.Add(pictureBox12);
+            panel9.Controls.Add(button4);
+            panel9.Location = new Point(6, 405);
+            panel9.Margin = new Padding(6, 1, 6, 2);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(237, 60);
+            panel9.TabIndex = 19;
             // 
-            // buttonPPolicy
+            // pictureBox12
             // 
-            buttonPPolicy.BackColor = Color.Transparent;
-            buttonPPolicy.Dock = DockStyle.Left;
-            buttonPPolicy.FlatAppearance.BorderColor = Color.DarkGray;
-            buttonPPolicy.FlatAppearance.BorderSize = 0;
-            buttonPPolicy.FlatStyle = FlatStyle.Flat;
-            buttonPPolicy.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonPPolicy.ForeColor = Color.White;
-            buttonPPolicy.Image = (Image)resources.GetObject("buttonPPolicy.Image");
-            buttonPPolicy.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonPPolicy.Location = new Point(0, 0);
-            buttonPPolicy.Name = "buttonPPolicy";
-            buttonPPolicy.Padding = new Padding(5, 0, 0, 0);
-            buttonPPolicy.Size = new Size(237, 60);
-            buttonPPolicy.TabIndex = 11;
-            buttonPPolicy.Text = "                Privacy Policy";
-            buttonPPolicy.TextAlign = ContentAlignment.MiddleLeft;
-            buttonPPolicy.UseVisualStyleBackColor = false;
-            buttonPPolicy.Click += buttonPPolicy_Click_1;
+            pictureBox12.BackgroundImage = (Image)resources.GetObject("pictureBox12.BackgroundImage");
+            pictureBox12.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox12.Location = new Point(12, 0);
+            pictureBox12.Name = "pictureBox12";
+            pictureBox12.Size = new Size(80, 60);
+            pictureBox12.TabIndex = 13;
+            pictureBox12.TabStop = false;
+            // 
+            // button4
+            // 
+            button4.BackColor = Color.Transparent;
+            button4.Dock = DockStyle.Left;
+            button4.FlatAppearance.BorderColor = Color.DarkGray;
+            button4.FlatAppearance.BorderSize = 0;
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button4.ForeColor = Color.White;
+            button4.Location = new Point(0, 0);
+            button4.Name = "button4";
+            button4.Padding = new Padding(5, 0, 0, 0);
+            button4.Size = new Size(234, 60);
+            button4.TabIndex = 12;
+            button4.Text = "                Privacy ";
+            button4.TextAlign = ContentAlignment.MiddleLeft;
+            button4.UseVisualStyleBackColor = false;
             // 
             // Welcome
             // 
@@ -632,19 +701,24 @@
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)menuButton).EndInit();
             panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
             AboutUsContainer.ResumeLayout(false);
             panel8.ResumeLayout(false);
             panel7.ResumeLayout(false);
             panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
             SettingsContainer.ResumeLayout(false);
             panel11.ResumeLayout(false);
             panel10.ResumeLayout(false);
             panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
             HelpContainer.ResumeLayout(false);
             panel13.ResumeLayout(false);
             panel12.ResumeLayout(false);
             panel5.ResumeLayout(false);
-            panel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox11).EndInit();
+            panel9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox12).EndInit();
             ResumeLayout(false);
         }
 
@@ -688,7 +762,12 @@
         private Button buttonTutorial;
         private Panel panel5;
         private Button buttonHelp;
-        private Panel panel6;
-        private Button buttonPPolicy;
+        private PictureBox pictureBox8;
+        private PictureBox pictureBox9;
+        private PictureBox pictureBox10;
+        private PictureBox pictureBox11;
+        private Panel panel9;
+        private PictureBox pictureBox12;
+        private Button button4;
     }
 }

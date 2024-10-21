@@ -39,6 +39,7 @@
             label2 = new Label();
             menuButton = new PictureBox();
             panel2 = new Panel();
+            pictureBox8 = new PictureBox();
             button2 = new Button();
             SettingsContainer = new Panel();
             panel11 = new Panel();
@@ -46,11 +47,13 @@
             panel10 = new Panel();
             button3 = new Button();
             panel4 = new Panel();
+            pictureBox10 = new PictureBox();
             buttonSettings = new Button();
             HelpContainer = new Panel();
             panel12 = new Panel();
             buttonTutorial = new Button();
             panel5 = new Panel();
+            pictureBox11 = new PictureBox();
             buttonHelp = new Button();
             HelpTimer = new System.Windows.Forms.Timer(components);
             SettingsTimer = new System.Windows.Forms.Timer(components);
@@ -60,13 +63,16 @@
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)menuButton).BeginInit();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
             SettingsContainer.SuspendLayout();
             panel11.SuspendLayout();
             panel10.SuspendLayout();
             panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
             HelpContainer.SuspendLayout();
             panel12.SuspendLayout();
             panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
             SuspendLayout();
             // 
             // comboBox1
@@ -119,10 +125,10 @@
             sidebar.Controls.Add(SettingsContainer);
             sidebar.Controls.Add(HelpContainer);
             sidebar.Location = new Point(-1, -1);
-            sidebar.MaximumSize = new Size(250, 650);
-            sidebar.MinimumSize = new Size(250, 650);
+            sidebar.MaximumSize = new Size(249, 650);
+            sidebar.MinimumSize = new Size(108, 650);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(250, 650);
+            sidebar.Size = new Size(108, 650);
             sidebar.TabIndex = 11;
             // 
             // panel1
@@ -130,9 +136,10 @@
             panel1.BackColor = Color.Transparent;
             panel1.Controls.Add(label2);
             panel1.Controls.Add(menuButton);
-            panel1.Location = new Point(3, 3);
+            panel1.Location = new Point(6, 6);
+            panel1.Margin = new Padding(6, 6, 6, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(240, 141);
+            panel1.Size = new Size(237, 141);
             panel1.TabIndex = 11;
             // 
             // label2
@@ -156,15 +163,28 @@
             menuButton.Size = new Size(75, 61);
             menuButton.TabIndex = 11;
             menuButton.TabStop = false;
+            menuButton.Click += menuButton_Click;
             // 
             // panel2
             // 
             panel2.BackColor = Color.Transparent;
+            panel2.Controls.Add(pictureBox8);
             panel2.Controls.Add(button2);
-            panel2.Location = new Point(3, 150);
+            panel2.Location = new Point(6, 151);
+            panel2.Margin = new Padding(6, 1, 6, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(240, 60);
+            panel2.Size = new Size(237, 60);
             panel2.TabIndex = 12;
+            // 
+            // pictureBox8
+            // 
+            pictureBox8.BackgroundImage = (Image)resources.GetObject("pictureBox8.BackgroundImage");
+            pictureBox8.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox8.Location = new Point(12, 0);
+            pictureBox8.Name = "pictureBox8";
+            pictureBox8.Size = new Size(80, 60);
+            pictureBox8.TabIndex = 14;
+            pictureBox8.TabStop = false;
             // 
             // button2
             // 
@@ -175,7 +195,6 @@
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button2.ForeColor = Color.White;
-            button2.Image = (Image)resources.GetObject("button2.Image");
             button2.ImageAlign = ContentAlignment.MiddleLeft;
             button2.Location = new Point(0, 0);
             button2.Name = "button2";
@@ -193,11 +212,12 @@
             SettingsContainer.Controls.Add(panel11);
             SettingsContainer.Controls.Add(panel10);
             SettingsContainer.Controls.Add(panel4);
-            SettingsContainer.Location = new Point(3, 216);
-            SettingsContainer.MaximumSize = new Size(240, 156);
-            SettingsContainer.MinimumSize = new Size(240, 59);
+            SettingsContainer.Location = new Point(6, 215);
+            SettingsContainer.Margin = new Padding(6, 2, 6, 2);
+            SettingsContainer.MaximumSize = new Size(237, 156);
+            SettingsContainer.MinimumSize = new Size(237, 59);
             SettingsContainer.Name = "SettingsContainer";
-            SettingsContainer.Size = new Size(240, 59);
+            SettingsContainer.Size = new Size(237, 59);
             SettingsContainer.TabIndex = 17;
             // 
             // panel11
@@ -262,11 +282,23 @@
             // panel4
             // 
             panel4.BackColor = Color.Transparent;
+            panel4.Controls.Add(pictureBox10);
             panel4.Controls.Add(buttonSettings);
             panel4.Location = new Point(1, 1);
+            panel4.Margin = new Padding(6, 2, 6, 2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(229, 58);
+            panel4.Size = new Size(236, 58);
             panel4.TabIndex = 14;
+            // 
+            // pictureBox10
+            // 
+            pictureBox10.BackgroundImage = (Image)resources.GetObject("pictureBox10.BackgroundImage");
+            pictureBox10.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox10.Location = new Point(12, 0);
+            pictureBox10.Name = "pictureBox10";
+            pictureBox10.Size = new Size(80, 60);
+            pictureBox10.TabIndex = 14;
+            pictureBox10.TabStop = false;
             // 
             // buttonSettings
             // 
@@ -277,7 +309,6 @@
             buttonSettings.FlatStyle = FlatStyle.Flat;
             buttonSettings.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             buttonSettings.ForeColor = Color.White;
-            buttonSettings.Image = (Image)resources.GetObject("buttonSettings.Image");
             buttonSettings.ImageAlign = ContentAlignment.MiddleLeft;
             buttonSettings.Location = new Point(0, 0);
             buttonSettings.Name = "buttonSettings";
@@ -294,11 +325,12 @@
             HelpContainer.BackColor = Color.Transparent;
             HelpContainer.Controls.Add(panel12);
             HelpContainer.Controls.Add(panel5);
-            HelpContainer.Location = new Point(3, 281);
-            HelpContainer.MaximumSize = new Size(240, 110);
-            HelpContainer.MinimumSize = new Size(240, 60);
+            HelpContainer.Location = new Point(6, 278);
+            HelpContainer.Margin = new Padding(6, 2, 6, 2);
+            HelpContainer.MaximumSize = new Size(237, 110);
+            HelpContainer.MinimumSize = new Size(237, 60);
             HelpContainer.Name = "HelpContainer";
-            HelpContainer.Size = new Size(240, 61);
+            HelpContainer.Size = new Size(237, 61);
             HelpContainer.TabIndex = 17;
             // 
             // panel12
@@ -333,11 +365,23 @@
             // panel5
             // 
             panel5.BackColor = Color.DarkGray;
+            panel5.Controls.Add(pictureBox11);
             panel5.Controls.Add(buttonHelp);
             panel5.Location = new Point(2, 2);
+            panel5.Margin = new Padding(6, 2, 6, 2);
             panel5.Name = "panel5";
             panel5.Size = new Size(235, 59);
             panel5.TabIndex = 15;
+            // 
+            // pictureBox11
+            // 
+            pictureBox11.BackgroundImage = (Image)resources.GetObject("pictureBox11.BackgroundImage");
+            pictureBox11.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox11.Location = new Point(12, 0);
+            pictureBox11.Name = "pictureBox11";
+            pictureBox11.Size = new Size(80, 60);
+            pictureBox11.TabIndex = 14;
+            pictureBox11.TabStop = false;
             // 
             // buttonHelp
             // 
@@ -348,12 +392,11 @@
             buttonHelp.FlatStyle = FlatStyle.Flat;
             buttonHelp.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             buttonHelp.ForeColor = Color.White;
-            buttonHelp.Image = (Image)resources.GetObject("buttonHelp.Image");
             buttonHelp.ImageAlign = ContentAlignment.MiddleLeft;
             buttonHelp.Location = new Point(0, 0);
             buttonHelp.Name = "buttonHelp";
             buttonHelp.Padding = new Padding(5, 0, 0, 0);
-            buttonHelp.Size = new Size(238, 59);
+            buttonHelp.Size = new Size(235, 59);
             buttonHelp.TabIndex = 11;
             buttonHelp.Text = "                Help";
             buttonHelp.TextAlign = ContentAlignment.MiddleLeft;
@@ -396,13 +439,16 @@
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)menuButton).EndInit();
             panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
             SettingsContainer.ResumeLayout(false);
             panel11.ResumeLayout(false);
             panel10.ResumeLayout(false);
             panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
             HelpContainer.ResumeLayout(false);
             panel12.ResumeLayout(false);
             panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox11).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -446,5 +492,8 @@
         private System.Windows.Forms.Timer HelpTimer;
         private System.Windows.Forms.Timer SettingsTimer;
         private System.Windows.Forms.Timer SidebarTimer;
+        private PictureBox pictureBox8;
+        private PictureBox pictureBox10;
+        private PictureBox pictureBox11;
     }
 }
