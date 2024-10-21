@@ -152,9 +152,23 @@ namespace Simulation
         {
             MessageBox.Show("Executing Removing pure blanks function.", "Simulate", MessageBoxButtons.OK, MessageBoxIcon.Information);
             // For "Removing pure blanks"
-            // HACER FUNCION DE FILTRADO CORRESPONDIENTE
-            List<List<object>> filtredMessages = allMessages;
-            return filtredMessages;
+
+            // Lista filtrada que contendrá solo los mensajes que queremos mantener
+            List<List<object>> filtredMessages = new List<List<object>>();
+
+            // Recorremos todos los mensajes
+            foreach (var message in allMessages)
+            {
+                object TYP = message[4]; // Accedemos a TYP (índice 4)
+
+                // Si TYP es "Mode S Roll-Call" o "Mode S Roll-Call + PSR", lo mantenemos
+                if (TYP.ToString() == "Mode S Roll-Call" || TYP.ToString() == "Mode S Roll-Call + PSR")
+                {
+                    filtredMessages.Add(message); // Lo añadimos a la lista filtrada
+                }
+            }
+
+            return filtredMessages; // Devolvemos la lista filtrada
         }
 
         private List<List<object>> Option3(List<List<object>> allMessages)
