@@ -86,7 +86,7 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(456, 222);
+            comboBox1.Location = new Point(387, 198);
             comboBox1.Margin = new Padding(2);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(222, 28);
@@ -96,7 +96,7 @@
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.White;
-            label1.Location = new Point(422, 151);
+            label1.Location = new Point(353, 127);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(288, 20);
@@ -109,8 +109,9 @@
             SimulateBtn.FlatAppearance.BorderSize = 3;
             SimulateBtn.FlatAppearance.MouseDownBackColor = Color.DarkGray;
             SimulateBtn.FlatAppearance.MouseOverBackColor = Color.DarkGray;
+            SimulateBtn.FlatStyle = FlatStyle.Flat;
             SimulateBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            SimulateBtn.Location = new Point(430, 289);
+            SimulateBtn.Location = new Point(361, 265);
             SimulateBtn.Margin = new Padding(2);
             SimulateBtn.Name = "SimulateBtn";
             SimulateBtn.Size = new Size(280, 50);
@@ -142,7 +143,7 @@
             sidebar.MaximumSize = new Size(249, 650);
             sidebar.MinimumSize = new Size(108, 650);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(249, 650);
+            sidebar.Size = new Size(108, 650);
             sidebar.TabIndex = 11;
             // 
             // panel1
@@ -172,7 +173,7 @@
             menuButton.BackgroundImage = (Image)resources.GetObject("menuButton.BackgroundImage");
             menuButton.Cursor = Cursors.Hand;
             menuButton.InitialImage = (Image)resources.GetObject("menuButton.InitialImage");
-            menuButton.Location = new Point(9, 40);
+            menuButton.Location = new Point(12, 40);
             menuButton.Name = "menuButton";
             menuButton.Size = new Size(75, 61);
             menuButton.TabIndex = 11;

@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Contact));
-            panel1 = new Panel();
-            buttonClose = new Button();
             label9 = new Label();
             label8 = new Label();
             label7 = new Label();
@@ -40,27 +38,9 @@
             pictureBox7 = new PictureBox();
             label3 = new Label();
             label2 = new Label();
-            panel1.SuspendLayout();
+            buttonClose = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             SuspendLayout();
-            // 
-            // panel1
-            // 
-            panel1.Controls.Add(buttonClose);
-            panel1.Location = new Point(291, 371);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(197, 60);
-            panel1.TabIndex = 28;
-            // 
-            // buttonClose
-            // 
-            buttonClose.Location = new Point(2, 4);
-            buttonClose.Name = "buttonClose";
-            buttonClose.Size = new Size(192, 54);
-            buttonClose.TabIndex = 13;
-            buttonClose.Text = "Close";
-            buttonClose.UseVisualStyleBackColor = true;
-            buttonClose.Click += buttonClose_Click;
             // 
             // label9
             // 
@@ -137,11 +117,11 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(95, 59);
+            label3.Location = new Point(121, 59);
             label3.Name = "label3";
-            label3.Size = new Size(583, 28);
+            label3.Size = new Size(507, 28);
             label3.TabIndex = 20;
-            label3.Text = "Estos són los correos personales de cada integrante del grupo:";
+            label3.Text = "These are the personal emails of each group member:";
             // 
             // label2
             // 
@@ -153,12 +133,28 @@
             label2.TabIndex = 19;
             label2.Text = "alejandro.curiel.molina@estudiantat.upc.edu";
             // 
+            // buttonClose
+            // 
+            buttonClose.FlatAppearance.BorderColor = Color.DarkGray;
+            buttonClose.FlatAppearance.BorderSize = 3;
+            buttonClose.FlatAppearance.MouseDownBackColor = Color.DarkGray;
+            buttonClose.FlatAppearance.MouseOverBackColor = Color.DarkGray;
+            buttonClose.FlatStyle = FlatStyle.Flat;
+            buttonClose.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonClose.Location = new Point(258, 366);
+            buttonClose.Name = "buttonClose";
+            buttonClose.Size = new Size(280, 50);
+            buttonClose.TabIndex = 13;
+            buttonClose.Text = "Close";
+            buttonClose.UseVisualStyleBackColor = true;
+            buttonClose.Click += buttonClose_Click;
+            // 
             // Contact
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(830, 484);
-            Controls.Add(panel1);
+            Controls.Add(buttonClose);
             Controls.Add(label9);
             Controls.Add(label8);
             Controls.Add(label7);
@@ -172,16 +168,12 @@
             Name = "Contact";
             Text = "Contact";
             Load += Contact_Load;
-            panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Panel panel1;
-        private Button buttonClose;
         private Label label9;
         private Label label8;
         private Label label7;
@@ -191,5 +183,6 @@
         private PictureBox pictureBox7;
         private Label label3;
         private Label label2;
+        private Button buttonClose;
     }
 }

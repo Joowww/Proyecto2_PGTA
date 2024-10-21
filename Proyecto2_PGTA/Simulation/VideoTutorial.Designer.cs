@@ -35,16 +35,14 @@
             label2 = new Label();
             label3 = new Label();
             buttonClose = new Button();
-            panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
-            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // pictureBox2
             // 
             pictureBox2.BackColor = Color.White;
-            pictureBox2.Location = new Point(257, 189);
+            pictureBox2.Location = new Point(315, 199);
             pictureBox2.Margin = new Padding(2);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(233, 195);
@@ -55,7 +53,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(93, 138);
+            label1.Location = new Point(132, 132);
             label1.Name = "label1";
             label1.Size = new Size(591, 28);
             label1.TabIndex = 5;
@@ -76,7 +74,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(93, 22);
+            label2.Location = new Point(132, 34);
             label2.Name = "label2";
             label2.Size = new Size(440, 28);
             label2.TabIndex = 11;
@@ -86,7 +84,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Point);
-            label3.Location = new Point(257, 80);
+            label3.Location = new Point(396, 86);
             label3.Name = "label3";
             label3.Size = new Size(65, 28);
             label3.TabIndex = 12;
@@ -95,28 +93,26 @@
             // 
             // buttonClose
             // 
-            buttonClose.Location = new Point(2, 4);
+            buttonClose.FlatAppearance.BorderColor = Color.DarkGray;
+            buttonClose.FlatAppearance.BorderSize = 3;
+            buttonClose.FlatAppearance.MouseDownBackColor = Color.DarkGray;
+            buttonClose.FlatAppearance.MouseOverBackColor = Color.DarkGray;
+            buttonClose.FlatStyle = FlatStyle.Flat;
+            buttonClose.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonClose.Location = new Point(268, 424);
             buttonClose.Name = "buttonClose";
-            buttonClose.Size = new Size(192, 54);
+            buttonClose.Size = new Size(280, 50);
             buttonClose.TabIndex = 13;
             buttonClose.Text = "Close";
             buttonClose.UseVisualStyleBackColor = true;
             buttonClose.Click += buttonClose_Click;
-            // 
-            // panel1
-            // 
-            panel1.Controls.Add(buttonClose);
-            panel1.Location = new Point(274, 405);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(197, 60);
-            panel1.TabIndex = 14;
             // 
             // VideoTutorial
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(844, 505);
-            Controls.Add(panel1);
+            Controls.Add(buttonClose);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(pictureBox7);
@@ -128,7 +124,6 @@
             Load += VideoTutorial_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
-            panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -141,6 +136,5 @@
         private Label label2;
         private Label label3;
         private Button buttonClose;
-        private Panel panel1;
     }
 }

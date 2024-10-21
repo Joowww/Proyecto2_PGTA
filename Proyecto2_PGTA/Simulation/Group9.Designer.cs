@@ -39,10 +39,8 @@
             label7 = new Label();
             label8 = new Label();
             label9 = new Label();
-            panel1 = new Panel();
             buttonClose = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
-            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -51,9 +49,9 @@
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label1.Location = new Point(105, 27);
             label1.Name = "label1";
-            label1.Size = new Size(269, 28);
+            label1.Size = new Size(268, 28);
             label1.TabIndex = 0;
-            label1.Text = "Somos el grupo 9 de PGTA. ";
+            label1.Text = "We are the group 9 of GTA. ";
             // 
             // label2
             // 
@@ -71,9 +69,9 @@
             label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label3.Location = new Point(105, 72);
             label3.Name = "label3";
-            label3.Size = new Size(362, 28);
+            label3.Size = new Size(330, 28);
             label3.TabIndex = 2;
-            label3.Text = "El grupo está formado por 7 personas:";
+            label3.Text = "The group is made up of 7 people:";
             // 
             // pictureBox7
             // 
@@ -146,19 +144,17 @@
             label9.TabIndex = 16;
             label9.Text = "Joel Moreno de Toro";
             // 
-            // panel1
-            // 
-            panel1.Controls.Add(buttonClose);
-            panel1.Location = new Point(313, 374);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(197, 60);
-            panel1.TabIndex = 17;
-            // 
             // buttonClose
             // 
-            buttonClose.Location = new Point(2, 4);
+            buttonClose.FlatAppearance.BorderColor = Color.DarkGray;
+            buttonClose.FlatAppearance.BorderSize = 3;
+            buttonClose.FlatAppearance.MouseDownBackColor = Color.DarkGray;
+            buttonClose.FlatAppearance.MouseOverBackColor = Color.DarkGray;
+            buttonClose.FlatStyle = FlatStyle.Flat;
+            buttonClose.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonClose.Location = new Point(280, 380);
             buttonClose.Name = "buttonClose";
-            buttonClose.Size = new Size(192, 54);
+            buttonClose.Size = new Size(280, 50);
             buttonClose.TabIndex = 13;
             buttonClose.Text = "Close";
             buttonClose.UseVisualStyleBackColor = true;
@@ -169,7 +165,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(836, 475);
-            Controls.Add(panel1);
+            Controls.Add(buttonClose);
             Controls.Add(label9);
             Controls.Add(label8);
             Controls.Add(label7);
@@ -185,7 +181,6 @@
             Text = "Group9";
             Load += Group9_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
-            panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -202,7 +197,6 @@
         private Label label7;
         private Label label8;
         private Label label9;
-        private Panel panel1;
         private Button buttonClose;
     }
 }
