@@ -23,8 +23,6 @@ namespace Simulation
             Principal PR = new Principal();
             // Oculta el Principal
             this.Hide();
-            // Abrir el Mapa
-            PR.Show();
         }
 
         private void Tutorial2_Load(object sender, EventArgs e)

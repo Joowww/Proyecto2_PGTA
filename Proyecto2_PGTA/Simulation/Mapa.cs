@@ -118,7 +118,7 @@ namespace Simulation
         {
             if (currentSecond <= maxSecond)
             {
- 
+
                 // Obtener los aviones del segundo actual
                 List<List<object>> result = AircraftsPerSecond(FiltredMessages, currentSecond);
 
@@ -284,7 +284,9 @@ namespace Simulation
 
         private void CloseBtn_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            CloseApp CloseAPP = new CloseApp();
+            // Abrir el Mapa
+            CloseAPP.Show();
         }
 
         private void RestartSimulation()

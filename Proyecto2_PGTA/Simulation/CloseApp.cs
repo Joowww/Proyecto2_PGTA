@@ -10,22 +10,25 @@ using System.Windows.Forms;
 
 namespace Simulation
 {
-    public partial class Tutorial : Form
+    public partial class CloseApp : Form
     {
         private bool isDarkMode;
-        public Tutorial()
+        public CloseApp()
         {
             InitializeComponent();
         }
 
-        private void buttonClose_Click(object sender, EventArgs e)
+        private void buttonYes_Click(object sender, EventArgs e)
         {
-            Welcome Welc = new Welcome();
-            // Oculta el Principal
+            Application.Exit();
+        }
+
+        private void buttonNo_Click(object sender, EventArgs e)
+        {
             this.Hide();
         }
 
-        private void Tutorial_Load(object sender, EventArgs e)
+        private void CloseApp_Load(object sender, EventArgs e)
         {
             // Cargar el estado del tema guardado
             isDarkMode = Properties.Settings1.Default.IsDarkMode;

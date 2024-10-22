@@ -196,8 +196,6 @@ namespace Simulation
         private void buttonGroup_Click_1(object sender, EventArgs e)
         {
             Group9 Group = new Group9();
-            // Oculta el Principal
-            this.Hide();
             // Abrir el Mapa
             Group.Show();
         }
@@ -205,8 +203,6 @@ namespace Simulation
         private void buttonContactUs_Click_1(object sender, EventArgs e)
         {
             Contact Contact = new Contact();
-            // Oculta el Principal
-            this.Hide();
             // Abrir el Mapa
             Contact.Show();
         }
@@ -214,8 +210,6 @@ namespace Simulation
         private void buttonTutorial_Click_1(object sender, EventArgs e)
         {
             Tutorial Tut = new Tutorial();
-            // Oculta el Principal
-            this.Hide();
             // Abrir el Mapa
             Tut.Show();
         }
@@ -223,8 +217,6 @@ namespace Simulation
         private void buttonQRVideoT_Click_1(object sender, EventArgs e)
         {
             VideoTutorial VideoTut = new VideoTutorial();
-            // Oculta el Principal
-            this.Hide();
             // Abrir el Mapa
             VideoTut.Show();
         }
@@ -238,10 +230,13 @@ namespace Simulation
         private void button4_Click(object sender, EventArgs e)
         {
             Privacy PPrivacy = new Privacy();
-            // Oculta el Principal
-            this.Hide();
             // Abrir el Mapa
             PPrivacy.Show();
+        }
+
+        private void panel19_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

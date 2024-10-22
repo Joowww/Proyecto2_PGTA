@@ -46,39 +46,50 @@
             label1 = new Label();
             menuButton = new PictureBox();
             panel2 = new Panel();
+            panel15 = new Panel();
             pictureBox8 = new PictureBox();
             button2 = new Button();
             AboutUsContainer = new Panel();
             panel8 = new Panel();
-            pictureBox14 = new PictureBox();
+            panel19 = new Panel();
+            pictureBox15 = new PictureBox();
             buttonContactUs = new Button();
             panel3 = new Panel();
-            pictureBox9 = new PictureBox();
+            panel17 = new Panel();
+            pictureBox10 = new PictureBox();
             buttonAboutUs = new Button();
             panel7 = new Panel();
-            pictureBox15 = new PictureBox();
+            panel18 = new Panel();
+            pictureBox9 = new PictureBox();
             buttonGroup = new Button();
             SettingsContainer = new Panel();
             panel10 = new Panel();
-            pictureBox1 = new PictureBox();
+            panel21 = new Panel();
+            pictureBox19 = new PictureBox();
             button3 = new Button();
             panel4 = new Panel();
-            pictureBox10 = new PictureBox();
+            panel16 = new Panel();
+            pictureBox18 = new PictureBox();
             buttonSettings = new Button();
             panel11 = new Panel();
-            pictureBox13 = new PictureBox();
+            panel22 = new Panel();
+            pictureBox1 = new PictureBox();
             button9 = new Button();
             HelpContainer = new Panel();
             panel12 = new Panel();
-            pictureBox16 = new PictureBox();
+            panel23 = new Panel();
+            pictureBox13 = new PictureBox();
             buttonTutorial = new Button();
             panel5 = new Panel();
+            panel14 = new Panel();
             pictureBox11 = new PictureBox();
             buttonHelp = new Button();
             panel13 = new Panel();
-            pictureBox17 = new PictureBox();
+            panel24 = new Panel();
+            pictureBox16 = new PictureBox();
             buttonQRVideoT = new Button();
             panel9 = new Panel();
+            panel6 = new Panel();
             pictureBox12 = new PictureBox();
             button4 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -91,29 +102,40 @@
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)menuButton).BeginInit();
             panel2.SuspendLayout();
+            panel15.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
             AboutUsContainer.SuspendLayout();
             panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox14).BeginInit();
-            panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
-            panel7.SuspendLayout();
+            panel19.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox15).BeginInit();
+            panel3.SuspendLayout();
+            panel17.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
+            panel7.SuspendLayout();
+            panel18.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
             SettingsContainer.SuspendLayout();
             panel10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel21.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox19).BeginInit();
             panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
+            panel16.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox18).BeginInit();
             panel11.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox13).BeginInit();
+            panel22.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             HelpContainer.SuspendLayout();
             panel12.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox16).BeginInit();
+            panel23.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox13).BeginInit();
             panel5.SuspendLayout();
+            panel14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
             panel13.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox17).BeginInit();
+            panel24.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox16).BeginInit();
             panel9.SuspendLayout();
+            panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox12).BeginInit();
             SuspendLayout();
             // 
@@ -189,8 +211,8 @@
             // 
             pictureBox7.BackColor = Color.White;
             pictureBox7.BackgroundImage = (Image)resources.GetObject("pictureBox7.BackgroundImage");
-            pictureBox7.BackgroundImageLayout = ImageLayout.Center;
-            pictureBox7.Location = new Point(852, 574);
+            pictureBox7.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox7.Location = new Point(853, 574);
             pictureBox7.Name = "pictureBox7";
             pictureBox7.Size = new Size(216, 44);
             pictureBox7.TabIndex = 9;
@@ -231,7 +253,7 @@
             sidebar.MaximumSize = new Size(249, 698);
             sidebar.MinimumSize = new Size(108, 648);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(108, 698);
+            sidebar.Size = new Size(249, 698);
             sidebar.TabIndex = 11;
             // 
             // panel1
@@ -273,7 +295,7 @@
             // panel2
             // 
             panel2.BackColor = Color.Transparent;
-            panel2.Controls.Add(pictureBox8);
+            panel2.Controls.Add(panel15);
             panel2.Controls.Add(button2);
             panel2.Location = new Point(6, 151);
             panel2.Margin = new Padding(6, 1, 6, 2);
@@ -281,11 +303,21 @@
             panel2.Size = new Size(237, 60);
             panel2.TabIndex = 12;
             // 
+            // panel15
+            // 
+            panel15.BackColor = Color.Transparent;
+            panel15.Controls.Add(pictureBox8);
+            panel15.Location = new Point(0, 0);
+            panel15.Margin = new Padding(6, 1, 6, 2);
+            panel15.Name = "panel15";
+            panel15.Size = new Size(107, 60);
+            panel15.TabIndex = 21;
+            // 
             // pictureBox8
             // 
             pictureBox8.BackgroundImage = (Image)resources.GetObject("pictureBox8.BackgroundImage");
             pictureBox8.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox8.Location = new Point(16, 4);
+            pictureBox8.Location = new Point(15, 5);
             pictureBox8.Name = "pictureBox8";
             pictureBox8.Size = new Size(70, 50);
             pictureBox8.TabIndex = 13;
@@ -330,7 +362,7 @@
             // panel8
             // 
             panel8.BackColor = Color.Gray;
-            panel8.Controls.Add(pictureBox14);
+            panel8.Controls.Add(panel19);
             panel8.Controls.Add(buttonContactUs);
             panel8.Location = new Point(2, 106);
             panel8.Margin = new Padding(6, 0, 6, 0);
@@ -339,15 +371,26 @@
             panel8.Size = new Size(237, 45);
             panel8.TabIndex = 15;
             // 
-            // pictureBox14
+            // panel19
             // 
-            pictureBox14.BackgroundImage = (Image)resources.GetObject("pictureBox14.BackgroundImage");
-            pictureBox14.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox14.Location = new Point(27, 5);
-            pictureBox14.Name = "pictureBox14";
-            pictureBox14.Size = new Size(45, 36);
-            pictureBox14.TabIndex = 21;
-            pictureBox14.TabStop = false;
+            panel19.BackColor = Color.Transparent;
+            panel19.Controls.Add(pictureBox15);
+            panel19.Location = new Point(0, 2);
+            panel19.Margin = new Padding(6, 1, 6, 2);
+            panel19.Name = "panel19";
+            panel19.Size = new Size(107, 40);
+            panel19.TabIndex = 24;
+            panel19.Paint += panel19_Paint;
+            // 
+            // pictureBox15
+            // 
+            pictureBox15.BackgroundImage = (Image)resources.GetObject("pictureBox15.BackgroundImage");
+            pictureBox15.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox15.Location = new Point(19, 2);
+            pictureBox15.Name = "pictureBox15";
+            pictureBox15.Size = new Size(55, 35);
+            pictureBox15.TabIndex = 13;
+            pictureBox15.TabStop = false;
             // 
             // buttonContactUs
             // 
@@ -374,23 +417,33 @@
             // panel3
             // 
             panel3.BackColor = Color.Transparent;
-            panel3.Controls.Add(pictureBox9);
+            panel3.Controls.Add(panel17);
             panel3.Controls.Add(buttonAboutUs);
             panel3.Location = new Point(0, 0);
             panel3.Margin = new Padding(6, 2, 6, 2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(237, 60);
+            panel3.Size = new Size(258, 60);
             panel3.TabIndex = 13;
             // 
-            // pictureBox9
+            // panel17
             // 
-            pictureBox9.BackgroundImage = (Image)resources.GetObject("pictureBox9.BackgroundImage");
-            pictureBox9.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox9.Location = new Point(15, 5);
-            pictureBox9.Name = "pictureBox9";
-            pictureBox9.Size = new Size(70, 50);
-            pictureBox9.TabIndex = 13;
-            pictureBox9.TabStop = false;
+            panel17.BackColor = Color.Transparent;
+            panel17.Controls.Add(pictureBox10);
+            panel17.Location = new Point(0, 0);
+            panel17.Margin = new Padding(6, 1, 6, 2);
+            panel17.Name = "panel17";
+            panel17.Size = new Size(107, 60);
+            panel17.TabIndex = 21;
+            // 
+            // pictureBox10
+            // 
+            pictureBox10.BackgroundImage = (Image)resources.GetObject("pictureBox10.BackgroundImage");
+            pictureBox10.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox10.Location = new Point(15, 5);
+            pictureBox10.Name = "pictureBox10";
+            pictureBox10.Size = new Size(70, 50);
+            pictureBox10.TabIndex = 13;
+            pictureBox10.TabStop = false;
             // 
             // buttonAboutUs
             // 
@@ -417,7 +470,7 @@
             // panel7
             // 
             panel7.BackColor = Color.Gray;
-            panel7.Controls.Add(pictureBox15);
+            panel7.Controls.Add(panel18);
             panel7.Controls.Add(buttonGroup);
             panel7.Location = new Point(2, 60);
             panel7.Margin = new Padding(6, 0, 6, 0);
@@ -426,22 +479,32 @@
             panel7.Size = new Size(237, 45);
             panel7.TabIndex = 14;
             // 
-            // pictureBox15
+            // panel18
             // 
-            pictureBox15.BackgroundImage = (Image)resources.GetObject("pictureBox15.BackgroundImage");
-            pictureBox15.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox15.Location = new Point(27, 5);
-            pictureBox15.Name = "pictureBox15";
-            pictureBox15.Size = new Size(45, 36);
-            pictureBox15.TabIndex = 22;
-            pictureBox15.TabStop = false;
+            panel18.BackColor = Color.Transparent;
+            panel18.Controls.Add(pictureBox9);
+            panel18.Location = new Point(0, 2);
+            panel18.Margin = new Padding(6, 1, 6, 2);
+            panel18.Name = "panel18";
+            panel18.Size = new Size(107, 40);
+            panel18.TabIndex = 25;
+            // 
+            // pictureBox9
+            // 
+            pictureBox9.BackgroundImage = (Image)resources.GetObject("pictureBox9.BackgroundImage");
+            pictureBox9.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox9.Location = new Point(19, 2);
+            pictureBox9.Name = "pictureBox9";
+            pictureBox9.Size = new Size(55, 35);
+            pictureBox9.TabIndex = 13;
+            pictureBox9.TabStop = false;
             // 
             // buttonGroup
             // 
             buttonGroup.BackColor = Color.Transparent;
             buttonGroup.Dock = DockStyle.Left;
             buttonGroup.FlatAppearance.BorderColor = Color.DarkGray;
-            buttonGroup.FlatAppearance.BorderSize = 3;
+            buttonGroup.FlatAppearance.BorderSize = 2;
             buttonGroup.FlatAppearance.MouseDownBackColor = Color.DarkGray;
             buttonGroup.FlatAppearance.MouseOverBackColor = Color.DarkGray;
             buttonGroup.FlatStyle = FlatStyle.Flat;
@@ -475,7 +538,7 @@
             // panel10
             // 
             panel10.BackColor = Color.Gray;
-            panel10.Controls.Add(pictureBox1);
+            panel10.Controls.Add(panel21);
             panel10.Controls.Add(button3);
             panel10.Location = new Point(2, 60);
             panel10.Margin = new Padding(6, 0, 6, 0);
@@ -484,15 +547,25 @@
             panel10.Size = new Size(237, 45);
             panel10.TabIndex = 15;
             // 
-            // pictureBox1
+            // panel21
             // 
-            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
-            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Location = new Point(27, 5);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(45, 36);
-            pictureBox1.TabIndex = 20;
-            pictureBox1.TabStop = false;
+            panel21.BackColor = Color.Transparent;
+            panel21.Controls.Add(pictureBox19);
+            panel21.Location = new Point(0, 2);
+            panel21.Margin = new Padding(6, 1, 6, 2);
+            panel21.Name = "panel21";
+            panel21.Size = new Size(107, 40);
+            panel21.TabIndex = 27;
+            // 
+            // pictureBox19
+            // 
+            pictureBox19.BackgroundImage = (Image)resources.GetObject("pictureBox19.BackgroundImage");
+            pictureBox19.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox19.Location = new Point(19, 2);
+            pictureBox19.Name = "pictureBox19";
+            pictureBox19.Size = new Size(55, 35);
+            pictureBox19.TabIndex = 13;
+            pictureBox19.TabStop = false;
             // 
             // button3
             // 
@@ -519,23 +592,33 @@
             // panel4
             // 
             panel4.BackColor = Color.Transparent;
-            panel4.Controls.Add(pictureBox10);
+            panel4.Controls.Add(panel16);
             panel4.Controls.Add(buttonSettings);
             panel4.Location = new Point(0, 0);
             panel4.Margin = new Padding(6, 3, 6, 3);
             panel4.Name = "panel4";
-            panel4.Size = new Size(237, 60);
+            panel4.Size = new Size(239, 60);
             panel4.TabIndex = 14;
             // 
-            // pictureBox10
+            // panel16
             // 
-            pictureBox10.BackgroundImage = (Image)resources.GetObject("pictureBox10.BackgroundImage");
-            pictureBox10.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox10.Location = new Point(15, 5);
-            pictureBox10.Name = "pictureBox10";
-            pictureBox10.Size = new Size(70, 50);
-            pictureBox10.TabIndex = 13;
-            pictureBox10.TabStop = false;
+            panel16.BackColor = Color.Transparent;
+            panel16.Controls.Add(pictureBox18);
+            panel16.Location = new Point(0, 0);
+            panel16.Margin = new Padding(6, 1, 6, 2);
+            panel16.Name = "panel16";
+            panel16.Size = new Size(107, 60);
+            panel16.TabIndex = 21;
+            // 
+            // pictureBox18
+            // 
+            pictureBox18.BackgroundImage = (Image)resources.GetObject("pictureBox18.BackgroundImage");
+            pictureBox18.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox18.Location = new Point(15, 5);
+            pictureBox18.Name = "pictureBox18";
+            pictureBox18.Size = new Size(70, 50);
+            pictureBox18.TabIndex = 13;
+            pictureBox18.TabStop = false;
             // 
             // buttonSettings
             // 
@@ -552,7 +635,7 @@
             buttonSettings.Location = new Point(0, 0);
             buttonSettings.Name = "buttonSettings";
             buttonSettings.Padding = new Padding(5, 0, 0, 0);
-            buttonSettings.Size = new Size(242, 60);
+            buttonSettings.Size = new Size(237, 60);
             buttonSettings.TabIndex = 11;
             buttonSettings.Text = "                Settings";
             buttonSettings.TextAlign = ContentAlignment.MiddleLeft;
@@ -562,7 +645,7 @@
             // panel11
             // 
             panel11.BackColor = Color.Gray;
-            panel11.Controls.Add(pictureBox13);
+            panel11.Controls.Add(panel22);
             panel11.Controls.Add(button9);
             panel11.Location = new Point(2, 106);
             panel11.Margin = new Padding(6, 0, 6, 0);
@@ -571,15 +654,25 @@
             panel11.Size = new Size(270, 45);
             panel11.TabIndex = 16;
             // 
-            // pictureBox13
+            // panel22
             // 
-            pictureBox13.BackgroundImage = (Image)resources.GetObject("pictureBox13.BackgroundImage");
-            pictureBox13.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox13.Location = new Point(27, 5);
-            pictureBox13.Name = "pictureBox13";
-            pictureBox13.Size = new Size(45, 36);
-            pictureBox13.TabIndex = 21;
-            pictureBox13.TabStop = false;
+            panel22.BackColor = Color.Transparent;
+            panel22.Controls.Add(pictureBox1);
+            panel22.Location = new Point(0, 2);
+            panel22.Margin = new Padding(6, 1, 6, 2);
+            panel22.Name = "panel22";
+            panel22.Size = new Size(107, 40);
+            panel22.TabIndex = 27;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox1.Location = new Point(19, 2);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(55, 35);
+            pictureBox1.TabIndex = 13;
+            pictureBox1.TabStop = false;
             // 
             // button9
             // 
@@ -619,7 +712,7 @@
             // panel12
             // 
             panel12.BackColor = Color.Gray;
-            panel12.Controls.Add(pictureBox16);
+            panel12.Controls.Add(panel23);
             panel12.Controls.Add(buttonTutorial);
             panel12.Location = new Point(2, 60);
             panel12.Margin = new Padding(6, 0, 6, 2);
@@ -628,15 +721,26 @@
             panel12.Size = new Size(237, 45);
             panel12.TabIndex = 16;
             // 
-            // pictureBox16
+            // panel23
             // 
-            pictureBox16.BackgroundImage = (Image)resources.GetObject("pictureBox16.BackgroundImage");
-            pictureBox16.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox16.Location = new Point(27, 5);
-            pictureBox16.Name = "pictureBox16";
-            pictureBox16.Size = new Size(45, 36);
-            pictureBox16.TabIndex = 23;
-            pictureBox16.TabStop = false;
+            panel23.BackColor = Color.Transparent;
+            panel23.Controls.Add(pictureBox13);
+            panel23.Location = new Point(0, 2);
+            panel23.Margin = new Padding(6, 1, 6, 2);
+            panel23.Name = "panel23";
+            panel23.Size = new Size(107, 40);
+            panel23.TabIndex = 27;
+            // 
+            // pictureBox13
+            // 
+            pictureBox13.BackgroundImage = (Image)resources.GetObject("pictureBox13.BackgroundImage");
+            pictureBox13.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox13.InitialImage = (Image)resources.GetObject("pictureBox13.InitialImage");
+            pictureBox13.Location = new Point(19, 2);
+            pictureBox13.Name = "pictureBox13";
+            pictureBox13.Size = new Size(55, 35);
+            pictureBox13.TabIndex = 13;
+            pictureBox13.TabStop = false;
             // 
             // buttonTutorial
             // 
@@ -663,13 +767,23 @@
             // panel5
             // 
             panel5.BackColor = Color.DarkGray;
-            panel5.Controls.Add(pictureBox11);
+            panel5.Controls.Add(panel14);
             panel5.Controls.Add(buttonHelp);
             panel5.Location = new Point(0, 0);
             panel5.Margin = new Padding(6, 2, 6, 2);
             panel5.Name = "panel5";
-            panel5.Size = new Size(242, 61);
+            panel5.Size = new Size(237, 61);
             panel5.TabIndex = 15;
+            // 
+            // panel14
+            // 
+            panel14.BackColor = Color.Transparent;
+            panel14.Controls.Add(pictureBox11);
+            panel14.Location = new Point(0, 0);
+            panel14.Margin = new Padding(6, 1, 6, 2);
+            panel14.Name = "panel14";
+            panel14.Size = new Size(107, 60);
+            panel14.TabIndex = 21;
             // 
             // pictureBox11
             // 
@@ -696,7 +810,7 @@
             buttonHelp.Location = new Point(0, 0);
             buttonHelp.Name = "buttonHelp";
             buttonHelp.Padding = new Padding(5, 0, 0, 0);
-            buttonHelp.Size = new Size(242, 61);
+            buttonHelp.Size = new Size(237, 61);
             buttonHelp.TabIndex = 11;
             buttonHelp.Text = "                Help";
             buttonHelp.TextAlign = ContentAlignment.MiddleLeft;
@@ -706,7 +820,7 @@
             // panel13
             // 
             panel13.BackColor = Color.Gray;
-            panel13.Controls.Add(pictureBox17);
+            panel13.Controls.Add(panel24);
             panel13.Controls.Add(buttonQRVideoT);
             panel13.Location = new Point(2, 106);
             panel13.Margin = new Padding(6, 0, 6, 0);
@@ -715,15 +829,25 @@
             panel13.Size = new Size(237, 45);
             panel13.TabIndex = 17;
             // 
-            // pictureBox17
+            // panel24
             // 
-            pictureBox17.BackgroundImage = (Image)resources.GetObject("pictureBox17.BackgroundImage");
-            pictureBox17.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox17.Location = new Point(27, 5);
-            pictureBox17.Name = "pictureBox17";
-            pictureBox17.Size = new Size(45, 36);
-            pictureBox17.TabIndex = 23;
-            pictureBox17.TabStop = false;
+            panel24.BackColor = Color.Transparent;
+            panel24.Controls.Add(pictureBox16);
+            panel24.Location = new Point(0, 2);
+            panel24.Margin = new Padding(6, 1, 6, 2);
+            panel24.Name = "panel24";
+            panel24.Size = new Size(107, 40);
+            panel24.TabIndex = 27;
+            // 
+            // pictureBox16
+            // 
+            pictureBox16.BackgroundImage = (Image)resources.GetObject("pictureBox16.BackgroundImage");
+            pictureBox16.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox16.Location = new Point(19, 2);
+            pictureBox16.Name = "pictureBox16";
+            pictureBox16.Size = new Size(55, 35);
+            pictureBox16.TabIndex = 13;
+            pictureBox16.TabStop = false;
             // 
             // buttonQRVideoT
             // 
@@ -750,13 +874,23 @@
             // panel9
             // 
             panel9.BackColor = Color.Transparent;
-            panel9.Controls.Add(pictureBox12);
+            panel9.Controls.Add(panel6);
             panel9.Controls.Add(button4);
             panel9.Location = new Point(6, 406);
             panel9.Margin = new Padding(6, 1, 6, 2);
             panel9.Name = "panel9";
             panel9.Size = new Size(237, 60);
             panel9.TabIndex = 19;
+            // 
+            // panel6
+            // 
+            panel6.BackColor = Color.Transparent;
+            panel6.Controls.Add(pictureBox12);
+            panel6.Location = new Point(0, 0);
+            panel6.Margin = new Padding(6, 1, 6, 2);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(107, 60);
+            panel6.TabIndex = 20;
             // 
             // pictureBox12
             // 
@@ -782,7 +916,7 @@
             button4.Location = new Point(0, 0);
             button4.Name = "button4";
             button4.Padding = new Padding(5, 0, 0, 0);
-            button4.Size = new Size(242, 60);
+            button4.Size = new Size(237, 60);
             button4.TabIndex = 12;
             button4.Text = "                Privacy ";
             button4.TextAlign = ContentAlignment.MiddleLeft;
@@ -818,29 +952,40 @@
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)menuButton).EndInit();
             panel2.ResumeLayout(false);
+            panel15.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
             AboutUsContainer.ResumeLayout(false);
             panel8.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox14).EndInit();
-            panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
-            panel7.ResumeLayout(false);
+            panel19.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox15).EndInit();
+            panel3.ResumeLayout(false);
+            panel17.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
+            panel7.ResumeLayout(false);
+            panel18.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
             SettingsContainer.ResumeLayout(false);
             panel10.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel21.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox19).EndInit();
             panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
+            panel16.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox18).EndInit();
             panel11.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox13).EndInit();
+            panel22.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             HelpContainer.ResumeLayout(false);
             panel12.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox16).EndInit();
+            panel23.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox13).EndInit();
             panel5.ResumeLayout(false);
+            panel14.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox11).EndInit();
             panel13.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox17).EndInit();
+            panel24.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox16).EndInit();
             panel9.ResumeLayout(false);
+            panel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox12).EndInit();
             ResumeLayout(false);
         }
@@ -886,17 +1031,28 @@
         private Panel panel5;
         private Button buttonHelp;
         private PictureBox pictureBox8;
-        private PictureBox pictureBox9;
-        private PictureBox pictureBox10;
         private PictureBox pictureBox11;
         private Panel panel9;
         private PictureBox pictureBox12;
         private Button button4;
+        private Panel panel6;
+        private Panel panel15;
+        private Panel panel14;
+        private Panel panel17;
+        private PictureBox pictureBox10;
+        private Panel panel16;
+        private PictureBox pictureBox18;
+        private Panel panel19;
         private PictureBox pictureBox15;
-        private PictureBox pictureBox14;
-        private PictureBox pictureBox13;
+        private Panel panel18;
+        private PictureBox pictureBox9;
+        private Panel panel21;
+        private PictureBox pictureBox19;
+        private Panel panel22;
         private PictureBox pictureBox1;
+        private Panel panel23;
+        private PictureBox pictureBox13;
+        private Panel panel24;
         private PictureBox pictureBox16;
-        private PictureBox pictureBox17;
     }
 }

@@ -34,8 +34,6 @@ namespace Simulation
             Welcome Welc = new Welcome();
             // Oculta el Principal
             this.Hide();
-            // Abrir el Mapa
-            Welc.Show();
         }
 
         private void Group9_Load(object sender, EventArgs e)

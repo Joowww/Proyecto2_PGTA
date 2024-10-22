@@ -140,3 +140,4 @@ C:\Users\34652\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Simulation\obj\Deb
 C:\Users\34652\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Simulation\obj\Debug\net6.0-windows\Simulation.VideoTutorial.resources
 C:\Users\joelm\OneDrive\Documentos\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Simulation\obj\Debug\net6.0-windows\Simulation.Tutorial2.resources
 C:\Users\joelm\OneDrive\Documentos\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Simulation\obj\Debug\net6.0-windows\Simulation.Privacy.resources
+C:\Users\joelm\OneDrive\Documentos\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Simulation\obj\Debug\net6.0-windows\Simulation.CloseApp.resources

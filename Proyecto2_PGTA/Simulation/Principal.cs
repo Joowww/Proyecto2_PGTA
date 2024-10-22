@@ -233,8 +233,6 @@ namespace Simulation
         private void buttonTutorial_Click(object sender, EventArgs e)
         {
             Tutorial2 Tut = new Tutorial2();
-            // Oculta el Principal
-            this.Hide();
             // Abrir el Mapa
             Tut.Show();
         }
