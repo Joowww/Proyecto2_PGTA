@@ -240,7 +240,7 @@
             // 
             // sidebar
             // 
-            sidebar.BackColor = Color.DarkGray;
+            sidebar.BackColor = Color.Silver;
             sidebar.BorderStyle = BorderStyle.FixedSingle;
             sidebar.Controls.Add(panel1);
             sidebar.Controls.Add(panel2);
@@ -255,6 +255,7 @@
             sidebar.Name = "sidebar";
             sidebar.Size = new Size(249, 698);
             sidebar.TabIndex = 11;
+            sidebar.Paint += sidebar_Paint;
             // 
             // panel1
             // 
@@ -347,7 +348,7 @@
             // 
             // AboutUsContainer
             // 
-            AboutUsContainer.BackColor = Color.DarkGray;
+            AboutUsContainer.BackColor = Color.Silver;
             AboutUsContainer.Controls.Add(panel8);
             AboutUsContainer.Controls.Add(panel3);
             AboutUsContainer.Controls.Add(panel7);
@@ -422,7 +423,7 @@
             panel3.Location = new Point(0, 0);
             panel3.Margin = new Padding(6, 2, 6, 2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(258, 60);
+            panel3.Size = new Size(250, 60);
             panel3.TabIndex = 13;
             // 
             // panel17
@@ -460,7 +461,7 @@
             buttonAboutUs.Location = new Point(0, 0);
             buttonAboutUs.Name = "buttonAboutUs";
             buttonAboutUs.Padding = new Padding(5, 0, 0, 0);
-            buttonAboutUs.Size = new Size(242, 60);
+            buttonAboutUs.Size = new Size(239, 60);
             buttonAboutUs.TabIndex = 11;
             buttonAboutUs.Text = "                About us";
             buttonAboutUs.TextAlign = ContentAlignment.MiddleLeft;
@@ -523,7 +524,7 @@
             // 
             // SettingsContainer
             // 
-            SettingsContainer.BackColor = Color.DarkGray;
+            SettingsContainer.BackColor = Color.Silver;
             SettingsContainer.Controls.Add(panel10);
             SettingsContainer.Controls.Add(panel4);
             SettingsContainer.Controls.Add(panel11);
@@ -597,7 +598,7 @@
             panel4.Location = new Point(0, 0);
             panel4.Margin = new Padding(6, 3, 6, 3);
             panel4.Name = "panel4";
-            panel4.Size = new Size(239, 60);
+            panel4.Size = new Size(242, 60);
             panel4.TabIndex = 14;
             // 
             // panel16
@@ -697,7 +698,7 @@
             // 
             // HelpContainer
             // 
-            HelpContainer.BackColor = Color.DarkGray;
+            HelpContainer.BackColor = Color.Silver;
             HelpContainer.Controls.Add(panel12);
             HelpContainer.Controls.Add(panel5);
             HelpContainer.Controls.Add(panel13);
@@ -766,7 +767,7 @@
             // 
             // panel5
             // 
-            panel5.BackColor = Color.DarkGray;
+            panel5.BackColor = Color.Transparent;
             panel5.Controls.Add(panel14);
             panel5.Controls.Add(buttonHelp);
             panel5.Location = new Point(0, 0);
@@ -810,7 +811,7 @@
             buttonHelp.Location = new Point(0, 0);
             buttonHelp.Name = "buttonHelp";
             buttonHelp.Padding = new Padding(5, 0, 0, 0);
-            buttonHelp.Size = new Size(237, 61);
+            buttonHelp.Size = new Size(239, 61);
             buttonHelp.TabIndex = 11;
             buttonHelp.Text = "                Help";
             buttonHelp.TextAlign = ContentAlignment.MiddleLeft;

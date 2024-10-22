@@ -36,7 +36,9 @@
             button1 = new Button();
             pictureBox1 = new PictureBox();
             label5 = new Label();
+            pictureBox7 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -114,11 +116,23 @@
             label5.TabIndex = 6;
             label5.Text = "2024-AstDecoder.org";
             // 
+            // pictureBox7
+            // 
+            pictureBox7.BackColor = Color.White;
+            pictureBox7.BackgroundImage = (Image)resources.GetObject("pictureBox7.BackgroundImage");
+            pictureBox7.BackgroundImageLayout = ImageLayout.Center;
+            pictureBox7.Location = new Point(585, 412);
+            pictureBox7.Name = "pictureBox7";
+            pictureBox7.Size = new Size(216, 44);
+            pictureBox7.TabIndex = 11;
+            pictureBox7.TabStop = false;
+            // 
             // Privacy
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(pictureBox7);
             Controls.Add(label5);
             Controls.Add(pictureBox1);
             Controls.Add(button1);
@@ -131,6 +145,7 @@
             Text = "Privacy";
             Load += Privacy_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -144,5 +159,6 @@
         private Button button1;
         private PictureBox pictureBox1;
         private Label label5;
+        private PictureBox pictureBox7;
     }
 }

@@ -146,7 +146,7 @@
             // 
             // sidebar
             // 
-            sidebar.BackColor = Color.DarkGray;
+            sidebar.BackColor = Color.Silver;
             sidebar.BorderStyle = BorderStyle.FixedSingle;
             sidebar.Controls.Add(panel1);
             sidebar.Controls.Add(panel2);
@@ -249,16 +249,16 @@
             // 
             // SettingsContainer
             // 
-            SettingsContainer.BackColor = Color.DarkGray;
+            SettingsContainer.BackColor = Color.Silver;
             SettingsContainer.Controls.Add(panel11);
             SettingsContainer.Controls.Add(panel10);
             SettingsContainer.Controls.Add(panel4);
             SettingsContainer.Location = new Point(6, 215);
             SettingsContainer.Margin = new Padding(6, 2, 6, 2);
             SettingsContainer.MaximumSize = new Size(237, 152);
-            SettingsContainer.MinimumSize = new Size(237, 60);
+            SettingsContainer.MinimumSize = new Size(237, 59);
             SettingsContainer.Name = "SettingsContainer";
-            SettingsContainer.Size = new Size(237, 60);
+            SettingsContainer.Size = new Size(237, 59);
             SettingsContainer.TabIndex = 17;
             // 
             // panel11
@@ -373,10 +373,10 @@
             panel4.BackColor = Color.Transparent;
             panel4.Controls.Add(panel13);
             panel4.Controls.Add(buttonSettings);
-            panel4.Location = new Point(-1, 0);
+            panel4.Location = new Point(0, 0);
             panel4.Margin = new Padding(6, 2, 6, 2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(238, 64);
+            panel4.Size = new Size(237, 59);
             panel4.TabIndex = 14;
             // 
             // panel13
@@ -414,7 +414,7 @@
             buttonSettings.Location = new Point(0, 0);
             buttonSettings.Name = "buttonSettings";
             buttonSettings.Padding = new Padding(5, 0, 0, 0);
-            buttonSettings.Size = new Size(238, 64);
+            buttonSettings.Size = new Size(242, 59);
             buttonSettings.TabIndex = 11;
             buttonSettings.Text = "                Settings";
             buttonSettings.TextAlign = ContentAlignment.MiddleLeft;
@@ -426,7 +426,7 @@
             HelpContainer.BackColor = Color.Transparent;
             HelpContainer.Controls.Add(panel12);
             HelpContainer.Controls.Add(panel5);
-            HelpContainer.Location = new Point(6, 279);
+            HelpContainer.Location = new Point(6, 278);
             HelpContainer.Margin = new Padding(6, 2, 6, 2);
             HelpContainer.MaximumSize = new Size(237, 107);
             HelpContainer.MinimumSize = new Size(237, 60);
@@ -501,13 +501,13 @@
             // 
             // panel5
             // 
-            panel5.BackColor = Color.DarkGray;
+            panel5.BackColor = Color.Transparent;
             panel5.Controls.Add(panel17);
             panel5.Controls.Add(buttonHelp);
             panel5.Location = new Point(0, 0);
             panel5.Margin = new Padding(6, 2, 6, 2);
             panel5.Name = "panel5";
-            panel5.Size = new Size(237, 60);
+            panel5.Size = new Size(237, 59);
             panel5.TabIndex = 15;
             // 
             // panel17
@@ -545,7 +545,7 @@
             buttonHelp.Location = new Point(0, 0);
             buttonHelp.Name = "buttonHelp";
             buttonHelp.Padding = new Padding(5, 0, 0, 0);
-            buttonHelp.Size = new Size(237, 60);
+            buttonHelp.Size = new Size(237, 59);
             buttonHelp.TabIndex = 11;
             buttonHelp.Text = "                Help";
             buttonHelp.TextAlign = ContentAlignment.MiddleLeft;

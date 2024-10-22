@@ -238,5 +238,10 @@ namespace Simulation
         {
 
         }
+
+        private void sidebar_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
