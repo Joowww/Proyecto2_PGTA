@@ -138,6 +138,8 @@ namespace Simulation
             this.Hide();
             // Abrir el Mapa
             mapa.Show();
+
+            SimulateBtn.Click += new EventHandler(SimulateBtn_Click);
         }
 
         // Funciones correspondientes a cada opción seleccionada
