@@ -253,7 +253,7 @@
             sidebar.MaximumSize = new Size(249, 698);
             sidebar.MinimumSize = new Size(108, 648);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(249, 698);
+            sidebar.Size = new Size(108, 698);
             sidebar.TabIndex = 11;
             sidebar.Paint += sidebar_Paint;
             // 

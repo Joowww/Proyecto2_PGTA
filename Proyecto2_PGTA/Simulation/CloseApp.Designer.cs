@@ -48,6 +48,11 @@
             // 
             // buttonYes
             // 
+            buttonYes.FlatAppearance.BorderColor = Color.DarkGray;
+            buttonYes.FlatAppearance.BorderSize = 3;
+            buttonYes.FlatAppearance.MouseDownBackColor = Color.DarkGray;
+            buttonYes.FlatAppearance.MouseOverBackColor = Color.DarkGray;
+            buttonYes.FlatStyle = FlatStyle.Flat;
             buttonYes.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             buttonYes.Location = new Point(149, 241);
             buttonYes.Name = "buttonYes";
@@ -60,6 +65,11 @@
             // 
             // buttonNo
             // 
+            buttonNo.FlatAppearance.BorderColor = Color.DarkGray;
+            buttonNo.FlatAppearance.BorderSize = 3;
+            buttonNo.FlatAppearance.MouseDownBackColor = Color.DarkGray;
+            buttonNo.FlatAppearance.MouseOverBackColor = Color.DarkGray;
+            buttonNo.FlatStyle = FlatStyle.Flat;
             buttonNo.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             buttonNo.Location = new Point(390, 241);
             buttonNo.Name = "buttonNo";

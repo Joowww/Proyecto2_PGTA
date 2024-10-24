@@ -41,7 +41,7 @@
             panel2 = new Panel();
             panel9 = new Panel();
             pictureBox5 = new PictureBox();
-            button2 = new Button();
+            HomeBtn = new Button();
             SettingsContainer = new Panel();
             panel11 = new Panel();
             panel15 = new Panel();
@@ -156,7 +156,7 @@
             sidebar.MaximumSize = new Size(249, 650);
             sidebar.MinimumSize = new Size(108, 650);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(249, 650);
+            sidebar.Size = new Size(108, 650);
             sidebar.TabIndex = 11;
             // 
             // panel1
@@ -198,7 +198,7 @@
             // 
             panel2.BackColor = Color.Transparent;
             panel2.Controls.Add(panel9);
-            panel2.Controls.Add(button2);
+            panel2.Controls.Add(HomeBtn);
             panel2.Location = new Point(6, 151);
             panel2.Margin = new Padding(6, 1, 6, 2);
             panel2.Name = "panel2";
@@ -225,27 +225,27 @@
             pictureBox5.TabIndex = 13;
             pictureBox5.TabStop = false;
             // 
-            // button2
+            // HomeBtn
             // 
-            button2.BackColor = Color.Transparent;
-            button2.Dock = DockStyle.Left;
-            button2.FlatAppearance.BorderColor = Color.DarkGray;
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatAppearance.MouseDownBackColor = Color.DarkGray;
-            button2.FlatAppearance.MouseOverBackColor = Color.DarkGray;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button2.ForeColor = Color.White;
-            button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(0, 0);
-            button2.Name = "button2";
-            button2.Padding = new Padding(5, 0, 0, 0);
-            button2.Size = new Size(237, 60);
-            button2.TabIndex = 11;
-            button2.Text = "                Home";
-            button2.TextAlign = ContentAlignment.MiddleLeft;
-            button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click;
+            HomeBtn.BackColor = Color.Transparent;
+            HomeBtn.Dock = DockStyle.Left;
+            HomeBtn.FlatAppearance.BorderColor = Color.DarkGray;
+            HomeBtn.FlatAppearance.BorderSize = 0;
+            HomeBtn.FlatAppearance.MouseDownBackColor = Color.DarkGray;
+            HomeBtn.FlatAppearance.MouseOverBackColor = Color.DarkGray;
+            HomeBtn.FlatStyle = FlatStyle.Flat;
+            HomeBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            HomeBtn.ForeColor = Color.White;
+            HomeBtn.ImageAlign = ContentAlignment.MiddleLeft;
+            HomeBtn.Location = new Point(0, 0);
+            HomeBtn.Name = "HomeBtn";
+            HomeBtn.Padding = new Padding(5, 0, 0, 0);
+            HomeBtn.Size = new Size(237, 60);
+            HomeBtn.TabIndex = 11;
+            HomeBtn.Text = "                Home";
+            HomeBtn.TextAlign = ContentAlignment.MiddleLeft;
+            HomeBtn.UseVisualStyleBackColor = false;
+            HomeBtn.Click += HomeBtn_Click;
             // 
             // SettingsContainer
             // 
@@ -622,7 +622,7 @@
         private Label label2;
         private PictureBox menuButton;
         private Panel panel2;
-        private Button button2;
+        private Button HomeBtn;
         private Panel AboutUsContainer;
         private Button buttonContactUs;
         private Button buttonGroup;

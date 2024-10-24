@@ -13,9 +13,11 @@ namespace Simulation
     public partial class CloseApp : Form
     {
         private bool isDarkMode;
-        public CloseApp()
+        private Mapa mapa_;
+        public CloseApp(Mapa mapa)
         {
             InitializeComponent();
+            this.mapa_ = mapa;
         }
 
         private void buttonYes_Click(object sender, EventArgs e)
@@ -25,6 +27,7 @@ namespace Simulation
 
         private void buttonNo_Click(object sender, EventArgs e)
         {
+            mapa_.Enabled = true;
             this.Hide();
         }
 

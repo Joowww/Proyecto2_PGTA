@@ -111,7 +111,7 @@
             ChangeMapBtn.Name = "ChangeMapBtn";
             ChangeMapBtn.Size = new Size(280, 50);
             ChangeMapBtn.TabIndex = 3;
-            ChangeMapBtn.Text = "Accept map provider";
+            ChangeMapBtn.Text = "Accept";
             ChangeMapBtn.UseVisualStyleBackColor = true;
             ChangeMapBtn.Click += ChangeMapBtn_Click;
             // 

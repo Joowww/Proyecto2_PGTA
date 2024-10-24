@@ -284,8 +284,8 @@ namespace Simulation
 
         private void CloseBtn_Click(object sender, EventArgs e)
         {
-            CloseApp CloseAPP = new CloseApp();
-            // Abrir el Mapa
+            CloseApp CloseAPP = new CloseApp(this);
+            this.Enabled = false;
             CloseAPP.Show();
         }
 

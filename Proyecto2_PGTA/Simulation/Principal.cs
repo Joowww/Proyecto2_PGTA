@@ -216,7 +216,7 @@ namespace Simulation
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void HomeBtn_Click(object sender, EventArgs e)
         {
             Welcome Welc = new Welcome();
             // Oculta el Principal
