@@ -14,6 +14,7 @@ using System.Drawing; // Para el tipo Color
 using AstDecoder;
 using Accord.Statistics;
 using GMap.NET.MapProviders;
+using System.Windows.Forms;
 
 namespace Simulation
 {
@@ -29,6 +30,9 @@ namespace Simulation
         private GMapOverlay routeOverlay;
         private Dictionary<string, GMarkerGoogle> aircraftMarkers; // Guarda los target address de los aviones pintados
         private Dictionary<string, PointLatLng> previousPositions; // Almacena las posiciones anteriores de los aviones
+
+        private System.Windows.Forms.Timer simulationTimer; 
+        private bool isAutomatic; // Indica si el modo automático está activado
 
         public Mapa(List<List<object>> filtredMessages)
         {
@@ -70,6 +74,11 @@ namespace Simulation
             previousPositions = new Dictionary<string, PointLatLng>();
             routeOverlay = new GMapOverlay("routes");
             mapControl.Overlays.Add(routeOverlay);
+
+            // Inicialización del Timer
+            simulationTimer = new System.Windows.Forms.Timer();
+            simulationTimer.Interval = 1000; // Ejecuta cada segundo
+            simulationTimer.Tick += SimulationTimer_Tick;
         }
 
         private void Mapa_Load(object sender, EventArgs e)
@@ -133,6 +142,8 @@ namespace Simulation
             }
             else
             {
+                simulationTimer.Stop(); // Detener el timer si la simulación ha terminado
+                AutomaticBtn.Text = "Automatic";
                 MessageBox.Show("The simulation has finished");
             }
         }
@@ -320,7 +331,25 @@ namespace Simulation
 
         private void AutomaticBtn_Click(object sender, EventArgs e)
         {
+            if (AutomaticBtn.Text == "Automatic")
+            {
+                // Iniciar el modo automático
+                simulationTimer.Start();
+                AutomaticBtn.Text = "Pause";
+            }
+            else if (AutomaticBtn.Text == "Pause")
+            {
+                // Pausar el modo automático
+                simulationTimer.Stop();
+                AutomaticBtn.Text = "Automatic";
+            }
 
+        }
+
+        private void SimulationTimer_Tick(object sender, EventArgs e)
+        {
+            // Llama al método para avanzar la simulación
+            MoveBtn_Click(null, null);
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
