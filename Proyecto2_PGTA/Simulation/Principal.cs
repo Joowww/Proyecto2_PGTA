@@ -58,6 +58,7 @@ namespace Simulation
         private void SimulateBtn_Click(object sender, EventArgs e)
         {
             List<List<object>> filtredMessages = new List<List<object>>();
+            List<List<object>> allMessages = new List<List<object>>();
 
             try
             {
@@ -69,9 +70,6 @@ namespace Simulation
                     MessageBox.Show("The CSV file was not found.");
                     return; // Sale del método si no encuentra el archivo
                 }
-
-                List<List<object>> allMessages = new List<List<object>>();
-
 
                 StreamReader file = new StreamReader(rutaCSV);
                 string line;
@@ -133,7 +131,7 @@ namespace Simulation
                 MessageBox.Show("There was an error reading the file: " + ex.Message);
             }
 
-            Mapa mapa = new Mapa(filtredMessages);
+            Mapa mapa = new Mapa(filtredMessages, allMessages, this);
             // Oculta el Principal
             this.Hide();
             // Abrir el Mapa
@@ -141,7 +139,7 @@ namespace Simulation
         }
 
         // Funciones correspondientes a cada opción seleccionada
-        private List<List<object>> Option1(List<List<object>> allMessages)
+        public List<List<object>> Option1(List<List<object>> allMessages)
         {
             MessageBox.Show("Executing All data function.", "Simulate", MessageBoxButtons.OK, MessageBoxIcon.Information);
             // For "All data"
@@ -150,7 +148,7 @@ namespace Simulation
             return filtredMessages;
         }
 
-        private List<List<object>> Option2(List<List<object>> allMessages)
+        public List<List<object>> Option2(List<List<object>> allMessages)
         {
             MessageBox.Show("Executing Removing pure blanks function.", "Simulate", MessageBoxButtons.OK, MessageBoxIcon.Information);
             // For "Removing pure blanks"
@@ -173,7 +171,7 @@ namespace Simulation
             return filtredMessages; // Devolvemos la lista filtrada
         }
 
-        private List<List<object>> Option3(List<List<object>> allMessages)
+        public List<List<object>> Option3(List<List<object>> allMessages)
         {
             MessageBox.Show("Executing Removing fixed transponders function.", "Simulate", MessageBoxButtons.OK, MessageBoxIcon.Information);
             // For "Removing fixed transponders"
@@ -194,12 +192,24 @@ namespace Simulation
             return filtredMessages;
         }
 
-        private List<List<object>> Option4(List<List<object>> allMessages)
+        public List<List<object>> Option4(List<List<object>> allMessages)
         {
             MessageBox.Show("Executing Combination of these function.", "Simulate", MessageBoxButtons.OK, MessageBoxIcon.Information);
             // For "Combination of these"
             // HACER FUNCION DE FILTRADO CORRESPONDIENTE
-            List<List<object>> filtredMessages = allMessages;
+            // Lista filtrada que contendrá solo los mensajes que queremos mantener
+            List<List<object>> filtredMessages = new List<List<object>>();
+
+            // Recorremos todos los mensajes
+            foreach (var message in allMessages)
+            {
+                object MODE_3A = message[5];
+
+                if (MODE_3A.ToString() == "7777")
+                {
+                    filtredMessages.Add(message); // Lo añadimos a la lista filtrada
+                }
+            }
             return filtredMessages;
         }
 

@@ -20,8 +20,10 @@ namespace Simulation
 {
     public partial class Mapa : Form
     {
+        private Principal principal;
         GMapControl mapControl;
         List<List<object>> FiltredMessages { get; set; }
+        List<List<object>> AllMessages { get; set; }
         private bool isDarkMode;
 
         private int currentSecond;
@@ -33,10 +35,12 @@ namespace Simulation
 
         private System.Windows.Forms.Timer simulationTimer; 
 
-        public Mapa(List<List<object>> filtredMessages)
+        public Mapa(List<List<object>> filtredMessages, List<List<object>> allMessages, Principal _principal)
         {
             InitializeComponent();
             FiltredMessages = filtredMessages;
+            AllMessages = allMessages;
+            principal = _principal;
 
             mapControl = new GMapControl();
             mapControl.MapProvider = GMapProviders.GoogleMap;
@@ -385,6 +389,32 @@ namespace Simulation
 
         private void button5_Click(object sender, EventArgs e)
         {
+            string selection = comboBox2.SelectedItem.ToString();
+            List<List<object>> updatedFilteredMessages = new List<List<object>>();
+
+            // Ejecutar la función según la opción seleccionada
+            if (selection == "All data")
+            {
+                updatedFilteredMessages = principal.Option1(AllMessages);
+            }
+            else if (selection == "Removing pure blanks")
+            {
+                updatedFilteredMessages = principal.Option2(AllMessages);
+            }
+            else if (selection == "Removing fixed transponders")
+            {
+                updatedFilteredMessages = principal.Option3(AllMessages);
+            }
+            else if (selection == "Combination of these")
+            {
+                updatedFilteredMessages = principal.Option4(AllMessages);
+            }
+
+            // Asignar los datos filtrados a FiltredMessages
+            FiltredMessages = updatedFilteredMessages;
+
+            // Reiniciar la simulación con los datos actualizados
+            RestartSimulation();
 
         }
     }
