@@ -317,5 +317,20 @@ namespace Simulation
         {
             RestartSimulation();
         }
+
+        private void AutomaticBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

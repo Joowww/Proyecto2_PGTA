@@ -80,6 +80,7 @@
             AutomaticBtn.Text = "Automatic";
             AutomaticBtn.TextAlign = ContentAlignment.TopCenter;
             AutomaticBtn.UseVisualStyleBackColor = true;
+            AutomaticBtn.Click += AutomaticBtn_Click;
             // 
             // RestartBtn
             // 
@@ -130,6 +131,7 @@
             button5.TabIndex = 4;
             button5.Text = "Accept";
             button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
             // 
             // comboBox1
             // 
@@ -173,6 +175,7 @@
             trackBar1.Name = "trackBar1";
             trackBar1.Size = new Size(429, 56);
             trackBar1.TabIndex = 8;
+            trackBar1.Scroll += trackBar1_Scroll;
             // 
             // label1
             // 
