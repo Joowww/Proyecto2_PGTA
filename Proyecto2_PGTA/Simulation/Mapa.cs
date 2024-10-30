@@ -32,7 +32,6 @@ namespace Simulation
         private Dictionary<string, PointLatLng> previousPositions; // Almacena las posiciones anteriores de los aviones
 
         private System.Windows.Forms.Timer simulationTimer; 
-        private bool isAutomatic; // Indica si el modo automático está activado
 
         public Mapa(List<List<object>> filtredMessages)
         {
@@ -79,6 +78,12 @@ namespace Simulation
             simulationTimer = new System.Windows.Forms.Timer();
             simulationTimer.Interval = 1000; // Ejecuta cada segundo
             simulationTimer.Tick += SimulationTimer_Tick;
+
+            // Configuración del TrackBar para la velocidad
+            trackBar1.Minimum = 1; // Más lento
+            trackBar1.Maximum = 10; // Más rápido
+            trackBar1.Value = 1; // Valor inicial en el medio
+            trackBar1.Scroll += trackBar1_Scroll;
         }
 
         private void Mapa_Load(object sender, EventArgs e)
@@ -322,6 +327,19 @@ namespace Simulation
 
             // Refrescar el mapa
             mapControl.Refresh();
+
+            // Restablecer el TrackBar a su valor mínimo (1)
+            trackBar1.Value = 1; // Vuelve a la izquierda (velocidad normal)
+
+            // Actualizar el intervalo del Timer a la velocidad normal
+            simulationTimer.Interval = 1000; // Asegúrate de que el Timer tenga el intervalo normal
+
+            if (AutomaticBtn.Text == "Pause")
+            {
+                // Pausar el modo automático
+                simulationTimer.Stop();
+                AutomaticBtn.Text = "Automatic";
+            }
         }
 
         private void RestartBtn_Click(object sender, EventArgs e)
@@ -354,7 +372,15 @@ namespace Simulation
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
+            int trackBarValue = trackBar1.Value;
 
+            // Intervalo que definimos como velocidad normal
+            int minInterval = 1000; // Intervalo mínimo para la velocidad normal
+            int maxInterval = 100; // Intervalo máximo para la velocidad más rápida
+
+            // Mapeamos el valor del TrackBar a un intervalo, donde el valor mínimo del TrackBar
+            // representa la velocidad normal (1000 ms).
+            simulationTimer.Interval = minInterval - (trackBarValue - 1) * (minInterval - maxInterval) / (trackBar1.Maximum - 1);
         }
 
         private void button5_Click(object sender, EventArgs e)
