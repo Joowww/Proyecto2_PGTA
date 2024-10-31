@@ -14,6 +14,7 @@ namespace Simulation
         {
             {
                 // Path of the AST file to be processed
+                //string filePathAST = "230502-est-080001_BCN.ast";
                 string filePathAST = "230502-est-080001_BCN_60MN_08_09.ast";
 
                 // Path where the binary representation of the AST file will be saved

@@ -445,47 +445,36 @@ namespace Simulation
 
             string newCsvPath = saveFileDialog.FileName;
 
-            // Abre el archivo original y crea el nuevo archivo para guardar los datos filtrados
+            // Crear un HashSet con las claves de mensajes filtrados para búsqueda rápida
+            HashSet<string> filteredKeys = new HashSet<string>(
+                FiltredMessages.Select(msg => $"{msg[0]}|{msg[1]}|{msg[2]}|{msg[3]}|{msg[4]}|{msg[5]}|{msg[6]}"));
+
+            // Leer y filtrar el archivo original
+            var filteredLines = new List<string>();
             using (StreamReader reader = new StreamReader(rutaCSV))
-            using (StreamWriter writer = new StreamWriter(newCsvPath))
             {
-                // Lee el encabezado y lo escribe en el nuevo archivo
                 string header = reader.ReadLine();
-                writer.WriteLine(header);
+                filteredLines.Add(header); // Añadir encabezado
 
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
-                    // Separa la línea utilizando el separador de tabulación y limpia las comillas
+                    // Separar la línea en columnas
                     string[] row = line.Split('\t').Select(e => e.Trim('\"')).ToArray();
-                    string UTC_time_s = row[4];
-                    string LAT = row[5];
-                    string LON = row[6];
-                    string H = row[7];
-                    string TYP = row[8];
-                    string MODE_3A = row[23];
-                    string TA = row[35];
+                    string key = $"{row[4]}|{row[5]}|{row[6]}|{row[7]}|{row[8]}|{row[23]}|{row[35]}";
 
-                    // Comprobar si existe en la lista filtrada
-                    bool existsInFilteredMessages = FiltredMessages.Any(msg =>
-                        msg[0].ToString() == UTC_time_s &&
-                        msg[1].ToString() == LAT &&
-                        msg[2].ToString() == LON &&
-                        msg[3].ToString() == H &&
-                        msg[4].ToString() == TYP &&
-                        msg[5].ToString() == MODE_3A &&
-                        msg[6].ToString() == TA
-                    );
-
-                    // Si la línea está en `filtredMessages`, escribirla en el nuevo archivo
-                    if (existsInFilteredMessages)
+                    // Si el mensaje está en el filtro, agregarlo a la lista
+                    if (filteredKeys.Contains(key))
                     {
-                        writer.WriteLine(line);
+                        filteredLines.Add(line);
                     }
                 }
             }
 
-            MessageBox.Show("Filtered CSV has been successfully exported.", "Export Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // Guardar el nuevo CSV
+            File.WriteAllLines(newCsvPath, filteredLines, Encoding.UTF8);
+            MessageBox.Show("Filtered CSV exported successfully.");
+
         }
     }
 }
