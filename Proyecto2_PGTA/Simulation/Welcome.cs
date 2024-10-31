@@ -27,11 +27,10 @@ namespace Simulation
 
         private void StartBtn_Click(object sender, EventArgs e)
         {
-            Principal principal = new Principal();
-            // Oculta el Principal
-            this.Hide();
-            // Abrir el Mapa
-            principal.Show();
+            // Crear una instancia de ImportAst antes de mostrarla
+            ImportAst importAst = new ImportAst(this);
+            this.Enabled = false;
+            importAst.Show();
         }
 
         private void SidebarTimer_Tick(object sender, EventArgs e)
