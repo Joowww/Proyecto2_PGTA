@@ -33,7 +33,7 @@ namespace Simulation
         private Dictionary<string, GMarkerGoogle> aircraftMarkers; // Guarda los target address de los aviones pintados
         private Dictionary<string, PointLatLng> previousPositions; // Almacena las posiciones anteriores de los aviones
 
-        private System.Windows.Forms.Timer simulationTimer; 
+        private System.Windows.Forms.Timer simulationTimer;
 
         public Mapa(List<List<object>> filtredMessages, List<List<object>> allMessages, Principal _principal)
         {
@@ -415,6 +415,11 @@ namespace Simulation
 
             // Reiniciar la simulación con los datos actualizados
             RestartSimulation();
+
+        }
+
+        private void exportCsvBtn_Click(object sender, EventArgs e)
+        {
 
         }
     }

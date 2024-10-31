@@ -43,6 +43,7 @@
             label3 = new Label();
             panel1 = new Panel();
             pictureBox7 = new PictureBox();
+            exportCsvBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)trackBar1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             SuspendLayout();
@@ -229,11 +230,28 @@
             pictureBox7.TabIndex = 13;
             pictureBox7.TabStop = false;
             // 
+            // exportCsvBtn
+            // 
+            exportCsvBtn.FlatAppearance.BorderColor = Color.DarkGray;
+            exportCsvBtn.FlatAppearance.BorderSize = 3;
+            exportCsvBtn.FlatAppearance.MouseDownBackColor = Color.DarkGray;
+            exportCsvBtn.FlatAppearance.MouseOverBackColor = Color.DarkGray;
+            exportCsvBtn.FlatStyle = FlatStyle.Flat;
+            exportCsvBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            exportCsvBtn.Location = new Point(1050, 600);
+            exportCsvBtn.Name = "exportCsvBtn";
+            exportCsvBtn.Size = new Size(190, 50);
+            exportCsvBtn.TabIndex = 14;
+            exportCsvBtn.Text = "Export CSV";
+            exportCsvBtn.UseVisualStyleBackColor = true;
+            exportCsvBtn.Click += exportCsvBtn_Click;
+            // 
             // Mapa
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1286, 777);
+            Controls.Add(exportCsvBtn);
             Controls.Add(pictureBox7);
             Controls.Add(panel1);
             Controls.Add(label3);
@@ -275,5 +293,6 @@
         private Label label3;
         private Panel panel1;
         private PictureBox pictureBox7;
+        private Button exportCsvBtn;
     }
 }
