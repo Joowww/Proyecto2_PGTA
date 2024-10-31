@@ -183,7 +183,7 @@ namespace Simulation
                 double latitude = Convert.ToDouble(aircraft[1]);
                 double longitude = Convert.ToDouble(aircraft[2]);
                 double H = Convert.ToDouble(aircraft[3]);
-                string TA = Convert.ToString(aircraft[5]);
+                string TA = Convert.ToString(aircraft[6]);
 
                 PointLatLng Position = new PointLatLng(latitude, longitude);
 
