@@ -420,7 +420,72 @@ namespace Simulation
 
         private void exportCsvBtn_Click(object sender, EventArgs e)
         {
+            string rutaCSV = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ASTERIX.csv");
 
+            // Verifica si el archivo original existe
+            if (!File.Exists(rutaCSV))
+            {
+                MessageBox.Show("The CSV file was not found.");
+                return;
+            }
+
+            // Crear un SaveFileDialog para que el usuario elija el nombre y ubicación del nuevo archivo
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = "CSV Files (*.csv)|*.csv",
+                Title = "Save Filtered CSV File",
+                FileName = "FilteredASTERIX.csv" // Nombre por defecto
+            };
+
+            // Mostrar el diálogo y comprobar si el usuario selecciona un nombre de archivo
+            if (saveFileDialog.ShowDialog() != DialogResult.OK)
+            {
+                return; // Si el usuario cancela, no se hace nada
+            }
+
+            string newCsvPath = saveFileDialog.FileName;
+
+            // Abre el archivo original y crea el nuevo archivo para guardar los datos filtrados
+            using (StreamReader reader = new StreamReader(rutaCSV))
+            using (StreamWriter writer = new StreamWriter(newCsvPath))
+            {
+                // Lee el encabezado y lo escribe en el nuevo archivo
+                string header = reader.ReadLine();
+                writer.WriteLine(header);
+
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    // Separa la línea utilizando el separador de tabulación y limpia las comillas
+                    string[] row = line.Split('\t').Select(e => e.Trim('\"')).ToArray();
+                    string UTC_time_s = row[4];
+                    string LAT = row[5];
+                    string LON = row[6];
+                    string H = row[7];
+                    string TYP = row[8];
+                    string MODE_3A = row[23];
+                    string TA = row[35];
+
+                    // Comprobar si existe en la lista filtrada
+                    bool existsInFilteredMessages = FiltredMessages.Any(msg =>
+                        msg[0].ToString() == UTC_time_s &&
+                        msg[1].ToString() == LAT &&
+                        msg[2].ToString() == LON &&
+                        msg[3].ToString() == H &&
+                        msg[4].ToString() == TYP &&
+                        msg[5].ToString() == MODE_3A &&
+                        msg[6].ToString() == TA
+                    );
+
+                    // Si la línea está en `filtredMessages`, escribirla en el nuevo archivo
+                    if (existsInFilteredMessages)
+                    {
+                        writer.WriteLine(line);
+                    }
+                }
+            }
+
+            MessageBox.Show("Filtered CSV has been successfully exported.", "Export Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
