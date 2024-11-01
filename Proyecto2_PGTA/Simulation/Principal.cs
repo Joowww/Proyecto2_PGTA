@@ -36,6 +36,7 @@ namespace Simulation
             comboBox1.Items.Add("Removing pure blanks");
             comboBox1.Items.Add("Removing fixed transponders");
             comboBox1.Items.Add("Geographic filter");
+            comboBox1.Items.Add("Removing flights above 6000 ft");
             comboBox1.Items.Add("Combination of these");
             comboBox1.SelectedIndex = 0; // Seleccionar la primera opción por defecto
 
@@ -125,9 +126,13 @@ namespace Simulation
                 {
                     filtredMessages = Option4(allMessages);
                 }
-                else if (selection == "Combination of these")
+                else if (selection == "Removing flights above 6000 ft")
                 {
                     filtredMessages = Option5(allMessages);
+                }
+                else if (selection == "Combination of these")
+                {
+                    filtredMessages = Option6(allMessages);
                 }
 
             }
@@ -231,6 +236,24 @@ namespace Simulation
         }
 
         public List<List<object>> Option5(List<List<object>> allMessages)
+        {
+            MessageBox.Show("Executing Removing flights above 6000 ft.", "Simulate", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            List<List<object>> filtredMessages = new List<List<object>>();
+
+            // Recorremos todos los mensajes
+            foreach (var message in allMessages)
+            {
+                double H = Convert.ToInt32(message[3]);
+                if (H <= 6000) 
+                { 
+                    filtredMessages.Add(message);
+                }
+            }
+            return filtredMessages;
+        }
+
+        public List<List<object>> Option6(List<List<object>> allMessages)
         {
             MessageBox.Show("Executing Combination of these function.", "Simulate", MessageBoxButtons.OK, MessageBoxIcon.Information);
             // For "Combination of these"
