@@ -30,7 +30,7 @@ namespace Simulation
             // Crear una instancia de ImportAst antes de mostrarla
             ImportAst importAst = new ImportAst(this);
             this.Enabled = false;
-            importAst.Show();
+            importAst.ShowDialog();
         }
 
         private void SidebarTimer_Tick(object sender, EventArgs e)

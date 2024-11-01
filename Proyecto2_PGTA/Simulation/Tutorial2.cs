@@ -20,7 +20,6 @@ namespace Simulation
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
-            Principal PR = new Principal();
             // Oculta el Principal
             this.Hide();
         }

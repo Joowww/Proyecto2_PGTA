@@ -13,10 +13,18 @@ namespace Simulation
     public partial class ImportAst : Form
     {
         private Welcome welcome;
+        public string FilePathAST { get; set; }
         public ImportAst(Welcome welcome_)
         {
             InitializeComponent();
             this.welcome = welcome_;
+            // Set radioButton1 as selected by default
+            this.Load += ImportAst_Load;
+        }
+
+        private void ImportAst_Load(object sender, EventArgs e)
+        {
+            radioButton1.Checked = true;
         }
 
         private void browseBtn_Click(object sender, EventArgs e)
@@ -32,6 +40,7 @@ namespace Simulation
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
+                    FilePathAST = openFileDialog.FileName;
                     // Mostrar el nombre del archivo en la Label
                     label1.Text = Path.GetFileName(openFileDialog.FileName);
                 }
@@ -49,11 +58,30 @@ namespace Simulation
 
         private void acceptBtn_Click(object sender, EventArgs e)
         {
-            // Crear una instancia de ImportAst antes de mostrarla
-            Principal principal = new Principal();
-            this.Hide();
-            welcome.Hide();
+            if (radioButton1.Checked)
+            {
+                FilePathAST = "230502-est-080001_BCN_60MN_08_09.ast";
+            }
+            else if (radioButton2.Checked)
+            {
+                FilePathAST = "230502-est-080001_BCN.ast";
+            }
+            else if (radioButton3.Checked && !string.IsNullOrEmpty(FilePathAST))
+            {
+                // Custom file already selected
+            }
+            else
+            {
+                MessageBox.Show("Please select a file option.", "File Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
+            Principal principal = new Principal(FilePathAST);
             principal.Show();
+            this.Close(); // Cerrar ImportAst después de seleccionar
+            welcome.Hide();
         }
     }
 }
+
