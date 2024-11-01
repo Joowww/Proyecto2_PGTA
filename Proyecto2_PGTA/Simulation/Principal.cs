@@ -35,6 +35,7 @@ namespace Simulation
             comboBox1.Items.Add("All data");
             comboBox1.Items.Add("Removing pure blanks");
             comboBox1.Items.Add("Removing fixed transponders");
+            comboBox1.Items.Add("Geographic filter");
             comboBox1.Items.Add("Combination of these");
             comboBox1.SelectedIndex = 0; // Seleccionar la primera opción por defecto
 
@@ -120,9 +121,13 @@ namespace Simulation
                 {
                     filtredMessages = Option3(allMessages);
                 }
-                else if (selection == "Combination of these")
+                else if (selection == "Geographic filter")
                 {
                     filtredMessages = Option4(allMessages);
+                }
+                else if (selection == "Combination of these")
+                {
+                    filtredMessages = Option5(allMessages);
                 }
 
             }
@@ -193,6 +198,39 @@ namespace Simulation
         }
 
         public List<List<object>> Option4(List<List<object>> allMessages)
+        {
+            GeographicFilter geographicFilter = new GeographicFilter(this);
+            this.Enabled = true;
+            geographicFilter.ShowDialog();
+
+            double minLatitude = geographicFilter.MinLatitude;
+            double maxLatitude = geographicFilter.MaxLatitude;
+            double minLongitude = geographicFilter.MinLongitude;
+            double maxLongitude = geographicFilter.MaxLongitude;
+
+            List<List<object>> filtredMessages = new List<List<object>>();
+
+            // Recorremos todos los mensajes
+            foreach (var message in allMessages)
+            {
+                if (message.Count >= 1)
+                {
+                    double latitude = Convert.ToDouble(message[1]);
+                    double longitude = Convert.ToDouble(message[2]);
+
+                    // Comprobamos si la latitud y longitud están dentro del rango especificado
+                    if (latitude >= minLatitude && latitude <= maxLatitude &&
+                        longitude >= minLongitude && longitude <= maxLongitude)
+                    {
+                        // Si cumplen con el filtro, agregamos el mensaje a la lista filtrada
+                        filtredMessages.Add(message);
+                    }
+                }
+            }
+            return filtredMessages;
+        }
+
+        public List<List<object>> Option5(List<List<object>> allMessages)
         {
             MessageBox.Show("Executing Combination of these function.", "Simulate", MessageBoxButtons.OK, MessageBoxIcon.Information);
             // For "Combination of these"

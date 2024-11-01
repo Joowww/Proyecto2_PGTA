@@ -60,6 +60,7 @@ namespace Simulation
             comboBox2.Items.Add("All data");
             comboBox2.Items.Add("Removing pure blanks");
             comboBox2.Items.Add("Removing fixed transponders");
+            comboBox2.Items.Add("Geographic filter");
             comboBox2.Items.Add("Combination of these");
             comboBox2.SelectedIndex = 0; // Seleccionar la primera opción por defecto
 
@@ -405,9 +406,13 @@ namespace Simulation
             {
                 updatedFilteredMessages = principal.Option3(AllMessages);
             }
-            else if (selection == "Combination of these")
+            else if (selection == "Geographic filter")
             {
                 updatedFilteredMessages = principal.Option4(AllMessages);
+            }
+            else if (selection == "Combination of these")
+            {
+                updatedFilteredMessages = principal.Option5(AllMessages);
             }
 
             // Asignar los datos filtrados a FiltredMessages
