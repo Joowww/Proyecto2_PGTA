@@ -4,6 +4,9 @@
     <Compile Update="CloseApp.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="CombinedFilters.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Contact.cs">
       <SubType>Form</SubType>
     </Compile>

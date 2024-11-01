@@ -668,23 +668,15 @@ namespace Simulation
         }
 
         public List<List<object>> Option6(List<List<object>> allMessages)
-        {
-            MessageBox.Show("Executing Combination of these function.", "Simulate", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            // For "Combination of these"
-            // HACER FUNCION DE FILTRADO CORRESPONDIENTE
-            // Lista filtrada que contendrá solo los mensajes que queremos mantener
+        {            
+
+            CombinedFilters combinedFilters = new CombinedFilters(this);
+            this.Enabled = true;
+            combinedFilters.ShowDialog();
+
             List<List<object>> filtredMessages = new List<List<object>>();
 
-            // Recorremos todos los mensajes
-            foreach (var message in allMessages)
-            {
-                object MODE_3A = message[5];
-
-                if (MODE_3A.ToString() == "7777")
-                {
-                    filtredMessages.Add(message); // Lo añadimos a la lista filtrada
-                }
-            }
+            
             return filtredMessages;
         }
 
