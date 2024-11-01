@@ -36,6 +36,7 @@
             textBox2 = new TextBox();
             textBox3 = new TextBox();
             textBox4 = new TextBox();
+            autofillBtn = new Button();
             SuspendLayout();
             // 
             // label1
@@ -103,11 +104,22 @@
             textBox4.Size = new Size(125, 27);
             textBox4.TabIndex = 7;
             // 
+            // autofillBtn
+            // 
+            autofillBtn.Location = new Point(589, 243);
+            autofillBtn.Name = "autofillBtn";
+            autofillBtn.Size = new Size(94, 29);
+            autofillBtn.TabIndex = 8;
+            autofillBtn.Text = "Autofill";
+            autofillBtn.UseVisualStyleBackColor = true;
+            autofillBtn.Click += autofillBtn_Click;
+            // 
             // GeographicFilter
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(autofillBtn);
             Controls.Add(textBox4);
             Controls.Add(textBox3);
             Controls.Add(textBox2);
@@ -132,5 +144,6 @@
         private TextBox textBox2;
         private TextBox textBox3;
         private TextBox textBox4;
+        private Button autofillBtn;
     }
 }

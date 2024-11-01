@@ -24,7 +24,7 @@ namespace Simulation
         bool HelpCollapse;
         private bool isDarkMode;
         private string filePathAST;
-
+        public int SelectedIndexOption { get; set; } = 0;
         public Principal(string filePath)
         {
             InitializeComponent();
@@ -547,14 +547,14 @@ namespace Simulation
                 {
                     filtredMessages = Option6(allMessages);
                 }
-
+                SelectedIndexOption = comboBox1.SelectedIndex;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("There was an error reading the file: " + ex.Message);
             }
 
-            Mapa mapa = new Mapa(filtredMessages, allMessages, this);
+            Mapa mapa = new Mapa(filtredMessages, allMessages, SelectedIndexOption, this);
             // Oculta el Principal
             this.Hide();
             // Abrir el Mapa

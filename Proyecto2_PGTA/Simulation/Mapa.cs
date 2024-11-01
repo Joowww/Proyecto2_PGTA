@@ -35,7 +35,7 @@ namespace Simulation
 
         private System.Windows.Forms.Timer simulationTimer;
 
-        public Mapa(List<List<object>> filtredMessages, List<List<object>> allMessages, Principal _principal)
+        public Mapa(List<List<object>> filtredMessages, List<List<object>> allMessages, int selectedIndexOption, Principal _principal)
         {
             InitializeComponent();
             FiltredMessages = filtredMessages;
@@ -55,7 +55,7 @@ namespace Simulation
             comboBox1.Items.Add("OpenStreetMap");
             comboBox1.Items.Add("Google Hybrid");
             comboBox1.Items.Add("Google Satellite");
-            comboBox1.SelectedIndex = 0; // Seleccionar la primera opción por defecto
+            comboBox1.SelectedIndex = 0;
 
             comboBox2.Items.Add("All data");
             comboBox2.Items.Add("Removing pure blanks");
@@ -63,7 +63,7 @@ namespace Simulation
             comboBox2.Items.Add("Geographic filter");
             comboBox2.Items.Add("Removing flights above 6000 ft");
             comboBox2.Items.Add("Combination of these");
-            comboBox2.SelectedIndex = 0; // Seleccionar la primera opción por defecto
+            comboBox2.SelectedIndex = selectedIndexOption; 
 
             // Establecer el primer segundo como el primero en la lista de aviones
             if (FiltredMessages.Count > 0)

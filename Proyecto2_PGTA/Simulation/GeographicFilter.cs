@@ -61,5 +61,20 @@ namespace Simulation
             }
 
         }
+
+        private void autofillBtn_Click(object sender, EventArgs e)
+        {
+            // Asignar valores predeterminados
+            MinLatitude = 40.9;
+            MaxLatitude = 41.7;
+            MinLongitude = 1.5;
+            MaxLongitude = 2.6;
+
+            // Mostrar los valores en los textboxes
+            textBox1.Text = MinLatitude.ToString();
+            textBox2.Text = MaxLatitude.ToString();
+            textBox3.Text = MinLongitude.ToString();
+            textBox4.Text = MaxLongitude.ToString();
+        }
     }
 }
