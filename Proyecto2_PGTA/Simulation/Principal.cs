@@ -245,7 +245,8 @@ namespace Simulation
             foreach (var message in allMessages)
             {
                 double H = Convert.ToInt32(message[3]);
-                if (H <= 6000) 
+                double h = H * 3.280839895;
+                if (h <= 6000) 
                 { 
                     filtredMessages.Add(message);
                 }
