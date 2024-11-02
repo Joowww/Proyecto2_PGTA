@@ -87,8 +87,8 @@ namespace Simulation
 
             // Configuración del TrackBar para la velocidad
             trackBar1.Minimum = 1; // Más lento
-            trackBar1.Maximum = 10; // Más rápido
-            trackBar1.Value = 1; // Valor inicial en el medio
+            trackBar1.Maximum = 15; // Más rápido
+            trackBar1.Value = 1; 
             trackBar1.Scroll += trackBar1_Scroll;
         }
 
@@ -198,6 +198,8 @@ namespace Simulation
                         markersOverlay.Markers.Remove(aircraftMarkers[TA]);
                     }
 
+                    double angleGRAD = 0;
+
                     // Comprobar si hay una posición anterior
                     if (previousPositions.ContainsKey(TA))
                     {
@@ -206,27 +208,72 @@ namespace Simulation
 
                         // Dibujar la línea entre la posición anterior y la actual
                         DrawLine(previousPosition, Position);
+
+                        // Cálculo del ángulo de rotación usando tus fórmulas
+                        double AY = Position.Lat - previousPosition.Lat;
+                        double AX = Position.Lng - previousPosition.Lng;
+                        double angleRAD = Math.Atan(AY / AX);
+                        angleGRAD = angleRAD * 180 / Math.PI;
+
+                        // Ajustar el ángulo si AX es negativo
+                        if (AX < 0)
+                        {
+                            angleGRAD += 180;
+                        }
                     }
 
-                    // Crear un nuevo marcador
-                    string point = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Smiley.png");
-                    Bitmap bitmap = (Bitmap)Image.FromFile(point);
+                    Bitmap bitmap;
 
-                    // Especificar el nuevo tamaño
-                    int newWidth = bitmap.Width / 15; // Cambia el tamaño a la mitad
-                    int newHeight = bitmap.Height / 15;
-
-                    // Crear un nuevo bitmap más pequeño
-                    Bitmap resizedBitmap = new Bitmap(newWidth, newHeight);
-
-                    // Dibujar la imagen original en el nuevo bitmap
-                    using (Graphics g = Graphics.FromImage(resizedBitmap))
+                    // Aplicar rotaciones en función del valor de angleGRAD
+                    if (angleGRAD != 0 && angleGRAD != 90 && angleGRAD != 180 && angleGRAD != -90)
                     {
-                        g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                        g.DrawImage(bitmap, 0, 0, newWidth, newHeight);
+                        bitmap = new Bitmap("plane.png");
+
+                        if (angleGRAD > 0 && angleGRAD < 90)
+                        {
+                            bitmap.RotateFlip(RotateFlipType.Rotate180FlipXY);  //ok
+                        }
+                        else if (angleGRAD > 90 && angleGRAD < 180) //ok
+                        {
+                            bitmap.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                        }
+                        else if (angleGRAD < 0 && angleGRAD > -90)
+                        {
+                            bitmap.RotateFlip(RotateFlipType.Rotate90FlipNone); //ok
+                        }
+                        else if (angleGRAD < 270 && angleGRAD > 180)
+                        {
+                            bitmap.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                        }
+                    }
+                    else
+                    {
+                        bitmap = new Bitmap("plane1.png");
+
+                        if (angleGRAD == 0)
+                        {
+                            // No se aplica rotación adicional
+                        }
+                        else if (angleGRAD == 90)
+                        {
+                            bitmap.RotateFlip(RotateFlipType.Rotate270FlipXY);
+                        }
+                        else if (angleGRAD == 180)
+                        {
+                            bitmap.RotateFlip(RotateFlipType.Rotate180FlipY);
+                        }
+                        else if (angleGRAD == -90)
+                        {
+                            bitmap.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                        }
                     }
 
+                    // Especificar el tamaño del marcador
+                    int newWidth = bitmap.Width / 25;
+                    int newHeight = bitmap.Height / 25;
+                    Bitmap resizedBitmap = new Bitmap(bitmap, new Size(newWidth, newHeight));
 
+                    // Crear el marcador
                     GMarkerGoogle marker = new GMarkerGoogle(Position, resizedBitmap);
 
                     // Agregar un tooltip al marcador
@@ -258,6 +305,7 @@ namespace Simulation
             mapControl.Refresh();
         }
 
+       
         private void ChangeMapBtn_Click(object sender, EventArgs e)
         {
             string selectedMapType = comboBox1.SelectedItem.ToString();
@@ -382,7 +430,7 @@ namespace Simulation
 
             // Intervalo que definimos como velocidad normal
             int minInterval = 1000; // Intervalo mínimo para la velocidad normal
-            int maxInterval = 100; // Intervalo máximo para la velocidad más rápida
+            int maxInterval = 1; // Intervalo máximo para la velocidad más rápida
 
             // Mapeamos el valor del TrackBar a un intervalo, donde el valor mínimo del TrackBar
             // representa la velocidad normal (1000 ms).
