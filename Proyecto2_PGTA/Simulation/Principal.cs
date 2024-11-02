@@ -670,13 +670,17 @@ namespace Simulation
         public List<List<object>> Option6(List<List<object>> allMessages)
         {            
 
-            CombinedFilters combinedFilters = new CombinedFilters(this);
-            this.Enabled = true;
-            combinedFilters.ShowDialog();
-
             List<List<object>> filtredMessages = new List<List<object>>();
 
-            
+            // Abrir el formulario CombinedFilters como modal
+            using (var combinedFilters = new CombinedFilters(this, allMessages))
+            {
+                this.Enabled = false;
+                combinedFilters.ShowDialog();
+                filtredMessages = combinedFilters.GetFilteredData();
+            }
+
+            this.Enabled = true;
             return filtredMessages;
         }
 

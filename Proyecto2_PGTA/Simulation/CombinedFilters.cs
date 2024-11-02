@@ -14,24 +14,74 @@ namespace Simulation
     public partial class CombinedFilters : Form
     {
         private Principal principal;
-        public CombinedFilters(Principal principal_)
+        private List<List<object>> data;
+        private List<List<object>> filteredData;
+        public CombinedFilters(Principal principal_, List<List<object>> originalData)
         {
             InitializeComponent();
             this.principal = principal_;
+            this.data = originalData;
 
             // Agregar opciones al CheckedListBox
-            checkedListBox1.Items.Add("All data");
             checkedListBox1.Items.Add("Removing pure blanks");
             checkedListBox1.Items.Add("Removing fixed transponders");
             checkedListBox1.Items.Add("Geographic filter");
             checkedListBox1.Items.Add("Removing flights above 6000 ft");
         }
 
+        public List<List<object>> GetFilteredData()
+        {
+            return filteredData;
+        }
         private void acceptBtn_Click(object sender, EventArgs e)
         {
-            this.Close();
-            principal.Enabled = false;
+            // Obtener los filtros seleccionados
+            var selectedFilters = checkedListBox1.CheckedItems.Cast<string>().ToList();
 
+            // Verificar si hay al menos 2 filtros seleccionados
+            if (selectedFilters.Count >= 2)
+            {
+
+                // Copia de los datos originales para aplicar los filtros
+                filteredData = new List<List<object>>(data);
+
+                // Aplicar los filtros en el orden seleccionado
+                foreach (var filter in selectedFilters)
+                {
+                    filteredData = ApplyFilter(filter, filteredData);
+                }
+
+                this.Close();
+                principal.Enabled = false;
+
+            }
+            else
+            {
+                MessageBox.Show("Please select at least 2 filters.");
+            }
+
+        }
+
+        // Método para aplicar el filtro basado en el nombre del filtro seleccionado
+        private List<List<object>> ApplyFilter(string filterName, List<List<object>> data)
+        {
+            switch (filterName)
+            {
+                case "Removing pure blanks":
+                    return principal.Option2(data);
+
+                case "Removing fixed transponders":
+                    return principal.Option3(data);
+
+                case "Geographic filter":
+                    return principal.Option4(data);
+
+                case "Removing flights above 6000 ft":
+                    return principal.Option5(data);
+
+                default:
+                    return data; // Devolver los datos sin cambios si el filtro no coincide
+            }
         }
     }
 }
