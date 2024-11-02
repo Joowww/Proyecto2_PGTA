@@ -209,7 +209,7 @@ namespace Simulation
                         // Dibujar la línea entre la posición anterior y la actual
                         DrawLine(previousPosition, Position);
 
-                        // Cálculo del ángulo de rotación usando tus fórmulas
+                        // Cálculo del ángulo de rotación 
                         double AY = Position.Lat - previousPosition.Lat;
                         double AX = Position.Lng - previousPosition.Lng;
                         double angleRAD = Math.Atan(AY / AX);
@@ -220,35 +220,64 @@ namespace Simulation
                         {
                             angleGRAD += 180;
                         }
+                        if (AX == 0)
+                        {
+                            angleGRAD = 0;
+                        }
                     }
 
-                    Bitmap bitmap;
+                    Bitmap bitmap = null;
 
-                    // Aplicar rotaciones en función del valor de angleGRAD
                     if (angleGRAD != 0 && angleGRAD != 90 && angleGRAD != 180 && angleGRAD != -90)
                     {
-                        bitmap = new Bitmap("plane.png");
+                        if ((angleGRAD > 0 && angleGRAD < 45) || (angleGRAD > 90 && angleGRAD < 135) || (angleGRAD > -90 && angleGRAD < -45) || (angleGRAD > 180 && angleGRAD < 225))
+                        {
+                            bitmap = new Bitmap("plane60.png");   //30 degrees
 
-                        if (angleGRAD > 0 && angleGRAD < 90)
-                        {
-                            bitmap.RotateFlip(RotateFlipType.Rotate180FlipXY);  //ok
+                            if (angleGRAD > 0 && angleGRAD <= 45)
+                            {
+                                //north-east 
+                            }
+                            else if (angleGRAD > 90 && angleGRAD <= 135)
+                            {
+                                bitmap.RotateFlip(RotateFlipType.Rotate270FlipNone); //north-west (rotation clockwise)
+                            }
+                            else if (angleGRAD <= -45 && angleGRAD > -90)
+                            {
+                                bitmap.RotateFlip(RotateFlipType.Rotate90FlipNone); //south-east
+                            }
+                            else if (angleGRAD <= 225 && angleGRAD > 180)
+                            {
+                                bitmap.RotateFlip(RotateFlipType.Rotate180FlipNone); //south-west
+                            }
                         }
-                        else if (angleGRAD > 90 && angleGRAD < 180) //ok
+
+                        else if ((angleGRAD > 45 && angleGRAD < 90) || (angleGRAD > 135 && angleGRAD < 180) || (angleGRAD > -45 && angleGRAD < 0) || (angleGRAD > 225 && angleGRAD < 270))
                         {
-                            bitmap.RotateFlip(RotateFlipType.Rotate270FlipNone);
-                        }
-                        else if (angleGRAD < 0 && angleGRAD > -90)
-                        {
-                            bitmap.RotateFlip(RotateFlipType.Rotate90FlipNone); //ok
-                        }
-                        else if (angleGRAD < 270 && angleGRAD > 180)
-                        {
-                            bitmap.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                            bitmap = new Bitmap("plane30.png");   //30 degrees
+
+                            if (angleGRAD > 45 && angleGRAD < 90)
+                            {
+                                //north-east 
+                            }
+                            else if (angleGRAD > 135 && angleGRAD < 180)
+                            {
+                                bitmap.RotateFlip(RotateFlipType.Rotate270FlipNone); //north-west (rotation clockwise)
+                            }
+                            else if (angleGRAD < 0 && angleGRAD > -45)
+                            {
+                                bitmap.RotateFlip(RotateFlipType.Rotate90FlipNone); //south-east
+                            }
+                            else if (angleGRAD < 270 && angleGRAD > 225)
+                            {
+                                bitmap.RotateFlip(RotateFlipType.Rotate180FlipNone); //south-west
+                            }
                         }
                     }
-                    else
+
+                    else 
                     {
-                        bitmap = new Bitmap("plane1.png");
+                        bitmap = new Bitmap("plane0.png");
 
                         if (angleGRAD == 0)
                         {
@@ -268,6 +297,7 @@ namespace Simulation
                         }
                     }
 
+
                     // Especificar el tamaño del marcador
                     int newWidth = bitmap.Width / 25;
                     int newHeight = bitmap.Height / 25;
@@ -275,7 +305,6 @@ namespace Simulation
 
                     // Crear el marcador
                     GMarkerGoogle marker = new GMarkerGoogle(Position, resizedBitmap);
-
                     // Agregar un tooltip al marcador
                     marker.ToolTip = new GMap.NET.WindowsForms.ToolTips.GMapRoundedToolTip(marker);
                     marker.ToolTipText = $"{TA}\nLatitude: {latitude}\nLongitude: {longitude}\nHeight: {H}";
@@ -285,6 +314,7 @@ namespace Simulation
 
                     // Actualizar el diccionario con el nuevo marcador
                     aircraftMarkers[TA] = marker;
+
 
                     // Actualizar la posición anterior
                     previousPositions[TA] = Position;
