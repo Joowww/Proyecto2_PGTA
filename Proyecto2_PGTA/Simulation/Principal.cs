@@ -450,6 +450,7 @@ namespace Simulation
             comboBox1.Items.Add("Removing fixed transponders");
             comboBox1.Items.Add("Geographic filter");
             comboBox1.Items.Add("Removing flights above 6000 ft");
+            comboBox1.Items.Add("Removing on ground flights");
             comboBox1.Items.Add("Combination of these");
             comboBox1.SelectedIndex = 0; // Seleccionar la primera opción por defecto
 
@@ -502,6 +503,7 @@ namespace Simulation
                     string TYP = Convert.ToString(row[8]);
                     string MODE_3A = Convert.ToString(row[23]);
                     string TA = Convert.ToString(row[35]);
+                    string STAT = Convert.ToString(row[70]);
 
                     // Validar que TA no sea null o una cadena vacía antes de agregar a allMessages
                     if (TA != "N/A")
@@ -515,6 +517,7 @@ namespace Simulation
                         message.Add(TYP);
                         message.Add(MODE_3A);
                         message.Add(TA);
+                        message.Add(STAT);
                         allMessages.Add(message);
                     }
 
@@ -543,9 +546,13 @@ namespace Simulation
                 {
                     filtredMessages = Option5(allMessages);
                 }
-                else if (selection == "Combination of these")
+                else if (selection == "Removing on ground flights")
                 {
                     filtredMessages = Option6(allMessages);
+                }
+                else if (selection == "Combination of these")
+                {
+                    filtredMessages = Option7(allMessages);
                 }
                 SelectedIndexOption = comboBox1.SelectedIndex;
             }
@@ -668,6 +675,34 @@ namespace Simulation
         }
 
         public List<List<object>> Option6(List<List<object>> allMessages)
+        {
+            MessageBox.Show("Executing Removing on ground flights.", "Simulate", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            List<List<object>> filtredMessages = new List<List<object>>();
+
+            // Recorremos todos los mensajes
+            foreach (var message in allMessages)
+            {
+
+                string STAT = Convert.ToString(message[7]);
+                double H = Convert.ToInt32(message[3]);
+
+                if (STAT == "No alert, no SPI, aircraft airborne" || STAT == "Alert, no SPI, aircraft airborne")
+                {
+                    filtredMessages.Add(message);
+                }
+                if (STAT == "Alert, SPI, aircraft airborne or on ground" || STAT == "No alert, SPI, aircraft airborne or on ground" || STAT == "Not assigned" || STAT == "Unknown")
+                {
+                    if (H>0)
+                    {
+                        filtredMessages.Add(message);
+                    }
+                }
+            }
+            return filtredMessages;
+        }
+
+        public List<List<object>> Option7(List<List<object>> allMessages)
         {            
 
             List<List<object>> filtredMessages = new List<List<object>>();

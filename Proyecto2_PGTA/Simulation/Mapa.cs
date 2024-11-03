@@ -62,6 +62,7 @@ namespace Simulation
             comboBox2.Items.Add("Removing fixed transponders");
             comboBox2.Items.Add("Geographic filter");
             comboBox2.Items.Add("Removing flights above 6000 ft");
+            comboBox2.Items.Add("Removing on ground flights");
             comboBox2.Items.Add("Combination of these");
             comboBox2.SelectedIndex = selectedIndexOption; 
 
@@ -299,12 +300,20 @@ namespace Simulation
 
 
                     // Especificar el tamaño del marcador
-                    int newWidth = bitmap.Width / 25;
-                    int newHeight = bitmap.Height / 25;
+                    int newWidth = bitmap.Width / 30;
+                    int newHeight = bitmap.Height / 30;
                     Bitmap resizedBitmap = new Bitmap(bitmap, new Size(newWidth, newHeight));
+
+                    // Calcular el offset para centrar el bitmap
+                    int offsetX = resizedBitmap.Width/2;
+                    int offsetY = resizedBitmap.Height/2;
 
                     // Crear el marcador
                     GMarkerGoogle marker = new GMarkerGoogle(Position, resizedBitmap);
+
+                    // Ajustar la posición del marcador para centrar el bitmap
+                    marker.Offset = new Point(-offsetX, -offsetY);
+
                     // Agregar un tooltip al marcador
                     marker.ToolTip = new GMap.NET.WindowsForms.ToolTips.GMapRoundedToolTip(marker);
                     marker.ToolTipText = $"{TA}\nLatitude: {latitude}\nLongitude: {longitude}\nHeight: {H}";
@@ -493,9 +502,13 @@ namespace Simulation
             {
                 updatedFilteredMessages = principal.Option5(AllMessages);
             }
-            else if (selection == "Combination of these")
+            else if (selection == "Removing on ground flights")
             {
                 updatedFilteredMessages = principal.Option6(AllMessages);
+            }
+            else if (selection == "Combination of these")
+            {
+                updatedFilteredMessages = principal.Option7(AllMessages);
             }
 
             // Asignar los datos filtrados a FiltredMessages

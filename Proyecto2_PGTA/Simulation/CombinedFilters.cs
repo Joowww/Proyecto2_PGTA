@@ -27,6 +27,7 @@ namespace Simulation
             checkedListBox1.Items.Add("Removing fixed transponders");
             checkedListBox1.Items.Add("Geographic filter");
             checkedListBox1.Items.Add("Removing flights above 6000 ft");
+            checkedListBox1.Items.Add("Removing on ground flights");
         }
 
         public List<List<object>> GetFilteredData()
@@ -78,6 +79,9 @@ namespace Simulation
 
                 case "Removing flights above 6000 ft":
                     return principal.Option5(data);
+
+                case "Removing on ground flights":
+                    return principal.Option6(data);
 
                 default:
                     return data; // Devolver los datos sin cambios si el filtro no coincide
