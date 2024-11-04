@@ -49,6 +49,7 @@
             targetBtn.TabIndex = 1;
             targetBtn.Text = "Enter 2 target addresses";
             targetBtn.UseVisualStyleBackColor = true;
+            targetBtn.Click += targetBtn_Click;
             // 
             // ExtraFunctionality
             // 

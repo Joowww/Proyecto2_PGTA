@@ -12,9 +12,18 @@ namespace Simulation
 {
     public partial class ExtraFunctionality : Form
     {
-        public ExtraFunctionality()
+        private Mapa mapa;
+        public ExtraFunctionality(Mapa mapa_)
         {
             InitializeComponent();
+            this.mapa = mapa_;
+        }
+
+        private void targetBtn_Click(object sender, EventArgs e)
+        {
+            Target target = new Target(mapa);
+            target.Show();
+            this.Hide();
         }
     }
 }

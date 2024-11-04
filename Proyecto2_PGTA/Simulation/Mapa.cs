@@ -620,5 +620,12 @@ namespace Simulation
             MessageBox.Show("Filtered CSV exported successfully.");
 
         }
+
+        private void extraFunctionalityBtn_Click(object sender, EventArgs e)
+        {
+            ExtraFunctionality extraFunctionality = new ExtraFunctionality(this);
+            extraFunctionality.Show();
+            this.Enabled = false;
+        }
     }
 }

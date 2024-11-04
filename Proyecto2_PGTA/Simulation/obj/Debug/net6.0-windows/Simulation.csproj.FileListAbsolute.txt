@@ -150,5 +150,5 @@ C:\Users\joelm\OneDrive\Documentos\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Simulati
 C:\Users\34652\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Simulation\obj\Debug\net6.0-windows\Simulation.CombinedFilters.resources
 C:\Users\34652\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Simulation\obj\Debug\net6.0-windows\Simulation.GeographicFilter.resources
 C:\Users\34652\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Simulation\obj\Debug\net6.0-windows\Simulation.ImportAst.resources
-C:\Users\joelm\OneDrive\Documentos\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Simulation\obj\Debug\net6.0-windows\Simulation._2TA.resources
 C:\Users\joelm\OneDrive\Documentos\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Simulation\obj\Debug\net6.0-windows\Simulation.ExtraFunctionality.resources
+C:\Users\joelm\OneDrive\Documentos\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Simulation\obj\Debug\net6.0-windows\Simulation.Target.resources

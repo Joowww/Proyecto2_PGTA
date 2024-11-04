@@ -311,6 +311,7 @@
             extraFunctionalityBtn.TabIndex = 16;
             extraFunctionalityBtn.Text = "Extra functionality";
             extraFunctionalityBtn.UseVisualStyleBackColor = true;
+            extraFunctionalityBtn.Click += extraFunctionalityBtn_Click;
             // 
             // Mapa
             // 
