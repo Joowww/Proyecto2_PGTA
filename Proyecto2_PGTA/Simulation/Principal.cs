@@ -719,6 +719,27 @@ namespace Simulation
             return filtredMessages;
         }
 
+        public List<List<object>> Option8(List<List<object>> allMessages, string TA1, string TA2)
+        {
+            List<List<object>> filtredMessages = new List<List<object>>();
+
+            // Recorremos todos los mensajes
+            foreach (var message in allMessages)
+            {
+
+                string TA = Convert.ToString(message[6]);
+
+                if (TA == TA1 || TA == TA2)
+                {
+                    filtredMessages.Add(message);
+                }
+                
+            }
+            return filtredMessages;
+
+
+        }
+
         private void ApplyTheme()
         {
             // Aplica el tema al formulario actual

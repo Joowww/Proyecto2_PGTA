@@ -15,6 +15,7 @@ using AstDecoder;
 using Accord.Statistics;
 using GMap.NET.MapProviders;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Simulation
 {
@@ -24,6 +25,8 @@ namespace Simulation
         GMapControl mapControl;
         List<List<object>> FiltredMessages { get; set; }
         List<List<object>> AllMessages { get; set; }
+        public string TA1 { get; set; }
+        public string TA2 { get; set; }
         private bool isDarkMode;
 
         private int currentSecond;
@@ -624,8 +627,16 @@ namespace Simulation
         private void extraFunctionalityBtn_Click(object sender, EventArgs e)
         {
             ExtraFunctionality extraFunctionality = new ExtraFunctionality(this);
-            extraFunctionality.Show();
             this.Enabled = false;
+            extraFunctionality.Show();
+
+        }
+
+        public void SetTargetAddresses(string ta1, string ta2)
+        {
+            List<List<object>> updatedFilteredMessages = principal.Option8(AllMessages, ta1, ta2);
+            FiltredMessages = updatedFilteredMessages;
+            RestartSimulation();
         }
     }
 }
