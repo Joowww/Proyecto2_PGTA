@@ -64,7 +64,7 @@ namespace Simulation
             comboBox2.Items.Add("Removing flights above 6000 ft");
             comboBox2.Items.Add("Removing on ground flights");
             comboBox2.Items.Add("Combination of these");
-            comboBox2.SelectedIndex = selectedIndexOption; 
+            comboBox2.SelectedIndex = selectedIndexOption;
 
             // Establecer el primer segundo como el primero en la lista de aviones
             if (FiltredMessages.Count > 0)
@@ -89,8 +89,21 @@ namespace Simulation
             // Configuración del TrackBar para la velocidad
             trackBar1.Minimum = 1; // Más lento
             trackBar1.Maximum = 15; // Más rápido
-            trackBar1.Value = 1; 
+            trackBar1.Value = 1;
             trackBar1.Scroll += trackBar1_Scroll;
+
+            dataGridView1.ColumnCount = 6;
+            dataGridView1.Columns[0].Name = "Time (s)";
+            dataGridView1.Columns[1].Name = "Latitude";
+            dataGridView1.Columns[2].Name = "Longitude";
+            dataGridView1.Columns[3].Name = "Heifgt";
+            dataGridView1.Columns[4].Name = "Type";
+            dataGridView1.Columns[5].Name = "TA";
+            dataGridView1.Visible = true;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            panel2.Controls.Add(dataGridView1);
+            dataGridView1.ClearSelection();
+
         }
 
         private void Mapa_Load(object sender, EventArgs e)
@@ -120,19 +133,41 @@ namespace Simulation
 
             mapControl.Update();
 
+            List<List<object>> initialAircrafts = new List<List<object>>();
+
             // Pintar los primeros 4 segundos desde el tiempo inicial (currentSecond) al cargar el formulario
             for (int i = 0; i < 4; i++)
             {
                 List<List<object>> result = AircraftsPerSecond(FiltredMessages, currentSecond + i);
                 PaintAircrafts(result);
+                initialAircrafts.AddRange(result);
             }
 
+            UpdateDataGridView(initialAircrafts);
             // Refrescar el mapa
             mapControl.Refresh();
 
             // Configurar el segundo de inicio para la simulación
             currentSecond += 4; // El siguiente segundo será el 5º relativo al primer valor de tiempo
 
+        }
+
+        private void UpdateDataGridView(List<List<object>> aircrafts)
+        {
+            dataGridView1.Rows.Clear();
+            foreach (List<object> aircraft in aircrafts)
+            {
+                int time = Convert.ToInt32(aircraft[0]);
+                double latitude = Convert.ToDouble(aircraft[1]);
+                double longitude = Convert.ToDouble(aircraft[2]);
+                double height = Convert.ToDouble(aircraft[3]);
+                string type = Convert.ToString(aircraft[4]);
+                string ta = Convert.ToString(aircraft[6]);
+
+                dataGridView1.Rows.Add(time, latitude, longitude, height, type, ta);
+            }
+            dataGridView1.Refresh();
+            dataGridView1.ClearSelection();
         }
 
         private void MoveBtn_Click(object sender, EventArgs e)
@@ -145,6 +180,8 @@ namespace Simulation
 
                 // Pintar los aviones del segundo actual
                 PaintAircrafts(result);
+
+                UpdateDataGridView(result);
 
                 // Forzar la actualización del mapa
                 mapControl.Refresh();
@@ -276,7 +313,7 @@ namespace Simulation
                         }
                     }
 
-                    else 
+                    else
                     {
                         bitmap = new Bitmap("plane0.png");
 
@@ -305,8 +342,8 @@ namespace Simulation
                     Bitmap resizedBitmap = new Bitmap(bitmap, new Size(newWidth, newHeight));
 
                     // Calcular el offset para centrar el bitmap
-                    int offsetX = resizedBitmap.Width/2;
-                    int offsetY = resizedBitmap.Height/2;
+                    int offsetX = resizedBitmap.Width / 2;
+                    int offsetY = resizedBitmap.Height / 2;
 
                     // Crear el marcador
                     GMarkerGoogle marker = new GMarkerGoogle(Position, resizedBitmap);
@@ -344,7 +381,7 @@ namespace Simulation
             mapControl.Refresh();
         }
 
-       
+
         private void ChangeMapBtn_Click(object sender, EventArgs e)
         {
             string selectedMapType = comboBox1.SelectedItem.ToString();
@@ -411,12 +448,17 @@ namespace Simulation
             aircraftMarkers.Clear();
             previousPositions.Clear();
 
+            List<List<object>> initialAircrafts = new List<List<object>>();
+
             // Pintar los primeros 4 segundos desde el tiempo inicial
             for (int i = 0; i < 4; i++)
             {
                 List<List<object>> result = AircraftsPerSecond(FiltredMessages, currentSecond + i);
                 PaintAircrafts(result);
+                initialAircrafts.AddRange(result);
             }
+
+            UpdateDataGridView(initialAircrafts);
 
             // Refrescar el mapa
             mapControl.Refresh();
@@ -433,6 +475,7 @@ namespace Simulation
                 simulationTimer.Stop();
                 AutomaticBtn.Text = "Automatic";
             }
+            currentSecond += 4;
         }
 
         private void RestartBtn_Click(object sender, EventArgs e)

@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Mapa));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             MoveBtn = new Button();
             AutomaticBtn = new Button();
             RestartBtn = new Button();
@@ -44,8 +48,13 @@
             panel1 = new Panel();
             pictureBox7 = new PictureBox();
             exportCsvBtn = new Button();
+            panel2 = new Panel();
+            dataGridView1 = new DataGridView();
+            extraFunctionalityBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)trackBar1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
+            panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // MoveBtn
@@ -160,10 +169,10 @@
             CloseBtn.FlatAppearance.MouseOverBackColor = Color.DarkGray;
             CloseBtn.FlatStyle = FlatStyle.Flat;
             CloseBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            CloseBtn.Location = new Point(524, 697);
+            CloseBtn.Location = new Point(590, 688);
             CloseBtn.Margin = new Padding(2);
             CloseBtn.Name = "CloseBtn";
-            CloseBtn.Size = new Size(333, 50);
+            CloseBtn.Size = new Size(346, 50);
             CloseBtn.TabIndex = 7;
             CloseBtn.Text = "Close AstDecoder";
             CloseBtn.UseVisualStyleBackColor = true;
@@ -171,7 +180,7 @@
             // 
             // trackBar1
             // 
-            trackBar1.Location = new Point(483, 626);
+            trackBar1.Location = new Point(540, 628);
             trackBar1.Margin = new Padding(2);
             trackBar1.Name = "trackBar1";
             trackBar1.Size = new Size(429, 56);
@@ -182,7 +191,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(524, 582);
+            label1.Location = new Point(590, 586);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(346, 28);
@@ -224,7 +233,7 @@
             pictureBox7.BackColor = Color.White;
             pictureBox7.BackgroundImage = (Image)resources.GetObject("pictureBox7.BackgroundImage");
             pictureBox7.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox7.Location = new Point(1071, 737);
+            pictureBox7.Location = new Point(1554, 733);
             pictureBox7.Name = "pictureBox7";
             pictureBox7.Size = new Size(216, 44);
             pictureBox7.TabIndex = 13;
@@ -238,7 +247,7 @@
             exportCsvBtn.FlatAppearance.MouseOverBackColor = Color.DarkGray;
             exportCsvBtn.FlatStyle = FlatStyle.Flat;
             exportCsvBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            exportCsvBtn.Location = new Point(1050, 600);
+            exportCsvBtn.Location = new Point(1567, 658);
             exportCsvBtn.Name = "exportCsvBtn";
             exportCsvBtn.Size = new Size(190, 50);
             exportCsvBtn.TabIndex = 14;
@@ -246,11 +255,70 @@
             exportCsvBtn.UseVisualStyleBackColor = true;
             exportCsvBtn.Click += exportCsvBtn_Click;
             // 
+            // panel2
+            // 
+            panel2.Controls.Add(dataGridView1);
+            panel2.Location = new Point(1291, 30);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(466, 526);
+            panel2.TabIndex = 15;
+            // 
+            // dataGridView1
+            // 
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = Color.DarkGray;
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.DarkGray;
+            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridView1.Location = new Point(0, 0);
+            dataGridView1.Name = "dataGridView1";
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.DarkGray;
+            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = Color.LightSkyBlue;
+            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
+            dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridView1.RowTemplate.Height = 29;
+            dataGridView1.Size = new Size(463, 523);
+            dataGridView1.TabIndex = 0;
+            // 
+            // extraFunctionalityBtn
+            // 
+            extraFunctionalityBtn.Location = new Point(1137, 628);
+            extraFunctionalityBtn.Name = "extraFunctionalityBtn";
+            extraFunctionalityBtn.Size = new Size(151, 97);
+            extraFunctionalityBtn.TabIndex = 16;
+            extraFunctionalityBtn.Text = "Extra functionality";
+            extraFunctionalityBtn.UseVisualStyleBackColor = true;
+            // 
             // Mapa
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1286, 777);
+            ClientSize = new Size(1769, 777);
+            Controls.Add(extraFunctionalityBtn);
+            Controls.Add(panel2);
             Controls.Add(exportCsvBtn);
             Controls.Add(pictureBox7);
             Controls.Add(panel1);
@@ -273,6 +341,8 @@
             Load += Mapa_Load;
             ((System.ComponentModel.ISupportInitialize)trackBar1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
+            panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -294,5 +364,8 @@
         private Panel panel1;
         private PictureBox pictureBox7;
         private Button exportCsvBtn;
+        private Panel panel2;
+        private DataGridView dataGridView1;
+        private Button extraFunctionalityBtn;
     }
 }
