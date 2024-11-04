@@ -34,6 +34,7 @@
             textBox2 = new TextBox();
             label2 = new Label();
             label4 = new Label();
+            autofillBtn = new Button();
             SuspendLayout();
             // 
             // label1
@@ -47,7 +48,7 @@
             // 
             // acceptBtn
             // 
-            acceptBtn.Location = new Point(517, 260);
+            acceptBtn.Location = new Point(554, 300);
             acceptBtn.Name = "acceptBtn";
             acceptBtn.Size = new Size(94, 29);
             acceptBtn.TabIndex = 1;
@@ -87,11 +88,22 @@
             label4.TabIndex = 6;
             label4.Text = "Target address 2";
             // 
+            // autofillBtn
+            // 
+            autofillBtn.Location = new Point(554, 265);
+            autofillBtn.Name = "autofillBtn";
+            autofillBtn.Size = new Size(94, 29);
+            autofillBtn.TabIndex = 7;
+            autofillBtn.Text = "Autofill";
+            autofillBtn.UseVisualStyleBackColor = true;
+            autofillBtn.Click += autofillBtn_Click;
+            // 
             // Target
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(autofillBtn);
             Controls.Add(label4);
             Controls.Add(label2);
             Controls.Add(textBox2);
@@ -112,5 +124,6 @@
         private TextBox textBox2;
         private Label label2;
         private Label label4;
+        private Button autofillBtn;
     }
 }

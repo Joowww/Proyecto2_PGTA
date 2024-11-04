@@ -719,9 +719,13 @@ namespace Simulation
             return filtredMessages;
         }
 
-        public List<List<object>> Option8(List<List<object>> allMessages, string TA1, string TA2)
+        public (List<List<object>> filtredMessages, List<string> missingTargets) Option8(List<List<object>> allMessages, string TA1, string TA2)
         {
             List<List<object>> filtredMessages = new List<List<object>>();
+            List<string> missingTargets = new List<string>();
+
+            bool ta1Found = false;
+            bool ta2Found = false;
 
             // Recorremos todos los mensajes
             foreach (var message in allMessages)
@@ -729,14 +733,26 @@ namespace Simulation
 
                 string TA = Convert.ToString(message[6]);
 
-                if (TA == TA1 || TA == TA2)
+                if (TA == TA1)
                 {
+                    ta1Found = true;
                     filtredMessages.Add(message);
                 }
-                
-            }
-            return filtredMessages;
+                if (TA == TA2)
+                {
+                    ta2Found = true;
+                    filtredMessages.Add(message);
+                }
 
+            }
+
+            // Comprobamos si TA1 y TA2 están presentes
+            if (!ta1Found)
+                missingTargets.Add(TA1);
+            if (!ta2Found)
+                missingTargets.Add(TA2);
+
+            return (filtredMessages, missingTargets);
 
         }
 

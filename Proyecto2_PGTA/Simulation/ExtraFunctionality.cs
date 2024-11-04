@@ -23,7 +23,9 @@ namespace Simulation
 
         public void targetBtn_Click(object sender, EventArgs e)
         {
+
             Target target = new Target(mapa);
+            mapa.Enabled = false;
             target.Show();
             this.Hide();
         }

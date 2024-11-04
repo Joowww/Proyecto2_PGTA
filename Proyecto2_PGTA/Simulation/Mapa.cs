@@ -99,7 +99,7 @@ namespace Simulation
             dataGridView1.Columns[0].Name = "Time (s)";
             dataGridView1.Columns[1].Name = "Latitude";
             dataGridView1.Columns[2].Name = "Longitude";
-            dataGridView1.Columns[3].Name = "Heifgt";
+            dataGridView1.Columns[3].Name = "Height (m)";
             dataGridView1.Columns[4].Name = "Type";
             dataGridView1.Columns[5].Name = "TA";
             dataGridView1.Visible = true;
@@ -626,6 +626,15 @@ namespace Simulation
 
         private void extraFunctionalityBtn_Click(object sender, EventArgs e)
         {
+            // Eliminar todos los marcadores de la capa de marcadores
+            markersOverlay.Markers.Clear();
+
+            // Eliminar todas las rutas de la capa de rutas
+            routeOverlay.Routes.Clear();
+
+            // Refrescar el mapa para aplicar los cambios
+            mapControl.Refresh();
+
             ExtraFunctionality extraFunctionality = new ExtraFunctionality(this);
             this.Enabled = false;
             extraFunctionality.Show();
@@ -634,9 +643,36 @@ namespace Simulation
 
         public void SetTargetAddresses(string ta1, string ta2)
         {
-            List<List<object>> updatedFilteredMessages = principal.Option8(AllMessages, ta1, ta2);
-            FiltredMessages = updatedFilteredMessages;
-            RestartSimulation();
+            var (filteredMessages, missingTargets) = principal.Option8(AllMessages, ta1, ta2);
+            if (missingTargets.Count == 0)
+            {
+                FiltredMessages = filteredMessages;
+                RestartSimulation();
+            }
+            else
+            {
+                if (missingTargets.Count == 1)
+                {
+                    if (missingTargets[0] == ta1)
+                    {
+                        MessageBox.Show($"The target address '{ta1}' is not found in the Asterix. Please enter another address.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (missingTargets[0] == ta2)
+                    {
+                        MessageBox.Show($"The target address '{ta2}' is not found in the Asterix. Please enter another address.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                }
+                else if (missingTargets.Count == 2)
+                {
+                    MessageBox.Show("Neither of the two target addresses entered is found in the Asterix. Please enter two different addresses.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+                //this.Enabled = false;
+                //Target target = new Target(this);
+                //target.ShowDialog();
+            }
+
         }
     }
 }

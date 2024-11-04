@@ -36,8 +36,8 @@ namespace Simulation
                 // Llama al método en el formulario Mapa
                 mapa.SetTargetAddresses(TA1, TA2);
 
-                this.Hide(); // Cierra el formulario y dispara el evento FormClosed
                 mapa.Enabled = true;
+                this.Hide(); 
 
             }
             catch (Exception ex)
@@ -45,6 +45,12 @@ namespace Simulation
                 // Handles any other unexpected errors
                 MessageBox.Show($"An unexpected error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void autofillBtn_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "4A08EB";
+            textBox2.Text = "346088";
         }
     }
 }
