@@ -24,7 +24,7 @@ namespace Simulation
         private Principal principal;
         GMapControl mapControl;
         List<List<object>> FiltredMessages { get; set; }
-        List<List<object>> AllMessages { get; set; }
+        public List<List<object>> AllMessages { get; set; }
         public string TA1 { get; set; }
         public string TA2 { get; set; }
         private bool isDarkMode;
@@ -641,38 +641,49 @@ namespace Simulation
 
         }
 
-        public void SetTargetAddresses(string ta1, string ta2)
+        public (List<List<object>> filtredMessages, List<string> missingTargets) Option8(List<List<object>> allMessages, string TA1, string TA2)
         {
-            var (filteredMessages, missingTargets) = principal.Option8(AllMessages, ta1, ta2);
-            if (missingTargets.Count == 0)
+            List<List<object>> filtredMessages = new List<List<object>>();
+            List<string> missingTargets = new List<string>();
+
+            bool ta1Found = false;
+            bool ta2Found = false;
+
+            // Recorremos todos los mensajes
+            foreach (var message in allMessages)
             {
-                FiltredMessages = filteredMessages;
+
+                string TA = Convert.ToString(message[6]);
+
+                if (TA == TA1)
+                {
+                    ta1Found = true;
+                    filtredMessages.Add(message);
+                }
+                if (TA == TA2)
+                {
+                    ta2Found = true;
+                    filtredMessages.Add(message);
+                }
+
+            }
+
+            // Comprobamos si TA1 y TA2 están presentes
+            if (!ta1Found)
+                missingTargets.Add(TA1);
+            if (!ta2Found)
+                missingTargets.Add(TA2);
+
+            return (filtredMessages, missingTargets);
+
+        }
+
+        public void SetTargetAddresses(List<List<object>> filtredMessages)
+        {
+ 
+                FiltredMessages = filtredMessages;
                 RestartSimulation();
-            }
-            else
-            {
-                if (missingTargets.Count == 1)
-                {
-                    if (missingTargets[0] == ta1)
-                    {
-                        MessageBox.Show($"The target address '{ta1}' is not found in the Asterix. Please enter another address.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    else if (missingTargets[0] == ta2)
-                    {
-                        MessageBox.Show($"The target address '{ta2}' is not found in the Asterix. Please enter another address.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-
-                }
-                else if (missingTargets.Count == 2)
-                {
-                    MessageBox.Show("Neither of the two target addresses entered is found in the Asterix. Please enter two different addresses.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-
-                //this.Enabled = false;
-                //Target target = new Target(this);
-                //target.ShowDialog();
-            }
-
+          
         }
     }
 }

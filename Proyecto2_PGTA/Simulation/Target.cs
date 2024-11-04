@@ -33,11 +33,43 @@ namespace Simulation
                     throw new ArgumentException("The target address must contain 6 characters.");
                 }
 
+                // Llama al método en el formulario Mapa y obtiene el resultado
+                var (filteredMessages, missingTargets) = mapa.Option8(mapa.AllMessages, TA1, TA2);
+
+                if (missingTargets.Count != 0)
+                {
+                    if (missingTargets.Count == 1)
+                    {
+                        if (missingTargets[0] == TA1)
+                        {
+                            MessageBox.Show($"The target address '{TA1}' is not found in the Asterix. Please enter another address.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            textBox1.Clear();
+                        }
+                        else if (missingTargets[0] == TA2)
+                        {
+                            MessageBox.Show($"The target address '{TA2}' is not found in the Asterix. Please enter another address.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            textBox2.Clear();
+                        }
+
+                    }
+                    else if (missingTargets.Count == 2)
+                    {
+
+                        MessageBox.Show("Neither of the two target addresses entered is found in the Asterix. Please enter two different addresses.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        textBox1.Clear();
+                        textBox2.Clear();
+                    }
+                    // No cerrar el formulario, permite al usuario corregir la entrada
+                    return;
+                }
+
                 // Llama al método en el formulario Mapa
-                mapa.SetTargetAddresses(TA1, TA2);
+                mapa.SetTargetAddresses(filteredMessages);
 
                 mapa.Enabled = true;
                 this.Hide(); 
+
+
 
             }
             catch (Exception ex)
