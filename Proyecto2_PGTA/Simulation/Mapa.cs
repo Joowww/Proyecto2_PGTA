@@ -16,6 +16,7 @@ using Accord.Statistics;
 using GMap.NET.MapProviders;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using MultiCAT6.Utils;
 
 namespace Simulation
 {
@@ -200,6 +201,47 @@ namespace Simulation
             }
         }
 
+        public PointLatLng GetStereographic(PointLatLng position)
+        {
+            CoordinatesWGS84 coordinatesWGS84 = new CoordinatesWGS84();
+            coordinatesWGS84.Lat = position.Lat;
+            coordinatesWGS84.Lon = position.Lng;
+
+            coordinatesWGS84.Lat = coordinatesWGS84.Lat * Math.PI / 180;
+            coordinatesWGS84.Lon = coordinatesWGS84.Lon * Math.PI / 180;
+
+            GeoUtils geoUtils = new GeoUtils();
+            CoordinatesWGS84 myCenterProjection = new CoordinatesWGS84();
+
+            myCenterProjection.Lat = 41 + (6.0 / 60.0) + (56.560 / 3600.0);
+            myCenterProjection.Lon = 001 + (41.0 / 60.0) + (33.01 / 3600.0);
+            myCenterProjection.Lat = myCenterProjection.Lat * Math.PI / 180.0;
+            myCenterProjection.Lon = myCenterProjection.Lon * Math.PI / 180.0;
+
+            CoordinatesWGS84 myCenter = new CoordinatesWGS84();
+            myCenter = geoUtils.setCenterProjection(myCenterProjection);
+
+            CoordinatesXYZ Coordinates_geocentric = new CoordinatesXYZ();
+            CoordinatesXYZ Coordinates_cart = new CoordinatesXYZ();
+            CoordinatesUVH Coordinates_ster = new CoordinatesUVH();
+
+            Coordinates_geocentric = geoUtils.change_geodesic2geocentric(coordinatesWGS84);
+            Coordinates_cart = geoUtils.change_geocentric2system_cartesian(Coordinates_geocentric);
+            Coordinates_ster = geoUtils.change_system_cartesian2stereographic(Coordinates_cart);
+
+            // Devolver una nueva posición con las coordenadas estereográficas
+            return new PointLatLng(Coordinates_ster.U, Coordinates_ster.V);
+        }
+
+        public double CalculateDistance(PointLatLng stereographicPositionTA1, PointLatLng stereographicPositionTA2)
+        {
+            double distance;
+            double dU = stereographicPositionTA1.Lat - stereographicPositionTA2.Lat;
+            double dV = stereographicPositionTA1.Lng - stereographicPositionTA2.Lng;
+            distance = Math.Sqrt(dV * dV + dU * dU);
+            distance = (distance / 1852.0);
+            return distance;
+        }
         static List<List<object>> AircraftsPerSecond(List<List<object>> FiltredMessages, int second)
         {
             List<List<object>> aircraftsSecond = new List<List<object>>();
@@ -645,45 +687,80 @@ namespace Simulation
         {
             List<List<object>> filtredMessages = new List<List<object>>();
             List<string> missingTargets = new List<string>();
-
-            bool ta1Found = false;
-            bool ta2Found = false;
+            Dictionary<string, PointLatLng> previousPositions = new Dictionary<string, PointLatLng>(); // Almacena las últimas posiciones conocidas
 
             // Recorremos todos los mensajes
             foreach (var message in allMessages)
             {
 
+
                 string TA = Convert.ToString(message[6]);
+                double latitude = Convert.ToDouble(message[1]);
+                double longitude = Convert.ToDouble(message[2]);
 
-                if (TA == TA1)
+                // Filtramos los mensajes de los aviones TA1 y TA2
+                if (TA == TA1 || TA == TA2)
                 {
-                    ta1Found = true;
                     filtredMessages.Add(message);
-                }
-                if (TA == TA2)
-                {
-                    ta2Found = true;
-                    filtredMessages.Add(message);
-                }
 
+                    // Variables para almacenar las posiciones de TA1 y TA2
+                    PointLatLng positionTA1 = default;
+                    PointLatLng positionTA2 = default;
+                    PointLatLng stereographicPositionTA1;
+                    PointLatLng stereographicPositionTA2;
+
+                    // Asignar posiciones basadas en el mensaje actual
+                    if (TA == TA1)
+                    {
+                        positionTA1 = new PointLatLng(latitude, longitude);
+                    }
+                    else if (TA == TA2)
+                    {
+                        positionTA2 = new PointLatLng(latitude, longitude);
+                        
+                    }
+
+                    // Utilizar la última posición conocida si uno de los aviones no tiene datos nuevos
+                    if (positionTA1.Lat == 0 && previousPositions.ContainsKey(TA1))
+                        positionTA1 = previousPositions[TA1];
+                    if (positionTA2.Lat == 0 && previousPositions.ContainsKey(TA2))
+                        positionTA2 = previousPositions[TA2];
+
+                    // Calcular la distancia si ambas posiciones están disponibles
+                    if (positionTA1.Lat != 0 && positionTA2.Lat != 0)
+                    {
+                        stereographicPositionTA1 = GetStereographic(positionTA1);
+                        stereographicPositionTA2 = GetStereographic(positionTA2);
+                        double distance = CalculateDistance(stereographicPositionTA1, stereographicPositionTA2);
+                        // Muestra la distancia calculada en algún control o variable
+                        Console.WriteLine($"Distance between {TA1} and {TA2}: {distance} NM");
+                    }
+
+                    // Guardar las posiciones actuales como últimas conocidas
+                    if (positionTA1.Lat != 0)
+                        previousPositions[TA1] = positionTA1;
+                    if (positionTA2.Lat != 0)
+                        previousPositions[TA2] = positionTA2;
+                }
             }
 
             // Comprobamos si TA1 y TA2 están presentes
-            if (!ta1Found)
+            if (!previousPositions.ContainsKey(TA1))
                 missingTargets.Add(TA1);
-            if (!ta2Found)
+            if (!previousPositions.ContainsKey(TA2))
                 missingTargets.Add(TA2);
 
             return (filtredMessages, missingTargets);
-
         }
 
         public void SetTargetAddresses(List<List<object>> filtredMessages)
         {
  
-                FiltredMessages = filtredMessages;
-                RestartSimulation();
-          
+            FiltredMessages = filtredMessages;
+            RestartSimulation();
+
+       
+
         }
     }
 }
