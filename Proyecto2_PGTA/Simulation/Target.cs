@@ -63,6 +63,7 @@ namespace Simulation
                     return;
                 }
 
+                mapa.CalculateDistanceForAircrafts(filteredMessages, TA1 , TA2);
                 // Llama al método en el formulario Mapa
                 mapa.SetTargetAddresses(filteredMessages);
 
