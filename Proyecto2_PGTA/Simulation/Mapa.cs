@@ -26,6 +26,10 @@ namespace Simulation
         GMapControl mapControl;
         List<List<object>> FiltredMessages { get; set; }
         public List<List<object>> AllMessages { get; set; }
+
+        bool extra = false;
+        public Dictionary<int, double> DistancesBySecond { get; private set; } = new Dictionary<int, double>();
+
         public string TA1 { get; set; }
         public string TA2 { get; set; }
         private bool isDarkMode;
@@ -186,6 +190,12 @@ namespace Simulation
                 PaintAircrafts(result);
 
                 UpdateDataGridView(result);
+
+                if (extra == true)
+                {
+                    double distancia = DistancesBySecond[currentSecond];
+                    label4.Text = $"Distance = {distancia:F2} NM"; // Limita a 2 decimales
+                }
 
                 // Forzar la actualización del mapa
                 mapControl.Refresh();
@@ -461,6 +471,7 @@ namespace Simulation
                 List<List<object>> result = AircraftsPerSecond(FiltredMessages, currentSecond + i);
                 PaintAircrafts(result);
                 initialAircrafts.AddRange(result);
+                
             }
 
             UpdateDataGridView(initialAircrafts);
@@ -481,6 +492,13 @@ namespace Simulation
                 AutomaticBtn.Text = "Automatic";
             }
             currentSecond += 4;
+
+            if (extra == true)
+            {
+                double distancia = DistancesBySecond[currentSecond - 1];
+                label4.Text = $"Distance = {distancia:F2} NM"; // Limita a 2 decimales
+            }
+
         }
 
         private void RestartBtn_Click(object sender, EventArgs e)
@@ -546,7 +564,7 @@ namespace Simulation
             {
                 updatedFilteredMessages = principal.Option4(AllMessages);
             }
-            else if (selection == "Removing flights above 6000 ft")
+            else if (selection == "Removing flights above 6000 ft") 
             {
                 updatedFilteredMessages = principal.Option5(AllMessages);
             }
@@ -561,6 +579,9 @@ namespace Simulation
 
             // Asignar los datos filtrados a FiltredMessages
             FiltredMessages = updatedFilteredMessages;
+
+            extra = false;
+            label4.Text = "";
 
             // Reiniciar la simulación con los datos actualizados
             RestartSimulation();
@@ -628,6 +649,8 @@ namespace Simulation
 
         private void extraFunctionalityBtn_Click(object sender, EventArgs e)
         {
+            extra = true;
+
             // Eliminar todos los marcadores de la capa de marcadores
             markersOverlay.Markers.Clear();
 
@@ -681,10 +704,11 @@ namespace Simulation
         }
 
         // CALCULA LA DISTANCIA ENTRE AVIONES CADA SEGUNDO (DESDE EL PRIMER SEGUNDO DE FILTRED MESSAGES HASTA EL ÚLTIMO)
-        public List<double> CalculateDistanceForAircrafts(List<List<object>> FiltredMessages, string TA1, string TA2)
+        public Dictionary<int, double> CalculateDistanceForAircrafts(List<List<object>> FiltredMessages, string TA1, string TA2)
         {
             Dictionary<string, PointLatLng> previousPositions = new Dictionary<string, PointLatLng>(); // Almacena las últimas posiciones conocidas
-            List<double> distances = new List<double>(); // Lista para almacenar las distancias por segundo
+            Dictionary<int, double> distancesBySecond = new Dictionary<int, double>(); // Diccionario para almacenar las distancias por segundo
+
 
             // Determinar el primer y último segundo basado en FiltredMessages
             int sec = Convert.ToInt32(FiltredMessages.First()[0]);
@@ -735,12 +759,12 @@ namespace Simulation
                             stereographicPositionTA1 = GetStereographic(positionTA1);
                             stereographicPositionTA2 = GetStereographic(positionTA2);
                             double distance = CalculateDistance(stereographicPositionTA1, stereographicPositionTA2);
-                            distances.Add(distance); // Agregar la distancia calculada
+                            distancesBySecond[i] = distance; // Almacena la distancia para el segundo actual
 
                         }
                         else
                         {
-                            distances.Add(0); // Agregar 0 si no se puede calcular la distancia
+                            distancesBySecond[i] = 0;
 
                         }
 
@@ -754,11 +778,13 @@ namespace Simulation
                 }
                 if (aircraftsInCurrentSecond.Count == 0)
                 {
-                    distances.Add(distances.Last());
+                    distancesBySecond[i] = distancesBySecond.Last().Value;
                 }
 
             }
-            return distances;
+
+            DistancesBySecond = distancesBySecond;
+            return distancesBySecond;
 
         }
 
