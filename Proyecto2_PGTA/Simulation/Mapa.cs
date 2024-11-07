@@ -201,7 +201,7 @@ namespace Simulation
             }
         }
 
-        
+
         static List<List<object>> AircraftsPerSecond(List<List<object>> FiltredMessages, int second)
         {
             List<List<object>> aircraftsSecond = new List<List<object>>();
@@ -690,7 +690,7 @@ namespace Simulation
             int sec = Convert.ToInt32(FiltredMessages.First()[0]);
             int maxsec = Convert.ToInt32(FiltredMessages.Last()[0]);
 
-            for (int i = sec; i<= maxsec; i++)
+            for (int i = sec; i <= maxsec; i++)
             {
                 // Obtener aviones para el segundo actual
                 List<List<object>> aircraftsInCurrentSecond = AircraftsPerSecond(FiltredMessages, i);
@@ -741,7 +741,7 @@ namespace Simulation
                         else
                         {
                             distances.Add(0); // Agregar 0 si no se puede calcular la distancia
-                           
+
                         }
 
                         // Guardar las posiciones actuales como últimas conocidas
@@ -764,7 +764,7 @@ namespace Simulation
 
         public void SetTargetAddresses(List<List<object>> filtredMessages)
         {
- 
+
             FiltredMessages = filtredMessages;
             RestartSimulation();
 

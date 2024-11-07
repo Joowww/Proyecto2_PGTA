@@ -51,6 +51,7 @@
             panel2 = new Panel();
             dataGridView1 = new DataGridView();
             extraFunctionalityBtn = new Button();
+            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)trackBar1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             panel2.SuspendLayout();
@@ -313,11 +314,21 @@
             extraFunctionalityBtn.UseVisualStyleBackColor = true;
             extraFunctionalityBtn.Click += extraFunctionalityBtn_Click;
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = SystemColors.ActiveCaption;
+            label4.Location = new Point(147, 664);
+            label4.Name = "label4";
+            label4.Size = new Size(0, 20);
+            label4.TabIndex = 17;
+            // 
             // Mapa
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1769, 777);
+            Controls.Add(label4);
             Controls.Add(extraFunctionalityBtn);
             Controls.Add(panel2);
             Controls.Add(exportCsvBtn);
@@ -368,5 +379,6 @@
         private Panel panel2;
         private DataGridView dataGridView1;
         private Button extraFunctionalityBtn;
+        private Label label4;
     }
 }
