@@ -406,7 +406,7 @@ namespace Simulation
             catch (Exception ex)
             {
                 // Catch any exceptions that occur during file processing
-                Console.WriteLine("Error al leer el archivo AST: " + ex.Message);
+                Console.WriteLine("Error at reading the AST file: " + ex.Message);
             }
 
             // Method to export a DataTable to a CSV file
@@ -624,6 +624,15 @@ namespace Simulation
 
         public List<List<object>> Option4(List<List<object>> allMessages)
         {
+            List<List<object>> filtredMessages = new List<List<object>>();
+
+
+            // Validate if allMessages is null
+            if (allMessages == null)
+            {
+                throw new ArgumentNullException(nameof(allMessages), "The list of all messages cannot be null.");
+            }
+
             GeographicFilter geographicFilter = new GeographicFilter(this);
             this.Enabled = true;
             geographicFilter.ShowDialog();
@@ -633,27 +642,47 @@ namespace Simulation
             double minLongitude = geographicFilter.MinLongitude;
             double maxLongitude = geographicFilter.MaxLongitude;
 
-            List<List<object>> filtredMessages = new List<List<object>>();
+            // Validate the geographic filter values
+            if (minLatitude < -90 || maxLatitude > 90 || minLongitude < -180 || maxLongitude > 180)
+            {
+                throw new ArgumentOutOfRangeException("Geographic filter values are out of valid range.");
+            }
 
-            // Recorremos todos los mensajes
+            // Loop through all the messages
             foreach (var message in allMessages)
             {
-                if (message.Count >= 1)
-                {
-                    double latitude = Convert.ToDouble(message[1]);
-                    double longitude = Convert.ToDouble(message[2]);
+                // Attempt to convert latitude and longitude to doubles
+                double latitude = Convert.ToDouble(message[1]);
+                double longitude = Convert.ToDouble(message[2]);
 
-                    // Comprobamos si la latitud y longitud están dentro del rango especificado
-                    if (latitude >= minLatitude && latitude <= maxLatitude &&
-                        longitude >= minLongitude && longitude <= maxLongitude)
-                    {
-                        // Si cumplen con el filtro, agregamos el mensaje a la lista filtrada
-                        filtredMessages.Add(message);
-                    }
+                // Validate latitude and longitude are within the valid range
+                if (latitude < -90 || latitude > 90)
+                {
+                    throw new ArgumentOutOfRangeException("Latitude value is out of valid range.");
+                }
+
+                if (longitude < -180 || longitude > 180)
+                {
+                    throw new ArgumentOutOfRangeException("Longitude value is out of valid range.");
+                }
+
+                // Check if the latitude and longitude are within the specified geographic range
+                if (latitude >= minLatitude && latitude <= maxLatitude &&
+                    longitude >= minLongitude && longitude <= maxLongitude)
+                {
+                    filtredMessages.Add(message); // Add the message if it passes the filter
                 }
             }
+
+            // If no messages were filtered, show an error and ask the user to retry
+            if (filtredMessages.Count == 0)
+            {
+                return new List<List<object>>();
+            }
+                     
             return filtredMessages;
         }
+
 
         public List<List<object>> Option5(List<List<object>> allMessages)
         {

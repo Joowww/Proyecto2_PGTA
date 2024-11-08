@@ -59,7 +59,16 @@ namespace Simulation
 
         private void acceptBtn_Click(object sender, EventArgs e)
         {
-            if (radioButton1.Checked)
+            if (radioButton3.Checked && !string.IsNullOrEmpty(FilePathAST))
+            {
+                // Check if the file has the .ast extension
+                if (Path.GetExtension(FilePathAST).ToLower() != ".ast")
+                {
+                    MessageBox.Show("Please select a file with the .ast extension.", "File Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return; // Stop the process if it is not an .ast file
+                }
+            }
+            else if (radioButton1.Checked)
             {
                 FilePathAST = "230502-est-080001_BCN_60MN_08_09.ast";
             }

@@ -30,6 +30,15 @@ namespace Simulation
         {
             try
             {
+
+                // Check if any field is empty
+                if (string.IsNullOrWhiteSpace(textBox1.Text) || string.IsNullOrWhiteSpace(textBox2.Text) ||
+                    string.IsNullOrWhiteSpace(textBox3.Text) || string.IsNullOrWhiteSpace(textBox4.Text))
+                {
+                    MessageBox.Show("All fields must be filled.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 MinLatitude = double.Parse(textBox1.Text);
                 MaxLatitude = double.Parse(textBox2.Text);
                 MinLongitude = double.Parse(textBox3.Text);
@@ -44,6 +53,16 @@ namespace Simulation
                 if (MinLongitude > MaxLongitude)
                 {
                     throw new ArgumentException("Minimum longitude cannot be greater than maximum longitude.");
+                }
+
+                if (MinLatitude < -90 || MinLatitude > 90 || MaxLatitude < -90 || MaxLatitude > 90)
+                {
+                    throw new ArgumentOutOfRangeException("Latitude must be between -90 and 90 degrees.");
+                }
+
+                if (MinLongitude < -180 || MinLongitude > 180 || MaxLongitude < -180 || MaxLongitude > 180)
+                {
+                    throw new ArgumentOutOfRangeException("Longitude must be between -180 and 180 degrees.");
                 }
 
                 this.Close();

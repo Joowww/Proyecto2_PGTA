@@ -452,9 +452,6 @@ namespace Simulation
 
         private void RestartSimulation()
         {
-            // Restablecer el segundo actual a 0 o al primer segundo de la lista
-            currentSecond = Convert.ToInt32(FiltredMessages[0][0]);
-
             // Limpiar los marcadores y rutas existentes
             markersOverlay.Markers.Clear();
             routeOverlay.Routes.Clear();
@@ -462,44 +459,58 @@ namespace Simulation
             // Limpiar los diccionarios
             aircraftMarkers.Clear();
             previousPositions.Clear();
+            dataGridView1.Rows.Clear();
 
-            List<List<object>> initialAircrafts = new List<List<object>>();
-
-            // Pintar los primeros 4 segundos desde el tiempo inicial
-            for (int i = 0; i < 4; i++)
+            try
             {
-                List<List<object>> result = AircraftsPerSecond(FiltredMessages, currentSecond + i);
-                PaintAircrafts(result);
-                initialAircrafts.AddRange(result);
+                currentSecond = Convert.ToInt32(FiltredMessages[0][0]);
 
+                List<List<object>> initialAircrafts = new List<List<object>>();
+
+                // Pintar los primeros 4 segundos desde el tiempo inicial
+                for (int i = 0; i < 4; i++)
+                {
+                    // Check if AircraftsPerSecond method returns valid data
+                    List<List<object>> result = AircraftsPerSecond(FiltredMessages, currentSecond + i);
+
+                    PaintAircrafts(result);
+                    initialAircrafts.AddRange(result);
+                }
+
+                UpdateDataGridView(initialAircrafts);
+
+                // Refrescar el mapa
+                mapControl.Refresh();
+
+                // Restablecer el TrackBar a su valor mínimo (1)
+                trackBar1.Value = 1; // Vuelve a la izquierda (velocidad normal)
+
+                // Actualizar el intervalo del Timer a la velocidad normal
+                simulationTimer.Interval = 1000; // Asegúrate de que el Timer tenga el intervalo normal
+
+                if (AutomaticBtn.Text == "Pause")
+                {
+                    // Pausar el modo automático
+                    simulationTimer.Stop();
+                    AutomaticBtn.Text = "Automatic";
+                }
+
+                currentSecond += 4;
+
+                if (extra == true)
+                {
+                    double distancia = DistancesBySecond[currentSecond - 1];
+                    label4.Text = $"Distance = {distancia:F2} NM"; // Limita a 2 decimales
+                }
             }
 
-            UpdateDataGridView(initialAircrafts);
-
-            // Refrescar el mapa
-            mapControl.Refresh();
-
-            // Restablecer el TrackBar a su valor mínimo (1)
-            trackBar1.Value = 1; // Vuelve a la izquierda (velocidad normal)
-
-            // Actualizar el intervalo del Timer a la velocidad normal
-            simulationTimer.Interval = 1000; // Asegúrate de que el Timer tenga el intervalo normal
-
-            if (AutomaticBtn.Text == "Pause")
+            catch 
             {
-                // Pausar el modo automático
-                simulationTimer.Stop();
-                AutomaticBtn.Text = "Automatic";
+                MessageBox.Show("No messages matched the specified geographic filter. Please adjust the latitude and longitude values.",
+                                "No Data Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            currentSecond += 4;
-
-            if (extra == true)
-            {
-                double distancia = DistancesBySecond[currentSecond - 1];
-                label4.Text = $"Distance = {distancia:F2} NM"; // Limita a 2 decimales
-            }
-
         }
+
 
         private void RestartBtn_Click(object sender, EventArgs e)
         {
