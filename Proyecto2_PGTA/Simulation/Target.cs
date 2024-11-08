@@ -15,6 +15,7 @@ namespace Simulation
     {
 
         private Mapa mapa;
+        private bool isDarkMode;
         public Target(Mapa mapa_)
         {
             InitializeComponent();
@@ -63,12 +64,12 @@ namespace Simulation
                     return;
                 }
 
-                mapa.CalculateDistanceForAircrafts(filteredMessages, TA1 , TA2);
+                mapa.CalculateDistanceForAircrafts(filteredMessages, TA1, TA2);
                 // Llama al método en el formulario Mapa
                 mapa.SetTargetAddresses(filteredMessages);
 
                 mapa.Enabled = true;
-                this.Hide(); 
+                this.Hide();
 
 
 
@@ -84,6 +85,38 @@ namespace Simulation
         {
             textBox1.Text = "4A08EB";
             textBox2.Text = "346088";
+        }
+
+        private void Target_Load(object sender, EventArgs e)
+        {
+            // Cargar el estado del tema guardado
+            isDarkMode = Properties.Settings1.Default.IsDarkMode;
+
+            // Aplicar el tema según el estado guardado
+            ApplyTheme();
+
+            // Si el modo oscuro está activo, aplicarlo
+            if (isDarkMode)
+            {
+                Theme.SetDarkMode(this);
+            }
+            else
+            {
+                Theme.SetLightMode(this);
+            }
+        }
+
+        private void ApplyTheme()
+        {
+            // Aplica el tema al formulario actual
+            if (isDarkMode)
+            {
+                this.BackColor = Color.FromArgb(45, 45, 48);
+            }
+            else
+            {
+                this.BackColor = Color.White;
+            }
         }
     }
 }

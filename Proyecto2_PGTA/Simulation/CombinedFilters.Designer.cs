@@ -28,37 +28,64 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CombinedFilters));
             checkedListBox1 = new CheckedListBox();
             acceptBtn = new Button();
+            pictureBox7 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             SuspendLayout();
             // 
             // checkedListBox1
             // 
+            checkedListBox1.Cursor = Cursors.Hand;
+            checkedListBox1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             checkedListBox1.FormattingEnabled = true;
-            checkedListBox1.Location = new Point(250, 118);
+            checkedListBox1.Location = new Point(195, 96);
             checkedListBox1.Name = "checkedListBox1";
-            checkedListBox1.Size = new Size(270, 202);
+            checkedListBox1.Size = new Size(389, 149);
             checkedListBox1.TabIndex = 0;
+            checkedListBox1.ThreeDCheckBoxes = true;
             // 
             // acceptBtn
             // 
-            acceptBtn.Location = new Point(339, 326);
+            acceptBtn.FlatAppearance.BorderColor = Color.DarkGray;
+            acceptBtn.FlatAppearance.BorderSize = 3;
+            acceptBtn.FlatAppearance.MouseDownBackColor = Color.DarkGray;
+            acceptBtn.FlatAppearance.MouseOverBackColor = Color.DarkGray;
+            acceptBtn.FlatStyle = FlatStyle.Flat;
+            acceptBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            acceptBtn.Location = new Point(256, 315);
             acceptBtn.Name = "acceptBtn";
-            acceptBtn.Size = new Size(94, 29);
+            acceptBtn.Size = new Size(280, 50);
             acceptBtn.TabIndex = 1;
             acceptBtn.Text = "Accept";
             acceptBtn.UseVisualStyleBackColor = true;
             acceptBtn.Click += acceptBtn_Click;
             // 
+            // pictureBox7
+            // 
+            pictureBox7.BackColor = Color.White;
+            pictureBox7.BackgroundImage = (Image)resources.GetObject("pictureBox7.BackgroundImage");
+            pictureBox7.BackgroundImageLayout = ImageLayout.Center;
+            pictureBox7.Location = new Point(563, 421);
+            pictureBox7.Name = "pictureBox7";
+            pictureBox7.Size = new Size(216, 44);
+            pictureBox7.TabIndex = 11;
+            pictureBox7.TabStop = false;
+            // 
             // CombinedFilters
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(817, 450);
+            ClientSize = new Size(777, 461);
+            Controls.Add(pictureBox7);
             Controls.Add(acceptBtn);
             Controls.Add(checkedListBox1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "CombinedFilters";
             Text = "CombinedFilters";
+            Load += CombinedFilters_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             ResumeLayout(false);
         }
 
@@ -66,5 +93,6 @@
 
         private CheckedListBox checkedListBox1;
         private Button acceptBtn;
+        private PictureBox pictureBox7;
     }
 }

@@ -471,7 +471,7 @@ namespace Simulation
                 List<List<object>> result = AircraftsPerSecond(FiltredMessages, currentSecond + i);
                 PaintAircrafts(result);
                 initialAircrafts.AddRange(result);
-                
+
             }
 
             UpdateDataGridView(initialAircrafts);
@@ -564,7 +564,7 @@ namespace Simulation
             {
                 updatedFilteredMessages = principal.Option4(AllMessages);
             }
-            else if (selection == "Removing flights above 6000 ft") 
+            else if (selection == "Removing flights above 6000 ft")
             {
                 updatedFilteredMessages = principal.Option5(AllMessages);
             }

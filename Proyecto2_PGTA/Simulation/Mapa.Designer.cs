@@ -170,7 +170,7 @@
             CloseBtn.FlatAppearance.MouseOverBackColor = Color.DarkGray;
             CloseBtn.FlatStyle = FlatStyle.Flat;
             CloseBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            CloseBtn.Location = new Point(590, 688);
+            CloseBtn.Location = new Point(566, 688);
             CloseBtn.Margin = new Padding(2);
             CloseBtn.Name = "CloseBtn";
             CloseBtn.Size = new Size(346, 50);
@@ -181,7 +181,7 @@
             // 
             // trackBar1
             // 
-            trackBar1.Location = new Point(540, 628);
+            trackBar1.Location = new Point(516, 628);
             trackBar1.Margin = new Padding(2);
             trackBar1.Name = "trackBar1";
             trackBar1.Size = new Size(429, 56);
@@ -192,7 +192,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(590, 586);
+            label1.Location = new Point(566, 586);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(346, 28);
@@ -248,9 +248,9 @@
             exportCsvBtn.FlatAppearance.MouseOverBackColor = Color.DarkGray;
             exportCsvBtn.FlatStyle = FlatStyle.Flat;
             exportCsvBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            exportCsvBtn.Location = new Point(1567, 658);
+            exportCsvBtn.Location = new Point(1474, 603);
             exportCsvBtn.Name = "exportCsvBtn";
-            exportCsvBtn.Size = new Size(190, 50);
+            exportCsvBtn.Size = new Size(280, 50);
             exportCsvBtn.TabIndex = 14;
             exportCsvBtn.Text = "Export CSV";
             exportCsvBtn.UseVisualStyleBackColor = true;
@@ -306,9 +306,15 @@
             // 
             // extraFunctionalityBtn
             // 
-            extraFunctionalityBtn.Location = new Point(1137, 628);
+            extraFunctionalityBtn.FlatAppearance.BorderColor = Color.DarkGray;
+            extraFunctionalityBtn.FlatAppearance.BorderSize = 3;
+            extraFunctionalityBtn.FlatAppearance.MouseDownBackColor = Color.DarkGray;
+            extraFunctionalityBtn.FlatAppearance.MouseOverBackColor = Color.DarkGray;
+            extraFunctionalityBtn.FlatStyle = FlatStyle.Flat;
+            extraFunctionalityBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            extraFunctionalityBtn.Location = new Point(28, 613);
             extraFunctionalityBtn.Name = "extraFunctionalityBtn";
-            extraFunctionalityBtn.Size = new Size(151, 97);
+            extraFunctionalityBtn.Size = new Size(280, 125);
             extraFunctionalityBtn.TabIndex = 16;
             extraFunctionalityBtn.Text = "Extra functionality";
             extraFunctionalityBtn.UseVisualStyleBackColor = true;
@@ -318,9 +324,11 @@
             // 
             label4.AutoSize = true;
             label4.BackColor = SystemColors.ActiveCaption;
-            label4.Location = new Point(147, 664);
+            label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.ForeColor = SystemColors.ActiveCaption;
+            label4.Location = new Point(1044, 573);
             label4.Name = "label4";
-            label4.Size = new Size(0, 20);
+            label4.Size = new Size(0, 28);
             label4.TabIndex = 17;
             // 
             // Mapa

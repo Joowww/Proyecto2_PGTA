@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GeographicFilter));
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -37,40 +38,51 @@
             textBox3 = new TextBox();
             textBox4 = new TextBox();
             autofillBtn = new Button();
+            label4 = new Label();
+            pictureBox7 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(118, 154);
+            label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(34, 36);
             label1.Name = "label1";
-            label1.Size = new Size(593, 20);
+            label1.Size = new Size(606, 28);
             label1.TabIndex = 0;
-            label1.Text = "Insert minimum and maximum values for latitude and longitude (separator with a coma)";
+            label1.Text = "Insert minimum and maximum values for latitude and longitude ";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(310, 233);
+            label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(306, 209);
             label2.Name = "label2";
-            label2.Size = new Size(104, 20);
+            label2.Size = new Size(145, 28);
             label2.TabIndex = 1;
             label2.Text = "< Longitude <";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(310, 196);
+            label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Location = new Point(306, 172);
             label3.Name = "label3";
-            label3.Size = new Size(91, 20);
+            label3.Size = new Size(144, 28);
             label3.TabIndex = 2;
-            label3.Text = "< Latitude <";
+            label3.Text = "<  Latitude   <";
             // 
             // applyBtn
             // 
-            applyBtn.Location = new Point(589, 278);
+            applyBtn.FlatAppearance.BorderColor = Color.DarkGray;
+            applyBtn.FlatAppearance.BorderSize = 3;
+            applyBtn.FlatAppearance.MouseDownBackColor = Color.DarkGray;
+            applyBtn.FlatAppearance.MouseOverBackColor = Color.DarkGray;
+            applyBtn.FlatStyle = FlatStyle.Flat;
+            applyBtn.Location = new Point(248, 347);
             applyBtn.Name = "applyBtn";
-            applyBtn.Size = new Size(94, 29);
+            applyBtn.Size = new Size(280, 50);
             applyBtn.TabIndex = 3;
             applyBtn.Text = "Apply";
             applyBtn.UseVisualStyleBackColor = true;
@@ -78,47 +90,75 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(179, 193);
+            textBox1.Location = new Point(175, 169);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(125, 27);
             textBox1.TabIndex = 4;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(420, 196);
+            textBox2.Location = new Point(454, 172);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(125, 27);
             textBox2.TabIndex = 5;
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(179, 230);
+            textBox3.Location = new Point(175, 206);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(125, 27);
             textBox3.TabIndex = 6;
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(420, 230);
+            textBox4.Location = new Point(454, 209);
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(125, 27);
             textBox4.TabIndex = 7;
             // 
             // autofillBtn
             // 
-            autofillBtn.Location = new Point(589, 243);
+            autofillBtn.FlatAppearance.BorderColor = Color.DarkGray;
+            autofillBtn.FlatAppearance.BorderSize = 3;
+            autofillBtn.FlatAppearance.MouseDownBackColor = Color.DarkGray;
+            autofillBtn.FlatAppearance.MouseOverBackColor = Color.DarkGray;
+            autofillBtn.FlatStyle = FlatStyle.Flat;
+            autofillBtn.Location = new Point(248, 275);
             autofillBtn.Name = "autofillBtn";
-            autofillBtn.Size = new Size(94, 29);
+            autofillBtn.Size = new Size(280, 50);
             autofillBtn.TabIndex = 8;
             autofillBtn.Text = "Autofill";
             autofillBtn.UseVisualStyleBackColor = true;
             autofillBtn.Click += autofillBtn_Click;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.Location = new Point(34, 87);
+            label4.Name = "label4";
+            label4.Size = new Size(418, 28);
+            label4.TabIndex = 9;
+            label4.Text = "IMPORTANT: The separator must be a coma!";
+            // 
+            // pictureBox7
+            // 
+            pictureBox7.BackColor = Color.White;
+            pictureBox7.BackgroundImage = (Image)resources.GetObject("pictureBox7.BackgroundImage");
+            pictureBox7.BackgroundImageLayout = ImageLayout.Center;
+            pictureBox7.Location = new Point(590, 411);
+            pictureBox7.Name = "pictureBox7";
+            pictureBox7.Size = new Size(216, 44);
+            pictureBox7.TabIndex = 12;
+            pictureBox7.TabStop = false;
             // 
             // GeographicFilter
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(pictureBox7);
+            Controls.Add(label4);
             Controls.Add(autofillBtn);
             Controls.Add(textBox4);
             Controls.Add(textBox3);
@@ -128,8 +168,11 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "GeographicFilter";
             Text = "GeographicFilter";
+            Load += GeographicFilter_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -145,5 +188,7 @@
         private TextBox textBox3;
         private TextBox textBox4;
         private Button autofillBtn;
+        private Label label4;
+        private PictureBox pictureBox7;
     }
 }

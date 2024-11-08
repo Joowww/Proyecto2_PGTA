@@ -16,6 +16,7 @@ namespace Simulation
         private Principal principal;
         private List<List<object>> data;
         private List<List<object>> filteredData;
+        private bool isDarkMode;
         public CombinedFilters(Principal principal_, List<List<object>> originalData)
         {
             InitializeComponent();
@@ -85,6 +86,38 @@ namespace Simulation
 
                 default:
                     return data; // Devolver los datos sin cambios si el filtro no coincide
+            }
+        }
+
+        private void CombinedFilters_Load(object sender, EventArgs e)
+        {
+            // Cargar el estado del tema guardado
+            isDarkMode = Properties.Settings1.Default.IsDarkMode;
+
+            // Aplicar el tema según el estado guardado
+            ApplyTheme();
+
+            // Si el modo oscuro está activo, aplicarlo
+            if (isDarkMode)
+            {
+                Theme.SetDarkMode(this);
+            }
+            else
+            {
+                Theme.SetLightMode(this);
+            }
+        }
+
+        private void ApplyTheme()
+        {
+            // Aplica el tema al formulario actual
+            if (isDarkMode)
+            {
+                this.BackColor = Color.FromArgb(45, 45, 48);
+            }
+            else
+            {
+                this.BackColor = Color.White;
             }
         }
     }

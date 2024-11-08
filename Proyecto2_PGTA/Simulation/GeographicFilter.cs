@@ -18,6 +18,7 @@ namespace Simulation
         public double MaxLatitude { get; set; }
         public double MinLongitude { get; set; }
         public double MaxLongitude { get; set; }
+        private bool isDarkMode;
 
         public GeographicFilter(Principal principal_)
         {
@@ -75,6 +76,37 @@ namespace Simulation
             textBox2.Text = MaxLatitude.ToString();
             textBox3.Text = MinLongitude.ToString();
             textBox4.Text = MaxLongitude.ToString();
+        }
+
+        private void GeographicFilter_Load(object sender, EventArgs e)
+        {
+            // Cargar el estado del tema guardado
+            isDarkMode = Properties.Settings1.Default.IsDarkMode;
+
+            // Aplicar el tema según el estado guardado
+            ApplyTheme();
+
+            // Si el modo oscuro está activo, aplicarlo
+            if (isDarkMode)
+            {
+                Theme.SetDarkMode(this);
+            }
+            else
+            {
+                Theme.SetLightMode(this);
+            }
+        }
+        private void ApplyTheme()
+        {
+            // Aplica el tema al formulario actual
+            if (isDarkMode)
+            {
+                this.BackColor = Color.FromArgb(45, 45, 48);
+            }
+            else
+            {
+                this.BackColor = Color.White;
+            }
         }
     }
 }
