@@ -27,9 +27,9 @@ namespace AstDecoder
         public string UTC_TIME_s { get; set; }
 
         // Variables for LAT, LON and H
-        public string LAT { get; set; }
-        public string LON { get; set; }
-        public string H { get; set; }
+        public string LAT_deg { get; set; }
+        public string LON_deg { get; set; }
+        public string H_Corrected_m { get; set; }
 
         // Variables for Data Item (020) [1+ ("Variable") Oct]
         public string TYP { get; set; }
@@ -45,8 +45,8 @@ namespace AstDecoder
         public string FOE_FRI { get; set; }
 
         // Variables for Data Item (040) [4 Oct]
-        public string RHO { get; set; }
-        public string THETA { get; set; }
+        public string RHO_NM { get; set; }
+        public string THETA_deg { get; set; }
 
         // Variables for Data Item (070) [2 Oct] 
         public string V_070 { get; set; }
@@ -77,35 +77,35 @@ namespace AstDecoder
         public string TI { get; set; }
 
         // Variables for Data Item (250) [1+8*n Oct]
-        public string MCP_ALT { get; set; }
-        public string FMS_ALT {get; set; }
-        public string BP {  get; set; }
+        public string MCP_ALT_ft { get; set; }
+        public string FMS_ALT_ft {get; set; }
+        public string BP_hPa {  get; set; }
         public string VNAV { get; set; }
-        public string ALT_HOLD { get; set; }
+        public string HOLD_ALT_ft { get; set; }
         public string APP {  get; set; }
         public string TARGET_ALT_SOURCE { get; set; }
-        public string RA { get; set; }
-        public string TTA { get; set; }
-        public string GS { get; set; }
-        public string TAR { get; set; }
-        public string TAS { get; set; }
-        public string HDG { get; set; }
-        public string IAS { get; set; }
+        public string RA_ft_per_min { get; set; }
+        public string TTA_s { get; set; }
+        public string GS_kt { get; set; }
+        public string TAR_kt { get; set; }
+        public string TAS_kt { get; set; }
+        public string HDG_deg { get; set; }
+        public string IAS_kt { get; set; }
         public string MACH { get; set; }
-        public string BAR { get; set; }
-        public string IVV { get; set; }
+        public string BAR_hPa { get; set; }
+        public string IVV_ft_per_min { get; set; }
 
 
         // Variables for Data Item (161) [2 Oct]
         public string TN { get; set; }
 
         // Variables for Data Item (042) [4 Oct]
-        public string xComponent { get; set; }
-        public string yComponent { get; set; }
+        public string xComponent_NM { get; set; }
+        public string yComponent_NM { get; set; }
 
         // Variables for Data Item (200) [4 Oct]
         public string GS_KT { get; set; }
-        public string HEADING { get; set; }
+        public string HEADING_deg { get; set; }
 
         // Variables for Data Item (170) [1+ Oct]
         public string CNF { get; set; }
@@ -320,12 +320,12 @@ namespace AstDecoder
             string rho = bytes2.Substring(0, 16);
             double rho2 = Convert.ToInt32(rho, 2) * 0.00390625;
             // Assign the converted and adjusted value to RHO
-            Variable048.RHO = Convert.ToString(rho2);
+            Variable048.RHO_NM = Convert.ToString(rho2);
             // Get the next two octets (16 bits)
             string theta = bytes2.Substring(16, 16);
             double theta2 = Convert.ToInt32(theta, 2) * 0.00549316406;
             // Assign the converted and adjusted value to THETA
-            Variable048.THETA = Convert.ToString(theta2);  
+            Variable048.THETA_deg = Convert.ToString(theta2);  
         }
 
         /// <summary>
@@ -595,10 +595,10 @@ namespace AstDecoder
         {
             // Extracts and converts the 16 bits for the X component
             string x = bytes2.Substring(0, 16);
-            Variable048.xComponent = Convert.ToString(ComplementA2(x) * 0.0078125);
+            Variable048.xComponent_NM = Convert.ToString(ComplementA2(x) * 0.0078125);
             // Extracts and converts the 16 bits for the Y component
             string y = bytes2.Substring(16, 16);
-            Variable048.yComponent = Convert.ToString(ComplementA2(y) * 0.0078125);
+            Variable048.yComponent_NM = Convert.ToString(ComplementA2(y) * 0.0078125);
         }
 
         /// <summary>
@@ -613,7 +613,7 @@ namespace AstDecoder
             Variable048.GS_KT = Convert.ToString(((Convert.ToInt32(GS, 2)) * 0.22));
             // Extracts and converts the 16 bits for heading
             string Head = bytes2.Substring(16, 16);
-            Variable048.HEADING = Convert.ToString((Convert.ToInt32(Head, 2) * (0.0055)));
+            Variable048.HEADING_deg = Convert.ToString((Convert.ToInt32(Head, 2) * (0.0055)));
         }
 
         /// <summary>
@@ -922,7 +922,7 @@ namespace AstDecoder
                 // Scale adjustment for MCP altitude
                 mcp_alt = mcp_alt * 16;
                 // Store the result in the CAT048 object
-                Variable048.MCP_ALT = Convert.ToString(mcp_alt);
+                Variable048.MCP_ALT_ft = Convert.ToString(mcp_alt);
 
                 // Decode FMS (Flight Management System) altitude
                 // Extract another 12 bits (FMS ALT) starting from index 14
@@ -931,7 +931,7 @@ namespace AstDecoder
                 // Scale adjustment for FMS altitude
                 fms_alt = fms_alt * 16;
                 // Store the result
-                Variable048.FMS_ALT = Convert.ToString(fms_alt);
+                Variable048.FMS_ALT_ft = Convert.ToString(fms_alt);
 
                 // Decode barometric altitude
                 // Extract 12 bits starting from index 27
@@ -941,11 +941,11 @@ namespace AstDecoder
                 // Adjust based on pressure
                 baro_alt = (baro_alt * 0.1 + 800);
                 // Store barometric altitude
-                Variable048.BP = Convert.ToString(baro_alt);
+                Variable048.BP_hPa = Convert.ToString(baro_alt);
                 // Vertical Navigation flag
                 Variable048.VNAV = Convert.ToString(bdsdata[48]);
                 // Altitude Hold flag
-                Variable048.ALT_HOLD = Convert.ToString(bdsdata[49]);
+                Variable048.HOLD_ALT_ft = Convert.ToString(bdsdata[49]);
                 // Approach flag
                 Variable048.APP = Convert.ToString(bdsdata[50]);
                 // Target Alt Source 
@@ -965,7 +965,7 @@ namespace AstDecoder
                 // Scale adjustment
                 ra = (ra * 45) / 256;
                 // Store Rate of Climb/Descent
-                Variable048.RA = Convert.ToString(ra);
+                Variable048.RA_ft_per_min = Convert.ToString(ra);
 
                 // Decode TTA 
                 string tta_bits;
@@ -990,7 +990,7 @@ namespace AstDecoder
                 tta = (tta * 90);
                 tta = tta / 512;
                 //Store TTA
-                Variable048.TTA = Convert.ToString(tta);
+                Variable048.TTA_s = Convert.ToString(tta);
 
                 // Decode GS (Ground Speed)
                 string gs_bits = bdsdata.Substring(24, 10);
@@ -999,7 +999,7 @@ namespace AstDecoder
                 // Scale adjustment
                 gs = (gs * 1024) / 512;
                 //Store GS
-                Variable048.GS = Convert.ToString(gs);
+                Variable048.GS_kt = Convert.ToString(gs);
 
                 // Decode TAR (True Airspeed Reference)
                 string tar_bits = bdsdata.Substring(36, 9);
@@ -1009,7 +1009,7 @@ namespace AstDecoder
                 tar = tar / 8;
                 tar= tar / 256;
                 //Store TAR
-                Variable048.TAR = Convert.ToString(tar);
+                Variable048.TAR_kt = Convert.ToString(tar);
 
                 // Decode TAS (True Airspeed)
                 string tas_bits = bdsdata.Substring(46, 10);
@@ -1018,7 +1018,7 @@ namespace AstDecoder
                 // Scale adjustment
                 tas = tas * 2;
                 //Store TAS
-                Variable048.TAS = Convert.ToString(tas);
+                Variable048.TAS_kt = Convert.ToString(tas);
             }
             // Check if BDS type is 6 and subtype is 0
             if (bds1 == 6 & bds2 == 0)
@@ -1046,14 +1046,14 @@ namespace AstDecoder
                 // Scale adjustment
                 hdg = (hdg * 90) / 512;
                 //Store HDG
-                Variable048.HDG = Convert.ToString(hdg);
+                Variable048.HDG_deg = Convert.ToString(hdg);
 
                 // Decode IAS (Indicated Airspeed)
                 string IAS_bits = bdsdata.Substring (13, 10);
                 // Decode using two's complement
                 double ias = ComplementA2(IAS_bits);
                 //Store IAS
-                Variable048.IAS = Convert.ToString(ias);
+                Variable048.IAS_kt = Convert.ToString(ias);
 
                 // Decode MACH (Mach Number)
                 string mach_bits = bdsdata.Substring(24, 10);
@@ -1071,7 +1071,7 @@ namespace AstDecoder
                 // Scale adjustment
                 bar = bar * 32;
                 //Store BAR
-                Variable048.BAR = Convert.ToString(bar);
+                Variable048.BAR_hPa = Convert.ToString(bar);
 
                 // Decode IVV (Inertial Vertical Velocity)
                 string ivv_bits = bdsdata.Substring(47, 9);
@@ -1080,7 +1080,7 @@ namespace AstDecoder
                 // Scale adjustment
                 ivv = (ivv * 32);
                 //Store IVV
-                Variable048.IVV = Convert.ToString(ivv);
+                Variable048.IVV_ft_per_min = Convert.ToString(ivv);
             }
         }
 
@@ -1109,7 +1109,7 @@ namespace AstDecoder
         public void H (CAT048 Variable048)
         {
             // Barometric pressure from variable 048
-            double barometricPressure = Convert.ToDouble(Variable048.BP);
+            double barometricPressure = Convert.ToDouble(Variable048.BP_hPa);
             // Initialize corrected altitude to 0
             double Altitude = 0;
             // Flight level from variable 048
@@ -1163,8 +1163,8 @@ namespace AstDecoder
             CoordinatesWGS84 radarPosition = new CoordinatesWGS84 (radar_Latitude, radar_Longitude, terrainElevation + antennaHeight);
 
             // From polar coordinates to cartesian coordinates
-            double cordenateRadarX = Convert.ToDouble(data048.RHO) * Math.Sin(Convert.ToDouble(data048.THETA) * Math.PI / 180.0) * 1852.0; // From NM to m (* 1852)
-            double cordenateRadarY = Convert.ToDouble(data048.RHO) * Math.Cos(Convert.ToDouble(data048.THETA) * Math.PI / 180.0) * 1852.0;
+            double cordenateRadarX = Convert.ToDouble(data048.RHO_NM) * Math.Sin(Convert.ToDouble(data048.THETA_deg) * Math.PI / 180.0) * 1852.0; // From NM to m (* 1852)
+            double cordenateRadarY = Convert.ToDouble(data048.RHO_NM) * Math.Cos(Convert.ToDouble(data048.THETA_deg) * Math.PI / 180.0) * 1852.0;
 
             // From cartesian coordinates to spherical coordinates
             double azimuth = GeoUtils.CalculateAzimuth(cordenateRadarX, cordenateRadarY);
@@ -1183,9 +1183,9 @@ namespace AstDecoder
             // Transform to geodesic coordinates
             CoordinatesWGS84 geodCoords = GeoUs.change_geocentric2geodesic(geocCoords);
 
-            data048.LAT = Convert.ToString(geodCoords.Lat * 180 / Math.PI);
-            data048.LON = Convert.ToString(geodCoords.Lon * 180 / Math.PI);
-            data048.H = Convert.ToString(geodCoords.Height);
+            data048.LAT_deg = Convert.ToString(geodCoords.Lat * 180 / Math.PI);
+            data048.LON_deg = Convert.ToString(geodCoords.Lon * 180 / Math.PI);
+            data048.H_Corrected_m = Convert.ToString(geodCoords.Height);
         }
 
 

@@ -107,11 +107,11 @@ namespace Simulation
 
             dataGridView1.ColumnCount = 6;
             dataGridView1.Columns[0].Name = "Time (s)";
-            dataGridView1.Columns[1].Name = "Latitude";
-            dataGridView1.Columns[2].Name = "Longitude";
-            dataGridView1.Columns[3].Name = "Height (m)";
+            dataGridView1.Columns[1].Name = "Latitude (°)";
+            dataGridView1.Columns[2].Name = "Longitude (°)";
+            dataGridView1.Columns[3].Name = "Corrected Height (m)";
             dataGridView1.Columns[4].Name = "Type";
-            dataGridView1.Columns[5].Name = "TA";
+            dataGridView1.Columns[5].Name = "Target address";
             dataGridView1.Visible = true;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             panel2.Controls.Add(dataGridView1);
@@ -373,7 +373,7 @@ namespace Simulation
 
                     // Agregar un tooltip al marcador
                     marker.ToolTip = new GMap.NET.WindowsForms.ToolTips.GMapRoundedToolTip(marker);
-                    marker.ToolTipText = $"{TA}\nLatitude: {latitude}\nLongitude: {longitude}\nHeight: {H}";
+                    marker.ToolTipText = $"Target address: {TA}\nLatitude (°): {latitude}\nLongitude (°): {longitude}\nCorrected Height (m): {H}";
 
                     // Agregar el nuevo marcador a la capa de marcadores
                     markersOverlay.Markers.Add(marker);

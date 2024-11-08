@@ -42,7 +42,7 @@ namespace Simulation
             DataTable messageTable = new DataTable();
 
             // Define the columns for the table
-            messageTable.Columns.Add("MessageObject", typeof(CAT048));
+            messageTable.Columns.Add("Message Object", typeof(CAT048));
 
             // Get all properties of the CAT048 class
             PropertyInfo[] properties = typeof(CAT048).GetProperties();
