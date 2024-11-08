@@ -15,6 +15,7 @@ using AstDecoder;
 using Accord.Statistics;
 using GMap.NET.MapProviders;
 using System.Windows.Forms;
+
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using MultiCAT6.Utils;
 
@@ -46,6 +47,7 @@ namespace Simulation
         public Mapa(List<List<object>> filtredMessages, List<List<object>> allMessages, int selectedIndexOption, Principal _principal)
         {
             InitializeComponent();
+
             FiltredMessages = filtredMessages;
             AllMessages = allMessages;
             principal = _principal;
@@ -63,6 +65,7 @@ namespace Simulation
             comboBox1.Items.Add("OpenStreetMap");
             comboBox1.Items.Add("Google Hybrid");
             comboBox1.Items.Add("Google Satellite");
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.SelectedIndex = 0;
 
             comboBox2.Items.Add("All data");
@@ -72,7 +75,9 @@ namespace Simulation
             comboBox2.Items.Add("Removing flights above 6000 ft");
             comboBox2.Items.Add("Removing on ground flights");
             comboBox2.Items.Add("Combination of these");
+            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox2.SelectedIndex = selectedIndexOption;
+
 
             // Establecer el primer segundo como el primero en la lista de aviones
             if (FiltredMessages.Count > 0)
@@ -486,7 +491,7 @@ namespace Simulation
                 trackBar1.Value = 1; // Vuelve a la izquierda (velocidad normal)
 
                 // Actualizar el intervalo del Timer a la velocidad normal
-                simulationTimer.Interval = 1000; // Asegúrate de que el Timer tenga el intervalo normal
+                simulationTimer.Interval = 1000; 
 
                 if (AutomaticBtn.Text == "Pause")
                 {
@@ -508,9 +513,28 @@ namespace Simulation
             {
                 MessageBox.Show("No messages matched the specified geographic filter. Please adjust the latitude and longitude values.",
                                 "No Data Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //DeshabilitarControles(button5, comboBox2, CloseBtn);
             }
         }
 
+        //private void DeshabilitarControles(Control filter, Control comboBox, Control close)
+        //{
+        //    foreach (Control control in this.Controls)
+        //    {
+        //        if (control != filter && control != comboBox && control !=close)
+        //        {
+        //            control.Enabled = false;
+        //        }
+        //    }
+        //}
+
+        //private void HabilitarControles(Control filter, Control comboBox, Control close)
+        //{
+        //    foreach (Control control in this.Controls)
+        //    {
+        //        control.Enabled = true;
+        //    }
+        //}
 
         private void RestartBtn_Click(object sender, EventArgs e)
         {
@@ -555,6 +579,7 @@ namespace Simulation
 
         private void button5_Click(object sender, EventArgs e)
         {
+            //HabilitarControles(button5, comboBox2, CloseBtn);
             string selection = comboBox2.SelectedItem.ToString();
             List<List<object>> updatedFilteredMessages = new List<List<object>>();
 

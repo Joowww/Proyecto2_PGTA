@@ -453,6 +453,7 @@ namespace Simulation
             comboBox1.Items.Add("Removing on ground flights");
             comboBox1.Items.Add("Combination of these");
             comboBox1.SelectedIndex = 0; // Seleccionar la primera opción por defecto
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
 
             // Cargar el estado del tema guardado
             isDarkMode = Properties.Settings1.Default.IsDarkMode;
@@ -626,63 +627,76 @@ namespace Simulation
         {
             List<List<object>> filtredMessages = new List<List<object>>();
 
-
             // Validate if allMessages is null
             if (allMessages == null)
             {
                 throw new ArgumentNullException(nameof(allMessages), "The list of all messages cannot be null.");
             }
 
-            GeographicFilter geographicFilter = new GeographicFilter(this);
-            this.Enabled = true;
-            geographicFilter.ShowDialog();
+            bool hasValidMessages = false; // To track if valid messages are found
 
-            double minLatitude = geographicFilter.MinLatitude;
-            double maxLatitude = geographicFilter.MaxLatitude;
-            double minLongitude = geographicFilter.MinLongitude;
-            double maxLongitude = geographicFilter.MaxLongitude;
-
-            // Validate the geographic filter values
-            if (minLatitude < -90 || maxLatitude > 90 || minLongitude < -180 || maxLongitude > 180)
+            // Loop until we get valid results or until the user cancels
+            while (!hasValidMessages)
             {
-                throw new ArgumentOutOfRangeException("Geographic filter values are out of valid range.");
-            }
+                GeographicFilter geographicFilter = new GeographicFilter(this);
+                this.Enabled = true;
+                geographicFilter.ShowDialog();
 
-            // Loop through all the messages
-            foreach (var message in allMessages)
-            {
-                // Attempt to convert latitude and longitude to doubles
-                double latitude = Convert.ToDouble(message[1]);
-                double longitude = Convert.ToDouble(message[2]);
+                double minLatitude = geographicFilter.MinLatitude;
+                double maxLatitude = geographicFilter.MaxLatitude;
+                double minLongitude = geographicFilter.MinLongitude;
+                double maxLongitude = geographicFilter.MaxLongitude;
 
-                // Validate latitude and longitude are within the valid range
-                if (latitude < -90 || latitude > 90)
+                // Validate the geographic filter values
+                if (minLatitude < -90 || maxLatitude > 90 || minLongitude < -180 || maxLongitude > 180)
                 {
-                    throw new ArgumentOutOfRangeException("Latitude value is out of valid range.");
+                    throw new ArgumentOutOfRangeException("Geographic filter values are out of valid range.");
                 }
 
-                if (longitude < -180 || longitude > 180)
+                // Reset the filtered messages before starting the filtering process
+                filtredMessages.Clear();
+
+                // Loop through all the messages
+                foreach (var message in allMessages)
                 {
-                    throw new ArgumentOutOfRangeException("Longitude value is out of valid range.");
+                    // Attempt to convert latitude and longitude to doubles
+                    double latitude = Convert.ToDouble(message[1]);
+                    double longitude = Convert.ToDouble(message[2]);
+
+                    // Validate latitude and longitude are within the valid range
+                    if (latitude < -90 || latitude > 90)
+                    {
+                        throw new ArgumentOutOfRangeException("Latitude value is out of valid range.");
+                    }
+
+                    if (longitude < -180 || longitude > 180)
+                    {
+                        throw new ArgumentOutOfRangeException("Longitude value is out of valid range.");
+                    }
+
+                    // Check if the latitude and longitude are within the specified geographic range
+                    if (latitude >= minLatitude && latitude <= maxLatitude &&
+                        longitude >= minLongitude && longitude <= maxLongitude)
+                    {
+                        filtredMessages.Add(message); // Add the message if it passes the filter
+                    }
                 }
 
-                // Check if the latitude and longitude are within the specified geographic range
-                if (latitude >= minLatitude && latitude <= maxLatitude &&
-                    longitude >= minLongitude && longitude <= maxLongitude)
+                // If no messages were filtered, show a message and allow the user to input new values
+                if (filtredMessages.Count == 0)
                 {
-                    filtredMessages.Add(message); // Add the message if it passes the filter
+                    MessageBox.Show("No messages matched the specified geographic filter. Please adjust the latitude and longitude values.",
+                                    "No Data Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    // If there are valid filtered messages, set the flag to true to stop the loop
+                    hasValidMessages = true;
                 }
             }
 
-            // If no messages were filtered, show an error and ask the user to retry
-            if (filtredMessages.Count == 0)
-            {
-                return new List<List<object>>();
-            }
-                     
             return filtredMessages;
         }
-
 
         public List<List<object>> Option5(List<List<object>> allMessages)
         {
