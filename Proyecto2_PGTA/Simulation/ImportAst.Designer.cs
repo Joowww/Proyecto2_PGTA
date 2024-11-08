@@ -49,9 +49,9 @@
             groupBox1.Controls.Add(radioButton2);
             groupBox1.Controls.Add(radioButton1);
             groupBox1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            groupBox1.Location = new Point(255, 111);
+            groupBox1.Location = new Point(255, 86);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(394, 161);
+            groupBox1.Size = new Size(394, 196);
             groupBox1.TabIndex = 3;
             groupBox1.TabStop = false;
             groupBox1.Text = "Import ASTERIX file";
