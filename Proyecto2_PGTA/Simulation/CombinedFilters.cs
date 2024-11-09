@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,6 +18,12 @@ namespace Simulation
         private List<List<object>> data;
         private List<List<object>> filteredData;
         private bool isDarkMode;
+
+        private Size formOriginalSize;
+        private Rectangle recBut1;
+        private Rectangle recBut2;
+        private Rectangle recPtb1;
+        private Rectangle recCb1;
         public CombinedFilters(Principal principal_, List<List<object>> originalData)
         {
             InitializeComponent();
@@ -29,6 +36,58 @@ namespace Simulation
             checkedListBox1.Items.Add("Geographic filter");
             checkedListBox1.Items.Add("Removing flights above 6000 ft");
             checkedListBox1.Items.Add("Removing on ground flights");
+
+            this.Resize += CombinedFilters_Resiz;
+            formOriginalSize = this.Size;
+            recBut1 = new Rectangle(acceptBtn.Location, acceptBtn.Size);
+            recBut2 = new Rectangle(cancelBtn.Location, cancelBtn.Size);
+            recPtb1 = new Rectangle(pictureBox7.Location, pictureBox7.Size);
+            recCb1 = new Rectangle(checkedListBox1.Location, checkedListBox1.Size);
+        }
+
+        private void CombinedFilters_Resiz(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                resize_Control(acceptBtn, recBut1);
+                resize_Control(cancelBtn, recBut2);
+                resize_Control(pictureBox7, recPtb1);
+                resize_Control(checkedListBox1, recCb1);
+            }
+            else if (this.WindowState == FormWindowState.Normal)
+            {
+                restore_ControlSize(acceptBtn, recBut1);
+                restore_ControlSize(cancelBtn, recBut2);
+                restore_ControlSize(pictureBox7, recPtb1);
+                restore_ControlSize(checkedListBox1, recCb1);
+            }
+        }
+
+        private void restore_ControlSize(Control control, Rectangle originalRect)
+        {
+            control.Location = originalRect.Location;
+            control.Size = originalRect.Size;
+
+            // Restauramos el tamaño de la fuente original
+            control.Font = new Font(control.Font.FontFamily, 10, control.Font.Style);
+        }
+        private void resize_Control(Control control, Rectangle rect)
+        {
+            float xRatio = (float)(this.Width) / (float)(formOriginalSize.Width);
+            float yRatio = (float)(this.Height) / (float)(formOriginalSize.Height);
+
+            int newX = (int)(rect.X * xRatio);
+            int newY = (int)(rect.Y * yRatio);
+
+            int newWidth = (int)(rect.Width * xRatio);
+            int newHeight = (int)(rect.Height * yRatio);
+
+            control.Location = new Point(newX, newY);
+            control.Size = new Size(newWidth, newHeight);
+
+            // Ajustar tamaño de la fuente
+            float fontSizeRatio = Math.Min(xRatio, yRatio); // Escala basada en la menor proporción
+            control.Font = new Font(control.Font.FontFamily, control.Font.Size * fontSizeRatio, control.Font.Style);
         }
 
         public List<List<object>> GetFilteredData()

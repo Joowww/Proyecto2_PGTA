@@ -29,148 +29,160 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Contact));
-            label9 = new Label();
-            label8 = new Label();
-            label7 = new Label();
-            label6 = new Label();
-            label5 = new Label();
-            label4 = new Label();
-            pictureBox7 = new PictureBox();
-            label3 = new Label();
-            label2 = new Label();
-            buttonClose = new Button();
-            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
-            SuspendLayout();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.buttonClose = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            this.SuspendLayout();
             // 
             // label9
             // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label9.Location = new Point(214, 211);
-            label9.Name = "label9";
-            label9.Size = new Size(392, 28);
-            label9.TabIndex = 27;
-            label9.Text = "joel.moreno.de.toro@estudiantat.upc.edu";
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label9.Location = new System.Drawing.Point(268, 264);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(468, 32);
+            this.label9.TabIndex = 27;
+            this.label9.Text = "joel.moreno.de.toro@estudiantat.upc.edu";
             // 
             // label8
             // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.Location = new Point(214, 301);
-            label8.Name = "label8";
-            label8.Size = new Size(333, 28);
-            label8.TabIndex = 26;
-            label8.Text = "mireia.viladot@estudiantat.upc.edu";
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(268, 376);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(401, 32);
+            this.label8.TabIndex = 26;
+            this.label8.Text = "mireia.viladot@estudiantat.upc.edu";
             // 
             // label7
             // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(214, 271);
-            label7.Name = "label7";
-            label7.Size = new Size(306, 28);
-            label7.TabIndex = 25;
-            label7.Text = "paula.valle@estudiantat.upc.edu";
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label7.Location = new System.Drawing.Point(268, 339);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(369, 32);
+            this.label7.TabIndex = 25;
+            this.label7.Text = "paula.valle@estudiantat.upc.edu";
             // 
             // label6
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(214, 241);
-            label6.Name = "label6";
-            label6.Size = new Size(304, 28);
-            label6.TabIndex = 24;
-            label6.Text = "erica.parra@estudiantat.upc.edu";
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(268, 301);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(369, 32);
+            this.label6.TabIndex = 24;
+            this.label6.Text = "erica.parra@estudiantat.upc.edu";
             // 
             // label5
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(212, 181);
-            label5.Name = "label5";
-            label5.Size = new Size(451, 28);
-            label5.TabIndex = 23;
-            label5.Text = "jose.carlos.martinez.conde@estudiantat.upc.edu";
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(265, 226);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(540, 32);
+            this.label5.TabIndex = 23;
+            this.label5.Text = "jose.carlos.martinez.conde@estudiantat.upc.edu";
             // 
             // label4
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(212, 151);
-            label4.Name = "label4";
-            label4.Size = new Size(393, 28);
-            label4.TabIndex = 22;
-            label4.Text = "marina.martin.ferrer@estudiantat.upc.edu";
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(265, 189);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(475, 32);
+            this.label4.TabIndex = 22;
+            this.label4.Text = "marina.martin.ferrer@estudiantat.upc.edu";
             // 
             // pictureBox7
             // 
-            pictureBox7.BackColor = Color.White;
-            pictureBox7.BackgroundImage = (Image)resources.GetObject("pictureBox7.BackgroundImage");
-            pictureBox7.BackgroundImageLayout = ImageLayout.Center;
-            pictureBox7.Location = new Point(614, 441);
-            pictureBox7.Name = "pictureBox7";
-            pictureBox7.Size = new Size(216, 44);
-            pictureBox7.TabIndex = 21;
-            pictureBox7.TabStop = false;
+            this.pictureBox7.BackColor = System.Drawing.Color.White;
+            this.pictureBox7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox7.BackgroundImage")));
+            this.pictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox7.Location = new System.Drawing.Point(768, 551);
+            this.pictureBox7.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(270, 55);
+            this.pictureBox7.TabIndex = 21;
+            this.pictureBox7.TabStop = false;
             // 
             // label3
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(121, 59);
-            label3.Name = "label3";
-            label3.Size = new Size(507, 28);
-            label3.TabIndex = 20;
-            label3.Text = "These are the personal emails of each group member:";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(151, 74);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(602, 32);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "These are the personal emails of each group member:";
             // 
             // label2
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(212, 121);
-            label2.Name = "label2";
-            label2.Size = new Size(416, 28);
-            label2.TabIndex = 19;
-            label2.Text = "alejandro.curiel.molina@estudiantat.upc.edu";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(265, 151);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(500, 32);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "alejandro.curiel.molina@estudiantat.upc.edu";
             // 
             // buttonClose
             // 
-            buttonClose.FlatAppearance.BorderColor = Color.DarkGray;
-            buttonClose.FlatAppearance.BorderSize = 3;
-            buttonClose.FlatAppearance.MouseDownBackColor = Color.DarkGray;
-            buttonClose.FlatAppearance.MouseOverBackColor = Color.DarkGray;
-            buttonClose.FlatStyle = FlatStyle.Flat;
-            buttonClose.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonClose.Location = new Point(258, 366);
-            buttonClose.Name = "buttonClose";
-            buttonClose.Size = new Size(280, 50);
-            buttonClose.TabIndex = 13;
-            buttonClose.Text = "Close";
-            buttonClose.UseVisualStyleBackColor = true;
-            buttonClose.Click += buttonClose_Click;
+            this.buttonClose.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonClose.FlatAppearance.BorderSize = 3;
+            this.buttonClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
+            this.buttonClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkGray;
+            this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonClose.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonClose.Location = new System.Drawing.Point(322, 458);
+            this.buttonClose.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(350, 62);
+            this.buttonClose.TabIndex = 13;
+            this.buttonClose.Text = "Close";
+            this.buttonClose.UseVisualStyleBackColor = true;
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
             // Contact
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(830, 484);
-            Controls.Add(buttonClose);
-            Controls.Add(label9);
-            Controls.Add(label8);
-            Controls.Add(label7);
-            Controls.Add(label6);
-            Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(pictureBox7);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Icon = (Icon)resources.GetObject("$this.Icon");
-            Name = "Contact";
-            Text = "Contact";
-            Load += Contact_Load;
-            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1038, 605);
+            this.Controls.Add(this.buttonClose);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.pictureBox7);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Name = "Contact";
+            this.Text = "Contact";
+            this.Load += new System.EventHandler(this.Contact_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
