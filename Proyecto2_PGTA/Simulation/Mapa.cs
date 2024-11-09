@@ -23,6 +23,7 @@ namespace Simulation
 {
     public partial class Mapa : Form
     {
+        
         private Principal principal;
         GMapControl mapControl;
         List<List<object>> FiltredMessages { get; set; }
@@ -624,7 +625,7 @@ namespace Simulation
 
         }
 
-        private void exportCsvBtn_Click(object sender, EventArgs e)
+        private async void exportCsvBtn_Click(object sender, EventArgs e)
         {
             string rutaCSV = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ASTERIX.csv");
 
@@ -676,7 +677,6 @@ namespace Simulation
                     }
                 }
             }
-
             // Guardar el nuevo CSV
             File.WriteAllLines(newCsvPath, filteredLines, Encoding.UTF8);
             MessageBox.Show("Filtered CSV exported successfully.");
