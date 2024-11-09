@@ -37,9 +37,6 @@
     <Compile Update="Tutorial.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Tutorial2.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="VideoTutorial.cs">
       <SubType>Form</SubType>
     </Compile>

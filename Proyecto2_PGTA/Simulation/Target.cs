@@ -4,10 +4,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 
 namespace Simulation
 {
@@ -22,8 +24,8 @@ namespace Simulation
         private Rectangle recBut3;
         private Rectangle recTxt1;
         private Rectangle recTxt2;
-        private Rectangle recLbl2;
         private Rectangle recLbl1;
+        private Rectangle recLbl2;
         private Rectangle recLbl3;
         private Rectangle recPtb1;
         public Target(Mapa mapa_)
@@ -44,15 +46,39 @@ namespace Simulation
         }
         private void Target_Resiz(object sender, EventArgs e)
         {
-            resize_Control(acceptBtn, recBut1);
-            resize_Control(cancelBtn, recBut2);
-            resize_Control(autofillBtn, recBut3);
-            resize_Control(textBox1, recTxt1);
-            resize_Control(textBox2, recTxt2);
-            resize_Control(panel1, recPtb1);
-            resize_Control(label3, recLbl2);
-            resize_Control(label1, recLbl1);
-            resize_Control(label5, recLbl3);
+            // Verificamos si el formulario está maximizado o no
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                resize_Control(acceptBtn, recBut1);
+                resize_Control(cancelBtn, recBut2);
+                resize_Control(autofillBtn, recBut3);
+                resize_Control(textBox1, recTxt1);
+                resize_Control(textBox2, recTxt2);
+                resize_Control(panel1, recPtb1);
+                resize_Control(label3, recLbl2);
+                resize_Control(label1, recLbl1);
+                resize_Control(label5, recLbl3);
+            }
+            else if (this.WindowState == FormWindowState.Normal)
+            {
+                restore_ControlSize(acceptBtn, recBut1);
+                restore_ControlSize(cancelBtn, recBut2);
+                restore_ControlSize(autofillBtn, recBut3);
+                restore_ControlSize(textBox1, recTxt1);
+                restore_ControlSize(textBox2, recTxt2);
+                restore_ControlSize(panel1, recPtb1);
+                restore_ControlSize(label3, recLbl2);
+                restore_ControlSize(label1, recLbl1);
+                restore_ControlSize(label5, recLbl3);
+            }
+        }
+        private void restore_ControlSize(Control control, Rectangle originalRect)
+        {
+            control.Location = originalRect.Location;
+            control.Size = originalRect.Size;
+
+            // Restauramos el tamaño de la fuente original
+            control.Font = new Font(control.Font.FontFamily, 10, control.Font.Style); // Ajusta el tamaño de la fuente original si es necesario
         }
         private void resize_Control(Control control, Rectangle rect)
         {
@@ -67,6 +93,9 @@ namespace Simulation
 
             control.Location = new Point(newX, newY);
             control.Size = new Size(newWidth, newHeight);
+
+            float fontSizeRatio = Math.Min(xRatio, yRatio); // Escala basada en la menor proporción
+            control.Font = new Font(control.Font.FontFamily, control.Font.Size * fontSizeRatio, control.Font.Style);
 
         }
         public void acceptBtn_Click(object sender, EventArgs e)
