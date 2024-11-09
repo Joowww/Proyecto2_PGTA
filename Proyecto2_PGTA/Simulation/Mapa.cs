@@ -491,7 +491,7 @@ namespace Simulation
                 trackBar1.Value = 1; // Vuelve a la izquierda (velocidad normal)
 
                 // Actualizar el intervalo del Timer a la velocidad normal
-                simulationTimer.Interval = 1000; 
+                simulationTimer.Interval = 1000;
 
                 if (AutomaticBtn.Text == "Pause")
                 {
@@ -509,7 +509,7 @@ namespace Simulation
                 }
             }
 
-            catch 
+            catch
             {
                 MessageBox.Show("No messages matched the specified geographic filter. Please adjust the latitude and longitude values.",
                                 "No Data Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);

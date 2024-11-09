@@ -32,6 +32,7 @@
             checkedListBox1 = new CheckedListBox();
             acceptBtn = new Button();
             pictureBox7 = new PictureBox();
+            cancelBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             SuspendLayout();
             // 
@@ -73,11 +74,28 @@
             pictureBox7.TabIndex = 11;
             pictureBox7.TabStop = false;
             // 
+            // cancelBtn
+            // 
+            cancelBtn.FlatAppearance.BorderColor = Color.DarkGray;
+            cancelBtn.FlatAppearance.BorderSize = 3;
+            cancelBtn.FlatAppearance.MouseDownBackColor = Color.DarkGray;
+            cancelBtn.FlatAppearance.MouseOverBackColor = Color.DarkGray;
+            cancelBtn.FlatStyle = FlatStyle.Flat;
+            cancelBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            cancelBtn.Location = new Point(650, 375);
+            cancelBtn.Name = "cancelBtn";
+            cancelBtn.Size = new Size(115, 40);
+            cancelBtn.TabIndex = 14;
+            cancelBtn.Text = "Cancel";
+            cancelBtn.UseVisualStyleBackColor = true;
+            cancelBtn.Click += cancelBtn_Click;
+            // 
             // CombinedFilters
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(777, 461);
+            Controls.Add(cancelBtn);
             Controls.Add(pictureBox7);
             Controls.Add(acceptBtn);
             Controls.Add(checkedListBox1);
@@ -94,5 +112,6 @@
         private CheckedListBox checkedListBox1;
         private Button acceptBtn;
         private PictureBox pictureBox7;
+        private Button cancelBtn;
     }
 }

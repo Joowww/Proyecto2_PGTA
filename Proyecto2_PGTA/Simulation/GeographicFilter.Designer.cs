@@ -40,6 +40,7 @@
             autofillBtn = new Button();
             label4 = new Label();
             pictureBox7 = new PictureBox();
+            cancelBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             SuspendLayout();
             // 
@@ -47,7 +48,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(34, 36);
+            label1.Location = new Point(57, 34);
             label1.Name = "label1";
             label1.Size = new Size(606, 28);
             label1.TabIndex = 0;
@@ -57,7 +58,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(306, 209);
+            label2.Location = new Point(349, 172);
             label2.Name = "label2";
             label2.Size = new Size(145, 28);
             label2.TabIndex = 1;
@@ -67,7 +68,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(306, 172);
+            label3.Location = new Point(349, 135);
             label3.Name = "label3";
             label3.Size = new Size(144, 28);
             label3.TabIndex = 2;
@@ -80,7 +81,8 @@
             applyBtn.FlatAppearance.MouseDownBackColor = Color.DarkGray;
             applyBtn.FlatAppearance.MouseOverBackColor = Color.DarkGray;
             applyBtn.FlatStyle = FlatStyle.Flat;
-            applyBtn.Location = new Point(248, 347);
+            applyBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            applyBtn.Location = new Point(281, 315);
             applyBtn.Name = "applyBtn";
             applyBtn.Size = new Size(280, 50);
             applyBtn.TabIndex = 3;
@@ -90,28 +92,28 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(175, 169);
+            textBox1.Location = new Point(218, 132);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(125, 27);
             textBox1.TabIndex = 4;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(454, 172);
+            textBox2.Location = new Point(497, 135);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(125, 27);
             textBox2.TabIndex = 5;
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(175, 206);
+            textBox3.Location = new Point(218, 169);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(125, 27);
             textBox3.TabIndex = 6;
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(454, 209);
+            textBox4.Location = new Point(497, 172);
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(125, 27);
             textBox4.TabIndex = 7;
@@ -123,9 +125,10 @@
             autofillBtn.FlatAppearance.MouseDownBackColor = Color.DarkGray;
             autofillBtn.FlatAppearance.MouseOverBackColor = Color.DarkGray;
             autofillBtn.FlatStyle = FlatStyle.Flat;
-            autofillBtn.Location = new Point(248, 275);
+            autofillBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            autofillBtn.Location = new Point(350, 236);
             autofillBtn.Name = "autofillBtn";
-            autofillBtn.Size = new Size(280, 50);
+            autofillBtn.Size = new Size(140, 40);
             autofillBtn.TabIndex = 8;
             autofillBtn.Text = "Autofill";
             autofillBtn.UseVisualStyleBackColor = true;
@@ -135,7 +138,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(34, 87);
+            label4.Location = new Point(57, 85);
             label4.Name = "label4";
             label4.Size = new Size(418, 28);
             label4.TabIndex = 9;
@@ -146,17 +149,34 @@
             pictureBox7.BackColor = Color.White;
             pictureBox7.BackgroundImage = (Image)resources.GetObject("pictureBox7.BackgroundImage");
             pictureBox7.BackgroundImageLayout = ImageLayout.Center;
-            pictureBox7.Location = new Point(590, 411);
+            pictureBox7.Location = new Point(650, 455);
             pictureBox7.Name = "pictureBox7";
             pictureBox7.Size = new Size(216, 44);
             pictureBox7.TabIndex = 12;
             pictureBox7.TabStop = false;
             // 
+            // cancelBtn
+            // 
+            cancelBtn.FlatAppearance.BorderColor = Color.DarkGray;
+            cancelBtn.FlatAppearance.BorderSize = 3;
+            cancelBtn.FlatAppearance.MouseDownBackColor = Color.DarkGray;
+            cancelBtn.FlatAppearance.MouseOverBackColor = Color.DarkGray;
+            cancelBtn.FlatStyle = FlatStyle.Flat;
+            cancelBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            cancelBtn.Location = new Point(737, 409);
+            cancelBtn.Name = "cancelBtn";
+            cancelBtn.Size = new Size(115, 40);
+            cancelBtn.TabIndex = 13;
+            cancelBtn.Text = "Cancel";
+            cancelBtn.UseVisualStyleBackColor = true;
+            cancelBtn.Click += cancelBtn_Click;
+            // 
             // GeographicFilter
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(864, 496);
+            Controls.Add(cancelBtn);
             Controls.Add(pictureBox7);
             Controls.Add(label4);
             Controls.Add(autofillBtn);
@@ -190,5 +210,6 @@
         private Button autofillBtn;
         private Label label4;
         private PictureBox pictureBox7;
+        private Button cancelBtn;
     }
 }

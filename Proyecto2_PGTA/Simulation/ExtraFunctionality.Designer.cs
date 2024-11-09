@@ -34,6 +34,7 @@
             label2 = new Label();
             label3 = new Label();
             pictureBox7 = new PictureBox();
+            cancelBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             SuspendLayout();
             // 
@@ -94,11 +95,28 @@
             pictureBox7.TabIndex = 12;
             pictureBox7.TabStop = false;
             // 
+            // cancelBtn
+            // 
+            cancelBtn.FlatAppearance.BorderColor = Color.DarkGray;
+            cancelBtn.FlatAppearance.BorderSize = 3;
+            cancelBtn.FlatAppearance.MouseDownBackColor = Color.DarkGray;
+            cancelBtn.FlatAppearance.MouseOverBackColor = Color.DarkGray;
+            cancelBtn.FlatStyle = FlatStyle.Flat;
+            cancelBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            cancelBtn.Location = new Point(673, 362);
+            cancelBtn.Name = "cancelBtn";
+            cancelBtn.Size = new Size(115, 40);
+            cancelBtn.TabIndex = 14;
+            cancelBtn.Text = "Cancel";
+            cancelBtn.UseVisualStyleBackColor = true;
+            cancelBtn.Click += cancelBtn_Click;
+            // 
             // ExtraFunctionality
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(cancelBtn);
             Controls.Add(pictureBox7);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -120,5 +138,6 @@
         private Label label2;
         private Label label3;
         private PictureBox pictureBox7;
+        private Button cancelBtn;
     }
 }

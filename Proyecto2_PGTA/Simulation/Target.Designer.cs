@@ -37,6 +37,7 @@
             pictureBox7 = new PictureBox();
             label3 = new Label();
             label5 = new Label();
+            cancelBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             SuspendLayout();
             // 
@@ -58,7 +59,7 @@
             acceptBtn.FlatAppearance.MouseOverBackColor = Color.DarkGray;
             acceptBtn.FlatStyle = FlatStyle.Flat;
             acceptBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            acceptBtn.Location = new Point(241, 298);
+            acceptBtn.Location = new Point(234, 278);
             acceptBtn.Name = "acceptBtn";
             acceptBtn.Size = new Size(280, 50);
             acceptBtn.TabIndex = 1;
@@ -88,9 +89,9 @@
             autofillBtn.FlatAppearance.MouseOverBackColor = Color.DarkGray;
             autofillBtn.FlatStyle = FlatStyle.Flat;
             autofillBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            autofillBtn.Location = new Point(241, 222);
+            autofillBtn.Location = new Point(306, 206);
             autofillBtn.Name = "autofillBtn";
-            autofillBtn.Size = new Size(280, 50);
+            autofillBtn.Size = new Size(140, 40);
             autofillBtn.TabIndex = 7;
             autofillBtn.Text = "Autofill";
             autofillBtn.UseVisualStyleBackColor = true;
@@ -127,11 +128,28 @@
             label5.TabIndex = 15;
             label5.Text = "Target address 2";
             // 
+            // cancelBtn
+            // 
+            cancelBtn.FlatAppearance.BorderColor = Color.DarkGray;
+            cancelBtn.FlatAppearance.BorderSize = 3;
+            cancelBtn.FlatAppearance.MouseDownBackColor = Color.DarkGray;
+            cancelBtn.FlatAppearance.MouseOverBackColor = Color.DarkGray;
+            cancelBtn.FlatStyle = FlatStyle.Flat;
+            cancelBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            cancelBtn.Location = new Point(673, 363);
+            cancelBtn.Name = "cancelBtn";
+            cancelBtn.Size = new Size(115, 40);
+            cancelBtn.TabIndex = 16;
+            cancelBtn.Text = "Cancel";
+            cancelBtn.UseVisualStyleBackColor = true;
+            cancelBtn.Click += cancelBtn_Click;
+            // 
             // Target
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(cancelBtn);
             Controls.Add(label5);
             Controls.Add(label3);
             Controls.Add(pictureBox7);
@@ -159,5 +177,6 @@
         private PictureBox pictureBox7;
         private Label label3;
         private Label label5;
+        private Button cancelBtn;
     }
 }

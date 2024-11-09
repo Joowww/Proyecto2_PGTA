@@ -147,19 +147,19 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(71, 309);
+            comboBox1.Location = new Point(57, 304);
             comboBox1.Margin = new Padding(2);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(183, 28);
+            comboBox1.Size = new Size(214, 28);
             comboBox1.TabIndex = 5;
             // 
             // comboBox2
             // 
             comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(71, 474);
+            comboBox2.Location = new Point(56, 474);
             comboBox2.Margin = new Padding(2);
             comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(183, 28);
+            comboBox2.Size = new Size(215, 28);
             comboBox2.TabIndex = 6;
             // 
             // CloseBtn

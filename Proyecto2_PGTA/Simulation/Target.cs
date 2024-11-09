@@ -118,5 +118,10 @@ namespace Simulation
                 this.BackColor = Color.White;
             }
         }
+
+        private void cancelBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
