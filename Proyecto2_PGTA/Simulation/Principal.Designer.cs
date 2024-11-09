@@ -156,7 +156,7 @@
             sidebar.MaximumSize = new Size(249, 650);
             sidebar.MinimumSize = new Size(108, 650);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(108, 650);
+            sidebar.Size = new Size(249, 650);
             sidebar.TabIndex = 11;
             // 
             // panel1

@@ -12,6 +12,7 @@ namespace Simulation
 {
     public partial class ImportAst : Form
     {
+        Loading2 loading;
         private Welcome welcome;
         public string FilePathAST { get; set; }
         private bool isDarkMode;
@@ -57,7 +58,7 @@ namespace Simulation
             }
         }
 
-        private void acceptBtn_Click(object sender, EventArgs e)
+        private async void acceptBtn_Click(object sender, EventArgs e)
         {
             if (radioButton3.Checked && !string.IsNullOrEmpty(FilePathAST))
             {
@@ -86,11 +87,17 @@ namespace Simulation
                 return;
             }
 
+            Show();
+            Task oTask = new Task(SL);
+            oTask.Start();
+            await oTask;
+            Hide();
 
             Principal principal = new Principal(FilePathAST);
             principal.Show();
             this.Close(); // Cerrar ImportAst después de seleccionar
             welcome.Hide();
+            
         }
 
         private void ImportAst_Load_1(object sender, EventArgs e)
@@ -123,6 +130,28 @@ namespace Simulation
             {
                 this.BackColor = Color.White;
             }
+        }
+
+        public void SL()
+        {
+            Thread.Sleep(5000);
+        }
+        public void Show()
+        {
+            loading = new Loading2();
+            loading.Show();
+        }
+        public void Hide()
+        {
+            if (loading != null)
+            {
+                loading.Close();
+            }
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -141,6 +141,8 @@
             // 
             // button1
             // 
+            button1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            button1.AutoSize = true;
             button1.FlatAppearance.BorderColor = Color.DarkGray;
             button1.FlatAppearance.BorderSize = 3;
             button1.FlatAppearance.MouseDownBackColor = Color.DarkGray;
@@ -149,6 +151,8 @@
             button1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button1.Location = new Point(465, 359);
             button1.Margin = new Padding(2);
+            button1.MaximumSize = new Size(280, 50);
+            button1.MinimumSize = new Size(280, 50);
             button1.Name = "button1";
             button1.Size = new Size(280, 50);
             button1.TabIndex = 1;
@@ -209,10 +213,11 @@
             // 
             // pictureBox7
             // 
+            pictureBox7.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             pictureBox7.BackColor = Color.White;
             pictureBox7.BackgroundImage = (Image)resources.GetObject("pictureBox7.BackgroundImage");
             pictureBox7.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox7.Location = new Point(853, 574);
+            pictureBox7.Location = new Point(820, 552);
             pictureBox7.Name = "pictureBox7";
             pictureBox7.Size = new Size(216, 44);
             pictureBox7.TabIndex = 9;
@@ -926,10 +931,9 @@
             // 
             // Welcome
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(1067, 617);
+            ClientSize = new Size(1032, 591);
             Controls.Add(sidebar);
             Controls.Add(pictureBox7);
             Controls.Add(pictureBox6);
@@ -989,6 +993,7 @@
             panel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox12).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

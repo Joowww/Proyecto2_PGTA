@@ -16,10 +16,58 @@ namespace Simulation
 
         private Mapa mapa;
         private bool isDarkMode;
+        private Size formOriginalSize;
+        private Rectangle recBut1;
+        private Rectangle recBut2;
+        private Rectangle recBut3;
+        private Rectangle recTxt1;
+        private Rectangle recTxt2;
+        private Rectangle recLbl2;
+        private Rectangle recLbl1;
+        private Rectangle recLbl3;
+        private Rectangle recPtb1;
         public Target(Mapa mapa_)
         {
             InitializeComponent();
             this.mapa = mapa_;
+            this.Resize += Target_Resiz;
+            formOriginalSize = this.Size;
+            recBut1 = new Rectangle(acceptBtn.Location, acceptBtn.Size);
+            recBut2 = new Rectangle(cancelBtn.Location, cancelBtn.Size);
+            recBut3 = new Rectangle(autofillBtn.Location, autofillBtn.Size);
+            recTxt1 = new Rectangle(textBox1.Location, textBox1.Size);
+            recTxt2 = new Rectangle(textBox2.Location, textBox2.Size);
+            recLbl1 = new Rectangle(label1.Location, label1.Size);
+            recLbl2 = new Rectangle(label3.Location, label3.Size);
+            recLbl3 = new Rectangle(label5.Location, label5.Size);
+            recPtb1 = new Rectangle(panel1.Location, panel1.Size);
+        }
+        private void Target_Resiz(object sender, EventArgs e)
+        {
+            resize_Control(acceptBtn, recBut1);
+            resize_Control(cancelBtn, recBut2);
+            resize_Control(autofillBtn, recBut3);
+            resize_Control(textBox1, recTxt1);
+            resize_Control(textBox2, recTxt2);
+            resize_Control(panel1, recPtb1);
+            resize_Control(label3, recLbl2);
+            resize_Control(label1, recLbl1);
+            resize_Control(label5, recLbl3);
+        }
+        private void resize_Control(Control control, Rectangle rect)
+        {
+            float xRatio = (float)(this.Width) / (float)(formOriginalSize.Width);
+            float yRatio = (float)(this.Height) / (float)(formOriginalSize.Height);
+
+            int newX = (int)(rect.X * xRatio);
+            int newY = (int)(rect.Y * yRatio);
+
+            int newWidth = (int)(rect.Width * xRatio);
+            int newHeight = (int)(rect.Height * yRatio);
+
+            control.Location = new Point(newX, newY);
+            control.Size = new Size(newWidth, newHeight);
+
         }
         public void acceptBtn_Click(object sender, EventArgs e)
         {

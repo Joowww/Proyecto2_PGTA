@@ -440,7 +440,7 @@ namespace Simulation
             }
 
         }
-    
+
 
         private void Form_Load(object sender, EventArgs e)
         {
@@ -472,7 +472,7 @@ namespace Simulation
             }
         }
 
-        private void SimulateBtn_Click(object sender, EventArgs e)
+        private async void SimulateBtn_Click(object sender, EventArgs e)
         {
             List<List<object>> filtredMessages = new List<List<object>>();
             List<List<object>> allMessages = new List<List<object>>();
@@ -573,8 +573,8 @@ namespace Simulation
         public List<List<object>> Option1(List<List<object>> allMessages)
         {
             MessageBox.Show("Executing All data function.", "Simulate", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            // For "All data"
-            // Retorno la lista tal cual, no se filtra
+             //For "All data"
+             //Retorno la lista tal cual, no se filtra
             List<List<object>> filtredMessages = allMessages;
             return filtredMessages;
         }
@@ -709,8 +709,8 @@ namespace Simulation
             {
                 double H = Convert.ToInt32(message[3]);
                 double h = H * 3.280839895;
-                if (h <= 6000) 
-                { 
+                if (h <= 6000)
+                {
                     filtredMessages.Add(message);
                 }
             }
@@ -736,7 +736,7 @@ namespace Simulation
                 }
                 if (STAT == "Alert, SPI, aircraft airborne or on ground" || STAT == "No alert, SPI, aircraft airborne or on ground" || STAT == "Not assigned" || STAT == "Unknown")
                 {
-                    if (H>0)
+                    if (H > 0)
                     {
                         filtredMessages.Add(message);
                     }
@@ -746,7 +746,7 @@ namespace Simulation
         }
 
         public List<List<object>> Option7(List<List<object>> allMessages)
-        {            
+        {
 
             List<List<object>> filtredMessages = new List<List<object>>();
 
@@ -762,7 +762,7 @@ namespace Simulation
             return filtredMessages;
         }
 
-       
+
         private void ApplyTheme()
         {
             // Aplica el tema al formulario actual

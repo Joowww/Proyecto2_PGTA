@@ -24,7 +24,6 @@ namespace Simulation
         {
             InitializeComponent();
         }
-
         private void StartBtn_Click(object sender, EventArgs e)
         {
             // Crear una instancia de ImportAst antes de mostrarla
@@ -140,6 +139,7 @@ namespace Simulation
             {
                 Theme.SetLightMode(this);
             }
+
         }
 
         private void ApplyTheme()
