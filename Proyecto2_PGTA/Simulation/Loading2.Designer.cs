@@ -40,6 +40,7 @@
             miLoad.Size = new Size(264, 209);
             miLoad.TabIndex = 0;
             miLoad.TabStop = false;
+            miLoad.Click += miLoad_Click;
             // 
             // Loading2
             // 

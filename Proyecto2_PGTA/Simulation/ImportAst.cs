@@ -165,13 +165,12 @@ namespace Simulation
             Task oTask = new Task(SL);
             oTask.Start();
             await oTask;
-            Hide();
-
             Principal principal = new Principal(FilePathAST);
             principal.Show();
             this.Close(); // Cerrar ImportAst después de seleccionar
             welcome.Hide();
-            
+            Hide();
+
         }
 
         private void ImportAst_Load_1(object sender, EventArgs e)

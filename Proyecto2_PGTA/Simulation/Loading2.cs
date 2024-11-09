@@ -20,8 +20,13 @@ namespace Simulation
         private void Loading2_Load(object sender, EventArgs e)
         {
             miLoad.Load("Flying airplane.gif");
-            miLoad.Location = new Point(this.Width/2-miLoad.Width/2,
-                this.Height/2 - miLoad.Height/2);
+            miLoad.Location = new Point(this.Width / 2 - miLoad.Width / 2,
+                this.Height / 2 - miLoad.Height / 2);
+        }
+
+        private void miLoad_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

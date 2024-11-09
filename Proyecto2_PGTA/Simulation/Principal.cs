@@ -573,8 +573,8 @@ namespace Simulation
         public List<List<object>> Option1(List<List<object>> allMessages)
         {
             MessageBox.Show("Executing All data function.", "Simulate", MessageBoxButtons.OK, MessageBoxIcon.Information);
-             //For "All data"
-             //Retorno la lista tal cual, no se filtra
+            //For "All data"
+            //Retorno la lista tal cual, no se filtra
             List<List<object>> filtredMessages = allMessages;
             return filtredMessages;
         }
