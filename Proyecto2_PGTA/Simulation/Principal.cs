@@ -777,7 +777,7 @@ namespace Simulation
                 this.Enabled = false;
                 combinedFilters.ShowDialog();
                 filtredMessages = combinedFilters.GetFilteredData();
-                
+
             }
             this.Enabled = true;
             return filtredMessages;

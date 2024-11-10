@@ -64,9 +64,9 @@ namespace Simulation
         private Rectangle recLbl3;
         private Rectangle recTb1;
         private Rectangle recPtb1;
-        private Rectangle recDgv1;
         private Rectangle recPanel1;
-        
+        private Rectangle recPanel2;
+
         public Mapa(List<List<object>> filtredMessages, List<List<object>> allMessages, int selectedIndexOption, Principal _principal)
         {
             InitializeComponent();
@@ -157,8 +157,8 @@ namespace Simulation
             recLbl3 = new Rectangle(label3.Location, label3.Size);
             recTb1 = new Rectangle(trackBar1.Location, trackBar1.Size);
             recPtb1 = new Rectangle(pictureBox7.Location, pictureBox7.Size);
-            recDgv1 = new Rectangle(dataGridView1.Location, dataGridView1.Size);
             recPanel1 = new Rectangle(panel1.Location, panel1.Size);
+            recPanel2 = new Rectangle(panel2.Location, panel2.Size);
         }
 
         private void Mapa_Resiz(object sender, EventArgs e)
@@ -180,8 +180,8 @@ namespace Simulation
                 resize_Control(label3, recLbl3);
                 resize_Control(trackBar1, recTb1);
                 resize_Control(pictureBox7, recPtb1);
-                resize_Control(dataGridView1, recDgv1);
                 resize_Control(panel1, recPanel1);
+                resize_Control(panel2, recPanel2);
 
             }
             else if (this.WindowState == FormWindowState.Normal)
@@ -201,8 +201,8 @@ namespace Simulation
                 restore_ControlSize(label3, recLbl3);
                 restore_ControlSize(trackBar1, recTb1);
                 restore_ControlSize(pictureBox7, recPtb1);
-                restore_ControlSize(dataGridView1, recDgv1);
                 restore_ControlSize(panel1, recPanel1);
+                restore_ControlSize(panel2, recPanel2);
             }
         }
 
@@ -988,19 +988,19 @@ namespace Simulation
         }
         //public void SL()
         //{
-            //Thread.Sleep(3000);
+        //Thread.Sleep(3000);
         //}
         //public void Show()
         //{
-            //loading = new Loading2();
-            //loading.Show();
+        //loading = new Loading2();
+        //loading.Show();
         //}
         //public void Hide()
         //{
-            //if (loading != null)
-            //{
-                //loading.Close();
-            //}
+        //if (loading != null)
+        //{
+        //loading.Close();
+        //}
         //}
     }
 }
