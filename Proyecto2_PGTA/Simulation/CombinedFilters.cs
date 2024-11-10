@@ -18,6 +18,7 @@ namespace Simulation
         private List<List<object>> data;
         private List<List<object>> filteredData;
         private bool isDarkMode;
+        public bool cancel { get; set; }
 
         private Size formOriginalSize;
         private Rectangle recBut1;
@@ -96,6 +97,7 @@ namespace Simulation
         }
         private void acceptBtn_Click(object sender, EventArgs e)
         {
+            cancel = false;
             // Obtener los filtros seleccionados
             var selectedFilters = checkedListBox1.CheckedItems.Cast<string>().ToList();
 
@@ -182,7 +184,8 @@ namespace Simulation
 
         private void cancelBtn_Click(object sender, EventArgs e)
         {
-           this.Close();
+            filteredData = null;
+            this.Close();
         }
     }
 }
