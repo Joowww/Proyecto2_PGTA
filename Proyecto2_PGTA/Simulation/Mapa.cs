@@ -15,10 +15,11 @@ using AstDecoder;
 using Accord.Statistics;
 using GMap.NET.MapProviders;
 using System.Windows.Forms;
-
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using MultiCAT6.Utils;
 using System.Runtime.CompilerServices;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 
 namespace Simulation
 {
@@ -47,6 +48,25 @@ namespace Simulation
 
         private System.Windows.Forms.Timer simulationTimer;
 
+        private Size formOriginalSize;
+        private Rectangle recBut1;
+        private Rectangle recBut2;
+        private Rectangle recBut3;
+        private Rectangle recBut4;
+        private Rectangle recBut5;
+        private Rectangle recBut6;
+        private Rectangle recBut7;
+        private Rectangle recBut8;
+        private Rectangle recCb1;
+        private Rectangle recCb2;
+        private Rectangle recLbl1;
+        private Rectangle recLbl2;
+        private Rectangle recLbl3;
+        private Rectangle recTb1;
+        private Rectangle recPtb1;
+        private Rectangle recDgv1;
+        private Rectangle recPanel1;
+        
         public Mapa(List<List<object>> filtredMessages, List<List<object>> allMessages, int selectedIndexOption, Principal _principal)
         {
             InitializeComponent();
@@ -120,6 +140,98 @@ namespace Simulation
             panel2.Controls.Add(dataGridView1);
             dataGridView1.ClearSelection();
 
+            this.Resize += Mapa_Resiz;
+            formOriginalSize = this.Size;
+            recBut1 = new Rectangle(MoveBtn.Location, MoveBtn.Size);
+            recBut2 = new Rectangle(AutomaticBtn.Location, AutomaticBtn.Size);
+            recBut3 = new Rectangle(RestartBtn.Location, RestartBtn.Size);
+            recBut4 = new Rectangle(ChangeMapBtn.Location, ChangeMapBtn.Size);
+            recBut5 = new Rectangle(button5.Location, button5.Size);
+            recBut6 = new Rectangle(extraFunctionalityBtn.Location, extraFunctionalityBtn.Size);
+            recBut7 = new Rectangle(CloseBtn.Location, CloseBtn.Size);
+            recBut8 = new Rectangle(exportCsvBtn.Location, exportCsvBtn.Size);
+            recCb1 = new Rectangle(comboBox1.Location, comboBox1.Size);
+            recCb2 = new Rectangle(comboBox2.Location, comboBox2.Size);
+            recLbl1 = new Rectangle(label1.Location, label1.Size);
+            recLbl2 = new Rectangle(label2.Location, label2.Size);
+            recLbl3 = new Rectangle(label3.Location, label3.Size);
+            recTb1 = new Rectangle(trackBar1.Location, trackBar1.Size);
+            recPtb1 = new Rectangle(pictureBox7.Location, pictureBox7.Size);
+            recDgv1 = new Rectangle(dataGridView1.Location, dataGridView1.Size);
+            recPanel1 = new Rectangle(panel1.Location, panel1.Size);
+        }
+
+        private void Mapa_Resiz(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                resize_Control(MoveBtn, recBut1);
+                resize_Control(AutomaticBtn, recBut2);
+                resize_Control(RestartBtn, recBut3);
+                resize_Control(ChangeMapBtn, recBut4);
+                resize_Control(button5, recBut5);
+                resize_Control(extraFunctionalityBtn, recBut6);
+                resize_Control(CloseBtn, recBut7);
+                resize_Control(exportCsvBtn, recBut8);
+                resize_Control(comboBox1, recCb1);
+                resize_Control(comboBox2, recCb2);
+                resize_Control(label1, recLbl1);
+                resize_Control(label2, recLbl2);
+                resize_Control(label3, recLbl3);
+                resize_Control(trackBar1, recTb1);
+                resize_Control(pictureBox7, recPtb1);
+                resize_Control(dataGridView1, recDgv1);
+                resize_Control(panel1, recPanel1);
+
+            }
+            else if (this.WindowState == FormWindowState.Normal)
+            {
+                restore_ControlSize(MoveBtn, recBut1);
+                restore_ControlSize(AutomaticBtn, recBut2);
+                restore_ControlSize(RestartBtn, recBut3);
+                restore_ControlSize(ChangeMapBtn, recBut4);
+                restore_ControlSize(button5, recBut5);
+                restore_ControlSize(extraFunctionalityBtn, recBut6);
+                restore_ControlSize(CloseBtn, recBut7);
+                restore_ControlSize(exportCsvBtn, recBut8);
+                restore_ControlSize(comboBox1, recCb1);
+                restore_ControlSize(comboBox2, recCb2);
+                restore_ControlSize(label1, recLbl1);
+                restore_ControlSize(label2, recLbl2);
+                restore_ControlSize(label3, recLbl3);
+                restore_ControlSize(trackBar1, recTb1);
+                restore_ControlSize(pictureBox7, recPtb1);
+                restore_ControlSize(dataGridView1, recDgv1);
+                restore_ControlSize(panel1, recPanel1);
+            }
+        }
+
+        private void restore_ControlSize(Control control, Rectangle originalRect)
+        {
+            control.Location = originalRect.Location;
+            control.Size = originalRect.Size;
+
+            // Restauramos el tamaño de la fuente original
+            control.Font = new Font(control.Font.FontFamily, 10, control.Font.Style);
+
+        }
+        private void resize_Control(Control control, Rectangle rect)
+        {
+            float xRatio = (float)(this.Width) / (float)(formOriginalSize.Width);
+            float yRatio = (float)(this.Height) / (float)(formOriginalSize.Height);
+
+            int newX = (int)(rect.X * xRatio);
+            int newY = (int)(rect.Y * yRatio);
+
+            int newWidth = (int)(rect.Width * xRatio);
+            int newHeight = (int)(rect.Height * yRatio);
+
+            control.Location = new Point(newX, newY);
+            control.Size = new Size(newWidth, newHeight);
+
+            // Ajustar tamaño de la fuente
+            float fontSizeRatio = Math.Min(xRatio, yRatio); // Escala basada en la menor proporción
+            control.Font = new Font(control.Font.FontFamily, control.Font.Size * fontSizeRatio, control.Font.Style);
         }
 
         private void Mapa_Load(object sender, EventArgs e)
@@ -622,8 +734,11 @@ namespace Simulation
             extra = false;
             label4.Text = "";
 
-            // Reiniciar la simulación con los datos actualizados
-            RestartSimulation();
+            if (FiltredMessages != null)
+            {
+                // Reiniciar la simulación con los datos actualizados
+                RestartSimulation();
+            }
 
         }
 
