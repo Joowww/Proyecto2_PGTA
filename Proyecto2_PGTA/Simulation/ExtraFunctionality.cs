@@ -91,16 +91,7 @@ namespace Simulation
 
         public void targetBtn_Click(object sender, EventArgs e)
         {
-            mapa.extra = true;
 
-            // Eliminar todos los marcadores de la capa de marcadores
-            mapa.markersOverlay.Markers.Clear();
-
-            // Eliminar todas las rutas de la capa de rutas
-            mapa.routeOverlay.Routes.Clear();
-
-            // Refrescar el mapa para aplicar los cambios
-            mapa.mapControl.Refresh();
             Target target = new Target(mapa);
             mapa.Enabled = false;
             target.Show();
@@ -141,7 +132,7 @@ namespace Simulation
         private void cancelBtn_Click(object sender, EventArgs e)
         {
             mapa.Enabled = true;
-            this.Hide();
+            this.Close();
         }
     }
 }

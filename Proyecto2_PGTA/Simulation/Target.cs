@@ -100,6 +100,17 @@ namespace Simulation
         }
         public void acceptBtn_Click(object sender, EventArgs e)
         {
+            mapa.extra = true;
+
+            // Eliminar todos los marcadores de la capa de marcadores
+            mapa.markersOverlay.Markers.Clear();
+
+            // Eliminar todas las rutas de la capa de rutas
+            mapa.routeOverlay.Routes.Clear();
+
+            // Refrescar el mapa para aplicar los cambios
+            mapa.mapControl.Refresh();
+
             try
             {
                 string TA1 = textBox1.Text;
@@ -198,7 +209,8 @@ namespace Simulation
 
         private void cancelBtn_Click(object sender, EventArgs e)
         {
-
+            mapa.Enabled = true;
+            this.Close();
         }
     }
 }
