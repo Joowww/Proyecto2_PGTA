@@ -18,6 +18,8 @@ namespace Simulation
         public double MaxLatitude { get; set; }
         public double MinLongitude { get; set; }
         public double MaxLongitude { get; set; }
+
+        public bool cancel { get; set; }
         private bool isDarkMode;
 
         private Size formOriginalSize;
@@ -119,6 +121,7 @@ namespace Simulation
 
         private void applyBtn_Click(object sender, EventArgs e)
         {
+            cancel = false;
             try
             {
 
@@ -221,6 +224,7 @@ namespace Simulation
 
         private void cancelBtn_Click(object sender, EventArgs e)
         {
+            cancel = true;
             this.Close();
         }
     }
