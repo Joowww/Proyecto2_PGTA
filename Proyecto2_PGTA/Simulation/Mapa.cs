@@ -27,11 +27,11 @@ namespace Simulation
     {
         //Loading2 loading;
         private Principal principal;
-        GMapControl mapControl;
+        public GMapControl mapControl;
         List<List<object>> FiltredMessages { get; set; }
         public List<List<object>> AllMessages { get; set; }
 
-        bool extra = false;
+        public bool extra = false;
         public Dictionary<int, double> DistancesBySecond { get; private set; } = new Dictionary<int, double>();
 
         public string TA1 { get; set; }
@@ -41,8 +41,8 @@ namespace Simulation
 
         private int currentSecond;
         private int maxSecond; // Variable para almacenar el máximo segundo disponible
-        private GMapOverlay markersOverlay; // Capa de marcadores
-        private GMapOverlay routeOverlay;
+        public GMapOverlay markersOverlay; // Capa de marcadores
+        public GMapOverlay routeOverlay;
         private Dictionary<string, GMarkerGoogle> aircraftMarkers; // Guarda los target address de los aviones pintados
         private Dictionary<string, PointLatLng> previousPositions; // Almacena las posiciones anteriores de los aviones
 
@@ -808,16 +808,6 @@ namespace Simulation
 
         private void extraFunctionalityBtn_Click(object sender, EventArgs e)
         {
-            extra = true;
-
-            // Eliminar todos los marcadores de la capa de marcadores
-            markersOverlay.Markers.Clear();
-
-            // Eliminar todas las rutas de la capa de rutas
-            routeOverlay.Routes.Clear();
-
-            // Refrescar el mapa para aplicar los cambios
-            mapControl.Refresh();
 
             ExtraFunctionality extraFunctionality = new ExtraFunctionality(this);
             this.Enabled = false;
