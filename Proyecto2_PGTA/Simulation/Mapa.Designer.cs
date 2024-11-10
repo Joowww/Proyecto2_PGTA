@@ -358,6 +358,7 @@
             Margin = new Padding(2);
             Name = "Mapa";
             Text = "Mapa";
+            WindowState = FormWindowState.Maximized;
             Load += Mapa_Load;
             ((System.ComponentModel.ISupportInitialize)trackBar1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();

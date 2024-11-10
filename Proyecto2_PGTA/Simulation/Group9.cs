@@ -25,6 +25,8 @@ namespace Simulation
         private Rectangle recLbl7;
         private Rectangle recLbl8;
         private Rectangle recLbl9;
+        private Rectangle recLbl10;
+        private Rectangle recLbl11;
         private Rectangle recPtb1;
 
         public Group9()
@@ -42,6 +44,8 @@ namespace Simulation
             recLbl7 = new Rectangle(label7.Location, label7.Size);
             recLbl8 = new Rectangle(label8.Location, label8.Size);
             recLbl9 = new Rectangle(label9.Location, label9.Size);
+            recLbl10 = new Rectangle(label10.Location, label10.Size);
+            recLbl11 = new Rectangle(label11.Location, label11.Size);
             recPtb1 = new Rectangle(pictureBox7.Location, pictureBox7.Size);
         }
 
@@ -59,6 +63,8 @@ namespace Simulation
                 resize_Control(label7, recLbl7);
                 resize_Control(label8, recLbl8);
                 resize_Control(label9, recLbl9);
+                resize_Control(label10, recLbl10);
+                resize_Control(label11, recLbl11);
                 resize_Control(pictureBox7, recPtb1);
             }
             else if (this.WindowState == FormWindowState.Normal)
@@ -73,6 +79,8 @@ namespace Simulation
                 restore_ControlSize(label7, recLbl7);
                 restore_ControlSize(label8, recLbl8);
                 restore_ControlSize(label9, recLbl9);
+                restore_ControlSize(label10, recLbl10);
+                restore_ControlSize(label11, recLbl11);
                 restore_ControlSize(pictureBox7, recPtb1);
             }
         }

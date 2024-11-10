@@ -21,6 +21,17 @@ namespace Simulation
         private Rectangle recLbl2;
         private Rectangle recLbl3;
         private Rectangle recLbl4;
+        private Rectangle recLbl5;
+        private Rectangle recLbl6;
+        private Rectangle recLbl7;
+        private Rectangle recLbl8;
+        private Rectangle recLbl9;
+        private Rectangle recLbl10;
+        private Rectangle recLbl11;
+        private Rectangle recLbl12;
+        private Rectangle recLbl13;
+        private Rectangle recLbl14;
+        private Rectangle recLbl15;
         private Rectangle recPtb1;
 
         public Tutorial()
@@ -33,6 +44,17 @@ namespace Simulation
             recLbl2 = new Rectangle(label2.Location, label2.Size);
             recLbl3 = new Rectangle(label3.Location, label3.Size);
             recLbl4 = new Rectangle(label4.Location, label4.Size);
+            recLbl5 = new Rectangle(label5.Location, label5.Size);
+            recLbl6 = new Rectangle(label6.Location, label6.Size);
+            recLbl7 = new Rectangle(label7.Location, label7.Size);
+            recLbl8 = new Rectangle(label8.Location, label8.Size);
+            recLbl9 = new Rectangle(label9.Location, label9.Size);
+            recLbl10 = new Rectangle(label10.Location, label10.Size);
+            recLbl11 = new Rectangle(label11.Location, label11.Size);
+            recLbl12 = new Rectangle(label12.Location, label12.Size);
+            recLbl13 = new Rectangle(label13.Location, label13.Size);
+            recLbl14 = new Rectangle(label14.Location, label14.Size);
+            recLbl15 = new Rectangle(label15.Location, label15.Size);
             recPtb1 = new Rectangle(pictureBox7.Location, pictureBox7.Size);
         }
         private void Tutorial_Resiz(object sender, EventArgs e)
@@ -44,6 +66,17 @@ namespace Simulation
                 resize_Control(label2, recLbl2);
                 resize_Control(label3, recLbl3);
                 resize_Control(label4, recLbl4);
+                resize_Control(label5, recLbl5);
+                resize_Control(label6, recLbl6);
+                resize_Control(label7, recLbl7);
+                resize_Control(label8, recLbl8);
+                resize_Control(label9, recLbl9);
+                resize_Control(label10, recLbl10);
+                resize_Control(label11, recLbl11);
+                resize_Control(label12, recLbl12);
+                resize_Control(label13, recLbl13);
+                resize_Control(label14, recLbl14);
+                resize_Control(label15, recLbl15);
                 resize_Control(pictureBox7, recPtb1);
             }
             else if (this.WindowState == FormWindowState.Normal)
@@ -53,6 +86,17 @@ namespace Simulation
                 restore_ControlSize(label2, recLbl2);
                 restore_ControlSize(label3, recLbl3);
                 restore_ControlSize(label4, recLbl4);
+                restore_ControlSize(label5, recLbl5);
+                restore_ControlSize(label6, recLbl6);
+                restore_ControlSize(label7, recLbl7);
+                restore_ControlSize(label8, recLbl8);
+                restore_ControlSize(label9, recLbl9);
+                restore_ControlSize(label10, recLbl10);
+                restore_ControlSize(label11, recLbl11);
+                restore_ControlSize(label12, recLbl12);
+                restore_ControlSize(label13, recLbl13);
+                restore_ControlSize(label14, recLbl14);
+                restore_ControlSize(label15, recLbl15);
                 restore_ControlSize(pictureBox7, recPtb1);
             }
         }

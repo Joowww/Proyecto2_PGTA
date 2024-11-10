@@ -18,12 +18,13 @@ using System.Windows.Forms;
 
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using MultiCAT6.Utils;
+using System.Runtime.CompilerServices;
 
 namespace Simulation
 {
     public partial class Mapa : Form
     {
-        
+        //Loading2 loading;
         private Principal principal;
         GMapControl mapControl;
         List<List<object>> FiltredMessages { get; set; }
@@ -35,6 +36,7 @@ namespace Simulation
         public string TA1 { get; set; }
         public string TA2 { get; set; }
         private bool isDarkMode;
+
 
         private int currentSecond;
         private int maxSecond; // Variable para almacenar el máximo segundo disponible
@@ -650,6 +652,11 @@ namespace Simulation
                 return; // Si el usuario cancela, no se hace nada
             }
 
+            //Show();
+            //Task oTask = new Task(SL);
+            //oTask.Start();
+            //await oTask;
+
             string newCsvPath = saveFileDialog.FileName;
 
             // Crear un HashSet con las claves de mensajes filtrados para búsqueda rápida
@@ -679,6 +686,7 @@ namespace Simulation
             }
             // Guardar el nuevo CSV
             File.WriteAllLines(newCsvPath, filteredLines, Encoding.UTF8);
+            //Hide();
             MessageBox.Show("Filtered CSV exported successfully.");
 
         }
@@ -873,5 +881,21 @@ namespace Simulation
             distance = (distance / 1852.0);
             return distance;
         }
+        //public void SL()
+        //{
+            //Thread.Sleep(3000);
+        //}
+        //public void Show()
+        //{
+            //loading = new Loading2();
+            //loading.Show();
+        //}
+        //public void Hide()
+        //{
+            //if (loading != null)
+            //{
+                //loading.Close();
+            //}
+        //}
     }
 }

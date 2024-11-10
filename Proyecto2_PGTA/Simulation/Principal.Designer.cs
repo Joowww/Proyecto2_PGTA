@@ -581,6 +581,7 @@
             Margin = new Padding(2);
             Name = "Principal";
             Text = "Principal";
+            WindowState = FormWindowState.Maximized;
             Load += Form_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             sidebar.ResumeLayout(false);

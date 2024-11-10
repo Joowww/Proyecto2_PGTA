@@ -53,11 +53,11 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(132, 132);
+            label1.Location = new Point(58, 129);
             label1.Name = "label1";
-            label1.Size = new Size(591, 28);
+            label1.Size = new Size(751, 28);
             label1.TabIndex = 5;
-            label1.Text = "También hay la posibilidad de entrar al videotutorial con un QR:";
+            label1.Text = "Alternatively, you can scan the QR code below to directly enter the video tutorial:";
             // 
             // pictureBox7
             // 
@@ -74,11 +74,11 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(132, 34);
+            label2.Location = new Point(58, 32);
             label2.Name = "label2";
-            label2.Size = new Size(440, 28);
+            label2.Size = new Size(551, 28);
             label2.TabIndex = 11;
-            label2.Text = "Aquí hay el link para poder ver el videotutorial:";
+            label2.Text = "To access the video tutorial, you can use the following link:";
             // 
             // label3
             // 

@@ -42,11 +42,11 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(254, 83);
+            label1.Location = new Point(31, 75);
             label1.Name = "label1";
-            label1.Size = new Size(250, 28);
+            label1.Size = new Size(757, 28);
             label1.TabIndex = 0;
-            label1.Text = "Explicar extra functionality";
+            label1.Text = "This additional feature allows you to input two target addresses and visualize the ";
             // 
             // targetBtn
             // 
@@ -68,21 +68,21 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(254, 138);
+            label2.Location = new Point(31, 117);
             label2.Name = "label2";
-            label2.Size = new Size(250, 28);
+            label2.Size = new Size(702, 28);
             label2.TabIndex = 2;
-            label2.Text = "Explicar extra functionality";
+            label2.Text = "simulation of both, as well as the distance between them with each update.";
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(254, 191);
+            label3.Location = new Point(31, 196);
             label3.Name = "label3";
-            label3.Size = new Size(250, 28);
+            label3.Size = new Size(649, 28);
             label3.TabIndex = 3;
-            label3.Text = "Explicar extra functionality";
+            label3.Text = "Note: You can use all the buttons and settings, just as you did before.";
             // 
             // pictureBox7
             // 
