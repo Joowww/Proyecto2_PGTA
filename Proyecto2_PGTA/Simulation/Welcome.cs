@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
 using System.Drawing;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Reflection.Emit;
 
 namespace Simulation
 {
@@ -20,10 +22,288 @@ namespace Simulation
         bool HelpCollapse;
         private bool isDarkMode;
 
+        private Size formOriginalSize;
+        private Rectangle recBut1;
+        private Rectangle recBut2;
+        private Rectangle recBut3;
+        private Rectangle recBut4;
+        private Rectangle recBut5;
+        private Rectangle recBut6;
+        private Rectangle recBut7;
+        private Rectangle recBut8;
+        private Rectangle recBut9;
+        private Rectangle recBut10;
+        private Rectangle recBut11;
+        private Rectangle recBut12;
+        private Rectangle recBut13;
+        private Rectangle recLbl1;
+        private Rectangle recPtb1;
+        private Rectangle recPtb2;
+        private Rectangle recPtb3;
+        private Rectangle recPtb4;
+        private Rectangle recPtb5;
+        private Rectangle recPtb6;
+        private Rectangle recPtb7;
+        private Rectangle recPtb8;
+        private Rectangle recPtb9;
+        private Rectangle recPtb10;
+        private Rectangle recPtb11;
+        private Rectangle recPtb12;
+        private Rectangle recPtb13;
+        private Rectangle recPtb14;
+        private Rectangle recPtb15;
+        private Rectangle recPtb16;
+        private Rectangle recPtb17;
+        private Rectangle recPanel1;
+        private Rectangle recPanel2;
+        private Rectangle recPanel3;
+        private Rectangle recPanel4;
+        private Rectangle recPanel5;
+        private Rectangle recPanel6;
+        private Rectangle recPanel7;
+        private Rectangle recPanel8;
+        private Rectangle recPanel9;
+        private Rectangle recPanel10;
+        private Rectangle recPanel11;
+        private Rectangle recPanel12;
+        private Rectangle recPanel13;
+        private Rectangle recPanel14;
+        private Rectangle recPanel15;
+        private Rectangle recPanel16;
+        private Rectangle recPanel17;
+        private Rectangle recPanel18;
+        private Rectangle recPanel19;
+        private Rectangle recPanel20;
+        private Rectangle recPanel21;
+        private Rectangle recPanel22;
+        private Rectangle recPanel23;
+        private Rectangle recCont1;
+        private Rectangle recCont2;
+        private Rectangle recCont3;
+        private Rectangle recSb1;
         public Welcome()
         {
             InitializeComponent();
+
+            this.Resize += Welcome_Resiz;
+            formOriginalSize = this.Size;
+            recBut1 = new Rectangle(button1.Location, button1.Size);
+            recBut2 = new Rectangle(menuButton.Location, menuButton.Size);
+            recBut3 = new Rectangle(button2.Location, button2.Size);
+            recBut4 = new Rectangle(buttonAboutUs.Location, buttonAboutUs.Size);
+            recBut5 = new Rectangle(buttonGroup.Location, buttonGroup.Size);
+            recBut6 = new Rectangle(buttonContactUs.Location, buttonContactUs.Size);
+            recBut7 = new Rectangle(buttonSettings.Location, buttonSettings.Size);
+            recBut8 = new Rectangle(button3.Location, button3.Size);
+            recBut9 = new Rectangle(button9.Location, button9.Size);
+            recBut10 = new Rectangle(buttonHelp.Location, buttonHelp.Size);
+            recBut11 = new Rectangle(buttonTutorial.Location, buttonTutorial.Size);
+            recBut12 = new Rectangle(buttonQRVideoT.Location, buttonQRVideoT.Size);
+            recBut13 = new Rectangle(button4.Location, button4.Size);
+            recLbl1 = new Rectangle(label1.Location, label1.Size);
+            recPtb1 = new Rectangle(pictureBox2.Location, pictureBox2.Size);
+            recPtb2 = new Rectangle(pictureBox3.Location, pictureBox3.Size);
+            recPtb3 = new Rectangle(pictureBox4.Location, pictureBox4.Size);
+            recPtb4 = new Rectangle(pictureBox5.Location, pictureBox5.Size);
+            recPtb5 = new Rectangle(pictureBox6.Location, pictureBox6.Size);
+            recPtb6 = new Rectangle(pictureBox7.Location, pictureBox7.Size);
+            recPtb7 = new Rectangle(pictureBox8.Location, pictureBox8.Size);
+            recPtb8 = new Rectangle(pictureBox10.Location, pictureBox10.Size);
+            recPtb9 = new Rectangle(pictureBox9.Location, pictureBox9.Size);
+            recPtb10 = new Rectangle(pictureBox15.Location, pictureBox15.Size);
+            recPtb11 = new Rectangle(pictureBox18.Location, pictureBox18.Size);
+            recPtb12 = new Rectangle(pictureBox19.Location, pictureBox19.Size);
+            recPtb13 = new Rectangle(pictureBox1.Location, pictureBox1.Size);
+            recPtb14 = new Rectangle(pictureBox11.Location, pictureBox11.Size);
+            recPtb15 = new Rectangle(pictureBox13.Location, pictureBox13.Size);
+            recPtb16 = new Rectangle(pictureBox16.Location, pictureBox16.Size);
+            recPtb17 = new Rectangle(pictureBox12.Location, pictureBox12.Size);
+            recPanel1 = new Rectangle(panel1.Location, panel1.Size);
+            recPanel2 = new Rectangle(panel15.Location, panel15.Size);
+            recPanel3 = new Rectangle(panel2.Location, panel2.Size);
+            recPanel4 = new Rectangle(panel17.Location, panel17.Size);
+            recPanel5 = new Rectangle(panel3.Location, panel3.Size);
+            recPanel6 = new Rectangle(panel18.Location, panel18.Size);
+            recPanel7 = new Rectangle(panel7.Location, panel7.Size);
+            recPanel8 = new Rectangle(panel19.Location, panel19.Size);
+            recPanel9 = new Rectangle(panel8.Location, panel8.Size);
+            recPanel10 = new Rectangle(panel16.Location, panel16.Size);
+            recPanel11 = new Rectangle(panel4.Location, panel4.Size);
+            recPanel12 = new Rectangle(panel21.Location, panel21.Size);
+            recPanel13 = new Rectangle(panel10.Location, panel10.Size);
+            recPanel14 = new Rectangle(panel11.Location, panel11.Size);
+            recPanel15 = new Rectangle(panel22.Location, panel22.Size);
+            recPanel16 = new Rectangle(panel5.Location, panel5.Size);
+            recPanel17 = new Rectangle(panel14.Location, panel14.Size);
+            recPanel18 = new Rectangle(panel23.Location, panel23.Size);
+            recPanel19 = new Rectangle(panel12.Location, panel12.Size);
+            recPanel20 = new Rectangle(panel24.Location, panel24.Size);
+            recPanel21 = new Rectangle(panel13.Location, panel13.Size);
+            recPanel22 = new Rectangle(panel9.Location, panel9.Size);
+            recPanel23 = new Rectangle(panel6.Location, panel6.Size);
+            recCont1 = new Rectangle(AboutUsContainer.Location, AboutUsContainer.Size);
+            recCont2 = new Rectangle(SettingsContainer.Location, SettingsContainer.Size);
+            recCont3 = new Rectangle(HelpContainer.Location, HelpContainer.Size);
+            recSb1 = new Rectangle(sidebar.Location, sidebar.Size);
         }
+
+        private void Welcome_Resiz(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                resize_Control(button1, recBut1);
+                resize_Control(menuButton, recBut2);
+                resize_Control(button2, recBut3);
+                resize_Control(buttonAboutUs, recBut4);
+                resize_Control(buttonGroup, recBut5);
+                resize_Control(buttonContactUs, recBut6);
+                resize_Control(buttonSettings, recBut7);
+                resize_Control(button3, recBut8);
+                resize_Control(button9, recBut9);
+                resize_Control(buttonHelp, recBut10);
+                resize_Control(buttonTutorial, recBut11);
+                resize_Control(buttonQRVideoT, recBut12);
+                resize_Control(button4, recBut13);
+                resize_Control(label1, recLbl1);
+                resize_Control(pictureBox2, recPtb1);
+                resize_Control(pictureBox3, recPtb2);
+                resize_Control(pictureBox4, recPtb3);
+                resize_Control(pictureBox5, recPtb4);
+                resize_Control(pictureBox6, recPtb5);
+                resize_Control(pictureBox7, recPtb6);
+                resize_Control(pictureBox8, recPtb7);
+                resize_Control(pictureBox10, recPtb8);
+                resize_Control(pictureBox9, recPtb9);
+                resize_Control(pictureBox15, recPtb10);
+                resize_Control(pictureBox18, recPtb11);
+                resize_Control(pictureBox19, recPtb12);
+                resize_Control(pictureBox1, recPtb13);
+                resize_Control(pictureBox11, recPtb14);
+                resize_Control(pictureBox13, recPtb15);
+                resize_Control(pictureBox16, recPtb16);
+                resize_Control(pictureBox12, recPtb17);
+                resize_Control(panel1, recPanel1);
+                resize_Control(panel15, recPanel2);
+                resize_Control(panel2, recPanel3);
+                resize_Control(panel17, recPanel4);
+                resize_Control(panel3, recPanel5);
+                resize_Control(panel18, recPanel6);
+                resize_Control(panel7, recPanel7);
+                resize_Control(panel19, recPanel8);
+                resize_Control(panel8, recPanel9);
+                resize_Control(panel16, recPanel10);
+                resize_Control(panel4, recPanel11);
+                resize_Control(panel21, recPanel12);
+                resize_Control(panel10, recPanel13);
+                resize_Control(panel11, recPanel14);
+                resize_Control(panel22, recPanel15);
+                resize_Control(panel5, recPanel16);
+                resize_Control(panel14, recPanel17);
+                resize_Control(panel23, recPanel18);
+                resize_Control(panel12, recPanel19);
+                resize_Control(panel24, recPanel20);
+                resize_Control(panel13, recPanel21);
+                resize_Control(panel9, recPanel22);
+                resize_Control(panel6, recPanel23);
+                resize_Control(AboutUsContainer, recCont1);
+                resize_Control(SettingsContainer, recCont2);
+                resize_Control(HelpContainer, recCont3);
+                resize_Control(sidebar, recSb1);
+
+            }
+            else if (this.WindowState == FormWindowState.Normal)
+            {
+                restore_ControlSize(button1, recBut1);
+                restore_ControlSize(menuButton, recBut2);
+                restore_ControlSize(button2, recBut3);
+                restore_ControlSize(buttonAboutUs, recBut4);
+                restore_ControlSize(buttonGroup, recBut5);
+                restore_ControlSize(buttonContactUs, recBut6);
+                restore_ControlSize(buttonSettings, recBut7);
+                restore_ControlSize(button3, recBut8);
+                restore_ControlSize(button9, recBut9);
+                restore_ControlSize(buttonHelp, recBut10);
+                restore_ControlSize(buttonTutorial, recBut11);
+                restore_ControlSize(buttonQRVideoT, recBut12);
+                restore_ControlSize(button4, recBut13);
+                restore_ControlSize(label1, recLbl1);
+                restore_ControlSize(pictureBox2, recPtb1);
+                restore_ControlSize(pictureBox3, recPtb2);
+                restore_ControlSize(pictureBox4, recPtb3);
+                restore_ControlSize(pictureBox5, recPtb4);
+                restore_ControlSize(pictureBox6, recPtb5);
+                restore_ControlSize(pictureBox7, recPtb6);
+                restore_ControlSize(pictureBox8, recPtb7);
+                restore_ControlSize(pictureBox10, recPtb8);
+                restore_ControlSize(pictureBox9, recPtb9);
+                restore_ControlSize(pictureBox15, recPtb10);
+                restore_ControlSize(pictureBox18, recPtb11);
+                restore_ControlSize(pictureBox19, recPtb12);
+                restore_ControlSize(pictureBox1, recPtb13);
+                restore_ControlSize(pictureBox11, recPtb14);
+                restore_ControlSize(pictureBox13, recPtb15);
+                restore_ControlSize(pictureBox16, recPtb16);
+                restore_ControlSize(pictureBox12, recPtb17);
+                restore_ControlSize(panel1, recPanel1);
+                restore_ControlSize(panel15, recPanel2);
+                restore_ControlSize(panel2, recPanel3);
+                restore_ControlSize(panel17, recPanel4);
+                restore_ControlSize(panel3, recPanel5);
+                restore_ControlSize(panel18, recPanel6);
+                restore_ControlSize(panel7, recPanel7);
+                restore_ControlSize(panel19, recPanel8);
+                restore_ControlSize(panel8, recPanel9);
+                restore_ControlSize(panel16, recPanel10);
+                restore_ControlSize(panel4, recPanel11);
+                restore_ControlSize(panel21, recPanel12);
+                restore_ControlSize(panel10, recPanel13);
+                restore_ControlSize(panel11, recPanel14);
+                restore_ControlSize(panel22, recPanel15);
+                restore_ControlSize(panel5, recPanel16);
+                restore_ControlSize(panel14, recPanel17);
+                restore_ControlSize(panel23, recPanel18);
+                restore_ControlSize(panel12, recPanel19);
+                restore_ControlSize(panel24, recPanel20);
+                restore_ControlSize(panel13, recPanel21);
+                restore_ControlSize(panel9, recPanel22);
+                restore_ControlSize(panel6, recPanel23);
+                restore_ControlSize(AboutUsContainer, recCont1);
+                restore_ControlSize(SettingsContainer, recCont2);
+                restore_ControlSize(HelpContainer, recCont3);
+                restore_ControlSize(sidebar, recSb1);
+
+            }
+        }
+
+        private void restore_ControlSize(Control control, Rectangle originalRect)
+        {
+            control.Location = originalRect.Location;
+            control.Size = originalRect.Size;
+
+            // Restauramos el tamaño de la fuente original
+            control.Font = new Font(control.Font.FontFamily, 10, control.Font.Style);
+
+        }
+        private void resize_Control(Control control, Rectangle rect)
+        {
+            float xRatio = (float)(this.Width) / (float)(formOriginalSize.Width);
+            float yRatio = (float)(this.Height) / (float)(formOriginalSize.Height);
+
+            int newX = (int)(rect.X * xRatio);
+            int newY = (int)(rect.Y * yRatio);
+
+            int newWidth = (int)(rect.Width * xRatio);
+            int newHeight = (int)(rect.Height * yRatio);
+
+            control.Location = new Point(newX, newY);
+            control.Size = new Size(newWidth, newHeight);
+
+            // Ajustar tamaño de la fuente
+            float fontSizeRatio = Math.Min(xRatio, yRatio); // Escala basada en la menor proporción
+            control.Font = new Font(control.Font.FontFamily, control.Font.Size * fontSizeRatio, control.Font.Style);
+        }
+
+
         private void StartBtn_Click(object sender, EventArgs e)
         {
             // Crear una instancia de ImportAst antes de mostrarla
