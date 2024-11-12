@@ -255,7 +255,7 @@
             sidebar.Location = new Point(0, 0);
             sidebar.Margin = new Padding(6);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(113, 2000);
+            sidebar.Size = new Size(109, 2000);
             sidebar.TabIndex = 11;
             sidebar.Paint += sidebar_Paint;
             // 
@@ -364,7 +364,7 @@
             panel8.BackColor = Color.Gray;
             panel8.Controls.Add(panel19);
             panel8.Controls.Add(buttonContactUs);
-            panel8.Location = new Point(2, 102);
+            panel8.Location = new Point(2, 108);
             panel8.Margin = new Padding(6, 0, 6, 0);
             panel8.MaximumSize = new Size(270, 45);
             panel8.Name = "panel8";
@@ -406,7 +406,7 @@
             buttonContactUs.Location = new Point(104, 0);
             buttonContactUs.Name = "buttonContactUs";
             buttonContactUs.Padding = new Padding(5, 0, 0, 0);
-            buttonContactUs.Size = new Size(130, 45);
+            buttonContactUs.Size = new Size(133, 45);
             buttonContactUs.TabIndex = 11;
             buttonContactUs.Text = "Contact us";
             buttonContactUs.UseVisualStyleBackColor = false;
@@ -420,7 +420,7 @@
             panel3.Location = new Point(0, 0);
             panel3.Margin = new Padding(6, 2, 6, 2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(237, 60);
+            panel3.Size = new Size(236, 60);
             panel3.TabIndex = 13;
             // 
             // panel17
@@ -588,7 +588,7 @@
             panel4.Location = new Point(0, 0);
             panel4.Margin = new Padding(6, 3, 6, 3);
             panel4.Name = "panel4";
-            panel4.Size = new Size(236, 60);
+            panel4.Size = new Size(239, 60);
             panel4.TabIndex = 14;
             // 
             // panel16
@@ -624,7 +624,7 @@
             buttonSettings.Location = new Point(106, 0);
             buttonSettings.Name = "buttonSettings";
             buttonSettings.Padding = new Padding(5, 0, 0, 0);
-            buttonSettings.Size = new Size(133, 60);
+            buttonSettings.Size = new Size(130, 60);
             buttonSettings.TabIndex = 11;
             buttonSettings.Text = "Settings";
             buttonSettings.UseVisualStyleBackColor = false;
@@ -635,7 +635,7 @@
             panel11.BackColor = Color.Gray;
             panel11.Controls.Add(panel22);
             panel11.Controls.Add(button9);
-            panel11.Location = new Point(2, 104);
+            panel11.Location = new Point(2, 105);
             panel11.Margin = new Padding(6, 0, 6, 0);
             panel11.MaximumSize = new Size(270, 45);
             panel11.Name = "panel11";
@@ -676,7 +676,7 @@
             button9.Location = new Point(104, 0);
             button9.Name = "button9";
             button9.Padding = new Padding(5, 0, 0, 0);
-            button9.Size = new Size(130, 45);
+            button9.Size = new Size(131, 45);
             button9.TabIndex = 11;
             button9.Text = "Language";
             button9.UseVisualStyleBackColor = false;

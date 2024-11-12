@@ -360,7 +360,6 @@ namespace Simulation
                 {
                     sidebar.Width = sidebar.MinimumSize.Width; // Asegura que no se pase del mínimo
                     sidebarExpand = false;
-                    AboutUsContainer.Width = sidebar.MinimumSize.Width;
                     SidebarTimer.Stop();
                 }
             }
@@ -371,7 +370,6 @@ namespace Simulation
                 {
                     sidebar.Width = sidebar.MaximumSize.Width; // Asegura que no se pase del máximo
                     sidebarExpand = true;
-                    AboutUsContainer.Width = sidebar.MaximumSize.Width;
                     SidebarTimer.Stop();
                 }
             }

@@ -156,7 +156,7 @@
             sidebar.MaximumSize = new Size(249, 650);
             sidebar.MinimumSize = new Size(108, 650);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(108, 650);
+            sidebar.Size = new Size(249, 650);
             sidebar.TabIndex = 11;
             // 
             // panel1
@@ -228,7 +228,6 @@
             // HomeBtn
             // 
             HomeBtn.BackColor = Color.Transparent;
-            HomeBtn.Dock = DockStyle.Left;
             HomeBtn.FlatAppearance.BorderColor = Color.DarkGray;
             HomeBtn.FlatAppearance.BorderSize = 0;
             HomeBtn.FlatAppearance.MouseDownBackColor = Color.DarkGray;
@@ -237,13 +236,12 @@
             HomeBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             HomeBtn.ForeColor = Color.White;
             HomeBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            HomeBtn.Location = new Point(0, 0);
+            HomeBtn.Location = new Point(107, 0);
             HomeBtn.Name = "HomeBtn";
             HomeBtn.Padding = new Padding(5, 0, 0, 0);
-            HomeBtn.Size = new Size(237, 60);
+            HomeBtn.Size = new Size(130, 60);
             HomeBtn.TabIndex = 11;
-            HomeBtn.Text = "                Home";
-            HomeBtn.TextAlign = ContentAlignment.MiddleLeft;
+            HomeBtn.Text = "Home";
             HomeBtn.UseVisualStyleBackColor = false;
             HomeBtn.Click += HomeBtn_Click;
             // 
@@ -258,7 +256,7 @@
             SettingsContainer.MaximumSize = new Size(237, 152);
             SettingsContainer.MinimumSize = new Size(237, 59);
             SettingsContainer.Name = "SettingsContainer";
-            SettingsContainer.Size = new Size(237, 59);
+            SettingsContainer.Size = new Size(237, 152);
             SettingsContainer.TabIndex = 17;
             // 
             // panel11
@@ -296,22 +294,20 @@
             // button9
             // 
             button9.BackColor = Color.Transparent;
-            button9.Dock = DockStyle.Left;
             button9.FlatAppearance.BorderColor = Color.DarkGray;
             button9.FlatAppearance.BorderSize = 2;
             button9.FlatAppearance.MouseDownBackColor = Color.DarkGray;
             button9.FlatAppearance.MouseOverBackColor = Color.DarkGray;
             button9.FlatStyle = FlatStyle.Flat;
-            button9.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button9.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
             button9.ForeColor = Color.White;
             button9.ImageAlign = ContentAlignment.MiddleLeft;
-            button9.Location = new Point(0, 0);
+            button9.Location = new Point(105, 0);
             button9.Name = "button9";
             button9.Padding = new Padding(5, 0, 0, 0);
-            button9.Size = new Size(235, 45);
+            button9.Size = new Size(87, 45);
             button9.TabIndex = 11;
-            button9.Text = "                Language";
-            button9.TextAlign = ContentAlignment.MiddleLeft;
+            button9.Text = "Language";
             button9.UseVisualStyleBackColor = false;
             // 
             // panel10
@@ -349,22 +345,20 @@
             // button3
             // 
             button3.BackColor = Color.Transparent;
-            button3.Dock = DockStyle.Left;
             button3.FlatAppearance.BorderColor = Color.DarkGray;
             button3.FlatAppearance.BorderSize = 2;
             button3.FlatAppearance.MouseDownBackColor = Color.DarkGray;
             button3.FlatAppearance.MouseOverBackColor = Color.DarkGray;
             button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button3.Font = new Font("Segoe UI Semibold", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
             button3.ForeColor = Color.White;
             button3.ImageAlign = ContentAlignment.MiddleLeft;
-            button3.Location = new Point(0, 0);
+            button3.Location = new Point(106, 0);
             button3.Name = "button3";
             button3.Padding = new Padding(5, 0, 0, 0);
-            button3.Size = new Size(241, 45);
+            button3.Size = new Size(87, 45);
             button3.TabIndex = 11;
-            button3.Text = "                Forms colour";
-            button3.TextAlign = ContentAlignment.MiddleLeft;
+            button3.Text = "Forms colour";
             button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
             // 
@@ -376,7 +370,7 @@
             panel4.Location = new Point(0, 0);
             panel4.Margin = new Padding(6, 2, 6, 2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(237, 59);
+            panel4.Size = new Size(216, 59);
             panel4.TabIndex = 14;
             // 
             // panel13
@@ -402,7 +396,6 @@
             // buttonSettings
             // 
             buttonSettings.BackColor = Color.Transparent;
-            buttonSettings.Dock = DockStyle.Left;
             buttonSettings.FlatAppearance.BorderColor = Color.DarkGray;
             buttonSettings.FlatAppearance.BorderSize = 0;
             buttonSettings.FlatAppearance.MouseDownBackColor = Color.DarkGray;
@@ -411,13 +404,12 @@
             buttonSettings.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             buttonSettings.ForeColor = Color.White;
             buttonSettings.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonSettings.Location = new Point(0, 0);
+            buttonSettings.Location = new Point(107, 0);
             buttonSettings.Name = "buttonSettings";
             buttonSettings.Padding = new Padding(5, 0, 0, 0);
-            buttonSettings.Size = new Size(242, 59);
+            buttonSettings.Size = new Size(79, 59);
             buttonSettings.TabIndex = 11;
-            buttonSettings.Text = "                Settings";
-            buttonSettings.TextAlign = ContentAlignment.MiddleLeft;
+            buttonSettings.Text = "Settings";
             buttonSettings.UseVisualStyleBackColor = false;
             buttonSettings.Click += buttonSettings_Click;
             // 
@@ -426,7 +418,7 @@
             HelpContainer.BackColor = Color.Transparent;
             HelpContainer.Controls.Add(panel12);
             HelpContainer.Controls.Add(panel5);
-            HelpContainer.Location = new Point(6, 278);
+            HelpContainer.Location = new Point(6, 371);
             HelpContainer.Margin = new Padding(6, 2, 6, 2);
             HelpContainer.MaximumSize = new Size(237, 107);
             HelpContainer.MinimumSize = new Size(237, 60);
@@ -470,22 +462,20 @@
             // buttonTutorial
             // 
             buttonTutorial.BackColor = Color.Transparent;
-            buttonTutorial.Dock = DockStyle.Left;
             buttonTutorial.FlatAppearance.BorderColor = Color.DarkGray;
             buttonTutorial.FlatAppearance.BorderSize = 2;
             buttonTutorial.FlatAppearance.MouseDownBackColor = Color.DarkGray;
             buttonTutorial.FlatAppearance.MouseOverBackColor = Color.DarkGray;
             buttonTutorial.FlatStyle = FlatStyle.Flat;
-            buttonTutorial.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonTutorial.Font = new Font("Segoe UI Semibold", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
             buttonTutorial.ForeColor = Color.White;
             buttonTutorial.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonTutorial.Location = new Point(0, 0);
+            buttonTutorial.Location = new Point(105, 0);
             buttonTutorial.Name = "buttonTutorial";
             buttonTutorial.Padding = new Padding(5, 0, 0, 0);
-            buttonTutorial.Size = new Size(235, 45);
+            buttonTutorial.Size = new Size(130, 45);
             buttonTutorial.TabIndex = 11;
-            buttonTutorial.Text = "                Tutorial";
-            buttonTutorial.TextAlign = ContentAlignment.MiddleLeft;
+            buttonTutorial.Text = "Tutorial";
             buttonTutorial.UseVisualStyleBackColor = false;
             buttonTutorial.Click += buttonTutorial_Click;
             // 
@@ -533,7 +523,6 @@
             // buttonHelp
             // 
             buttonHelp.BackColor = Color.Transparent;
-            buttonHelp.Dock = DockStyle.Left;
             buttonHelp.FlatAppearance.BorderColor = Color.DarkGray;
             buttonHelp.FlatAppearance.BorderSize = 0;
             buttonHelp.FlatAppearance.MouseDownBackColor = Color.DarkGray;
@@ -542,13 +531,12 @@
             buttonHelp.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             buttonHelp.ForeColor = Color.White;
             buttonHelp.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonHelp.Location = new Point(0, 0);
+            buttonHelp.Location = new Point(107, 0);
             buttonHelp.Name = "buttonHelp";
             buttonHelp.Padding = new Padding(5, 0, 0, 0);
-            buttonHelp.Size = new Size(237, 59);
+            buttonHelp.Size = new Size(135, 59);
             buttonHelp.TabIndex = 11;
-            buttonHelp.Text = "                Help";
-            buttonHelp.TextAlign = ContentAlignment.MiddleLeft;
+            buttonHelp.Text = "Help";
             buttonHelp.UseVisualStyleBackColor = false;
             buttonHelp.Click += buttonHelp_Click;
             // 
@@ -571,7 +559,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(926, 469);
+            ClientSize = new Size(926, 545);
             Controls.Add(sidebar);
             Controls.Add(pictureBox7);
             Controls.Add(SimulateBtn);
