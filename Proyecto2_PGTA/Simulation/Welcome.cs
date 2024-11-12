@@ -144,7 +144,13 @@ namespace Simulation
             recCont1 = new Rectangle(AboutUsContainer.Location, AboutUsContainer.Size);
             recCont2 = new Rectangle(SettingsContainer.Location, SettingsContainer.Size);
             recCont3 = new Rectangle(HelpContainer.Location, HelpContainer.Size);
-            recSb1 = new Rectangle(sidebar.Location, sidebar.Size);
+            //recSb1 = new Rectangle(sidebar.Location, sidebar.Size);
+            int minWidth = recPanel17.Right - sidebar.Left;
+            int maxWidth = recPanel16.Right - sidebar.Left;
+
+            sidebar.MinimumSize = new Size(minWidth, sidebar.Height);
+            sidebar.MaximumSize = new Size(maxWidth, sidebar.Height);
+
         }
 
         private void Welcome_Resiz(object sender, EventArgs e)
@@ -283,6 +289,22 @@ namespace Simulation
             // Restauramos el tamaño de la fuente original
             control.Font = new Font(control.Font.FontFamily, 10, control.Font.Style);
 
+            // Obtener la posición derecha del control redimensionado
+            int rightPosition = control.Left + control.Width;
+
+            if (control == panel14)
+            {
+                int minWidthSb = rightPosition - sidebar.Left;
+                sidebar.MinimumSize = new Size(minWidthSb, sidebar.Height);
+            }
+
+            if (control == panel9)
+            {
+                int maxWidthSb = rightPosition - sidebar.Left;
+                sidebar.MaximumSize = new Size(maxWidthSb, sidebar.Height);
+            }
+            sidebarExpand = true;
+
         }
         private void resize_Control(Control control, Rectangle rect)
         {
@@ -301,8 +323,24 @@ namespace Simulation
             // Ajustar tamaño de la fuente
             float fontSizeRatio = Math.Min(xRatio, yRatio); // Escala basada en la menor proporción
             control.Font = new Font(control.Font.FontFamily, control.Font.Size * fontSizeRatio, control.Font.Style);
-        }
 
+            // Obtener la posición derecha del control redimensionado
+            int rightPosition = control.Left + control.Width;
+
+            if (control == panel14)
+            {
+                int minWidthSb = rightPosition - sidebar.Left;
+                sidebar.MinimumSize = new Size(minWidthSb, sidebar.Height);
+            }
+
+            if (control == panel9)
+            {
+                int maxWidthSb = rightPosition - sidebar.Left;
+                sidebar.MaximumSize = new Size(maxWidthSb, sidebar.Height);
+            }
+            sidebarExpand = true;
+
+        }
 
         private void StartBtn_Click(object sender, EventArgs e)
         {
@@ -314,23 +352,26 @@ namespace Simulation
 
         private void SidebarTimer_Tick(object sender, EventArgs e)
         {
-            //SET the Minimum and maximum size of sidebar Panel
+            // Expansión y contracción del sidebar con los nuevos límites
             if (sidebarExpand)
             {
-                // If sidebar is expand, minimize
                 sidebar.Width -= 10;
-                if (sidebar.Width == sidebar.MinimumSize.Width)
+                if (sidebar.Width <= sidebar.MinimumSize.Width)
                 {
+                    sidebar.Width = sidebar.MinimumSize.Width; // Asegura que no se pase del mínimo
                     sidebarExpand = false;
+                    AboutUsContainer.Width = sidebar.MinimumSize.Width;
                     SidebarTimer.Stop();
                 }
             }
             else
             {
                 sidebar.Width += 10;
-                if (sidebar.Width == sidebar.MaximumSize.Width)
+                if (sidebar.Width >= sidebar.MaximumSize.Width)
                 {
+                    sidebar.Width = sidebar.MaximumSize.Width; // Asegura que no se pase del máximo
                     sidebarExpand = true;
+                    AboutUsContainer.Width = sidebar.MaximumSize.Width;
                     SidebarTimer.Stop();
                 }
             }
@@ -502,6 +543,7 @@ namespace Simulation
 
         private void menuButton_Click_1(object sender, EventArgs e)
         {
+
             // Set timer interval to lowest to make it smoother
             SidebarTimer.Start();
         }
