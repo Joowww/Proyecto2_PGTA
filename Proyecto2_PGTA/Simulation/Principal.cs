@@ -66,6 +66,8 @@ namespace Simulation
         public Principal(string filePath)
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
+
             this.filePathAST = filePath;
 
             this.Resize += Principal_Resiz;
@@ -103,7 +105,25 @@ namespace Simulation
             recPanel13 = new Rectangle(panel10.Location, panel10.Size);
             recCont1 = new Rectangle(HelpContainer.Location, HelpContainer.Size);
             recCont2 = new Rectangle(SettingsContainer.Location, SettingsContainer.Size);
-            recSb1 = new Rectangle(sidebar.Location, sidebar.Size);
+            //recSb1 = new Rectangle(sidebar.Location, sidebar.Size);
+
+            int minWidthSb = recPanel6.Right - sidebar.Left;
+            int maxWidthSb = recPanel5.Right - sidebar.Left;
+
+            sidebar.MinimumSize = new Size(minWidthSb, sidebar.Height);
+            sidebar.MaximumSize = new Size(maxWidthSb, sidebar.Height);
+
+            int minHeightCont1 = recPanel1.Bottom - recPanel1.Top;
+            int maxHeightCont1 = recPanel3.Bottom - recPanel1.Top;
+
+            HelpContainer.MinimumSize = new Size(HelpContainer.Width, minHeightCont1);
+            HelpContainer.MaximumSize = new Size(HelpContainer.Width, maxHeightCont1);
+
+            int minHeightCont2 = recPanel5.Bottom - recPanel5.Top;
+            int maxHeightCont2 = recPanel9.Bottom - recPanel5.Top;
+
+            SettingsContainer.MinimumSize = new Size(SettingsContainer.Width, minHeightCont2);
+            SettingsContainer.MaximumSize = new Size(SettingsContainer.Width, maxHeightCont2);
 
             StartSimulation();
         }
@@ -146,6 +166,8 @@ namespace Simulation
                 resize_Control(HelpContainer, recCont1);
                 resize_Control(SettingsContainer, recCont2);
                 resize_Control(sidebar, recSb1);
+                AdjustAboutUsContainer1Size();
+                AdjustAboutUsContainer2Size();
 
             }
             else if (this.WindowState == FormWindowState.Normal)
@@ -184,6 +206,8 @@ namespace Simulation
                 restore_ControlSize(HelpContainer, recCont1);
                 restore_ControlSize(SettingsContainer, recCont2);
                 restore_ControlSize(sidebar, recSb1);
+                AdjustAboutUsContainer1Size();
+                AdjustAboutUsContainer2Size();
             }
         }
 
@@ -194,6 +218,21 @@ namespace Simulation
 
             // Restauramos el tamaño de la fuente original
             control.Font = new Font(control.Font.FontFamily, 10, control.Font.Style);
+
+            int rightPosition = control.Left + control.Width;
+
+            if (control == panel13)
+            {
+                int minWidthSb = rightPosition - sidebar.Left;
+                sidebar.MinimumSize = new Size(minWidthSb, sidebar.Height);
+            }
+
+            if (control == panel4)
+            {
+                int maxWidthSb = rightPosition - sidebar.Left;
+                sidebar.MaximumSize = new Size(maxWidthSb, sidebar.Height);
+            }
+            sidebarExpand = true;
 
         }
         private void resize_Control(Control control, Rectangle rect)
@@ -213,9 +252,43 @@ namespace Simulation
             // Ajustar tamaño de la fuente
             float fontSizeRatio = Math.Min(xRatio, yRatio); // Escala basada en la menor proporción
             control.Font = new Font(control.Font.FontFamily, control.Font.Size * fontSizeRatio, control.Font.Style);
+
+            int rightPosition = control.Left + control.Width;
+
+            if (control == panel13)
+            {
+                int minWidthSb = rightPosition - sidebar.Left;
+                sidebar.MinimumSize = new Size(minWidthSb, sidebar.Height);
+            }
+
+            if (control == panel4)
+            {
+                int maxWidthSb = rightPosition - sidebar.Left;
+                sidebar.MaximumSize = new Size(maxWidthSb, sidebar.Height);
+            }
+            sidebarExpand = true;
         }
 
+        private void AdjustAboutUsContainer1Size()
+        {
+            int minHeightCont1 = panel5.Bottom - panel5.Top;
+            int maxHeightCont1 = panel12.Bottom - panel5.Top;
 
+            HelpContainer.MinimumSize = new Size(HelpContainer.Width, minHeightCont1);
+            HelpContainer.MaximumSize = new Size(HelpContainer.Width, maxHeightCont1);
+        }
+
+        private void AdjustAboutUsContainer2Size()
+        {
+            SettingsContainer.Location = new Point(SettingsContainer.Location.X, panel4.Top);
+
+            int minHeightCont2 = panel4.Bottom - panel4.Top;
+            int maxHeightCont2 = panel11.Bottom - panel4.Top;
+
+            SettingsContainer.MinimumSize = new Size(SettingsContainer.Width, minHeightCont2);
+            SettingsContainer.MaximumSize = new Size(SettingsContainer.Width, maxHeightCont2);
+
+        }
         private void StartSimulation()
         {
 
@@ -628,6 +701,7 @@ namespace Simulation
 
         private void Form_Load(object sender, EventArgs e)
         {
+
             // Agregar elementos al ComboBox
             comboBox1.Items.Add("All data");
             comboBox1.Items.Add("Removing pure blanks");

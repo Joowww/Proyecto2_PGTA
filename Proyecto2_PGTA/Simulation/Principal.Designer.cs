@@ -153,10 +153,8 @@
             sidebar.Controls.Add(SettingsContainer);
             sidebar.Controls.Add(HelpContainer);
             sidebar.Location = new Point(-1, -1);
-            sidebar.MaximumSize = new Size(249, 650);
-            sidebar.MinimumSize = new Size(108, 650);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(249, 650);
+            sidebar.Size = new Size(112, 2000);
             sidebar.TabIndex = 11;
             // 
             // panel1
@@ -256,7 +254,7 @@
             SettingsContainer.MaximumSize = new Size(237, 152);
             SettingsContainer.MinimumSize = new Size(237, 59);
             SettingsContainer.Name = "SettingsContainer";
-            SettingsContainer.Size = new Size(237, 152);
+            SettingsContainer.Size = new Size(237, 59);
             SettingsContainer.TabIndex = 17;
             // 
             // panel11
@@ -266,9 +264,8 @@
             panel11.Controls.Add(button9);
             panel11.Location = new Point(2, 106);
             panel11.Margin = new Padding(6, 0, 6, 0);
-            panel11.MaximumSize = new Size(270, 45);
             panel11.Name = "panel11";
-            panel11.Size = new Size(270, 45);
+            panel11.Size = new Size(235, 45);
             panel11.TabIndex = 16;
             // 
             // panel15
@@ -305,7 +302,7 @@
             button9.Location = new Point(105, 0);
             button9.Name = "button9";
             button9.Padding = new Padding(5, 0, 0, 0);
-            button9.Size = new Size(87, 45);
+            button9.Size = new Size(130, 45);
             button9.TabIndex = 11;
             button9.Text = "Language";
             button9.UseVisualStyleBackColor = false;
@@ -317,9 +314,8 @@
             panel10.Controls.Add(button3);
             panel10.Location = new Point(1, 59);
             panel10.Margin = new Padding(6, 0, 6, 2);
-            panel10.MaximumSize = new Size(270, 45);
             panel10.Name = "panel10";
-            panel10.Size = new Size(270, 45);
+            panel10.Size = new Size(236, 45);
             panel10.TabIndex = 15;
             // 
             // panel14
@@ -356,7 +352,7 @@
             button3.Location = new Point(106, 0);
             button3.Name = "button3";
             button3.Padding = new Padding(5, 0, 0, 0);
-            button3.Size = new Size(87, 45);
+            button3.Size = new Size(130, 45);
             button3.TabIndex = 11;
             button3.Text = "Forms colour";
             button3.UseVisualStyleBackColor = false;
@@ -370,7 +366,7 @@
             panel4.Location = new Point(0, 0);
             panel4.Margin = new Padding(6, 2, 6, 2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(216, 59);
+            panel4.Size = new Size(242, 59);
             panel4.TabIndex = 14;
             // 
             // panel13
@@ -407,7 +403,7 @@
             buttonSettings.Location = new Point(107, 0);
             buttonSettings.Name = "buttonSettings";
             buttonSettings.Padding = new Padding(5, 0, 0, 0);
-            buttonSettings.Size = new Size(79, 59);
+            buttonSettings.Size = new Size(130, 59);
             buttonSettings.TabIndex = 11;
             buttonSettings.Text = "Settings";
             buttonSettings.UseVisualStyleBackColor = false;
@@ -418,7 +414,7 @@
             HelpContainer.BackColor = Color.Transparent;
             HelpContainer.Controls.Add(panel12);
             HelpContainer.Controls.Add(panel5);
-            HelpContainer.Location = new Point(6, 371);
+            HelpContainer.Location = new Point(6, 278);
             HelpContainer.Margin = new Padding(6, 2, 6, 2);
             HelpContainer.MaximumSize = new Size(237, 107);
             HelpContainer.MinimumSize = new Size(237, 60);
@@ -434,9 +430,8 @@
             panel12.Controls.Add(pictureBox17);
             panel12.Location = new Point(2, 60);
             panel12.Margin = new Padding(6, 0, 6, 0);
-            panel12.MaximumSize = new Size(270, 45);
             panel12.Name = "panel12";
-            panel12.Size = new Size(270, 45);
+            panel12.Size = new Size(235, 45);
             panel12.TabIndex = 16;
             // 
             // panel18
@@ -497,7 +492,7 @@
             panel5.Location = new Point(0, 0);
             panel5.Margin = new Padding(6, 2, 6, 2);
             panel5.Name = "panel5";
-            panel5.Size = new Size(237, 59);
+            panel5.Size = new Size(242, 59);
             panel5.TabIndex = 15;
             // 
             // panel17

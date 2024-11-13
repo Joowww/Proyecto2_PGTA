@@ -255,7 +255,7 @@
             sidebar.Location = new Point(0, 0);
             sidebar.Margin = new Padding(6);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(109, 2000);
+            sidebar.Size = new Size(348, 2000);
             sidebar.TabIndex = 11;
             sidebar.Paint += sidebar_Paint;
             // 
@@ -353,10 +353,8 @@
             AboutUsContainer.Controls.Add(panel7);
             AboutUsContainer.Location = new Point(6, 215);
             AboutUsContainer.Margin = new Padding(6, 2, 6, 2);
-            AboutUsContainer.MaximumSize = new Size(237, 152);
-            AboutUsContainer.MinimumSize = new Size(237, 60);
             AboutUsContainer.Name = "AboutUsContainer";
-            AboutUsContainer.Size = new Size(237, 60);
+            AboutUsContainer.Size = new Size(237, 53);
             AboutUsContainer.TabIndex = 11;
             // 
             // panel8
@@ -366,7 +364,6 @@
             panel8.Controls.Add(buttonContactUs);
             panel8.Location = new Point(2, 108);
             panel8.Margin = new Padding(6, 0, 6, 0);
-            panel8.MaximumSize = new Size(270, 45);
             panel8.Name = "panel8";
             panel8.Size = new Size(237, 45);
             panel8.TabIndex = 15;
@@ -406,7 +403,7 @@
             buttonContactUs.Location = new Point(104, 0);
             buttonContactUs.Name = "buttonContactUs";
             buttonContactUs.Padding = new Padding(5, 0, 0, 0);
-            buttonContactUs.Size = new Size(133, 45);
+            buttonContactUs.Size = new Size(131, 45);
             buttonContactUs.TabIndex = 11;
             buttonContactUs.Text = "Contact us";
             buttonContactUs.UseVisualStyleBackColor = false;
@@ -420,14 +417,14 @@
             panel3.Location = new Point(0, 0);
             panel3.Margin = new Padding(6, 2, 6, 2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(236, 60);
+            panel3.Size = new Size(239, 60);
             panel3.TabIndex = 13;
             // 
             // panel17
             // 
             panel17.BackColor = Color.Transparent;
             panel17.Controls.Add(pictureBox10);
-            panel17.Location = new Point(0, 0);
+            panel17.Location = new Point(0, -4);
             panel17.Margin = new Padding(6, 1, 6, 2);
             panel17.Name = "panel17";
             panel17.Size = new Size(101, 60);
@@ -437,7 +434,7 @@
             // 
             pictureBox10.BackgroundImage = (Image)resources.GetObject("pictureBox10.BackgroundImage");
             pictureBox10.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox10.Location = new Point(15, 5);
+            pictureBox10.Location = new Point(15, 6);
             pictureBox10.Name = "pictureBox10";
             pictureBox10.Size = new Size(70, 50);
             pictureBox10.TabIndex = 13;
@@ -453,10 +450,10 @@
             buttonAboutUs.FlatStyle = FlatStyle.Flat;
             buttonAboutUs.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             buttonAboutUs.ForeColor = Color.Transparent;
-            buttonAboutUs.Location = new Point(91, -1);
+            buttonAboutUs.Location = new Point(106, -1);
             buttonAboutUs.Name = "buttonAboutUs";
             buttonAboutUs.Padding = new Padding(5, 0, 0, 0);
-            buttonAboutUs.Size = new Size(148, 60);
+            buttonAboutUs.Size = new Size(131, 60);
             buttonAboutUs.TabIndex = 11;
             buttonAboutUs.Text = "About us";
             buttonAboutUs.UseVisualStyleBackColor = false;
@@ -469,7 +466,6 @@
             panel7.Controls.Add(buttonGroup);
             panel7.Location = new Point(2, 60);
             panel7.Margin = new Padding(6, 0, 6, 0);
-            panel7.MaximumSize = new Size(270, 45);
             panel7.Name = "panel7";
             panel7.Size = new Size(237, 45);
             panel7.TabIndex = 14;
@@ -520,7 +516,7 @@
             SettingsContainer.Controls.Add(panel10);
             SettingsContainer.Controls.Add(panel4);
             SettingsContainer.Controls.Add(panel11);
-            SettingsContainer.Location = new Point(6, 279);
+            SettingsContainer.Location = new Point(6, 272);
             SettingsContainer.Margin = new Padding(6, 2, 6, 2);
             SettingsContainer.MaximumSize = new Size(237, 152);
             SettingsContainer.MinimumSize = new Size(237, 60);
@@ -535,7 +531,6 @@
             panel10.Controls.Add(button3);
             panel10.Location = new Point(2, 60);
             panel10.Margin = new Padding(6, 0, 6, 0);
-            panel10.MaximumSize = new Size(270, 45);
             panel10.Name = "panel10";
             panel10.Size = new Size(237, 45);
             panel10.TabIndex = 15;
@@ -574,7 +569,7 @@
             button3.Location = new Point(104, 0);
             button3.Name = "button3";
             button3.Padding = new Padding(5, 0, 0, 0);
-            button3.Size = new Size(130, 45);
+            button3.Size = new Size(133, 45);
             button3.TabIndex = 11;
             button3.Text = "Forms colour";
             button3.UseVisualStyleBackColor = false;
@@ -624,7 +619,7 @@
             buttonSettings.Location = new Point(106, 0);
             buttonSettings.Name = "buttonSettings";
             buttonSettings.Padding = new Padding(5, 0, 0, 0);
-            buttonSettings.Size = new Size(130, 60);
+            buttonSettings.Size = new Size(133, 60);
             buttonSettings.TabIndex = 11;
             buttonSettings.Text = "Settings";
             buttonSettings.UseVisualStyleBackColor = false;
@@ -637,7 +632,6 @@
             panel11.Controls.Add(button9);
             panel11.Location = new Point(2, 105);
             panel11.Margin = new Padding(6, 0, 6, 0);
-            panel11.MaximumSize = new Size(270, 45);
             panel11.Name = "panel11";
             panel11.Size = new Size(270, 45);
             panel11.TabIndex = 16;
@@ -676,7 +670,7 @@
             button9.Location = new Point(104, 0);
             button9.Name = "button9";
             button9.Padding = new Padding(5, 0, 0, 0);
-            button9.Size = new Size(131, 45);
+            button9.Size = new Size(133, 45);
             button9.TabIndex = 11;
             button9.Text = "Language";
             button9.UseVisualStyleBackColor = false;
@@ -687,7 +681,7 @@
             HelpContainer.Controls.Add(panel12);
             HelpContainer.Controls.Add(panel5);
             HelpContainer.Controls.Add(panel13);
-            HelpContainer.Location = new Point(6, 343);
+            HelpContainer.Location = new Point(6, 336);
             HelpContainer.Margin = new Padding(6, 2, 6, 2);
             HelpContainer.MaximumSize = new Size(237, 152);
             HelpContainer.MinimumSize = new Size(237, 60);
@@ -702,7 +696,6 @@
             panel12.Controls.Add(buttonTutorial);
             panel12.Location = new Point(2, 60);
             panel12.Margin = new Padding(6, 0, 6, 2);
-            panel12.MaximumSize = new Size(270, 45);
             panel12.Name = "panel12";
             panel12.Size = new Size(237, 45);
             panel12.TabIndex = 16;
@@ -742,7 +735,7 @@
             buttonTutorial.Location = new Point(104, 0);
             buttonTutorial.Name = "buttonTutorial";
             buttonTutorial.Padding = new Padding(5, 0, 0, 0);
-            buttonTutorial.Size = new Size(133, 45);
+            buttonTutorial.Size = new Size(130, 45);
             buttonTutorial.TabIndex = 11;
             buttonTutorial.Text = "Tutorial";
             buttonTutorial.UseVisualStyleBackColor = false;
@@ -756,7 +749,7 @@
             panel5.Location = new Point(0, 0);
             panel5.Margin = new Padding(6, 2, 6, 2);
             panel5.Name = "panel5";
-            panel5.Size = new Size(239, 61);
+            panel5.Size = new Size(237, 59);
             panel5.TabIndex = 15;
             // 
             // panel14
@@ -805,7 +798,6 @@
             panel13.Controls.Add(buttonQRVideoT);
             panel13.Location = new Point(2, 102);
             panel13.Margin = new Padding(6, 0, 6, 0);
-            panel13.MaximumSize = new Size(270, 45);
             panel13.Name = "panel13";
             panel13.Size = new Size(237, 45);
             panel13.TabIndex = 17;
@@ -814,7 +806,7 @@
             // 
             panel24.BackColor = Color.Transparent;
             panel24.Controls.Add(pictureBox16);
-            panel24.Location = new Point(0, 2);
+            panel24.Location = new Point(0, 3);
             panel24.Margin = new Padding(6, 1, 6, 2);
             panel24.Name = "panel24";
             panel24.Size = new Size(107, 40);
@@ -844,7 +836,7 @@
             buttonQRVideoT.Location = new Point(104, 0);
             buttonQRVideoT.Name = "buttonQRVideoT";
             buttonQRVideoT.Padding = new Padding(5, 0, 0, 0);
-            buttonQRVideoT.Size = new Size(131, 45);
+            buttonQRVideoT.Size = new Size(130, 45);
             buttonQRVideoT.TabIndex = 11;
             buttonQRVideoT.Text = "Videotutorial";
             buttonQRVideoT.UseVisualStyleBackColor = false;
@@ -855,7 +847,7 @@
             panel9.BackColor = Color.Transparent;
             panel9.Controls.Add(panel6);
             panel9.Controls.Add(button4);
-            panel9.Location = new Point(6, 406);
+            panel9.Location = new Point(6, 399);
             panel9.Margin = new Padding(6, 1, 6, 2);
             panel9.Name = "panel9";
             panel9.Size = new Size(239, 60);
