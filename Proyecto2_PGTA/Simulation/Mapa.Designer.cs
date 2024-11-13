@@ -234,9 +234,9 @@
             pictureBox7.BackColor = Color.White;
             pictureBox7.BackgroundImage = (Image)resources.GetObject("pictureBox7.BackgroundImage");
             pictureBox7.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox7.Location = new Point(1554, 733);
+            pictureBox7.Location = new Point(1707, 715);
             pictureBox7.Name = "pictureBox7";
-            pictureBox7.Size = new Size(216, 44);
+            pictureBox7.Size = new Size(50, 50);
             pictureBox7.TabIndex = 13;
             pictureBox7.TabStop = false;
             // 

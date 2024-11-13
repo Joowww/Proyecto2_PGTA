@@ -216,9 +216,9 @@
             pictureBox7.BackColor = Color.White;
             pictureBox7.BackgroundImage = (Image)resources.GetObject("pictureBox7.BackgroundImage");
             pictureBox7.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox7.Location = new Point(816, 538);
+            pictureBox7.Location = new Point(962, 513);
             pictureBox7.Name = "pictureBox7";
-            pictureBox7.Size = new Size(216, 44);
+            pictureBox7.Size = new Size(50, 50);
             pictureBox7.TabIndex = 9;
             pictureBox7.TabStop = false;
             // 
@@ -255,7 +255,7 @@
             sidebar.Location = new Point(0, 0);
             sidebar.Margin = new Padding(6);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(348, 2000);
+            sidebar.Size = new Size(313, 2000);
             sidebar.TabIndex = 11;
             sidebar.Paint += sidebar_Paint;
             // 
@@ -313,7 +313,7 @@
             panel15.Location = new Point(0, 0);
             panel15.Margin = new Padding(6, 1, 6, 2);
             panel15.Name = "panel15";
-            panel15.Size = new Size(101, 60);
+            panel15.Size = new Size(97, 60);
             panel15.TabIndex = 21;
             // 
             // pictureBox8
@@ -339,7 +339,7 @@
             button2.Location = new Point(106, 0);
             button2.Name = "button2";
             button2.Padding = new Padding(5, 0, 0, 0);
-            button2.Size = new Size(131, 60);
+            button2.Size = new Size(133, 60);
             button2.TabIndex = 11;
             button2.Text = "Home";
             button2.UseVisualStyleBackColor = false;
@@ -353,9 +353,11 @@
             AboutUsContainer.Controls.Add(panel7);
             AboutUsContainer.Location = new Point(6, 215);
             AboutUsContainer.Margin = new Padding(6, 2, 6, 2);
+            AboutUsContainer.MaximumSize = new Size(237, 152);
+            AboutUsContainer.MinimumSize = new Size(237, 60);
             AboutUsContainer.Name = "AboutUsContainer";
-            AboutUsContainer.Size = new Size(237, 53);
-            AboutUsContainer.TabIndex = 11;
+            AboutUsContainer.Size = new Size(237, 60);
+            AboutUsContainer.TabIndex = 17;
             // 
             // panel8
             // 
@@ -375,7 +377,7 @@
             panel19.Location = new Point(0, 2);
             panel19.Margin = new Padding(6, 1, 6, 2);
             panel19.Name = "panel19";
-            panel19.Size = new Size(107, 40);
+            panel19.Size = new Size(95, 40);
             panel19.TabIndex = 24;
             panel19.Paint += panel19_Paint;
             // 
@@ -397,13 +399,13 @@
             buttonContactUs.FlatAppearance.MouseDownBackColor = Color.DarkGray;
             buttonContactUs.FlatAppearance.MouseOverBackColor = Color.DarkGray;
             buttonContactUs.FlatStyle = FlatStyle.Flat;
-            buttonContactUs.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonContactUs.Font = new Font("Segoe UI Semibold", 7.20000029F, FontStyle.Bold, GraphicsUnit.Point);
             buttonContactUs.ForeColor = Color.White;
             buttonContactUs.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonContactUs.Location = new Point(104, 0);
+            buttonContactUs.Location = new Point(91, 0);
             buttonContactUs.Name = "buttonContactUs";
             buttonContactUs.Padding = new Padding(5, 0, 0, 0);
-            buttonContactUs.Size = new Size(131, 45);
+            buttonContactUs.Size = new Size(146, 45);
             buttonContactUs.TabIndex = 11;
             buttonContactUs.Text = "Contact us";
             buttonContactUs.UseVisualStyleBackColor = false;
@@ -417,7 +419,7 @@
             panel3.Location = new Point(0, 0);
             panel3.Margin = new Padding(6, 2, 6, 2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(239, 60);
+            panel3.Size = new Size(237, 60);
             panel3.TabIndex = 13;
             // 
             // panel17
@@ -427,7 +429,7 @@
             panel17.Location = new Point(0, -4);
             panel17.Margin = new Padding(6, 1, 6, 2);
             panel17.Name = "panel17";
-            panel17.Size = new Size(101, 60);
+            panel17.Size = new Size(97, 60);
             panel17.TabIndex = 21;
             // 
             // pictureBox10
@@ -453,7 +455,7 @@
             buttonAboutUs.Location = new Point(106, -1);
             buttonAboutUs.Name = "buttonAboutUs";
             buttonAboutUs.Padding = new Padding(5, 0, 0, 0);
-            buttonAboutUs.Size = new Size(131, 60);
+            buttonAboutUs.Size = new Size(133, 60);
             buttonAboutUs.TabIndex = 11;
             buttonAboutUs.Text = "About us";
             buttonAboutUs.UseVisualStyleBackColor = false;
@@ -477,7 +479,7 @@
             panel18.Location = new Point(0, 2);
             panel18.Margin = new Padding(6, 1, 6, 2);
             panel18.Name = "panel18";
-            panel18.Size = new Size(107, 40);
+            panel18.Size = new Size(95, 40);
             panel18.TabIndex = 25;
             // 
             // pictureBox9
@@ -498,13 +500,13 @@
             buttonGroup.FlatAppearance.MouseDownBackColor = Color.DarkGray;
             buttonGroup.FlatAppearance.MouseOverBackColor = Color.DarkGray;
             buttonGroup.FlatStyle = FlatStyle.Flat;
-            buttonGroup.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonGroup.Font = new Font("Segoe UI Semibold", 7.20000029F, FontStyle.Bold, GraphicsUnit.Point);
             buttonGroup.ForeColor = Color.White;
             buttonGroup.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonGroup.Location = new Point(104, 0);
+            buttonGroup.Location = new Point(91, 0);
             buttonGroup.Name = "buttonGroup";
             buttonGroup.Padding = new Padding(5, 0, 0, 0);
-            buttonGroup.Size = new Size(130, 45);
+            buttonGroup.Size = new Size(146, 45);
             buttonGroup.TabIndex = 11;
             buttonGroup.Text = "Group 9";
             buttonGroup.UseVisualStyleBackColor = false;
@@ -516,7 +518,7 @@
             SettingsContainer.Controls.Add(panel10);
             SettingsContainer.Controls.Add(panel4);
             SettingsContainer.Controls.Add(panel11);
-            SettingsContainer.Location = new Point(6, 272);
+            SettingsContainer.Location = new Point(6, 279);
             SettingsContainer.Margin = new Padding(6, 2, 6, 2);
             SettingsContainer.MaximumSize = new Size(237, 152);
             SettingsContainer.MinimumSize = new Size(237, 60);
@@ -542,7 +544,7 @@
             panel21.Location = new Point(0, 2);
             panel21.Margin = new Padding(6, 1, 6, 2);
             panel21.Name = "panel21";
-            panel21.Size = new Size(107, 40);
+            panel21.Size = new Size(95, 40);
             panel21.TabIndex = 27;
             // 
             // pictureBox19
@@ -563,13 +565,13 @@
             button3.FlatAppearance.MouseDownBackColor = Color.DarkGray;
             button3.FlatAppearance.MouseOverBackColor = Color.DarkGray;
             button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
+            button3.Font = new Font("Segoe UI Semibold", 7.20000029F, FontStyle.Bold, GraphicsUnit.Point);
             button3.ForeColor = Color.White;
             button3.ImageAlign = ContentAlignment.MiddleLeft;
-            button3.Location = new Point(104, 0);
+            button3.Location = new Point(91, 0);
             button3.Name = "button3";
             button3.Padding = new Padding(5, 0, 0, 0);
-            button3.Size = new Size(133, 45);
+            button3.Size = new Size(146, 45);
             button3.TabIndex = 11;
             button3.Text = "Forms colour";
             button3.UseVisualStyleBackColor = false;
@@ -583,7 +585,7 @@
             panel4.Location = new Point(0, 0);
             panel4.Margin = new Padding(6, 3, 6, 3);
             panel4.Name = "panel4";
-            panel4.Size = new Size(239, 60);
+            panel4.Size = new Size(237, 60);
             panel4.TabIndex = 14;
             // 
             // panel16
@@ -593,7 +595,7 @@
             panel16.Location = new Point(0, 0);
             panel16.Margin = new Padding(6, 1, 6, 2);
             panel16.Name = "panel16";
-            panel16.Size = new Size(101, 60);
+            panel16.Size = new Size(97, 60);
             panel16.TabIndex = 21;
             // 
             // pictureBox18
@@ -643,7 +645,7 @@
             panel22.Location = new Point(0, 2);
             panel22.Margin = new Padding(6, 1, 6, 2);
             panel22.Name = "panel22";
-            panel22.Size = new Size(107, 40);
+            panel22.Size = new Size(95, 40);
             panel22.TabIndex = 27;
             // 
             // pictureBox1
@@ -664,13 +666,13 @@
             button9.FlatAppearance.MouseDownBackColor = Color.DarkGray;
             button9.FlatAppearance.MouseOverBackColor = Color.DarkGray;
             button9.FlatStyle = FlatStyle.Flat;
-            button9.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
+            button9.Font = new Font("Segoe UI Semibold", 7.20000029F, FontStyle.Bold, GraphicsUnit.Point);
             button9.ForeColor = Color.White;
             button9.ImageAlign = ContentAlignment.MiddleLeft;
-            button9.Location = new Point(104, 0);
+            button9.Location = new Point(91, 0);
             button9.Name = "button9";
             button9.Padding = new Padding(5, 0, 0, 0);
-            button9.Size = new Size(133, 45);
+            button9.Size = new Size(146, 45);
             button9.TabIndex = 11;
             button9.Text = "Language";
             button9.UseVisualStyleBackColor = false;
@@ -681,7 +683,7 @@
             HelpContainer.Controls.Add(panel12);
             HelpContainer.Controls.Add(panel5);
             HelpContainer.Controls.Add(panel13);
-            HelpContainer.Location = new Point(6, 336);
+            HelpContainer.Location = new Point(6, 343);
             HelpContainer.Margin = new Padding(6, 2, 6, 2);
             HelpContainer.MaximumSize = new Size(237, 152);
             HelpContainer.MinimumSize = new Size(237, 60);
@@ -707,7 +709,7 @@
             panel23.Location = new Point(0, 2);
             panel23.Margin = new Padding(6, 1, 6, 2);
             panel23.Name = "panel23";
-            panel23.Size = new Size(107, 40);
+            panel23.Size = new Size(95, 40);
             panel23.TabIndex = 27;
             // 
             // pictureBox13
@@ -729,13 +731,13 @@
             buttonTutorial.FlatAppearance.MouseDownBackColor = Color.DarkGray;
             buttonTutorial.FlatAppearance.MouseOverBackColor = Color.DarkGray;
             buttonTutorial.FlatStyle = FlatStyle.Flat;
-            buttonTutorial.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonTutorial.Font = new Font("Segoe UI Semibold", 7.20000029F, FontStyle.Bold, GraphicsUnit.Point);
             buttonTutorial.ForeColor = Color.White;
             buttonTutorial.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonTutorial.Location = new Point(104, 0);
+            buttonTutorial.Location = new Point(91, 0);
             buttonTutorial.Name = "buttonTutorial";
             buttonTutorial.Padding = new Padding(5, 0, 0, 0);
-            buttonTutorial.Size = new Size(130, 45);
+            buttonTutorial.Size = new Size(143, 45);
             buttonTutorial.TabIndex = 11;
             buttonTutorial.Text = "Tutorial";
             buttonTutorial.UseVisualStyleBackColor = false;
@@ -749,7 +751,7 @@
             panel5.Location = new Point(0, 0);
             panel5.Margin = new Padding(6, 2, 6, 2);
             panel5.Name = "panel5";
-            panel5.Size = new Size(237, 59);
+            panel5.Size = new Size(236, 59);
             panel5.TabIndex = 15;
             // 
             // panel14
@@ -759,7 +761,7 @@
             panel14.Location = new Point(0, 0);
             panel14.Margin = new Padding(6, 1, 6, 2);
             panel14.Name = "panel14";
-            panel14.Size = new Size(103, 60);
+            panel14.Size = new Size(97, 60);
             panel14.TabIndex = 21;
             // 
             // pictureBox11
@@ -785,7 +787,7 @@
             buttonHelp.Location = new Point(106, 0);
             buttonHelp.Name = "buttonHelp";
             buttonHelp.Padding = new Padding(5, 0, 0, 0);
-            buttonHelp.Size = new Size(133, 60);
+            buttonHelp.Size = new Size(130, 60);
             buttonHelp.TabIndex = 11;
             buttonHelp.Text = "Help";
             buttonHelp.UseVisualStyleBackColor = false;
@@ -809,7 +811,7 @@
             panel24.Location = new Point(0, 3);
             panel24.Margin = new Padding(6, 1, 6, 2);
             panel24.Name = "panel24";
-            panel24.Size = new Size(107, 40);
+            panel24.Size = new Size(95, 40);
             panel24.TabIndex = 27;
             // 
             // pictureBox16
@@ -830,13 +832,13 @@
             buttonQRVideoT.FlatAppearance.MouseDownBackColor = Color.DarkGray;
             buttonQRVideoT.FlatAppearance.MouseOverBackColor = Color.DarkGray;
             buttonQRVideoT.FlatStyle = FlatStyle.Flat;
-            buttonQRVideoT.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonQRVideoT.Font = new Font("Segoe UI Semibold", 7.20000029F, FontStyle.Bold, GraphicsUnit.Point);
             buttonQRVideoT.ForeColor = Color.White;
             buttonQRVideoT.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonQRVideoT.Location = new Point(104, 0);
+            buttonQRVideoT.Location = new Point(91, 0);
             buttonQRVideoT.Name = "buttonQRVideoT";
             buttonQRVideoT.Padding = new Padding(5, 0, 0, 0);
-            buttonQRVideoT.Size = new Size(130, 45);
+            buttonQRVideoT.Size = new Size(144, 45);
             buttonQRVideoT.TabIndex = 11;
             buttonQRVideoT.Text = "Videotutorial";
             buttonQRVideoT.UseVisualStyleBackColor = false;
@@ -847,7 +849,7 @@
             panel9.BackColor = Color.Transparent;
             panel9.Controls.Add(panel6);
             panel9.Controls.Add(button4);
-            panel9.Location = new Point(6, 399);
+            panel9.Location = new Point(6, 406);
             panel9.Margin = new Padding(6, 1, 6, 2);
             panel9.Name = "panel9";
             panel9.Size = new Size(239, 60);
@@ -861,7 +863,7 @@
             panel6.Location = new Point(0, 0);
             panel6.Margin = new Padding(6, 1, 6, 2);
             panel6.Name = "panel6";
-            panel6.Size = new Size(103, 60);
+            panel6.Size = new Size(97, 60);
             panel6.TabIndex = 20;
             // 
             // pictureBox12

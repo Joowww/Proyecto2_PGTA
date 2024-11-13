@@ -64,11 +64,11 @@
             // 
             pictureBox7.BackColor = Color.White;
             pictureBox7.BackgroundImage = (Image)resources.GetObject("pictureBox7.BackgroundImage");
-            pictureBox7.BackgroundImageLayout = ImageLayout.Center;
-            pictureBox7.Location = new Point(1082, 839);
-            pictureBox7.Margin = new Padding(4, 4, 4, 4);
+            pictureBox7.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox7.Location = new Point(1308, 833);
+            pictureBox7.Margin = new Padding(4);
             pictureBox7.Name = "pictureBox7";
-            pictureBox7.Size = new Size(297, 62);
+            pictureBox7.Size = new Size(50, 50);
             pictureBox7.TabIndex = 10;
             pictureBox7.TabStop = false;
             // 
@@ -81,7 +81,7 @@
             buttonClose.FlatStyle = FlatStyle.Flat;
             buttonClose.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             buttonClose.Location = new Point(469, 797);
-            buttonClose.Margin = new Padding(4, 4, 4, 4);
+            buttonClose.Margin = new Padding(4);
             buttonClose.Name = "buttonClose";
             buttonClose.Size = new Size(385, 70);
             buttonClose.TabIndex = 13;
@@ -253,7 +253,7 @@
             Controls.Add(label1);
             Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "Tutorial";
             Text = "Tutorial";
             Load += Tutorial_Load;

@@ -152,25 +152,8 @@ namespace Simulation
             sidebar.MinimumSize = new Size(minWidthSb, sidebar.Height);
             sidebar.MaximumSize = new Size(maxWidthSb, sidebar.Height);
 
-            //int minHeightCont1 = recPanel5.Bottom - recPanel5.Top;
-            //int maxHeightCont1 = recPanel9.Bottom - recPanel5.Top;
-            //int minWidthCont1 = recPanel4.Right - sidebar.Left;
-            //int maxWidthCont1 = recPanel5.Right - sidebar.Left;
-
-            //AboutUsContainer.MinimumSize = new Size(minWidthCont1, minHeightCont1);
-            //AboutUsContainer.MaximumSize = new Size(maxWidthCont1, maxHeightCont1);
-
-            //int minHeightCont2 = recPanel11.Bottom - recPanel11.Top;
-            //int maxHeightCont2 = recPanel14.Bottom - recPanel11.Top;
-
-            //SettingsContainer.MinimumSize = new Size(SettingsContainer.Width, minHeightCont2);
-            //SettingsContainer.MaximumSize = new Size(SettingsContainer.Width, maxHeightCont2);
-
-            //int minHeightCont3 = recPanel16.Bottom - recPanel16.Top;
-            //int maxHeightCont3 = recPanel21.Bottom - recPanel16.Top;
-
-            //HelpContainer.MinimumSize = new Size(HelpContainer.Width, minHeightCont3);
-            //HelpContainer.MaximumSize = new Size(HelpContainer.Width, maxHeightCont3);
+            pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
+            pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
         }
 
         private void Welcome_Resiz(object sender, EventArgs e)
@@ -327,6 +310,8 @@ namespace Simulation
                 int maxWidthSb = rightPosition - sidebar.Left;
                 sidebar.MaximumSize = new Size(maxWidthSb, sidebar.Height);
             }
+            pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
+            pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
 
             sidebarExpand = true;
 
@@ -363,18 +348,22 @@ namespace Simulation
                 sidebar.MaximumSize = new Size(maxWidthSb, sidebar.Height);
             }
 
+            pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
+            pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
+
             sidebarExpand = true;
 
         }
 
         private void AdjustAboutUsContainer1Size()
         {
-            AboutUsContainer.Location = new Point(AboutUsContainer.Location.X, panel3.Top);
+
             int minHeightCont1 = panel3.Bottom - panel3.Top;
             int maxHeightCont1 = panel8.Bottom - panel3.Top;
 
             int minWidthCont1 = panel17.Right - sidebar.Left;
             int maxWidthCont1 = panel3.Right - sidebar.Left;
+
 
             AboutUsContainer.MinimumSize = new Size(minWidthCont1, minHeightCont1);
             AboutUsContainer.MaximumSize = new Size(maxWidthCont1, maxHeightCont1);

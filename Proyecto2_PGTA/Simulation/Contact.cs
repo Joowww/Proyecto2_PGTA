@@ -41,6 +41,9 @@ namespace Simulation
             recLbl7 = new Rectangle(label7.Location, label7.Size);
             recLbl8 = new Rectangle(label8.Location, label8.Size);
             recPtb1 = new Rectangle(pictureBox7.Location, pictureBox7.Size);
+
+            pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
+            pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
         }
         private void Contact_Resiz(object sender, EventArgs e)
         {
@@ -80,6 +83,9 @@ namespace Simulation
             // Restauramos el tamaño de la fuente original
             control.Font = new Font(control.Font.FontFamily, 10, control.Font.Style);
 
+            pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
+            pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
+
         }
         private void resize_Control(Control control, Rectangle rect)
         {
@@ -98,6 +104,9 @@ namespace Simulation
             // Ajustar tamaño de la fuente
             float fontSizeRatio = Math.Min(xRatio, yRatio); // Escala basada en la menor proporción
             control.Font = new Font(control.Font.FontFamily, control.Font.Size * fontSizeRatio, control.Font.Style);
+
+            pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
+            pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
 
         }
         private void buttonClose_Click(object sender, EventArgs e)

@@ -42,7 +42,9 @@ namespace Simulation
             recLbl1 = new Rectangle(label1.Location, label1.Size);
             recLbl2 = new Rectangle(label3.Location, label3.Size);
             recLbl3 = new Rectangle(label5.Location, label5.Size);
-            recPtb1 = new Rectangle(panel1.Location, panel1.Size);
+            recPtb1 = new Rectangle(pictureBox7.Location, pictureBox7.Size);
+            pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
+            pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
         }
         private void Target_Resiz(object sender, EventArgs e)
         {
@@ -54,10 +56,10 @@ namespace Simulation
                 resize_Control(autofillBtn, recBut3);
                 resize_Control(textBox1, recTxt1);
                 resize_Control(textBox2, recTxt2);
-                resize_Control(panel1, recPtb1);
                 resize_Control(label3, recLbl2);
                 resize_Control(label1, recLbl1);
                 resize_Control(label5, recLbl3);
+                resize_Control(pictureBox7, recPtb1);
             }
             else if (this.WindowState == FormWindowState.Normal)
             {
@@ -66,10 +68,10 @@ namespace Simulation
                 restore_ControlSize(autofillBtn, recBut3);
                 restore_ControlSize(textBox1, recTxt1);
                 restore_ControlSize(textBox2, recTxt2);
-                restore_ControlSize(panel1, recPtb1);
                 restore_ControlSize(label3, recLbl2);
                 restore_ControlSize(label1, recLbl1);
                 restore_ControlSize(label5, recLbl3);
+                restore_ControlSize(pictureBox7, recPtb1);
             }
         }
         private void restore_ControlSize(Control control, Rectangle originalRect)
@@ -79,6 +81,9 @@ namespace Simulation
 
             // Restauramos el tamaño de la fuente original
             control.Font = new Font(control.Font.FontFamily, 10, control.Font.Style); // Ajusta el tamaño de la fuente original si es necesario
+
+            pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
+            pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
         }
         private void resize_Control(Control control, Rectangle rect)
         {
@@ -97,6 +102,8 @@ namespace Simulation
             float fontSizeRatio = Math.Min(xRatio, yRatio); // Escala basada en la menor proporción
             control.Font = new Font(control.Font.FontFamily, control.Font.Size * fontSizeRatio, control.Font.Style);
 
+            pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
+            pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
         }
         public void acceptBtn_Click(object sender, EventArgs e)
         {

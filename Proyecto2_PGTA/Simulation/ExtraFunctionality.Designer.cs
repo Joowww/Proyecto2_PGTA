@@ -56,7 +56,7 @@
             targetBtn.FlatAppearance.MouseOverBackColor = Color.DarkGray;
             targetBtn.FlatStyle = FlatStyle.Flat;
             targetBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            targetBtn.Location = new Point(254, 299);
+            targetBtn.Location = new Point(254, 268);
             targetBtn.Name = "targetBtn";
             targetBtn.Size = new Size(280, 50);
             targetBtn.TabIndex = 1;
@@ -88,10 +88,10 @@
             // 
             pictureBox7.BackColor = Color.White;
             pictureBox7.BackgroundImage = (Image)resources.GetObject("pictureBox7.BackgroundImage");
-            pictureBox7.BackgroundImageLayout = ImageLayout.Center;
-            pictureBox7.Location = new Point(587, 408);
+            pictureBox7.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox7.Location = new Point(738, 398);
             pictureBox7.Name = "pictureBox7";
-            pictureBox7.Size = new Size(216, 44);
+            pictureBox7.Size = new Size(50, 50);
             pictureBox7.TabIndex = 12;
             pictureBox7.TabStop = false;
             // 
@@ -103,7 +103,7 @@
             cancelBtn.FlatAppearance.MouseOverBackColor = Color.DarkGray;
             cancelBtn.FlatStyle = FlatStyle.Flat;
             cancelBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            cancelBtn.Location = new Point(673, 362);
+            cancelBtn.Location = new Point(590, 340);
             cancelBtn.Name = "cancelBtn";
             cancelBtn.Size = new Size(115, 40);
             cancelBtn.TabIndex = 14;

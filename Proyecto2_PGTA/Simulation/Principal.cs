@@ -107,6 +107,9 @@ namespace Simulation
             recCont2 = new Rectangle(SettingsContainer.Location, SettingsContainer.Size);
             //recSb1 = new Rectangle(sidebar.Location, sidebar.Size);
 
+            pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
+            pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
+
             int minWidthSb = recPanel6.Right - sidebar.Left;
             int maxWidthSb = recPanel5.Right - sidebar.Left;
 
@@ -232,6 +235,10 @@ namespace Simulation
                 int maxWidthSb = rightPosition - sidebar.Left;
                 sidebar.MaximumSize = new Size(maxWidthSb, sidebar.Height);
             }
+
+            pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
+            pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
+
             sidebarExpand = true;
 
         }
@@ -266,6 +273,10 @@ namespace Simulation
                 int maxWidthSb = rightPosition - sidebar.Left;
                 sidebar.MaximumSize = new Size(maxWidthSb, sidebar.Height);
             }
+
+            pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
+            pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
+
             sidebarExpand = true;
         }
 

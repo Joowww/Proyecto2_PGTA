@@ -34,6 +34,9 @@ namespace Simulation
             recLbl3 = new Rectangle(label3.Location, label3.Size);
             recPtb1 = new Rectangle(pictureBox2.Location, pictureBox2.Size);
             recPtb2 = new Rectangle(pictureBox7.Location, pictureBox7.Size);
+
+            pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
+            pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
         }
 
         private void VideoTutorial_Resiz(object sender, EventArgs e)
@@ -70,6 +73,9 @@ namespace Simulation
             {
                 (control as PictureBox).SizeMode = PictureBoxSizeMode.Normal;
             }
+
+            pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
+            pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
         }
         private void resize_Control(Control control, Rectangle rect)
         {
@@ -93,7 +99,8 @@ namespace Simulation
             {
                 (control as PictureBox).SizeMode = PictureBoxSizeMode.StretchImage;  // Esto asegura que la imagen se estire al tamaño del PictureBox
             }
-
+            pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
+            pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
         }
 
         private void VideoTutorial_Load(object sender, EventArgs e)

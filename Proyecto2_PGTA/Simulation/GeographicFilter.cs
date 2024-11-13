@@ -54,6 +54,9 @@ namespace Simulation
             recTxtb3 = new Rectangle(textBox3.Location, textBox3.Size);
             recTxtb4 = new Rectangle(textBox4.Location, textBox4.Size);
             recPtb1 = new Rectangle(pictureBox7.Location, pictureBox7.Size);
+
+            pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
+            pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
         }
 
         private void GeographicFilter_Resiz(object sender, EventArgs e)
@@ -98,6 +101,9 @@ namespace Simulation
             // Restauramos el tamaño de la fuente original
             control.Font = new Font(control.Font.FontFamily, 10, control.Font.Style);
 
+            pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
+            pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
+
         }
         private void resize_Control(Control control, Rectangle rect)
         {
@@ -117,6 +123,8 @@ namespace Simulation
             float fontSizeRatio = Math.Min(xRatio, yRatio); // Escala basada en la menor proporción
             control.Font = new Font(control.Font.FontFamily, control.Font.Size * fontSizeRatio, control.Font.Style);
 
+            pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
+            pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
         }
 
         private void applyBtn_Click(object sender, EventArgs e)

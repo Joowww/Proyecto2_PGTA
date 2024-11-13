@@ -38,9 +38,7 @@
             label3 = new Label();
             label5 = new Label();
             cancelBtn = new Button();
-            panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
-            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -108,10 +106,10 @@
             pictureBox7.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             pictureBox7.BackColor = Color.White;
             pictureBox7.BackgroundImage = (Image)resources.GetObject("pictureBox7.BackgroundImage");
-            pictureBox7.BackgroundImageLayout = ImageLayout.Center;
-            pictureBox7.Location = new Point(-6, 0);
+            pictureBox7.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox7.Location = new Point(738, 388);
             pictureBox7.Name = "pictureBox7";
-            pictureBox7.Size = new Size(235, 52);
+            pictureBox7.Size = new Size(50, 50);
             pictureBox7.TabIndex = 13;
             pictureBox7.TabStop = false;
             // 
@@ -143,7 +141,7 @@
             cancelBtn.FlatAppearance.MouseOverBackColor = Color.DarkGray;
             cancelBtn.FlatStyle = FlatStyle.Flat;
             cancelBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            cancelBtn.Location = new Point(673, 317);
+            cancelBtn.Location = new Point(590, 340);
             cancelBtn.Name = "cancelBtn";
             cancelBtn.Size = new Size(115, 40);
             cancelBtn.TabIndex = 16;
@@ -151,21 +149,12 @@
             cancelBtn.UseVisualStyleBackColor = true;
             cancelBtn.Click += cancelBtn_Click;
             // 
-            // panel1
-            // 
-            panel1.BackgroundImageLayout = ImageLayout.Stretch;
-            panel1.Controls.Add(pictureBox7);
-            panel1.Location = new Point(559, 385);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(229, 53);
-            panel1.TabIndex = 17;
-            // 
             // Target
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(panel1);
+            Controls.Add(pictureBox7);
             Controls.Add(cancelBtn);
             Controls.Add(label5);
             Controls.Add(label3);
@@ -180,7 +169,6 @@
             Text = "Target";
             Load += Target_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
-            panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -196,6 +184,5 @@
         private Label label3;
         private Label label5;
         private Button cancelBtn;
-        private Panel panel1;
     }
 }

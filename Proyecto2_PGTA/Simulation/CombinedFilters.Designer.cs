@@ -41,7 +41,7 @@
             checkedListBox1.Cursor = Cursors.Hand;
             checkedListBox1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             checkedListBox1.FormattingEnabled = true;
-            checkedListBox1.Location = new Point(195, 96);
+            checkedListBox1.Location = new Point(188, 62);
             checkedListBox1.Name = "checkedListBox1";
             checkedListBox1.Size = new Size(389, 149);
             checkedListBox1.TabIndex = 0;
@@ -55,7 +55,7 @@
             acceptBtn.FlatAppearance.MouseOverBackColor = Color.DarkGray;
             acceptBtn.FlatStyle = FlatStyle.Flat;
             acceptBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            acceptBtn.Location = new Point(256, 315);
+            acceptBtn.Location = new Point(249, 261);
             acceptBtn.Name = "acceptBtn";
             acceptBtn.Size = new Size(280, 50);
             acceptBtn.TabIndex = 1;
@@ -67,10 +67,10 @@
             // 
             pictureBox7.BackColor = Color.White;
             pictureBox7.BackgroundImage = (Image)resources.GetObject("pictureBox7.BackgroundImage");
-            pictureBox7.BackgroundImageLayout = ImageLayout.Center;
-            pictureBox7.Location = new Point(563, 421);
+            pictureBox7.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox7.Location = new Point(698, 405);
             pictureBox7.Name = "pictureBox7";
-            pictureBox7.Size = new Size(216, 44);
+            pictureBox7.Size = new Size(50, 50);
             pictureBox7.TabIndex = 11;
             pictureBox7.TabStop = false;
             // 
@@ -82,7 +82,7 @@
             cancelBtn.FlatAppearance.MouseOverBackColor = Color.DarkGray;
             cancelBtn.FlatStyle = FlatStyle.Flat;
             cancelBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            cancelBtn.Location = new Point(650, 375);
+            cancelBtn.Location = new Point(590, 340);
             cancelBtn.Name = "cancelBtn";
             cancelBtn.Size = new Size(115, 40);
             cancelBtn.TabIndex = 14;
