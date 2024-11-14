@@ -29,7 +29,7 @@ namespace AstDecoder
         // Variables for LAT, LON and H
         public string LAT_deg { get; set; }
         public string LON_deg { get; set; }
-        public string H_Corrected_m { get; set; }
+        public string H_m { get; set; }
 
         // Variables for Data Item (020) [1+ ("Variable") Oct]
         public string TYP { get; set; }
@@ -130,6 +130,8 @@ namespace AstDecoder
         public string AIC { get; set; }
         public string B1A { get; set; }
         public string B1B { get; set; }
+
+        public string Altitude_Corrected_m { get; set; }
     }
 
     public class Function
@@ -1125,21 +1127,26 @@ namespace AstDecoder
                 bool PRES = false;
 
                 // Check if the barometric pressure is within the range of 1013 to 1013.3 hPa or is zero
-                if ((barometricPressure >= 1013 && barometricPressure <= 1013.3) || (barometricPressure == 0)) 
+                if ((barometricPressure >= 1013 && barometricPressure <= 1013.3)||barometricPressure == 0) 
                 { 
-                    PRES = true; 
+                    PRES = true;
+                    Variable048.Altitude_Corrected_m = Convert.ToString(flightLevel * 100 * 0.3048);
                 }
                 // QNH correction if the altitude is less than 6000 feet
                 if (PRES == false && altitude < 6000 && barometricPressure != 0)
                 {
                     double modeC = altitude + (Convert.ToDouble(barometricPressure) - 1013.2) * 30;
+                    Variable048.ModeC_corrected = Convert.ToString(modeC);
+                    Variable048.Altitude_Corrected_m = Convert.ToString(modeC * 0.3048);
 
-                    // Assign the unrounded modeC value to H_Corrected_m and round for ModeC_corrected
-                    Variable048.H_Corrected_m = (modeC * 0.3048).ToString(); // Assign unrounded value
-                    Variable048.ModeC_corrected = Math.Round(modeC).ToString(); // Assign rounded value
+                }
+                if (PRES == false && altitude >= 6000)
+                {
+                    Variable048.Altitude_Corrected_m = Convert.ToString(flightLevel * 100 * 0.3048);
                 }
                 if (altitude <= 0)
                     Altitude = 0;
+
             }
             // Call LatitudeLongitud function with Variable048 and the corrected altitude
             LatitudeLongitud(Variable048, Altitude);
@@ -1194,11 +1201,7 @@ namespace AstDecoder
             data048.LAT_deg = Convert.ToString(geodCoords.Lat * 180 / Math.PI);
             data048.LON_deg = Convert.ToString(geodCoords.Lon * 180 / Math.PI);
 
-            // Assign geodesic height to H_Corrected_m if Mode C corrected height is not set
-            if (string.IsNullOrEmpty(data048.ModeC_corrected))
-            {
-                data048.H_Corrected_m = geodCoords.Height.ToString();
-            }
+            data048.H_m = geodCoords.Height.ToString();
 
         }
     }

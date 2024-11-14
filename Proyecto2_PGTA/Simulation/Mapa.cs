@@ -133,7 +133,7 @@ namespace Simulation
             dataGridView1.Columns[0].Name = "Time (s)";
             dataGridView1.Columns[1].Name = "Latitude (°)";
             dataGridView1.Columns[2].Name = "Longitude (°)";
-            dataGridView1.Columns[3].Name = "Corrected Height (m)";
+            dataGridView1.Columns[3].Name = "Corrected Altitude (m)";
             dataGridView1.Columns[4].Name = "Type";
             dataGridView1.Columns[5].Name = "Target address";
             dataGridView1.Visible = true;
@@ -300,7 +300,7 @@ namespace Simulation
                 int time = Convert.ToInt32(aircraft[0]);
                 double latitude = Convert.ToDouble(aircraft[1]);
                 double longitude = Convert.ToDouble(aircraft[2]);
-                double height = Convert.ToDouble(aircraft[3]);
+                string height = Convert.ToString(aircraft[3]);
                 string type = Convert.ToString(aircraft[4]);
                 string ta = Convert.ToString(aircraft[6]);
 
@@ -369,7 +369,7 @@ namespace Simulation
                 // Obtener los datos del avión
                 double latitude = Convert.ToDouble(aircraft[1]);
                 double longitude = Convert.ToDouble(aircraft[2]);
-                double H = Convert.ToDouble(aircraft[3]);
+                string Altitude_corrected = Convert.ToString(aircraft[3]);
                 string TA = Convert.ToString(aircraft[6]);
 
                 PointLatLng Position = new PointLatLng(latitude, longitude);
@@ -500,7 +500,7 @@ namespace Simulation
 
                     // Agregar un tooltip al marcador
                     marker.ToolTip = new GMap.NET.WindowsForms.ToolTips.GMapRoundedToolTip(marker);
-                    marker.ToolTipText = $"Target address: {TA}\nLatitude (°): {latitude}\nLongitude (°): {longitude}\nCorrected Height (m): {H}";
+                    marker.ToolTipText = $"Target address: {TA}\nLatitude (°): {latitude}\nLongitude (°): {longitude}\nCorrected Altitude (m): {Altitude_corrected}";
 
                     // Agregar el nuevo marcador a la capa de marcadores
                     markersOverlay.Markers.Add(marker);

@@ -768,7 +768,7 @@ namespace Simulation
                     int UTC_time_s = Convert.ToInt32(row[4]);
                     double LAT = Convert.ToDouble(row[5]);
                     double LON = Convert.ToDouble(row[6]);
-                    double H = Convert.ToDouble(row[7]);
+                    string Altitude_Corrected = Convert.ToString(row[77]);
                     string TYP = Convert.ToString(row[8]);
                     string MODE_3A = Convert.ToString(row[23]);
                     string TA = Convert.ToString(row[35]);
@@ -782,7 +782,7 @@ namespace Simulation
                         message.Add(UTC_time_s);
                         message.Add(LAT);
                         message.Add(LON);
-                        message.Add(H);
+                        message.Add(Altitude_Corrected);
                         message.Add(TYP);
                         message.Add(MODE_3A);
                         message.Add(TA);
@@ -996,8 +996,8 @@ namespace Simulation
             // Recorremos todos los mensajes
             foreach (var message in allMessages)
             {
-                double H = Convert.ToInt32(message[3]);
-                double h = H * 3.280839895;
+                string H = Convert.ToString(message[3]);
+                double h = Convert.ToDouble(H) * 3.280839895;
                 if (h <= 6000)
                 {
                     filtredMessages.Add(message);
@@ -1017,7 +1017,8 @@ namespace Simulation
             {
 
                 string STAT = Convert.ToString(message[7]);
-                double H = Convert.ToInt32(message[3]);
+                string H_s = Convert.ToString(message[3]);
+                double H = Convert.ToDouble(H_s);
 
                 if (STAT == "No alert, no SPI, aircraft airborne" || STAT == "Alert, no SPI, aircraft airborne")
                 {
