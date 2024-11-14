@@ -62,6 +62,7 @@ namespace Simulation
         private Rectangle recLbl1;
         private Rectangle recLbl2;
         private Rectangle recLbl3;
+        private Rectangle recLbl4;
         private Rectangle recTb1;
         private Rectangle recPtb1;
         private Rectangle recPanel1;
@@ -155,6 +156,7 @@ namespace Simulation
             recLbl1 = new Rectangle(label1.Location, label1.Size);
             recLbl2 = new Rectangle(label2.Location, label2.Size);
             recLbl3 = new Rectangle(label3.Location, label3.Size);
+            recLbl4 = new Rectangle(label4.Location, label4.Size);
             recTb1 = new Rectangle(trackBar1.Location, trackBar1.Size);
             recPtb1 = new Rectangle(pictureBox7.Location, pictureBox7.Size);
             recPanel1 = new Rectangle(panel1.Location, panel1.Size);
@@ -181,6 +183,7 @@ namespace Simulation
                 resize_Control(label1, recLbl1);
                 resize_Control(label2, recLbl2);
                 resize_Control(label3, recLbl3);
+                resize_Control(label4, recLbl4);
                 resize_Control(trackBar1, recTb1);
                 resize_Control(pictureBox7, recPtb1);
                 resize_Control(panel1, recPanel1);
@@ -202,6 +205,7 @@ namespace Simulation
                 restore_ControlSize(label1, recLbl1);
                 restore_ControlSize(label2, recLbl2);
                 restore_ControlSize(label3, recLbl3);
+                restore_ControlSize(label4, recLbl4);
                 restore_ControlSize(trackBar1, recTb1);
                 restore_ControlSize(pictureBox7, recPtb1);
                 restore_ControlSize(panel1, recPanel1);

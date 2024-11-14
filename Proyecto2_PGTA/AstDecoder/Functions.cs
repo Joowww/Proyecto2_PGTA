@@ -1125,9 +1125,12 @@ namespace AstDecoder
                 bool PRES = false;
 
                 // Check if the barometric pressure is within the range of 1013 to 1013.3 hPa or is zero
-                if ((barometricPressure >= 1013 && barometricPressure <= 1013.3) || (barometricPressure == 0)) { PRES = true; }
+                if ((barometricPressure >= 1013 && barometricPressure <= 1013.3) || (barometricPressure == 0)) 
+                { 
+                    PRES = true; 
+                }
                 // QNH correction if the altitude is less than 6000 feet
-                if (PRES == false && altitude < 6000 && barometricPressure != 0 && altitude>0)
+                if (PRES == false && altitude < 6000 && barometricPressure != 0)
                 {
                     double modeC = altitude + (Convert.ToDouble(barometricPressure) - 1013.2) * 30;
 
