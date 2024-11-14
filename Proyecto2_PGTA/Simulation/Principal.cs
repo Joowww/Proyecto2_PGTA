@@ -775,7 +775,7 @@ namespace Simulation
                     string STAT = Convert.ToString(row[70]);
 
                     // Validar que TA no sea null o una cadena vacía antes de agregar a allMessages
-                    if (TA != "N/A")
+                    if (TA != "N/A" && Altitude_Corrected != "N/A")
                     {
 
                         List<object> message = new List<object>();

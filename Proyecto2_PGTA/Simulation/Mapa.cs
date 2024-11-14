@@ -802,7 +802,7 @@ namespace Simulation
                 {
                     // Separar la línea en columnas
                     string[] row = line.Split('\t').Select(e => e.Trim('\"')).ToArray();
-                    string key = $"{row[4]}|{row[5]}|{row[6]}|{row[7]}|{row[8]}|{row[23]}|{row[35]}";
+                    string key = $"{row[4]}|{row[5]}|{row[6]}|{row[77]}|{row[8]}|{row[23]}|{row[35]}";
 
                     // Si el mensaje está en el filtro, agregarlo a la lista
                     if (filteredKeys.Contains(key))
