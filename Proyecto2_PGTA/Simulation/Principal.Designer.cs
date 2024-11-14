@@ -154,7 +154,7 @@
             sidebar.Controls.Add(HelpContainer);
             sidebar.Location = new Point(-1, -1);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(112, 2000);
+            sidebar.Size = new Size(111, 2000);
             sidebar.TabIndex = 11;
             // 
             // panel1
@@ -529,7 +529,7 @@
             buttonHelp.Location = new Point(107, 0);
             buttonHelp.Name = "buttonHelp";
             buttonHelp.Padding = new Padding(5, 0, 0, 0);
-            buttonHelp.Size = new Size(135, 59);
+            buttonHelp.Size = new Size(130, 59);
             buttonHelp.TabIndex = 11;
             buttonHelp.Text = "Help";
             buttonHelp.UseVisualStyleBackColor = false;

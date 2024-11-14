@@ -106,27 +106,14 @@ namespace Simulation
             recCont1 = new Rectangle(HelpContainer.Location, HelpContainer.Size);
             recCont2 = new Rectangle(SettingsContainer.Location, SettingsContainer.Size);
             //recSb1 = new Rectangle(sidebar.Location, sidebar.Size);
-
-            pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
-            pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
-
-            int minWidthSb = recPanel6.Right - sidebar.Left;
-            int maxWidthSb = recPanel5.Right - sidebar.Left;
+            int minWidthSb = recPanel2.Right - sidebar.Left;
+            int maxWidthSb = recPanel1.Right - sidebar.Left;
 
             sidebar.MinimumSize = new Size(minWidthSb, sidebar.Height);
             sidebar.MaximumSize = new Size(maxWidthSb, sidebar.Height);
 
-            int minHeightCont1 = recPanel1.Bottom - recPanel1.Top;
-            int maxHeightCont1 = recPanel3.Bottom - recPanel1.Top;
-
-            HelpContainer.MinimumSize = new Size(HelpContainer.Width, minHeightCont1);
-            HelpContainer.MaximumSize = new Size(HelpContainer.Width, maxHeightCont1);
-
-            int minHeightCont2 = recPanel5.Bottom - recPanel5.Top;
-            int maxHeightCont2 = recPanel9.Bottom - recPanel5.Top;
-
-            SettingsContainer.MinimumSize = new Size(SettingsContainer.Width, minHeightCont2);
-            SettingsContainer.MaximumSize = new Size(SettingsContainer.Width, maxHeightCont2);
+            pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
+            pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
 
             StartSimulation();
         }
@@ -285,8 +272,14 @@ namespace Simulation
             int minHeightCont1 = panel5.Bottom - panel5.Top;
             int maxHeightCont1 = panel12.Bottom - panel5.Top;
 
-            HelpContainer.MinimumSize = new Size(HelpContainer.Width, minHeightCont1);
-            HelpContainer.MaximumSize = new Size(HelpContainer.Width, maxHeightCont1);
+            int minWidthCont1 = panel17.Right - sidebar.Left;
+            int maxWidthCont1 = panel5.Right - sidebar.Left;
+
+
+            HelpContainer.MinimumSize = new Size(minWidthCont1, minHeightCont1);
+            HelpContainer.MaximumSize = new Size(maxWidthCont1, maxHeightCont1);
+
+            sidebarExpand = true;
         }
 
         private void AdjustAboutUsContainer2Size()
@@ -296,8 +289,14 @@ namespace Simulation
             int minHeightCont2 = panel4.Bottom - panel4.Top;
             int maxHeightCont2 = panel11.Bottom - panel4.Top;
 
-            SettingsContainer.MinimumSize = new Size(SettingsContainer.Width, minHeightCont2);
-            SettingsContainer.MaximumSize = new Size(SettingsContainer.Width, maxHeightCont2);
+            int minWidthCont1 = panel17.Right - sidebar.Left;
+            int maxWidthCont1 = panel5.Right - sidebar.Left;
+
+
+            SettingsContainer.MinimumSize = new Size(minWidthCont1, minHeightCont2);
+            SettingsContainer.MaximumSize = new Size(maxWidthCont1, maxHeightCont2);
+
+            sidebarExpand = true;
 
         }
         private void StartSimulation()

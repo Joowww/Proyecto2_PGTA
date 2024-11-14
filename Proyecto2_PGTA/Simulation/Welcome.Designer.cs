@@ -255,7 +255,7 @@
             sidebar.Location = new Point(0, 0);
             sidebar.Margin = new Padding(6);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(313, 2000);
+            sidebar.Size = new Size(106, 2000);
             sidebar.TabIndex = 11;
             sidebar.Paint += sidebar_Paint;
             // 
@@ -339,7 +339,7 @@
             button2.Location = new Point(106, 0);
             button2.Name = "button2";
             button2.Padding = new Padding(5, 0, 0, 0);
-            button2.Size = new Size(133, 60);
+            button2.Size = new Size(128, 60);
             button2.TabIndex = 11;
             button2.Text = "Home";
             button2.UseVisualStyleBackColor = false;
@@ -455,7 +455,7 @@
             buttonAboutUs.Location = new Point(106, -1);
             buttonAboutUs.Name = "buttonAboutUs";
             buttonAboutUs.Padding = new Padding(5, 0, 0, 0);
-            buttonAboutUs.Size = new Size(133, 60);
+            buttonAboutUs.Size = new Size(131, 60);
             buttonAboutUs.TabIndex = 11;
             buttonAboutUs.Text = "About us";
             buttonAboutUs.UseVisualStyleBackColor = false;
@@ -621,7 +621,7 @@
             buttonSettings.Location = new Point(106, 0);
             buttonSettings.Name = "buttonSettings";
             buttonSettings.Padding = new Padding(5, 0, 0, 0);
-            buttonSettings.Size = new Size(133, 60);
+            buttonSettings.Size = new Size(131, 60);
             buttonSettings.TabIndex = 11;
             buttonSettings.Text = "Settings";
             buttonSettings.UseVisualStyleBackColor = false;
@@ -787,7 +787,7 @@
             buttonHelp.Location = new Point(106, 0);
             buttonHelp.Name = "buttonHelp";
             buttonHelp.Padding = new Padding(5, 0, 0, 0);
-            buttonHelp.Size = new Size(130, 60);
+            buttonHelp.Size = new Size(131, 60);
             buttonHelp.TabIndex = 11;
             buttonHelp.Text = "Help";
             buttonHelp.UseVisualStyleBackColor = false;
