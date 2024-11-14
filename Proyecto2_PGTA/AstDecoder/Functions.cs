@@ -1129,14 +1129,19 @@ namespace AstDecoder
                 // QNH correction if the altitude is less than 6000 feet
                 if (PRES == false && altitude < 6000 && barometricPressure != 0 && altitude>0)
                 {
-                    double modeC = Math.Round(altitude + (Convert.ToDouble(barometricPressure) - 1013.2) * 30);
-                    Variable048.ModeC_corrected = Convert.ToString(modeC);
+                    double modeC = altitude + (Convert.ToDouble(barometricPressure) - 1013.2) * 30;
+
+                    // Assign the unrounded modeC value to H_Corrected_m and round for ModeC_corrected
+                    Variable048.H_Corrected_m = modeC.ToString(); // Assign unrounded value
+                    Variable048.ModeC_corrected = Math.Round(modeC).ToString(); // Assign rounded value
                 }
                 if (altitude <= 0)
                     Altitude = 0;
             }
             // Call LatitudeLongitud function with Variable048 and the corrected altitude
             LatitudeLongitud(Variable048, Altitude);
+
+            
         }
 
         /// <summary>
@@ -1185,10 +1190,14 @@ namespace AstDecoder
 
             data048.LAT_deg = Convert.ToString(geodCoords.Lat * 180 / Math.PI);
             data048.LON_deg = Convert.ToString(geodCoords.Lon * 180 / Math.PI);
-            data048.H_Corrected_m = Convert.ToString(geodCoords.Height);
+
+            // Assign geodesic height to H_Corrected_m if Mode C corrected height is not set
+            if (string.IsNullOrEmpty(data048.ModeC_corrected))
+            {
+                data048.H_Corrected_m = geodCoords.Height.ToString();
+            }
+
         }
-
-
     }
 }
 
