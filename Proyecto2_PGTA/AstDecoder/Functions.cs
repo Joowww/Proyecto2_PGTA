@@ -1135,7 +1135,7 @@ namespace AstDecoder
                     double modeC = altitude + (Convert.ToDouble(barometricPressure) - 1013.2) * 30;
 
                     // Assign the unrounded modeC value to H_Corrected_m and round for ModeC_corrected
-                    Variable048.H_Corrected_m = modeC.ToString(); // Assign unrounded value
+                    Variable048.H_Corrected_m = (modeC * 0.3048).ToString(); // Assign unrounded value
                     Variable048.ModeC_corrected = Math.Round(modeC).ToString(); // Assign rounded value
                 }
                 if (altitude <= 0)
