@@ -67,6 +67,7 @@ namespace Simulation
         private Rectangle recPtb1;
         private Rectangle recPanel1;
         private Rectangle recPanel2;
+        private Rectangle recDgv1;
 
         public Mapa(List<List<object>> filtredMessages, List<List<object>> allMessages, int selectedIndexOption, Principal _principal)
         {
@@ -161,6 +162,7 @@ namespace Simulation
             recPtb1 = new Rectangle(pictureBox7.Location, pictureBox7.Size);
             recPanel1 = new Rectangle(panel1.Location, panel1.Size);
             recPanel2 = new Rectangle(panel2.Location, panel2.Size);
+            recDgv1 = new Rectangle(dataGridView1.Location, dataGridView1.Size);
 
             pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
             pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
@@ -188,6 +190,7 @@ namespace Simulation
                 resize_Control(pictureBox7, recPtb1);
                 resize_Control(panel1, recPanel1);
                 resize_Control(panel2, recPanel2);
+                resize_Control(dataGridView1, recDgv1);
 
             }
             else if (this.WindowState == FormWindowState.Normal)
@@ -210,6 +213,7 @@ namespace Simulation
                 restore_ControlSize(pictureBox7, recPtb1);
                 restore_ControlSize(panel1, recPanel1);
                 restore_ControlSize(panel2, recPanel2);
+                restore_ControlSize(dataGridView1, recDgv1);
             }
         }
 

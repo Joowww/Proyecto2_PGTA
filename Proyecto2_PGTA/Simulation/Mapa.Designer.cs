@@ -301,7 +301,7 @@
             dataGridViewCellStyle4.SelectionForeColor = Color.Black;
             dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(466, 523);
+            dataGridView1.Size = new Size(466, 526);
             dataGridView1.TabIndex = 0;
             // 
             // extraFunctionalityBtn
