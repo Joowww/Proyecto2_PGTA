@@ -106,7 +106,7 @@ namespace Simulation
         private void VideoTutorial_Load(object sender, EventArgs e)
         {
             Zen.Barcode.CodeQrBarcodeDraw QR = Zen.Barcode.BarcodeDrawFactory.CodeQr;
-            pictureBox2.Image = QR.Draw("https://youtu.be/rNhOxW3Rp_k", 10);
+            pictureBox2.Image = QR.Draw("https://youtu.be/3tG5lqbTUQI", 10);
 
             // Cargar el estado del tema guardado
             isDarkMode = Properties.Settings1.Default.IsDarkMode;
@@ -140,7 +140,7 @@ namespace Simulation
 
         private void label3_Click(object sender, EventArgs e)
         {
-            string url = "https://youtu.be/rNhOxW3Rp_k";
+            string url = "https://youtu.be/3tG5lqbTUQI";
 
             try
             {
