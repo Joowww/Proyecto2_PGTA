@@ -31,7 +31,6 @@ namespace Simulation
         private Rectangle recBut6;
         private Rectangle recBut7;
         private Rectangle recBut8;
-        private Rectangle recBut9;
         private Rectangle recBut10;
         private Rectangle recBut11;
         private Rectangle recBut12;
@@ -49,7 +48,6 @@ namespace Simulation
         private Rectangle recPtb10;
         private Rectangle recPtb11;
         private Rectangle recPtb12;
-        private Rectangle recPtb13;
         private Rectangle recPtb14;
         private Rectangle recPtb15;
         private Rectangle recPtb16;
@@ -67,8 +65,6 @@ namespace Simulation
         private Rectangle recPanel11;
         private Rectangle recPanel12;
         private Rectangle recPanel13;
-        private Rectangle recPanel14;
-        private Rectangle recPanel15;
         private Rectangle recPanel16;
         private Rectangle recPanel17;
         private Rectangle recPanel18;
@@ -96,7 +92,6 @@ namespace Simulation
             recBut6 = new Rectangle(buttonContactUs.Location, buttonContactUs.Size);
             recBut7 = new Rectangle(buttonSettings.Location, buttonSettings.Size);
             recBut8 = new Rectangle(button3.Location, button3.Size);
-            recBut9 = new Rectangle(button9.Location, button9.Size);
             recBut10 = new Rectangle(buttonHelp.Location, buttonHelp.Size);
             recBut11 = new Rectangle(buttonTutorial.Location, buttonTutorial.Size);
             recBut12 = new Rectangle(buttonQRVideoT.Location, buttonQRVideoT.Size);
@@ -114,7 +109,6 @@ namespace Simulation
             recPtb10 = new Rectangle(pictureBox15.Location, pictureBox15.Size);
             recPtb11 = new Rectangle(pictureBox18.Location, pictureBox18.Size);
             recPtb12 = new Rectangle(pictureBox19.Location, pictureBox19.Size);
-            recPtb13 = new Rectangle(pictureBox1.Location, pictureBox1.Size);
             recPtb14 = new Rectangle(pictureBox11.Location, pictureBox11.Size);
             recPtb15 = new Rectangle(pictureBox13.Location, pictureBox13.Size);
             recPtb16 = new Rectangle(pictureBox16.Location, pictureBox16.Size);
@@ -132,8 +126,6 @@ namespace Simulation
             recPanel11 = new Rectangle(panel4.Location, panel4.Size);
             recPanel12 = new Rectangle(panel21.Location, panel21.Size);
             recPanel13 = new Rectangle(panel10.Location, panel10.Size);
-            recPanel14 = new Rectangle(panel11.Location, panel11.Size);
-            recPanel15 = new Rectangle(panel22.Location, panel22.Size);
             recPanel16 = new Rectangle(panel5.Location, panel5.Size);
             recPanel17 = new Rectangle(panel14.Location, panel14.Size);
             recPanel18 = new Rectangle(panel23.Location, panel23.Size);
@@ -168,7 +160,6 @@ namespace Simulation
                 resize_Control(buttonContactUs, recBut6);
                 resize_Control(buttonSettings, recBut7);
                 resize_Control(button3, recBut8);
-                resize_Control(button9, recBut9);
                 resize_Control(buttonHelp, recBut10);
                 resize_Control(buttonTutorial, recBut11);
                 resize_Control(buttonQRVideoT, recBut12);
@@ -186,7 +177,6 @@ namespace Simulation
                 resize_Control(pictureBox15, recPtb10);
                 resize_Control(pictureBox18, recPtb11);
                 resize_Control(pictureBox19, recPtb12);
-                resize_Control(pictureBox1, recPtb13);
                 resize_Control(pictureBox11, recPtb14);
                 resize_Control(pictureBox13, recPtb15);
                 resize_Control(pictureBox16, recPtb16);
@@ -204,8 +194,6 @@ namespace Simulation
                 resize_Control(panel4, recPanel11);
                 resize_Control(panel21, recPanel12);
                 resize_Control(panel10, recPanel13);
-                resize_Control(panel11, recPanel14);
-                resize_Control(panel22, recPanel15);
                 resize_Control(panel5, recPanel16);
                 resize_Control(panel14, recPanel17);
                 resize_Control(panel23, recPanel18);
@@ -233,7 +221,6 @@ namespace Simulation
                 restore_ControlSize(buttonContactUs, recBut6);
                 restore_ControlSize(buttonSettings, recBut7);
                 restore_ControlSize(button3, recBut8);
-                restore_ControlSize(button9, recBut9);
                 restore_ControlSize(buttonHelp, recBut10);
                 restore_ControlSize(buttonTutorial, recBut11);
                 restore_ControlSize(buttonQRVideoT, recBut12);
@@ -251,7 +238,6 @@ namespace Simulation
                 restore_ControlSize(pictureBox15, recPtb10);
                 restore_ControlSize(pictureBox18, recPtb11);
                 restore_ControlSize(pictureBox19, recPtb12);
-                restore_ControlSize(pictureBox1, recPtb13);
                 restore_ControlSize(pictureBox11, recPtb14);
                 restore_ControlSize(pictureBox13, recPtb15);
                 restore_ControlSize(pictureBox16, recPtb16);
@@ -269,8 +255,6 @@ namespace Simulation
                 restore_ControlSize(panel4, recPanel11);
                 restore_ControlSize(panel21, recPanel12);
                 restore_ControlSize(panel10, recPanel13);
-                restore_ControlSize(panel11, recPanel14);
-                restore_ControlSize(panel22, recPanel15);
                 restore_ControlSize(panel5, recPanel16);
                 restore_ControlSize(panel14, recPanel17);
                 restore_ControlSize(panel23, recPanel18);
@@ -375,7 +359,7 @@ namespace Simulation
         {
 
             int minHeightCont2 = panel4.Bottom - panel4.Top;
-            int maxHeightCont2 = panel11.Bottom - panel4.Top;
+            int maxHeightCont2 = panel10.Bottom - panel4.Top;
 
             int minWidthCont1 = panel17.Right - sidebar.Left;
             int maxWidthCont1 = panel3.Right - sidebar.Left;

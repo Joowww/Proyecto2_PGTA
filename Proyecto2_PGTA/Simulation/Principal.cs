@@ -34,7 +34,6 @@ namespace Simulation
         private Rectangle recBut3;
         private Rectangle recBut4;
         private Rectangle recBut5;
-        private Rectangle recBut6;
         private Rectangle recBut7;
         private Rectangle recBut8;
         private Rectangle recCb1;
@@ -45,7 +44,6 @@ namespace Simulation
         private Rectangle recPtb3;
         private Rectangle recPtb4;
         private Rectangle recPtb5;
-        private Rectangle recPtb6;
         private Rectangle recPtb7;
         private Rectangle recPanel1;
         private Rectangle recPanel2;
@@ -54,8 +52,6 @@ namespace Simulation
         private Rectangle recPanel5;
         private Rectangle recPanel6;
         private Rectangle recPanel7;
-        private Rectangle recPanel8;
-        private Rectangle recPanel9;
         private Rectangle recPanel10;
         private Rectangle recPanel11;
         private Rectangle recPanel12;
@@ -77,7 +73,6 @@ namespace Simulation
             recBut3 = new Rectangle(buttonTutorial.Location, buttonTutorial.Size);
             recBut4 = new Rectangle(buttonSettings.Location, buttonSettings.Size);
             recBut5 = new Rectangle(button3.Location, button3.Size);
-            recBut6 = new Rectangle(button9.Location, button9.Size);
             recBut7 = new Rectangle(menuButton.Location, menuButton.Size);
             recBut8 = new Rectangle(HomeBtn.Location, HomeBtn.Size);
             recCb1 = new Rectangle(comboBox1.Location, comboBox1.Size);
@@ -88,7 +83,6 @@ namespace Simulation
             recPtb3 = new Rectangle(pictureBox9.Location, pictureBox9.Size);
             recPtb4 = new Rectangle(pictureBox6.Location, pictureBox6.Size);
             recPtb5 = new Rectangle(pictureBox8.Location, pictureBox8.Size);
-            recPtb6 = new Rectangle(pictureBox3.Location, pictureBox3.Size);
             recPtb7 = new Rectangle(pictureBox5.Location, pictureBox5.Size);
             recPanel1 = new Rectangle(panel5.Location, panel5.Size);
             recPanel2 = new Rectangle(panel17.Location, panel17.Size);
@@ -97,8 +91,6 @@ namespace Simulation
             recPanel5 = new Rectangle(panel4.Location, panel4.Size);
             recPanel6 = new Rectangle(panel13.Location, panel13.Size);
             recPanel7 = new Rectangle(panel14.Location, panel14.Size);
-            recPanel8 = new Rectangle(panel15.Location, panel15.Size);
-            recPanel9 = new Rectangle(panel11.Location, panel11.Size);
             recPanel10 = new Rectangle(panel1.Location, panel1.Size);
             recPanel11 = new Rectangle(panel2.Location, panel2.Size);
             recPanel12 = new Rectangle(panel9.Location, panel9.Size);
@@ -127,7 +119,6 @@ namespace Simulation
                 resize_Control(buttonTutorial, recBut3);
                 resize_Control(buttonSettings, recBut4);
                 resize_Control(button3, recBut5);
-                resize_Control(button9, recBut6);
                 resize_Control(menuButton, recBut7);
                 resize_Control(HomeBtn, recBut8);
                 resize_Control(comboBox1, recCb1);
@@ -138,7 +129,6 @@ namespace Simulation
                 resize_Control(pictureBox9, recPtb3);
                 resize_Control(pictureBox6, recPtb4);
                 resize_Control(pictureBox8, recPtb5);
-                resize_Control(pictureBox3, recPtb6);
                 resize_Control(pictureBox5, recPtb7);
                 resize_Control(panel5, recPanel1);
                 resize_Control(panel17, recPanel2);
@@ -147,8 +137,6 @@ namespace Simulation
                 resize_Control(panel4, recPanel5);
                 resize_Control(panel13, recPanel6);
                 resize_Control(panel14, recPanel7);
-                resize_Control(panel15, recPanel8);
-                resize_Control(panel11, recPanel9);
                 resize_Control(panel1, recPanel10);
                 resize_Control(panel2, recPanel11);
                 resize_Control(panel9, recPanel12);
@@ -167,7 +155,6 @@ namespace Simulation
                 restore_ControlSize(buttonTutorial, recBut3);
                 restore_ControlSize(buttonSettings, recBut4);
                 restore_ControlSize(button3, recBut5);
-                restore_ControlSize(button9, recBut6);
                 restore_ControlSize(menuButton, recBut7);
                 restore_ControlSize(HomeBtn, recBut8);
                 restore_ControlSize(comboBox1, recCb1);
@@ -178,7 +165,6 @@ namespace Simulation
                 restore_ControlSize(pictureBox9, recPtb3);
                 restore_ControlSize(pictureBox6, recPtb4);
                 restore_ControlSize(pictureBox8, recPtb5);
-                restore_ControlSize(pictureBox3, recPtb6);
                 restore_ControlSize(pictureBox5, recPtb7);
                 restore_ControlSize(panel5, recPanel1);
                 restore_ControlSize(panel17, recPanel2);
@@ -187,8 +173,6 @@ namespace Simulation
                 restore_ControlSize(panel4, recPanel5);
                 restore_ControlSize(panel13, recPanel6);
                 restore_ControlSize(panel14, recPanel7);
-                restore_ControlSize(panel15, recPanel8);
-                restore_ControlSize(panel11, recPanel9);
                 restore_ControlSize(panel1, recPanel10);
                 restore_ControlSize(panel2, recPanel11);
                 restore_ControlSize(panel9, recPanel12);
@@ -287,7 +271,7 @@ namespace Simulation
             SettingsContainer.Location = new Point(SettingsContainer.Location.X, panel4.Top);
 
             int minHeightCont2 = panel4.Bottom - panel4.Top;
-            int maxHeightCont2 = panel11.Bottom - panel4.Top;
+            int maxHeightCont2 = panel10.Bottom - panel4.Top;
 
             int minWidthCont1 = panel17.Right - sidebar.Left;
             int maxWidthCont1 = panel5.Right - sidebar.Left;

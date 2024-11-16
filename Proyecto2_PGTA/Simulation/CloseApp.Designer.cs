@@ -54,7 +54,7 @@
             buttonYes.FlatAppearance.MouseOverBackColor = Color.DarkGray;
             buttonYes.FlatStyle = FlatStyle.Flat;
             buttonYes.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonYes.Location = new Point(149, 241);
+            buttonYes.Location = new Point(149, 193);
             buttonYes.Name = "buttonYes";
             buttonYes.Size = new Size(200, 50);
             buttonYes.TabIndex = 1;
@@ -71,7 +71,7 @@
             buttonNo.FlatAppearance.MouseOverBackColor = Color.DarkGray;
             buttonNo.FlatStyle = FlatStyle.Flat;
             buttonNo.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonNo.Location = new Point(390, 241);
+            buttonNo.Location = new Point(390, 193);
             buttonNo.Name = "buttonNo";
             buttonNo.Size = new Size(200, 50);
             buttonNo.TabIndex = 2;

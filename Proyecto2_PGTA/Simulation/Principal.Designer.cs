@@ -43,10 +43,6 @@
             pictureBox5 = new PictureBox();
             HomeBtn = new Button();
             SettingsContainer = new Panel();
-            panel11 = new Panel();
-            panel15 = new Panel();
-            pictureBox3 = new PictureBox();
-            button9 = new Button();
             panel10 = new Panel();
             panel14 = new Panel();
             pictureBox8 = new PictureBox();
@@ -76,9 +72,6 @@
             panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             SettingsContainer.SuspendLayout();
-            panel11.SuspendLayout();
-            panel15.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             panel10.SuspendLayout();
             panel14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
@@ -107,9 +100,9 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.BackColor = Color.White;
+            label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(353, 127);
+            label1.Location = new Point(382, 119);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(400, 28);
@@ -154,7 +147,7 @@
             sidebar.Controls.Add(HelpContainer);
             sidebar.Location = new Point(-1, -1);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(111, 2000);
+            sidebar.Size = new Size(117, 2000);
             sidebar.TabIndex = 11;
             // 
             // panel1
@@ -246,7 +239,6 @@
             // SettingsContainer
             // 
             SettingsContainer.BackColor = Color.Silver;
-            SettingsContainer.Controls.Add(panel11);
             SettingsContainer.Controls.Add(panel10);
             SettingsContainer.Controls.Add(panel4);
             SettingsContainer.Location = new Point(6, 215);
@@ -256,56 +248,6 @@
             SettingsContainer.Name = "SettingsContainer";
             SettingsContainer.Size = new Size(237, 59);
             SettingsContainer.TabIndex = 17;
-            // 
-            // panel11
-            // 
-            panel11.BackColor = Color.Gray;
-            panel11.Controls.Add(panel15);
-            panel11.Controls.Add(button9);
-            panel11.Location = new Point(2, 106);
-            panel11.Margin = new Padding(6, 0, 6, 0);
-            panel11.Name = "panel11";
-            panel11.Size = new Size(235, 45);
-            panel11.TabIndex = 16;
-            // 
-            // panel15
-            // 
-            panel15.BackColor = Color.Transparent;
-            panel15.Controls.Add(pictureBox3);
-            panel15.Location = new Point(0, 2);
-            panel15.Margin = new Padding(6, 1, 6, 2);
-            panel15.Name = "panel15";
-            panel15.Size = new Size(107, 40);
-            panel15.TabIndex = 28;
-            // 
-            // pictureBox3
-            // 
-            pictureBox3.BackgroundImage = (Image)resources.GetObject("pictureBox3.BackgroundImage");
-            pictureBox3.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox3.Location = new Point(19, 2);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(55, 35);
-            pictureBox3.TabIndex = 13;
-            pictureBox3.TabStop = false;
-            // 
-            // button9
-            // 
-            button9.BackColor = Color.Transparent;
-            button9.FlatAppearance.BorderColor = Color.DarkGray;
-            button9.FlatAppearance.BorderSize = 2;
-            button9.FlatAppearance.MouseDownBackColor = Color.DarkGray;
-            button9.FlatAppearance.MouseOverBackColor = Color.DarkGray;
-            button9.FlatStyle = FlatStyle.Flat;
-            button9.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
-            button9.ForeColor = Color.White;
-            button9.ImageAlign = ContentAlignment.MiddleLeft;
-            button9.Location = new Point(105, 0);
-            button9.Name = "button9";
-            button9.Padding = new Padding(5, 0, 0, 0);
-            button9.Size = new Size(130, 45);
-            button9.TabIndex = 11;
-            button9.Text = "Language";
-            button9.UseVisualStyleBackColor = false;
             // 
             // panel10
             // 
@@ -366,7 +308,7 @@
             panel4.Location = new Point(0, 0);
             panel4.Margin = new Padding(6, 2, 6, 2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(242, 59);
+            panel4.Size = new Size(237, 59);
             panel4.TabIndex = 14;
             // 
             // panel13
@@ -403,7 +345,7 @@
             buttonSettings.Location = new Point(107, 0);
             buttonSettings.Name = "buttonSettings";
             buttonSettings.Padding = new Padding(5, 0, 0, 0);
-            buttonSettings.Size = new Size(130, 59);
+            buttonSettings.Size = new Size(135, 59);
             buttonSettings.TabIndex = 11;
             buttonSettings.Text = "Settings";
             buttonSettings.UseVisualStyleBackColor = false;
@@ -575,9 +517,6 @@
             panel9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
             SettingsContainer.ResumeLayout(false);
-            panel11.ResumeLayout(false);
-            panel15.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             panel10.ResumeLayout(false);
             panel14.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
@@ -612,8 +551,6 @@
         private Button buttonGroup;
         private Button buttonAboutUs;
         private Panel SettingsContainer;
-        private Panel panel11;
-        private Button button9;
         private Panel panel10;
         private Button button3;
         private Panel panel4;
@@ -630,8 +567,6 @@
         private PictureBox pictureBox17;
         private Panel panel9;
         private PictureBox pictureBox5;
-        private Panel panel15;
-        private PictureBox pictureBox3;
         private Panel panel14;
         private PictureBox pictureBox8;
         private Panel panel13;

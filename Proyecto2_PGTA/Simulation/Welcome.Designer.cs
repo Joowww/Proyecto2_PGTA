@@ -71,10 +71,6 @@
             panel16 = new Panel();
             pictureBox18 = new PictureBox();
             buttonSettings = new Button();
-            panel11 = new Panel();
-            panel22 = new Panel();
-            pictureBox1 = new PictureBox();
-            button9 = new Button();
             HelpContainer = new Panel();
             panel12 = new Panel();
             panel23 = new Panel();
@@ -121,9 +117,6 @@
             panel4.SuspendLayout();
             panel16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox18).BeginInit();
-            panel11.SuspendLayout();
-            panel22.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             HelpContainer.SuspendLayout();
             panel12.SuspendLayout();
             panel23.SuspendLayout();
@@ -255,7 +248,7 @@
             sidebar.Location = new Point(0, 0);
             sidebar.Margin = new Padding(6);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(106, 2000);
+            sidebar.Size = new Size(247, 2000);
             sidebar.TabIndex = 11;
             sidebar.Paint += sidebar_Paint;
             // 
@@ -517,7 +510,6 @@
             SettingsContainer.BackColor = Color.Silver;
             SettingsContainer.Controls.Add(panel10);
             SettingsContainer.Controls.Add(panel4);
-            SettingsContainer.Controls.Add(panel11);
             SettingsContainer.Location = new Point(6, 279);
             SettingsContainer.Margin = new Padding(6, 2, 6, 2);
             SettingsContainer.MaximumSize = new Size(237, 152);
@@ -571,7 +563,7 @@
             button3.Location = new Point(91, 0);
             button3.Name = "button3";
             button3.Padding = new Padding(5, 0, 0, 0);
-            button3.Size = new Size(146, 45);
+            button3.Size = new Size(141, 45);
             button3.TabIndex = 11;
             button3.Text = "Forms colour";
             button3.UseVisualStyleBackColor = false;
@@ -585,7 +577,7 @@
             panel4.Location = new Point(0, 0);
             panel4.Margin = new Padding(6, 3, 6, 3);
             panel4.Name = "panel4";
-            panel4.Size = new Size(237, 60);
+            panel4.Size = new Size(236, 60);
             panel4.TabIndex = 14;
             // 
             // panel16
@@ -621,61 +613,11 @@
             buttonSettings.Location = new Point(106, 0);
             buttonSettings.Name = "buttonSettings";
             buttonSettings.Padding = new Padding(5, 0, 0, 0);
-            buttonSettings.Size = new Size(131, 60);
+            buttonSettings.Size = new Size(134, 60);
             buttonSettings.TabIndex = 11;
             buttonSettings.Text = "Settings";
             buttonSettings.UseVisualStyleBackColor = false;
             buttonSettings.Click += buttonSettings_Click_1;
-            // 
-            // panel11
-            // 
-            panel11.BackColor = Color.Gray;
-            panel11.Controls.Add(panel22);
-            panel11.Controls.Add(button9);
-            panel11.Location = new Point(2, 105);
-            panel11.Margin = new Padding(6, 0, 6, 0);
-            panel11.Name = "panel11";
-            panel11.Size = new Size(270, 45);
-            panel11.TabIndex = 16;
-            // 
-            // panel22
-            // 
-            panel22.BackColor = Color.Transparent;
-            panel22.Controls.Add(pictureBox1);
-            panel22.Location = new Point(0, 2);
-            panel22.Margin = new Padding(6, 1, 6, 2);
-            panel22.Name = "panel22";
-            panel22.Size = new Size(95, 40);
-            panel22.TabIndex = 27;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
-            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Location = new Point(19, 2);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(55, 35);
-            pictureBox1.TabIndex = 13;
-            pictureBox1.TabStop = false;
-            // 
-            // button9
-            // 
-            button9.BackColor = Color.Transparent;
-            button9.FlatAppearance.BorderColor = Color.DarkGray;
-            button9.FlatAppearance.BorderSize = 2;
-            button9.FlatAppearance.MouseDownBackColor = Color.DarkGray;
-            button9.FlatAppearance.MouseOverBackColor = Color.DarkGray;
-            button9.FlatStyle = FlatStyle.Flat;
-            button9.Font = new Font("Segoe UI Semibold", 7.20000029F, FontStyle.Bold, GraphicsUnit.Point);
-            button9.ForeColor = Color.White;
-            button9.ImageAlign = ContentAlignment.MiddleLeft;
-            button9.Location = new Point(91, 0);
-            button9.Name = "button9";
-            button9.Padding = new Padding(5, 0, 0, 0);
-            button9.Size = new Size(146, 45);
-            button9.TabIndex = 11;
-            button9.Text = "Language";
-            button9.UseVisualStyleBackColor = false;
             // 
             // HelpContainer
             // 
@@ -942,9 +884,6 @@
             panel4.ResumeLayout(false);
             panel16.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox18).EndInit();
-            panel11.ResumeLayout(false);
-            panel22.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             HelpContainer.ResumeLayout(false);
             panel12.ResumeLayout(false);
             panel23.ResumeLayout(false);
@@ -989,8 +928,6 @@
         private Panel panel3;
         private Button buttonAboutUs;
         private Panel SettingsContainer;
-        private Panel panel11;
-        private Button button9;
         private Panel panel10;
         private Button button3;
         private Panel panel4;
@@ -1020,8 +957,6 @@
         private PictureBox pictureBox9;
         private Panel panel21;
         private PictureBox pictureBox19;
-        private Panel panel22;
-        private PictureBox pictureBox1;
         private Panel panel23;
         private PictureBox pictureBox13;
         private Panel panel24;
