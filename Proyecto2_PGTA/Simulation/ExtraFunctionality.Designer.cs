@@ -44,9 +44,9 @@
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label1.Location = new Point(31, 75);
             label1.Name = "label1";
-            label1.Size = new Size(757, 28);
+            label1.Size = new Size(744, 28);
             label1.TabIndex = 0;
-            label1.Text = "This additional feature allows you to input two target addresses and visualize the ";
+            label1.Text = "This additional feature allows you to input two target identification and visualize";
             // 
             // targetBtn
             // 
@@ -60,7 +60,7 @@
             targetBtn.Name = "targetBtn";
             targetBtn.Size = new Size(280, 50);
             targetBtn.TabIndex = 1;
-            targetBtn.Text = "Enter 2 target addresses";
+            targetBtn.Text = "Enter 2 target identification";
             targetBtn.UseVisualStyleBackColor = true;
             targetBtn.Click += targetBtn_Click;
             // 
@@ -70,9 +70,9 @@
             label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label2.Location = new Point(31, 117);
             label2.Name = "label2";
-            label2.Size = new Size(702, 28);
+            label2.Size = new Size(738, 28);
             label2.TabIndex = 2;
-            label2.Text = "simulation of both, as well as the distance between them with each update.";
+            label2.Text = "the simulation of both, as well as the distance between them with each update.";
             // 
             // label3
             // 

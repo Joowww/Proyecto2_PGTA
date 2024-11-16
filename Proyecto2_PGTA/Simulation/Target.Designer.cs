@@ -47,12 +47,12 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ImageAlign = ContentAlignment.TopCenter;
-            label1.Location = new Point(272, 71);
+            label1.Location = new Point(249, 71);
             label1.Margin = new Padding(15, 0, 3, 0);
             label1.Name = "label1";
-            label1.Size = new Size(237, 28);
+            label1.Size = new Size(275, 28);
             label1.TabIndex = 0;
-            label1.Text = "Enter 2 target addresses:";
+            label1.Text = "Enter 2 target identifications:";
             label1.TextAlign = ContentAlignment.TopCenter;
             // 
             // acceptBtn
@@ -119,9 +119,9 @@
             label3.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             label3.Location = new Point(192, 112);
             label3.Name = "label3";
-            label3.Size = new Size(134, 23);
+            label3.Size = new Size(175, 23);
             label3.TabIndex = 14;
-            label3.Text = "Target address 1";
+            label3.Text = "Target identification 1";
             // 
             // label5
             // 
@@ -129,9 +129,9 @@
             label5.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             label5.Location = new Point(436, 112);
             label5.Name = "label5";
-            label5.Size = new Size(134, 23);
+            label5.Size = new Size(175, 23);
             label5.TabIndex = 15;
-            label5.Text = "Target address 2";
+            label5.Text = "Target identification 2";
             // 
             // cancelBtn
             // 
