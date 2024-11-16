@@ -63,6 +63,7 @@ namespace Simulation
         private Rectangle recLbl2;
         private Rectangle recLbl3;
         private Rectangle recLbl4;
+        private Rectangle recLbl5;
         private Rectangle recTb1;
         private Rectangle recPtb1;
         private Rectangle recPanel1;
@@ -130,13 +131,14 @@ namespace Simulation
             trackBar1.Value = 1;
             trackBar1.Scroll += trackBar1_Scroll;
 
-            dataGridView1.ColumnCount = 6;
+            dataGridView1.ColumnCount = 7;
             dataGridView1.Columns[0].Name = "Time (s)";
             dataGridView1.Columns[1].Name = "Latitude (°)";
             dataGridView1.Columns[2].Name = "Longitude (°)";
             dataGridView1.Columns[3].Name = "Corrected Altitude (m)";
             dataGridView1.Columns[4].Name = "Type";
             dataGridView1.Columns[5].Name = "Target address";
+            dataGridView1.Columns[6].Name = "Target identification";
             dataGridView1.Visible = true;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             panel2.Controls.Add(dataGridView1);
@@ -158,6 +160,7 @@ namespace Simulation
             recLbl2 = new Rectangle(label2.Location, label2.Size);
             recLbl3 = new Rectangle(label3.Location, label3.Size);
             recLbl4 = new Rectangle(label4.Location, label4.Size);
+            recLbl5 = new Rectangle(label5.Location, label5.Size);
             recTb1 = new Rectangle(trackBar1.Location, trackBar1.Size);
             recPtb1 = new Rectangle(pictureBox7.Location, pictureBox7.Size);
             recPanel1 = new Rectangle(panel1.Location, panel1.Size);
@@ -186,6 +189,7 @@ namespace Simulation
                 resize_Control(label2, recLbl2);
                 resize_Control(label3, recLbl3);
                 resize_Control(label4, recLbl4);
+                resize_Control(label5, recLbl5);
                 resize_Control(trackBar1, recTb1);
                 resize_Control(pictureBox7, recPtb1);
                 resize_Control(panel1, recPanel1);
@@ -209,6 +213,7 @@ namespace Simulation
                 restore_ControlSize(label2, recLbl2);
                 restore_ControlSize(label3, recLbl3);
                 restore_ControlSize(label4, recLbl4);
+                restore_ControlSize(label5, recLbl5);
                 restore_ControlSize(trackBar1, recTb1);
                 restore_ControlSize(pictureBox7, recPtb1);
                 restore_ControlSize(panel1, recPanel1);
@@ -288,6 +293,8 @@ namespace Simulation
             }
 
             UpdateDataGridView(initialAircrafts);
+
+            UpdateTime(initialAircrafts);
             // Refrescar el mapa
             mapControl.Refresh();
 
@@ -307,11 +314,19 @@ namespace Simulation
                 string height = Convert.ToString(aircraft[3]);
                 string type = Convert.ToString(aircraft[4]);
                 string ta = Convert.ToString(aircraft[6]);
+                string ti = Convert.ToString(aircraft[8]);
 
-                dataGridView1.Rows.Add(time, latitude, longitude, height, type, ta);
+                dataGridView1.Rows.Add(time, latitude, longitude, height, type, ta, ti);
             }
             dataGridView1.Refresh();
             dataGridView1.ClearSelection();
+        }
+
+        private void UpdateTime(List<List<object>> aircrafts)
+        {
+            var lastAircraft = aircrafts[aircrafts.Count - 1];
+            string time = Convert.ToString(lastAircraft[9]);
+            label5.Text = time;
         }
 
         private void MoveBtn_Click(object sender, EventArgs e)
@@ -326,6 +341,7 @@ namespace Simulation
                 PaintAircrafts(result);
 
                 UpdateDataGridView(result);
+                UpdateTime(result);
 
                 if (extra == true)
                 {
@@ -375,6 +391,7 @@ namespace Simulation
                 double longitude = Convert.ToDouble(aircraft[2]);
                 string Altitude_corrected = Convert.ToString(aircraft[3]);
                 string TA = Convert.ToString(aircraft[6]);
+                string TI = Convert.ToString(aircraft[8]);
 
                 PointLatLng Position = new PointLatLng(latitude, longitude);
 
@@ -504,7 +521,7 @@ namespace Simulation
 
                     // Agregar un tooltip al marcador
                     marker.ToolTip = new GMap.NET.WindowsForms.ToolTips.GMapRoundedToolTip(marker);
-                    marker.ToolTipText = $"Target address: {TA}\nLatitude (°): {latitude}\nLongitude (°): {longitude}\nCorrected Altitude (m): {Altitude_corrected}";
+                    marker.ToolTipText = $"Target identification: {TI}\nTarget address: {TA}\nLatitude (°): {latitude}\nLongitude (°): {longitude}\nCorrected Altitude (m): {Altitude_corrected}";
 
                     // Agregar el nuevo marcador a la capa de marcadores
                     markersOverlay.Markers.Add(marker);
@@ -614,6 +631,7 @@ namespace Simulation
                 }
 
                 UpdateDataGridView(initialAircrafts);
+                UpdateTime(initialAircrafts);
 
                 // Refrescar el mapa
                 mapControl.Refresh();

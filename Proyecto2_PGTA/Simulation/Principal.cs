@@ -774,6 +774,7 @@ namespace Simulation
                     string TA = Convert.ToString(row[35]);
                     string STAT = Convert.ToString(row[70]);
                     string TI = Convert.ToString(row[36]).Trim();
+                    string UTC_time = Convert.ToString(row[3]);
 
                     // Validar que TA no sea null o una cadena vacía antes de agregar a allMessages
                     if (TA != "N/A")
@@ -789,6 +790,7 @@ namespace Simulation
                         message.Add(TA);
                         message.Add(STAT);
                         message.Add(TI);
+                        message.Add(UTC_time);
                         allMessages.Add(message);
                     }
 
