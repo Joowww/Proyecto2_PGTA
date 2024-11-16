@@ -44,9 +44,9 @@
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label1.Location = new Point(31, 75);
             label1.Name = "label1";
-            label1.Size = new Size(744, 28);
+            label1.Size = new Size(753, 28);
             label1.TabIndex = 0;
-            label1.Text = "This additional feature allows you to input two target identification and visualize";
+            label1.Text = "This additional feature allows you to input two target identifications and visualize";
             // 
             // targetBtn
             // 
@@ -56,11 +56,11 @@
             targetBtn.FlatAppearance.MouseOverBackColor = Color.DarkGray;
             targetBtn.FlatStyle = FlatStyle.Flat;
             targetBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            targetBtn.Location = new Point(254, 268);
+            targetBtn.Location = new Point(232, 270);
             targetBtn.Name = "targetBtn";
-            targetBtn.Size = new Size(280, 50);
+            targetBtn.Size = new Size(295, 50);
             targetBtn.TabIndex = 1;
-            targetBtn.Text = "Enter 2 target identification";
+            targetBtn.Text = "Enter 2 target identifications";
             targetBtn.UseVisualStyleBackColor = true;
             targetBtn.Click += targetBtn_Click;
             // 

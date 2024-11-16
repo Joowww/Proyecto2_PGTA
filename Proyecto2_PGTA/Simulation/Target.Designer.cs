@@ -47,7 +47,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ImageAlign = ContentAlignment.TopCenter;
-            label1.Location = new Point(249, 71);
+            label1.Location = new Point(239, 61);
             label1.Margin = new Padding(15, 0, 3, 0);
             label1.Name = "label1";
             label1.Size = new Size(275, 28);
@@ -117,7 +117,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(192, 112);
+            label3.Location = new Point(172, 112);
             label3.Name = "label3";
             label3.Size = new Size(175, 23);
             label3.TabIndex = 14;
@@ -127,7 +127,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(436, 112);
+            label5.Location = new Point(406, 112);
             label5.Name = "label5";
             label5.Size = new Size(175, 23);
             label5.TabIndex = 15;
