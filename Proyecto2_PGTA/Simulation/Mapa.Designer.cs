@@ -52,6 +52,7 @@
             dataGridView1 = new DataGridView();
             extraFunctionalityBtn = new Button();
             label4 = new Label();
+            label5 = new Label();
             ((System.ComponentModel.ISupportInitialize)trackBar1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             panel2.SuspendLayout();
@@ -170,7 +171,7 @@
             CloseBtn.FlatAppearance.MouseOverBackColor = Color.DarkGray;
             CloseBtn.FlatStyle = FlatStyle.Flat;
             CloseBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            CloseBtn.Location = new Point(566, 688);
+            CloseBtn.Location = new Point(566, 715);
             CloseBtn.Margin = new Padding(2);
             CloseBtn.Name = "CloseBtn";
             CloseBtn.Size = new Size(346, 50);
@@ -181,7 +182,7 @@
             // 
             // trackBar1
             // 
-            trackBar1.Location = new Point(516, 628);
+            trackBar1.Location = new Point(516, 645);
             trackBar1.Margin = new Padding(2);
             trackBar1.Name = "trackBar1";
             trackBar1.Size = new Size(429, 56);
@@ -192,7 +193,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(566, 586);
+            label1.Location = new Point(566, 603);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(346, 28);
@@ -223,7 +224,7 @@
             // 
             // panel1
             // 
-            panel1.Location = new Point(324, 30);
+            panel1.Location = new Point(324, 60);
             panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
             panel1.Size = new Size(952, 526);
@@ -312,9 +313,9 @@
             extraFunctionalityBtn.FlatAppearance.MouseOverBackColor = Color.DarkGray;
             extraFunctionalityBtn.FlatStyle = FlatStyle.Flat;
             extraFunctionalityBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            extraFunctionalityBtn.Location = new Point(28, 613);
+            extraFunctionalityBtn.Location = new Point(28, 603);
             extraFunctionalityBtn.Name = "extraFunctionalityBtn";
-            extraFunctionalityBtn.Size = new Size(280, 125);
+            extraFunctionalityBtn.Size = new Size(280, 162);
             extraFunctionalityBtn.TabIndex = 16;
             extraFunctionalityBtn.Text = "Extra functionality";
             extraFunctionalityBtn.UseVisualStyleBackColor = true;
@@ -326,16 +327,27 @@
             label4.BackColor = SystemColors.ActiveCaption;
             label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label4.ForeColor = SystemColors.ActiveCaption;
-            label4.Location = new Point(1044, 573);
+            label4.Location = new Point(1076, 30);
             label4.Name = "label4";
             label4.Size = new Size(0, 28);
             label4.TabIndex = 17;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.ForeColor = Color.Black;
+            label5.Location = new Point(327, 30);
+            label5.Name = "label5";
+            label5.Size = new Size(0, 28);
+            label5.TabIndex = 18;
             // 
             // Mapa
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1769, 777);
+            Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(extraFunctionalityBtn);
             Controls.Add(panel2);
@@ -389,5 +401,6 @@
         private DataGridView dataGridView1;
         private Button extraFunctionalityBtn;
         private Label label4;
+        private Label label5;
     }
 }
