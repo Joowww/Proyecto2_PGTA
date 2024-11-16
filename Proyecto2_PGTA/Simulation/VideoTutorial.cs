@@ -140,7 +140,7 @@ namespace Simulation
 
         private void label3_Click(object sender, EventArgs e)
         {
-            string url = "https://www.tu-enlace.com";
+            string url = "https://www.youtube.com/";
 
             try
             {

@@ -42,7 +42,7 @@
             // pictureBox2
             // 
             pictureBox2.BackColor = Color.White;
-            pictureBox2.Location = new Point(315, 199);
+            pictureBox2.Location = new Point(297, 199);
             pictureBox2.Margin = new Padding(2);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(233, 195);
@@ -83,12 +83,13 @@
             // label3
             // 
             label3.AutoSize = true;
+            label3.Cursor = Cursors.Hand;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Point);
-            label3.Location = new Point(396, 86);
+            label3.Location = new Point(297, 80);
             label3.Name = "label3";
-            label3.Size = new Size(65, 28);
+            label3.Size = new Size(239, 28);
             label3.TabIndex = 12;
-            label3.Text = "label3";
+            label3.Text = "https://www.youtube.com/";
             label3.Click += label3_Click;
             // 
             // buttonClose
