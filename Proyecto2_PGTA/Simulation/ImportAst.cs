@@ -21,6 +21,7 @@ namespace Simulation
         private Size formOriginalSize;
         private Rectangle recBut1;
         private Rectangle recBut2;
+        private Rectangle recBut3;
         private Rectangle recLbl1;
         private Rectangle recPtb1;
         private Rectangle recGb1;
@@ -37,6 +38,7 @@ namespace Simulation
             formOriginalSize = this.Size;
             recBut1 = new Rectangle(browseBtn.Location, browseBtn.Size);
             recBut2 = new Rectangle(button1.Location, button1.Size);
+            recBut3 = new Rectangle(button2.Location, button2.Size);
             recLbl1 = new Rectangle(label1.Location, label1.Size);
             recPtb1 = new Rectangle(pictureBox7.Location, pictureBox7.Size);
             recGb1 = new Rectangle(groupBox1.Location, groupBox1.Size);
@@ -54,6 +56,7 @@ namespace Simulation
             {
                 resize_Control(browseBtn, recBut1);
                 resize_Control(button1, recBut2);
+                resize_Control(button2, recBut3);
                 resize_Control(label1, recLbl1);
                 resize_Control(pictureBox7, recPtb1);
                 resize_Control(groupBox1, recGb1);
@@ -65,6 +68,7 @@ namespace Simulation
             {
                 restore_ControlSize(browseBtn, recBut1);
                 restore_ControlSize(button1, recBut2);
+                restore_ControlSize(button2, recBut3);
                 restore_ControlSize(label1, recLbl1);
                 restore_ControlSize(pictureBox7, recPtb1);
                 restore_ControlSize(groupBox1, recGb1);
@@ -177,7 +181,7 @@ namespace Simulation
             principal.Show();
             this.Close(); // Cerrar ImportAst después de seleccionar
             welcome.Hide();
-            Hide();
+            Hide1();
 
         }
 
@@ -222,7 +226,7 @@ namespace Simulation
             loading = new Loading2();
             loading.Show();
         }
-        public void Hide()
+        public void Hide1()
         {
             if (loading != null)
             {
@@ -233,6 +237,15 @@ namespace Simulation
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //Welcome Welc = new Welcome();
+            // Oculta el Importar
+            this.Close();
+            //Abrir el Mapa
+            //Welc.Show();
         }
     }
 }

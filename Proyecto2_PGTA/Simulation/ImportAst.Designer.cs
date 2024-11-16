@@ -37,6 +37,7 @@
             radioButton1 = new RadioButton();
             button1 = new Button();
             pictureBox7 = new PictureBox();
+            button2 = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             SuspendLayout();
@@ -49,7 +50,7 @@
             groupBox1.Controls.Add(radioButton2);
             groupBox1.Controls.Add(radioButton1);
             groupBox1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            groupBox1.Location = new Point(255, 86);
+            groupBox1.Location = new Point(243, 58);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(394, 196);
             groupBox1.TabIndex = 3;
@@ -126,7 +127,7 @@
             button1.FlatAppearance.MouseOverBackColor = Color.DarkGray;
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.Location = new Point(308, 314);
+            button1.Location = new Point(296, 286);
             button1.Name = "button1";
             button1.Size = new Size(280, 50);
             button1.TabIndex = 4;
@@ -145,11 +146,28 @@
             pictureBox7.TabIndex = 12;
             pictureBox7.TabStop = false;
             // 
+            // button2
+            // 
+            button2.FlatAppearance.BorderColor = Color.DarkGray;
+            button2.FlatAppearance.BorderSize = 3;
+            button2.FlatAppearance.MouseDownBackColor = Color.DarkGray;
+            button2.FlatAppearance.MouseOverBackColor = Color.DarkGray;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button2.Location = new Point(673, 387);
+            button2.Name = "button2";
+            button2.Size = new Size(99, 42);
+            button2.TabIndex = 13;
+            button2.Text = "Cancel";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
             // ImportAst
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(893, 493);
+            Controls.Add(button2);
             Controls.Add(pictureBox7);
             Controls.Add(button1);
             Controls.Add(groupBox1);
@@ -173,5 +191,6 @@
         private Button button1;
         private Label label1;
         private PictureBox pictureBox7;
+        private Button button2;
     }
 }

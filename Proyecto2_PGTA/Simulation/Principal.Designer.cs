@@ -147,7 +147,7 @@
             sidebar.Controls.Add(HelpContainer);
             sidebar.Location = new Point(-1, -1);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(117, 2000);
+            sidebar.Size = new Size(309, 2000);
             sidebar.TabIndex = 11;
             // 
             // panel1

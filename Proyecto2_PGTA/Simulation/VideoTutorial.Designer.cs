@@ -87,9 +87,9 @@
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Point);
             label3.Location = new Point(297, 80);
             label3.Name = "label3";
-            label3.Size = new Size(239, 28);
+            label3.Size = new Size(284, 28);
             label3.TabIndex = 12;
-            label3.Text = "https://www.youtube.com/";
+            label3.Text = "https://youtu.be/rNhOxW3Rp_k";
             label3.Click += label3_Click;
             // 
             // buttonClose
