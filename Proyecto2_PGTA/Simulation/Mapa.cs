@@ -34,8 +34,8 @@ namespace Simulation
         public bool extra = false;
         public Dictionary<int, double> DistancesBySecond { get; private set; } = new Dictionary<int, double>();
 
-        public string TA1 { get; set; }
-        public string TA2 { get; set; }
+        public string TI1 { get; set; }
+        public string TI2 { get; set; }
         private bool isDarkMode;
 
 
@@ -831,45 +831,45 @@ namespace Simulation
 
         }
 
-        public (List<List<object>> filtredMessages, List<string> missingTargets) Option8(List<List<object>> allMessages, string TA1, string TA2)
+        public (List<List<object>> filtredMessages, List<string> missingTargets) Option8(List<List<object>> allMessages, string TI1, string TI2)
         {
             List<List<object>> filtredMessages = new List<List<object>>();
             List<string> missingTargets = new List<string>();
 
-            bool ta1Found = false;
-            bool ta2Found = false;
+            bool ti1Found = false;
+            bool ti2Found = false;
 
             // Recorremos todos los mensajes
             foreach (var message in allMessages)
             {
 
-                string TA = Convert.ToString(message[6]);
+                string TI = Convert.ToString(message[8]);
 
-                if (TA == TA1)
+                if (TI == TI1)
                 {
-                    ta1Found = true;
+                    ti1Found = true;
                     filtredMessages.Add(message);
                 }
-                if (TA == TA2)
+                if (TI == TI2)
                 {
-                    ta2Found = true;
+                    ti2Found = true;
                     filtredMessages.Add(message);
                 }
 
             }
 
-            // Comprobamos si TA1 y TA2 están presentes
-            if (!ta1Found)
-                missingTargets.Add(TA1);
-            if (!ta2Found)
-                missingTargets.Add(TA2);
+            // Comprobamos si TI1 y TI2 están presentes
+            if (!ti1Found)
+                missingTargets.Add(TI1);
+            if (!ti2Found)
+                missingTargets.Add(TI2);
 
             return (filtredMessages, missingTargets);
 
         }
 
         // CALCULA LA DISTANCIA ENTRE AVIONES CADA SEGUNDO (DESDE EL PRIMER SEGUNDO DE FILTRED MESSAGES HASTA EL ÚLTIMO)
-        public Dictionary<int, double> CalculateDistanceForAircrafts(List<List<object>> FiltredMessages, string TA1, string TA2)
+        public Dictionary<int, double> CalculateDistanceForAircrafts(List<List<object>> FiltredMessages, string TI1, string TI2)
         {
             Dictionary<string, PointLatLng> previousPositions = new Dictionary<string, PointLatLng>(); // Almacena las últimas posiciones conocidas
             Dictionary<int, double> distancesBySecond = new Dictionary<int, double>(); // Diccionario para almacenar las distancias por segundo
@@ -887,43 +887,43 @@ namespace Simulation
                 // Recorremos todos los mensajes
                 foreach (var message in aircraftsInCurrentSecond)
                 {
-                    string TA = Convert.ToString(message[6]);
+                    string TI = Convert.ToString(message[8]);
                     double latitude = Convert.ToDouble(message[1]);
                     double longitude = Convert.ToDouble(message[2]);
 
-                    // Filtramos los mensajes de los aviones TA1 y TA2
-                    if (TA == TA1 || TA == TA2)
+                    // Filtramos los mensajes de los aviones TI1 y TI2
+                    if (TI == TI1 || TI == TI2)
                     {
 
-                        // Variables para almacenar las posiciones de TA1 y TA2
-                        PointLatLng positionTA1 = default;
-                        PointLatLng positionTA2 = default;
-                        PointLatLng stereographicPositionTA1;
-                        PointLatLng stereographicPositionTA2;
+                        // Variables para almacenar las posiciones de TI1 y TI2
+                        PointLatLng positionTI1 = default;
+                        PointLatLng positionTI2 = default;
+                        PointLatLng stereographicPositionTI1;
+                        PointLatLng stereographicPositionTI2;
 
                         // Asignar posiciones basadas en el mensaje actual
-                        if (TA == TA1)
+                        if (TI == TI1)
                         {
-                            positionTA1 = new PointLatLng(latitude, longitude);
+                            positionTI1 = new PointLatLng(latitude, longitude);
                         }
-                        else if (TA == TA2)
+                        else if (TI == TI2)
                         {
-                            positionTA2 = new PointLatLng(latitude, longitude);
+                            positionTI2 = new PointLatLng(latitude, longitude);
 
                         }
 
                         // Utilizar la última posición conocida si uno de los aviones no tiene datos nuevos
-                        if (positionTA1.Lat == 0 && previousPositions.ContainsKey(TA1))
-                            positionTA1 = previousPositions[TA1];
-                        if (positionTA2.Lat == 0 && previousPositions.ContainsKey(TA2))
-                            positionTA2 = previousPositions[TA2];
+                        if (positionTI1.Lat == 0 && previousPositions.ContainsKey(TI1))
+                            positionTI1 = previousPositions[TI1];
+                        if (positionTI2.Lat == 0 && previousPositions.ContainsKey(TI2))
+                            positionTI2 = previousPositions[TI2];
 
                         // Calcular la distancia si ambas posiciones están disponibles
-                        if (positionTA1.Lat != 0 && positionTA2.Lat != 0)
+                        if (positionTI1.Lat != 0 && positionTI2.Lat != 0)
                         {
-                            stereographicPositionTA1 = GetStereographic(positionTA1);
-                            stereographicPositionTA2 = GetStereographic(positionTA2);
-                            double distance = CalculateDistance(stereographicPositionTA1, stereographicPositionTA2);
+                            stereographicPositionTI1 = GetStereographic(positionTI1);
+                            stereographicPositionTI2 = GetStereographic(positionTI2);
+                            double distance = CalculateDistance(stereographicPositionTI1, stereographicPositionTI2);
                             distancesBySecond[i] = distance; // Almacena la distancia para el segundo actual
 
                         }
@@ -934,10 +934,10 @@ namespace Simulation
                         }
 
                         // Guardar las posiciones actuales como últimas conocidas
-                        if (positionTA1.Lat != 0)
-                            previousPositions[TA1] = positionTA1;
-                        if (positionTA2.Lat != 0)
-                            previousPositions[TA2] = positionTA2;
+                        if (positionTI1.Lat != 0)
+                            previousPositions[TI1] = positionTI1;
+                        if (positionTI2.Lat != 0)
+                            previousPositions[TI2] = positionTI2;
                     }
 
                 }
@@ -993,30 +993,15 @@ namespace Simulation
             return new PointLatLng(Coordinates_ster.U, Coordinates_ster.V);
         }
 
-        public double CalculateDistance(PointLatLng stereographicPositionTA1, PointLatLng stereographicPositionTA2)
+        public double CalculateDistance(PointLatLng stereographicPositionTI1, PointLatLng stereographicPositionTI2)
         {
             double distance;
-            double dU = stereographicPositionTA1.Lat - stereographicPositionTA2.Lat;
-            double dV = stereographicPositionTA1.Lng - stereographicPositionTA2.Lng;
+            double dU = stereographicPositionTI1.Lat - stereographicPositionTI2.Lat;
+            double dV = stereographicPositionTI1.Lng - stereographicPositionTI2.Lng;
             distance = Math.Sqrt(dV * dV + dU * dU);
             distance = (distance / 1852.0);
             return distance;
         }
-        //public void SL()
-        //{
-        //Thread.Sleep(3000);
-        //}
-        //public void Show()
-        //{
-        //loading = new Loading2();
-        //loading.Show();
-        //}
-        //public void Hide()
-        //{
-        //if (loading != null)
-        //{
-        //loading.Close();
-        //}
-        //}
+
     }
 }

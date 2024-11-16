@@ -120,30 +120,31 @@ namespace Simulation
 
             try
             {
-                string TA1 = textBox1.Text;
-                string TA2 = textBox2.Text;
+                string TI1 = textBox1.Text;
+                string TI2 = textBox2.Text;
 
-                // Validate that minimum values are less than maximum values
-                if ((TA1.Length != 6) || (TA2.Length != 6))
+                // Verifica si alguno de los TextBox está vacío
+                if (string.IsNullOrEmpty(TI1) || string.IsNullOrEmpty(TI2))
                 {
-                    throw new ArgumentException("The target address must contain 6 characters.");
+                    MessageBox.Show("Please enter a target identification in both fields.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return; // Salir si falta algún valor
                 }
 
                 // Llama al método en el formulario Mapa y obtiene el resultado
-                var (filteredMessages, missingTargets) = mapa.Option8(mapa.AllMessages, TA1, TA2);
+                var (filteredMessages, missingTargets) = mapa.Option8(mapa.AllMessages, TI1, TI2);
 
                 if (missingTargets.Count != 0)
                 {
                     if (missingTargets.Count == 1)
                     {
-                        if (missingTargets[0] == TA1)
+                        if (missingTargets[0] == TI1)
                         {
-                            MessageBox.Show($"The target address '{TA1}' is not found in the Asterix. Please enter another address.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show($"The target identification '{TI1}' is not found in the Asterix. Please enter another identification.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             textBox1.Clear();
                         }
-                        else if (missingTargets[0] == TA2)
+                        else if (missingTargets[0] == TI2)
                         {
-                            MessageBox.Show($"The target address '{TA2}' is not found in the Asterix. Please enter another address.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show($"The target identification '{TI2}' is not found in the Asterix. Please enter another identification.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             textBox2.Clear();
                         }
 
@@ -151,7 +152,7 @@ namespace Simulation
                     else if (missingTargets.Count == 2)
                     {
 
-                        MessageBox.Show("Neither of the two target addresses entered is found in the Asterix. Please enter two different addresses.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Neither of the two target identifications entered is found in the Asterix. Please enter two different identifications.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         textBox1.Clear();
                         textBox2.Clear();
                     }
@@ -159,7 +160,7 @@ namespace Simulation
                     return;
                 }
 
-                mapa.CalculateDistanceForAircrafts(filteredMessages, TA1, TA2);
+                mapa.CalculateDistanceForAircrafts(filteredMessages, TI1, TI2);
                 // Llama al método en el formulario Mapa
                 mapa.SetTargetAddresses(filteredMessages);
 
@@ -178,8 +179,8 @@ namespace Simulation
 
         private void autofillBtn_Click(object sender, EventArgs e)
         {
-            textBox1.Text = "4A08EB";
-            textBox2.Text = "346088";
+            textBox1.Text = "VOE23TA";
+            textBox2.Text = "AEE710";
         }
 
         private void Target_Load(object sender, EventArgs e)

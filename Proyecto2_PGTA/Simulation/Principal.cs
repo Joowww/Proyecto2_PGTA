@@ -773,6 +773,7 @@ namespace Simulation
                     string MODE_3A = Convert.ToString(row[23]);
                     string TA = Convert.ToString(row[35]);
                     string STAT = Convert.ToString(row[70]);
+                    string TI = Convert.ToString(row[36]).Trim();
 
                     // Validar que TA no sea null o una cadena vacía antes de agregar a allMessages
                     if (TA != "N/A" && Altitude_Corrected != "N/A")
@@ -787,6 +788,7 @@ namespace Simulation
                         message.Add(MODE_3A);
                         message.Add(TA);
                         message.Add(STAT);
+                        message.Add(TI);
                         allMessages.Add(message);
                     }
 
