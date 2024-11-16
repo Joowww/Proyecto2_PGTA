@@ -776,7 +776,7 @@ namespace Simulation
                     string TI = Convert.ToString(row[36]).Trim();
 
                     // Validar que TA no sea null o una cadena vacía antes de agregar a allMessages
-                    if (TA != "N/A" && Altitude_Corrected != "N/A")
+                    if (TA != "N/A")
                     {
 
                         List<object> message = new List<object>();
@@ -999,43 +999,53 @@ namespace Simulation
             foreach (var message in allMessages)
             {
                 string H = Convert.ToString(message[3]);
-                double h = Convert.ToDouble(H) * 3.280839895;
-                if (h <= 6000)
+                // Verificamos si H es numérico antes de convertirlo
+                if (double.TryParse(H, out double h))
                 {
-                    filtredMessages.Add(message);
+                    h *= 3.280839895; // Convertimos metros a pies
+                    if (h <= 6000)
+                    {
+                        filtredMessages.Add(message);
+                    }
                 }
+                // Si H es "N/A" o no es un número, simplemente no se añade el mensaje a filtredMessages
             }
             return filtredMessages;
         }
 
         public List<List<object>> Option6(List<List<object>> allMessages)
         {
-            MessageBox.Show("Executing Removing on ground flights.", "Simulate", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Executing: Removing on-ground flights.", "Simulate", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             List<List<object>> filtredMessages = new List<List<object>>();
 
             // Recorremos todos los mensajes
             foreach (var message in allMessages)
             {
-
                 string STAT = Convert.ToString(message[7]);
                 string H_s = Convert.ToString(message[3]);
-                double H = Convert.ToDouble(H_s);
+
+                // Intentamos convertir H_s a un double, si falla, asignamos H a 0 para evitar errores
+                double H = 0;
+                bool isNumeric = double.TryParse(H_s, out H);
 
                 if (STAT == "No alert, no SPI, aircraft airborne" || STAT == "Alert, no SPI, aircraft airborne")
                 {
                     filtredMessages.Add(message);
                 }
-                if (STAT == "Alert, SPI, aircraft airborne or on ground" || STAT == "No alert, SPI, aircraft airborne or on ground" || STAT == "Not assigned" || STAT == "Unknown")
+                else if (STAT == "Alert, SPI, aircraft airborne or on ground" || STAT == "No alert, SPI, aircraft airborne or on ground" || STAT == "Not assigned" || STAT == "Unknown")
                 {
-                    if (H > 0)
+                    // Solo añadimos si es numérico y H es mayor que 0
+                    if (isNumeric && H > 0)
                     {
                         filtredMessages.Add(message);
                     }
                 }
             }
+
             return filtredMessages;
         }
+
 
         public List<List<object>> Option7(List<List<object>> allMessages)
         {
