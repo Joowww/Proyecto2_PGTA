@@ -46,9 +46,13 @@ namespace Simulation
             pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
             pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
         }
+        /// <summary>
+        /// Adjusts dynamically the size and position of the form's controls based on whether it is maximized or in its normal size.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Target_Resiz(object sender, EventArgs e)
         {
-            // Verificamos si el formulario está maximizado o no
             if (this.WindowState == FormWindowState.Maximized)
             {
                 resize_Control(acceptBtn, recBut1);
@@ -74,17 +78,26 @@ namespace Simulation
                 restore_ControlSize(pictureBox7, recPtb1);
             }
         }
+        /// <summary>
+        /// Restores the original position, size, and font of a control.
+        /// </summary>
+        /// <param name="control"></param>
+        /// <param name="originalRect"></param>
         private void restore_ControlSize(Control control, Rectangle originalRect)
         {
             control.Location = originalRect.Location;
             control.Size = originalRect.Size;
 
-            // Restauramos el tamaño de la fuente original
             control.Font = new Font(control.Font.FontFamily, 10, control.Font.Style); // Ajusta el tamaño de la fuente original si es necesario
 
             pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
             pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
         }
+        /// <summary>
+        /// Dynamically resizes and repositions a control based on the current size of the form relative to its original size.
+        /// </summary>
+        /// <param name="control"></param>
+        /// <param name="rect"></param>
         private void resize_Control(Control control, Rectangle rect)
         {
             float xRatio = (float)(this.Width) / (float)(formOriginalSize.Width);
@@ -99,23 +112,25 @@ namespace Simulation
             control.Location = new Point(newX, newY);
             control.Size = new Size(newWidth, newHeight);
 
-            float fontSizeRatio = Math.Min(xRatio, yRatio); // Escala basada en la menor proporción
+            float fontSizeRatio = Math.Min(xRatio, yRatio); 
             control.Font = new Font(control.Font.FontFamily, control.Font.Size * fontSizeRatio, control.Font.Style);
 
             pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
             pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
         }
+        /// <summary>
+        /// Validates target identification inputs, clears overlays, and attempts to filter messages. If targets are missing, shows an error. If valid, calculates distances for the selected targets and hides the form.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void acceptBtn_Click(object sender, EventArgs e)
         {
             mapa.extra = true;
 
-            // Eliminar todos los marcadores de la capa de marcadores
             mapa.markersOverlay.Markers.Clear();
 
-            // Eliminar todas las rutas de la capa de rutas
             mapa.routeOverlay.Routes.Clear();
 
-            // Refrescar el mapa para aplicar los cambios
             mapa.mapControl.Refresh();
 
             try
@@ -123,14 +138,12 @@ namespace Simulation
                 string TI1 = textBox1.Text;
                 string TI2 = textBox2.Text;
 
-                // Verifica si alguno de los TextBox está vacío
                 if (string.IsNullOrEmpty(TI1) || string.IsNullOrEmpty(TI2))
                 {
                     MessageBox.Show("Please enter a target identification in both fields.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return; // Salir si falta algún valor
+                    return; 
                 }
 
-                // Llama al método en el formulario Mapa y obtiene el resultado
                 var (filteredMessages, missingTargets) = mapa.Option8(mapa.AllMessages, TI1, TI2);
 
                 if (missingTargets.Count != 0)
@@ -156,12 +169,10 @@ namespace Simulation
                         textBox1.Clear();
                         textBox2.Clear();
                     }
-                    // No cerrar el formulario, permite al usuario corregir la entrada
                     return;
                 }
 
                 mapa.CalculateDistanceForAircrafts(filteredMessages, TI1, TI2);
-                // Llama al método en el formulario Mapa
                 mapa.SetTargetAddresses(filteredMessages);
 
                 mapa.Enabled = true;
@@ -172,7 +183,6 @@ namespace Simulation
             }
             catch (Exception ex)
             {
-                // Handles any other unexpected errors
                 MessageBox.Show($"An unexpected error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -183,15 +193,17 @@ namespace Simulation
             textBox2.Text = "AEE710";
         }
 
+        /// <summary>
+        /// Loads the theme setting and applies dark or light mode based on the stored preference.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Target_Load(object sender, EventArgs e)
         {
-            // Cargar el estado del tema guardado
             isDarkMode = Properties.Settings1.Default.IsDarkMode;
 
-            // Aplicar el tema según el estado guardado
             ApplyTheme();
 
-            // Si el modo oscuro está activo, aplicarlo
             if (isDarkMode)
             {
                 Theme.SetDarkMode(this);
@@ -202,9 +214,11 @@ namespace Simulation
             }
         }
 
+        /// <summary>
+        /// Changes the form’s background based on the selected theme.
+        /// </summary>
         private void ApplyTheme()
         {
-            // Aplica el tema al formulario actual
             if (isDarkMode)
             {
                 this.BackColor = Color.FromArgb(45, 45, 48);

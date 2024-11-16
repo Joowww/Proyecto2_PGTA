@@ -32,7 +32,6 @@ namespace Simulation
         {
             InitializeComponent();
             this.welcome = welcome_;
-            // Set radioButton1 as selected by default
             this.Load += ImportAst_Load;
             this.Resize += ImportAst_Resiz;
             formOriginalSize = this.Size;
@@ -50,6 +49,11 @@ namespace Simulation
             pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
         }
 
+        /// <summary>
+        /// Adjusts dynamically the size and position of the form's controls based on whether it is maximized or in its normal size.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ImportAst_Resiz(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Maximized)
@@ -78,17 +82,26 @@ namespace Simulation
             }
         }
 
+        /// <summary>
+        /// Restores the original position, size, and font of a control.
+        /// </summary>
+        /// <param name="control"></param>
+        /// <param name="originalRect"></param>
         private void restore_ControlSize(Control control, Rectangle originalRect)
         {
             control.Location = originalRect.Location;
             control.Size = originalRect.Size;
 
-            // Restauramos el tamaño de la fuente original
             control.Font = new Font(control.Font.FontFamily, 10, control.Font.Style);
 
             pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
             pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
         }
+        /// <summary>
+        /// Dynamically resizes and repositions a control based on the current size of the form relative to its original size.
+        /// </summary>
+        /// <param name="control"></param>
+        /// <param name="rect"></param>
         private void resize_Control(Control control, Rectangle rect)
         {
             float xRatio = (float)(this.Width) / (float)(formOriginalSize.Width);
@@ -103,24 +116,31 @@ namespace Simulation
             control.Location = new Point(newX, newY);
             control.Size = new Size(newWidth, newHeight);
 
-            // Ajustar tamaño de la fuente
-            float fontSizeRatio = Math.Min(xRatio, yRatio); // Escala basada en la menor proporción
+            float fontSizeRatio = Math.Min(xRatio, yRatio); 
             control.Font = new Font(control.Font.FontFamily, control.Font.Size * fontSizeRatio, control.Font.Style);
 
             pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
             pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
         }
+        /// <summary>
+        /// ImportAst_Load sets radioButton1 as checked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ImportAst_Load(object sender, EventArgs e)
         {
             radioButton1.Checked = true;
         }
 
+        /// <summary>
+        /// browseBtn_Click sets radioButton3 checked, opens a file dialog to select a file, sets FilePathAST and updates label1 with the selected file name.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void browseBtn_Click(object sender, EventArgs e)
         {
-            // Selecciona automáticamente el RadioButton "Custom File"
             radioButton3.Checked = true;
 
-            // Crear y mostrar el OpenFileDialog
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.Filter = "All Files (*.*)|*.*";
@@ -129,30 +149,33 @@ namespace Simulation
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     FilePathAST = openFileDialog.FileName;
-                    // Mostrar el nombre del archivo en la Label
                     label1.Text = Path.GetFileName(openFileDialog.FileName);
                 }
             }
         }
 
-        // Limpiar el nombre del archivo si se eligen las otras opciones
+        
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButton3.Checked == false)
             {
-                label1.Text = "";  // Limpiar el Label cuando se cambia la selección
+                label1.Text = "";  
             }
         }
 
+        /// <summary>
+        /// Validates the file selection, shows a loading form, waits for 5 seconds, then opens the main form and closes the current one.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void acceptBtn_Click(object sender, EventArgs e)
         {
             if (radioButton3.Checked && !string.IsNullOrEmpty(FilePathAST))
             {
-                // Check if the file has the .ast extension
                 if (Path.GetExtension(FilePathAST).ToLower() != ".ast")
                 {
                     MessageBox.Show("Please select a file with the .ast extension.", "File Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return; // Stop the process if it is not an .ast file
+                    return; 
                 }
             }
             else if (radioButton1.Checked)
@@ -179,21 +202,23 @@ namespace Simulation
             await oTask;
             Principal principal = new Principal(FilePathAST);
             principal.Show();
-            this.Close(); // Cerrar ImportAst después de seleccionar
+            this.Close(); 
             welcome.Hide();
             Hide1();
 
         }
 
+        /// <summary>
+        /// Loads the theme setting and applies dark or light mode based on the stored preference.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ImportAst_Load_1(object sender, EventArgs e)
         {
-            // Cargar el estado del tema guardado
             isDarkMode = Properties.Settings1.Default.IsDarkMode;
 
-            // Aplicar el tema según el estado guardado
             ApplyTheme();
 
-            // Si el modo oscuro está activo, aplicarlo
             if (isDarkMode)
             {
                 Theme.SetDarkMode(this);
@@ -204,9 +229,11 @@ namespace Simulation
             }
         }
 
+        /// <summary>
+        /// Changes the form’s background based on the selected theme.
+        /// </summary>
         private void ApplyTheme()
         {
-            // Aplica el tema al formulario actual
             if (isDarkMode)
             {
                 this.BackColor = Color.FromArgb(45, 45, 48);
@@ -217,6 +244,9 @@ namespace Simulation
             }
         }
 
+        /// <summary>
+        /// Pauses for 5 seconds.
+        /// </summary>
         public void SL()
         {
             Thread.Sleep(5000);
@@ -234,18 +264,9 @@ namespace Simulation
             }
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
-            //Welcome Welc = new Welcome();
-            // Oculta el Importar
             this.Close();
-            //Abrir el Mapa
-            //Welc.Show();
         }
     }
 }

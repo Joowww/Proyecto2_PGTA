@@ -117,7 +117,6 @@
             radioButton1.TabStop = true;
             radioButton1.Text = "ASTERIX 1h";
             radioButton1.UseVisualStyleBackColor = true;
-            radioButton1.CheckedChanged += radioButton1_CheckedChanged;
             // 
             // button1
             // 

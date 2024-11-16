@@ -31,7 +31,6 @@ namespace Simulation
             this.principal = principal_;
             this.data = originalData;
 
-            // Agregar opciones al CheckedListBox
             checkedListBox1.Items.Add("Removing pure blanks");
             checkedListBox1.Items.Add("Removing fixed transponders");
             checkedListBox1.Items.Add("Geographic filter");
@@ -49,6 +48,11 @@ namespace Simulation
             pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
         }
 
+        /// <summary>
+        /// Adjusts dynamically the size and position of the form's controls based on whether it is maximized or in its normal size.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CombinedFilters_Resiz(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Maximized)
@@ -67,17 +71,26 @@ namespace Simulation
             }
         }
 
+        /// <summary>
+        /// Restores the original position, size, and font of a control.
+        /// </summary>
+        /// <param name="control"></param>
+        /// <param name="originalRect"></param>
         private void restore_ControlSize(Control control, Rectangle originalRect)
         {
             control.Location = originalRect.Location;
             control.Size = originalRect.Size;
 
-            // Restauramos el tamaño de la fuente original
             control.Font = new Font(control.Font.FontFamily, 10, control.Font.Style);
 
             pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
             pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
         }
+        /// <summary>
+        /// Dynamically resizes and repositions a control based on the current size of the form relative to its original size.
+        /// </summary>
+        /// <param name="control"></param>
+        /// <param name="rect"></param>
         private void resize_Control(Control control, Rectangle rect)
         {
             float xRatio = (float)(this.Width) / (float)(formOriginalSize.Width);
@@ -92,32 +105,37 @@ namespace Simulation
             control.Location = new Point(newX, newY);
             control.Size = new Size(newWidth, newHeight);
 
-            // Ajustar tamaño de la fuente
-            float fontSizeRatio = Math.Min(xRatio, yRatio); // Escala basada en la menor proporción
+            float fontSizeRatio = Math.Min(xRatio, yRatio); 
             control.Font = new Font(control.Font.FontFamily, control.Font.Size * fontSizeRatio, control.Font.Style);
 
             pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
             pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
         }
 
+        /// <summary>
+        /// Returns the filtered data list.
+        /// </summary>
+        /// <returns></returns>
         public List<List<object>> GetFilteredData()
         {
             return filteredData;
         }
+        /// <summary>
+        /// Applies selected filters to the data if at least two filters are chosen, then disables the main form.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void acceptBtn_Click(object sender, EventArgs e)
         {
             cancel = false;
-            // Obtener los filtros seleccionados
+
             var selectedFilters = checkedListBox1.CheckedItems.Cast<string>().ToList();
 
-            // Verificar si hay al menos 2 filtros seleccionados
             if (selectedFilters.Count >= 2)
             {
 
-                // Copia de los datos originales para aplicar los filtros
                 filteredData = new List<List<object>>(data);
 
-                // Aplicar los filtros en el orden seleccionado
                 foreach (var filter in selectedFilters)
                 {
                     filteredData = ApplyFilter(filter, filteredData);
@@ -134,7 +152,12 @@ namespace Simulation
 
         }
 
-        // Método para aplicar el filtro basado en el nombre del filtro seleccionado
+        /// <summary>
+        /// Applies specific filters based on the filter name passed as a parameter.
+        /// </summary>
+        /// <param name="filterName"></param>
+        /// <param name="data"></param>
+        /// <returns></returns>
         private List<List<object>> ApplyFilter(string filterName, List<List<object>> data)
         {
             switch (filterName)
@@ -155,19 +178,21 @@ namespace Simulation
                     return principal.Option6(data);
 
                 default:
-                    return data; // Devolver los datos sin cambios si el filtro no coincide
+                    return data; 
             }
         }
 
+        /// <summary>
+        /// Loads the theme setting and applies dark or light mode based on the stored preference.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CombinedFilters_Load(object sender, EventArgs e)
         {
-            // Cargar el estado del tema guardado
             isDarkMode = Properties.Settings1.Default.IsDarkMode;
 
-            // Aplicar el tema según el estado guardado
             ApplyTheme();
 
-            // Si el modo oscuro está activo, aplicarlo
             if (isDarkMode)
             {
                 Theme.SetDarkMode(this);
@@ -178,9 +203,11 @@ namespace Simulation
             }
         }
 
+        /// <summary>
+        /// Changes the form’s background based on the selected theme.
+        /// </summary>
         private void ApplyTheme()
         {
-            // Aplica el tema al formulario actual
             if (isDarkMode)
             {
                 this.BackColor = Color.FromArgb(45, 45, 48);

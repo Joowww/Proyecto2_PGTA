@@ -25,7 +25,6 @@ namespace Simulation
 {
     public partial class Mapa : Form
     {
-        //Loading2 loading;
         private Principal principal;
         public GMapControl mapControl;
         List<List<object>> FiltredMessages { get; set; }
@@ -40,11 +39,11 @@ namespace Simulation
 
 
         private int currentSecond;
-        private int maxSecond; // Variable para almacenar el máximo segundo disponible
-        public GMapOverlay markersOverlay; // Capa de marcadores
+        private int maxSecond; 
+        public GMapOverlay markersOverlay; 
         public GMapOverlay routeOverlay;
-        private Dictionary<string, GMarkerGoogle> aircraftMarkers; // Guarda los target address de los aviones pintados
-        private Dictionary<string, PointLatLng> previousPositions; // Almacena las posiciones anteriores de los aviones
+        private Dictionary<string, GMarkerGoogle> aircraftMarkers; 
+        private Dictionary<string, PointLatLng> previousPositions; 
 
         private System.Windows.Forms.Timer simulationTimer;
 
@@ -85,7 +84,6 @@ namespace Simulation
             mapControl.ShowCenter = false;
             panel1.Controls.Add(mapControl);
 
-            // Agregar elementos al ComboBox
             comboBox1.Items.Add("Google Maps");
             comboBox1.Items.Add("Bing Maps");
             comboBox1.Items.Add("OpenStreetMap");
@@ -105,14 +103,12 @@ namespace Simulation
             comboBox2.SelectedIndex = selectedIndexOption;
 
 
-            // Establecer el primer segundo como el primero en la lista de aviones
             if (FiltredMessages.Count > 0)
             {
                 currentSecond = Convert.ToInt32(FiltredMessages[0][0]);
-                maxSecond = FiltredMessages.Max(aircraft => Convert.ToInt32(aircraft[0])); // Obtener el segundo máximo
+                maxSecond = FiltredMessages.Max(aircraft => Convert.ToInt32(aircraft[0])); 
             }
 
-            // Inicializar la capa de marcadores
             markersOverlay = new GMapOverlay("markers");
             mapControl.Overlays.Add(markersOverlay);
             aircraftMarkers = new Dictionary<string, GMarkerGoogle>();
@@ -120,14 +116,12 @@ namespace Simulation
             routeOverlay = new GMapOverlay("routes");
             mapControl.Overlays.Add(routeOverlay);
 
-            // Inicialización del Timer
             simulationTimer = new System.Windows.Forms.Timer();
-            simulationTimer.Interval = 1000; // Ejecuta cada segundo
+            simulationTimer.Interval = 1000; 
             simulationTimer.Tick += SimulationTimer_Tick;
 
-            // Configuración del TrackBar para la velocidad
-            trackBar1.Minimum = 1; // Más lento
-            trackBar1.Maximum = 15; // Más rápido
+            trackBar1.Minimum = 1; 
+            trackBar1.Maximum = 15; 
             trackBar1.Value = 1;
             trackBar1.Scroll += trackBar1_Scroll;
 
@@ -171,6 +165,11 @@ namespace Simulation
             pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
         }
 
+        /// <summary>
+        /// Adjusts dynamically the size and position of the form's controls based on whether it is maximized or in its normal size.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Mapa_Resiz(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Maximized)
@@ -222,17 +221,26 @@ namespace Simulation
             }
         }
 
+        /// <summary>
+        /// Restores the original position, size, and font of a control.
+        /// </summary>
+        /// <param name="control"></param>
+        /// <param name="originalRect"></param>
         private void restore_ControlSize(Control control, Rectangle originalRect)
         {
             control.Location = originalRect.Location;
             control.Size = originalRect.Size;
 
-            // Restauramos el tamaño de la fuente original
             control.Font = new Font(control.Font.FontFamily, 10, control.Font.Style);
 
             pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
             pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
         }
+        /// <summary>
+        /// Dynamically resizes and repositions a control based on the current size of the form relative to its original size.
+        /// </summary>
+        /// <param name="control"></param>
+        /// <param name="rect"></param>
         private void resize_Control(Control control, Rectangle rect)
         {
             float xRatio = (float)(this.Width) / (float)(formOriginalSize.Width);
@@ -247,23 +255,24 @@ namespace Simulation
             control.Location = new Point(newX, newY);
             control.Size = new Size(newWidth, newHeight);
 
-            // Ajustar tamaño de la fuente
-            float fontSizeRatio = Math.Min(xRatio, yRatio); // Escala basada en la menor proporción
+            float fontSizeRatio = Math.Min(xRatio, yRatio); 
             control.Font = new Font(control.Font.FontFamily, control.Font.Size * fontSizeRatio, control.Font.Style);
 
             pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
             pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
         }
 
+        /// <summary>
+        /// Initializes map settings, applies dark/light theme, and displays aircraft data for the first 4 seconds. Updates the map and data grid.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Mapa_Load(object sender, EventArgs e)
         {
-            // Cargar el estado del tema guardado
             isDarkMode = Properties.Settings1.Default.IsDarkMode;
 
-            // Aplicar el tema según el estado guardado
             ApplyTheme();
 
-            // Si el modo oscuro está activo, aplicarlo
             if (isDarkMode)
             {
                 Theme.SetDarkMode(this);
@@ -284,7 +293,6 @@ namespace Simulation
 
             List<List<object>> initialAircrafts = new List<List<object>>();
 
-            // Pintar los primeros 4 segundos desde el tiempo inicial (currentSecond) al cargar el formulario
             for (int i = 0; i < 4; i++)
             {
                 List<List<object>> result = AircraftsPerSecond(FiltredMessages, currentSecond + i);
@@ -295,14 +303,16 @@ namespace Simulation
             UpdateDataGridView(initialAircrafts);
 
             UpdateTime(initialAircrafts);
-            // Refrescar el mapa
             mapControl.Refresh();
 
-            // Configurar el segundo de inicio para la simulación
-            currentSecond += 4; // El siguiente segundo será el 5º relativo al primer valor de tiempo
+            currentSecond += 4;
 
         }
 
+        /// <summary>
+        /// Populates the data grid with aircraft info (time, position, height, type).
+        /// </summary>
+        /// <param name="aircrafts"></param>
         private void UpdateDataGridView(List<List<object>> aircrafts)
         {
             dataGridView1.Rows.Clear();
@@ -322,6 +332,10 @@ namespace Simulation
             dataGridView1.ClearSelection();
         }
 
+        /// <summary>
+        /// Displays the time of the last aircraft in the list.
+        /// </summary>
+        /// <param name="aircrafts"></param>
         private void UpdateTime(List<List<object>> aircrafts)
         {
             var lastAircraft = aircrafts[aircrafts.Count - 1];
@@ -329,15 +343,17 @@ namespace Simulation
             label5.Text = time;
         }
 
+        /// <summary>
+        /// Advances the simulation by one second, updates the map and grid, and shows distance if enabled. Stops when the simulation ends.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MoveBtn_Click(object sender, EventArgs e)
         {
             if (currentSecond <= maxSecond)
             {
-
-                // Obtener los aviones del segundo actual
                 List<List<object>> result = AircraftsPerSecond(FiltredMessages, currentSecond);
 
-                // Pintar los aviones del segundo actual
                 PaintAircrafts(result);
 
                 UpdateDataGridView(result);
@@ -346,47 +362,51 @@ namespace Simulation
                 if (extra == true)
                 {
                     double distancia = DistancesBySecond[currentSecond];
-                    label4.Text = $"Distance = {distancia:F2} NM"; // Limita a 2 decimales
+                    label4.Text = $"Distance = {distancia:F2} NM"; 
                 }
 
-                // Forzar la actualización del mapa
                 mapControl.Refresh();
 
-                // Incrementar el segundo para la próxima vez que se presione el botón
                 currentSecond++;
             }
             else
             {
-                simulationTimer.Stop(); // Detener el timer si la simulación ha terminado
+                simulationTimer.Stop(); 
                 AutomaticBtn.Text = "Automatic";
                 MessageBox.Show("The simulation has finished");
             }
         }
 
 
+        /// <summary>
+        /// Filters aircraft data based on the specified second.
+        /// </summary>
+        /// <param name="FiltredMessages"></param>
+        /// <param name="second"></param>
+        /// <returns></returns>
         static List<List<object>> AircraftsPerSecond(List<List<object>> FiltredMessages, int second)
         {
             List<List<object>> aircraftsSecond = new List<List<object>>();
-            // Recorrer todas las listas de FiltredMessages
             foreach (List<object> aircraft in FiltredMessages)
             {
                 int timeAircraft = Convert.ToInt32(aircraft[0]);
 
-                // Si el tiempo coincide, agregar la lista de ese avión a la lista de salida
                 if (timeAircraft == second)
                 {
-                    aircraftsSecond.Add(aircraft);  // Agregar la lista del avión
+                    aircraftsSecond.Add(aircraft);  
                 }
             }
             return aircraftsSecond;
         }
 
-        // Método para pintar los aviones en el mapa
+        /// <summary>
+        /// Method to draw airplanes on the map.
+        /// </summary>
+        /// <param name="aircrafts"></param>
         private void PaintAircrafts(List<List<object>> aircrafts)
         {
             foreach (List<object> aircraft in aircrafts)
             {
-                // Obtener los datos del avión
                 double latitude = Convert.ToDouble(aircraft[1]);
                 double longitude = Convert.ToDouble(aircraft[2]);
                 string Altitude_corrected = Convert.ToString(aircraft[3]);
@@ -395,33 +415,26 @@ namespace Simulation
 
                 PointLatLng Position = new PointLatLng(latitude, longitude);
 
-                // Verificar si el TA ya está en el diccionario
                 if (!string.IsNullOrEmpty(TA))
                 {
                     if (aircraftMarkers.ContainsKey(TA))
                     {
-                        // Eliminar el marcador anterior
                         markersOverlay.Markers.Remove(aircraftMarkers[TA]);
                     }
 
                     double angleGRAD = 0;
 
-                    // Comprobar si hay una posición anterior
                     if (previousPositions.ContainsKey(TA))
                     {
-                        // Obtener la posición anterior
                         PointLatLng previousPosition = previousPositions[TA];
 
-                        // Dibujar la línea entre la posición anterior y la actual
                         DrawLine(previousPosition, Position);
 
-                        // Cálculo del ángulo de rotación 
                         double AY = Position.Lat - previousPosition.Lat;
                         double AX = Position.Lng - previousPosition.Lng;
                         double angleRAD = Math.Atan(AY / AX);
                         angleGRAD = angleRAD * 180 / Math.PI;
 
-                        // Ajustar el ángulo si AX es negativo
                         if (AX < 0)
                         {
                             angleGRAD += 180;
@@ -438,7 +451,7 @@ namespace Simulation
                     {
                         if ((angleGRAD > 0 && angleGRAD < 45) || (angleGRAD > 90 && angleGRAD < 135) || (angleGRAD > -90 && angleGRAD < -45) || (angleGRAD > 180 && angleGRAD < 225))
                         {
-                            bitmap = new Bitmap("plane60.png");   //30 degrees
+                            bitmap = new Bitmap("plane60.png");   
 
                             if (angleGRAD > 0 && angleGRAD <= 45)
                             {
@@ -446,21 +459,21 @@ namespace Simulation
                             }
                             else if (angleGRAD > 90 && angleGRAD <= 135)
                             {
-                                bitmap.RotateFlip(RotateFlipType.Rotate270FlipNone); //north-west (rotation clockwise)
+                                bitmap.RotateFlip(RotateFlipType.Rotate270FlipNone); 
                             }
                             else if (angleGRAD <= -45 && angleGRAD > -90)
                             {
-                                bitmap.RotateFlip(RotateFlipType.Rotate90FlipNone); //south-east
+                                bitmap.RotateFlip(RotateFlipType.Rotate90FlipNone);
                             }
                             else if (angleGRAD <= 225 && angleGRAD > 180)
                             {
-                                bitmap.RotateFlip(RotateFlipType.Rotate180FlipNone); //south-west
+                                bitmap.RotateFlip(RotateFlipType.Rotate180FlipNone); 
                             }
                         }
 
                         else if ((angleGRAD > 45 && angleGRAD < 90) || (angleGRAD > 135 && angleGRAD < 180) || (angleGRAD > -45 && angleGRAD < 0) || (angleGRAD > 225 && angleGRAD < 270))
                         {
-                            bitmap = new Bitmap("plane30.png");   //30 degrees
+                            bitmap = new Bitmap("plane30.png");  
 
                             if (angleGRAD > 45 && angleGRAD < 90)
                             {
@@ -468,15 +481,15 @@ namespace Simulation
                             }
                             else if (angleGRAD > 135 && angleGRAD < 180)
                             {
-                                bitmap.RotateFlip(RotateFlipType.Rotate270FlipNone); //north-west (rotation clockwise)
+                                bitmap.RotateFlip(RotateFlipType.Rotate270FlipNone); 
                             }
                             else if (angleGRAD < 0 && angleGRAD > -45)
                             {
-                                bitmap.RotateFlip(RotateFlipType.Rotate90FlipNone); //south-east
+                                bitmap.RotateFlip(RotateFlipType.Rotate90FlipNone);
                             }
                             else if (angleGRAD < 270 && angleGRAD > 225)
                             {
-                                bitmap.RotateFlip(RotateFlipType.Rotate180FlipNone); //south-west
+                                bitmap.RotateFlip(RotateFlipType.Rotate180FlipNone); 
                             }
                         }
                     }
@@ -503,34 +516,24 @@ namespace Simulation
                         }
                     }
 
-
-                    // Especificar el tamaño del marcador
                     int newWidth = bitmap.Width / 30;
                     int newHeight = bitmap.Height / 30;
                     Bitmap resizedBitmap = new Bitmap(bitmap, new Size(newWidth, newHeight));
 
-                    // Calcular el offset para centrar el bitmap
                     int offsetX = resizedBitmap.Width / 2;
                     int offsetY = resizedBitmap.Height / 2;
 
-                    // Crear el marcador
                     GMarkerGoogle marker = new GMarkerGoogle(Position, resizedBitmap);
 
-                    // Ajustar la posición del marcador para centrar el bitmap
                     marker.Offset = new Point(-offsetX, -offsetY);
 
-                    // Agregar un tooltip al marcador
                     marker.ToolTip = new GMap.NET.WindowsForms.ToolTips.GMapRoundedToolTip(marker);
                     marker.ToolTipText = $"Target identification: {TI}\nTarget address: {TA}\nLatitude (°): {latitude}\nLongitude (°): {longitude}\nCorrected Altitude (m): {Altitude_corrected}";
 
-                    // Agregar el nuevo marcador a la capa de marcadores
                     markersOverlay.Markers.Add(marker);
 
-                    // Actualizar el diccionario con el nuevo marcador
                     aircraftMarkers[TA] = marker;
 
-
-                    // Actualizar la posición anterior
                     previousPositions[TA] = Position;
 
                 }
@@ -538,22 +541,31 @@ namespace Simulation
             mapControl.Invalidate();
         }
 
+        /// <summary>
+        /// Draws a red line between two points (start and end) on the map and refreshes the map control to display the route.
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
         private void DrawLine(PointLatLng start, PointLatLng end)
         {
             var route = new GMapRoute(new List<PointLatLng> { start, end }, "MyRoute");
-            route.Stroke = new Pen(Color.Red, 2); // Color y grosor de la línea
+            route.Stroke = new Pen(Color.Red, 2);
 
             routeOverlay.Routes.Add(route);
 
-            // Refrescar el mapa para mostrar la nueva línea
             mapControl.Refresh();
         }
 
 
+        /// <summary>
+        /// Changes the map provider based on the selected option from a combo box (Google Maps, Bing Maps, OpenStreetMap, etc.) and refreshes the map control to reflect the new map provider.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ChangeMapBtn_Click(object sender, EventArgs e)
         {
             string selectedMapType = comboBox1.SelectedItem.ToString();
-            // Cambiar el proveedor de mapas según la opción seleccionada con if-else
+
             if (selectedMapType == "Google Maps")
             {
                 mapControl.MapProvider = GMapProviders.GoogleMap;
@@ -578,14 +590,14 @@ namespace Simulation
             {
                 MessageBox.Show("Please select a valid map provider");
             }
-
-            // Actualizar el mapa con el nuevo proveedor
             mapControl.Refresh();
         }
 
+        /// <summary>
+        /// Changes the form’s background based on the selected theme.
+        /// </summary>
         private void ApplyTheme()
         {
-            // Aplica el tema al formulario actual
             if (isDarkMode)
             {
                 this.BackColor = Color.FromArgb(45, 45, 48);
@@ -603,13 +615,14 @@ namespace Simulation
             CloseAPP.Show();
         }
 
+        /// <summary>
+        /// Clears markers, routes, and data, then re-initializes the simulation with filtered messages. It calculates the distance if extra is true and updates the UI accordingly.
+        /// </summary>
         private void RestartSimulation()
         {
-            // Limpiar los marcadores y rutas existentes
             markersOverlay.Markers.Clear();
             routeOverlay.Routes.Clear();
 
-            // Limpiar los diccionarios
             aircraftMarkers.Clear();
             previousPositions.Clear();
             dataGridView1.Rows.Clear();
@@ -620,31 +633,24 @@ namespace Simulation
 
                 List<List<object>> initialAircrafts = new List<List<object>>();
 
-                // Pintar los primeros 4 segundos desde el tiempo inicial
                 for (int i = 0; i < 4; i++)
                 {
-                    // Check if AircraftsPerSecond method returns valid data
                     List<List<object>> result = AircraftsPerSecond(FiltredMessages, currentSecond + i);
 
                     PaintAircrafts(result);
                     initialAircrafts.AddRange(result);
                 }
-
                 UpdateDataGridView(initialAircrafts);
                 UpdateTime(initialAircrafts);
 
-                // Refrescar el mapa
                 mapControl.Refresh();
 
-                // Restablecer el TrackBar a su valor mínimo (1)
-                trackBar1.Value = 1; // Vuelve a la izquierda (velocidad normal)
+                trackBar1.Value = 1; 
 
-                // Actualizar el intervalo del Timer a la velocidad normal
                 simulationTimer.Interval = 1000;
 
                 if (AutomaticBtn.Text == "Pause")
                 {
-                    // Pausar el modo automático
                     simulationTimer.Stop();
                     AutomaticBtn.Text = "Automatic";
                 }
@@ -662,77 +668,74 @@ namespace Simulation
             {
                 MessageBox.Show("No messages matched the specified geographic filter. Please adjust the latitude and longitude values.",
                                 "No Data Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //DeshabilitarControles(button5, comboBox2, CloseBtn);
             }
         }
 
-        //private void DeshabilitarControles(Control filter, Control comboBox, Control close)
-        //{
-        //    foreach (Control control in this.Controls)
-        //    {
-        //        if (control != filter && control != comboBox && control !=close)
-        //        {
-        //            control.Enabled = false;
-        //        }
-        //    }
-        //}
-
-        //private void HabilitarControles(Control filter, Control comboBox, Control close)
-        //{
-        //    foreach (Control control in this.Controls)
-        //    {
-        //        control.Enabled = true;
-        //    }
-        //}
-
+        /// <summary>
+        /// Triggers the RestartSimulation method when the restart button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RestartBtn_Click(object sender, EventArgs e)
         {
             RestartSimulation();
         }
 
+        /// <summary>
+        /// Toggles between "Automatic" and "Pause" states, starting or stopping the simulation timer.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AutomaticBtn_Click(object sender, EventArgs e)
         {
             if (AutomaticBtn.Text == "Automatic")
             {
-                // Iniciar el modo automático
                 simulationTimer.Start();
                 AutomaticBtn.Text = "Pause";
             }
             else if (AutomaticBtn.Text == "Pause")
             {
-                // Pausar el modo automático
                 simulationTimer.Stop();
                 AutomaticBtn.Text = "Automatic";
             }
 
         }
 
+        /// <summary>
+        /// Executes the MoveBtn_Click method each time the simulation timer ticks.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SimulationTimer_Tick(object sender, EventArgs e)
         {
-            // Llama al método para avanzar la simulación
             MoveBtn_Click(null, null);
         }
 
+        /// <summary>
+        /// Adjusts the simulation timer interval based on the trackbar value.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
             int trackBarValue = trackBar1.Value;
 
-            // Intervalo que definimos como velocidad normal
-            int minInterval = 1000; // Intervalo mínimo para la velocidad normal
-            int maxInterval = 1; // Intervalo máximo para la velocidad más rápida
+            int minInterval = 1000; 
+            int maxInterval = 1; 
 
-            // Mapeamos el valor del TrackBar a un intervalo, donde el valor mínimo del TrackBar
-            // representa la velocidad normal (1000 ms).
             simulationTimer.Interval = minInterval - (trackBarValue - 1) * (minInterval - maxInterval) / (trackBar1.Maximum - 1);
         }
 
+        /// <summary>
+        /// Applies a filter to AllMessages based on the selected option from comboBox2, updates the FiltredMessages, and restarts the simulation.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button5_Click(object sender, EventArgs e)
         {
-            //HabilitarControles(button5, comboBox2, CloseBtn);
             string selection = comboBox2.SelectedItem.ToString();
             List<List<object>> updatedFilteredMessages = new List<List<object>>();
 
-            // Ejecutar la función según la opción seleccionada
             if (selection == "All data")
             {
                 updatedFilteredMessages = principal.Option1(AllMessages);
@@ -762,7 +765,6 @@ namespace Simulation
                 updatedFilteredMessages = principal.Option7(AllMessages);
             }
 
-            // Asignar los datos filtrados a FiltredMessages
             FiltredMessages = updatedFilteredMessages;
 
             extra = false;
@@ -770,72 +772,62 @@ namespace Simulation
 
             if (FiltredMessages != null)
             {
-                // Reiniciar la simulación con los datos actualizados
                 RestartSimulation();
             }
 
         }
 
+        /// <summary>
+        /// Exports filtered data to a CSV file, checking for the presence of specific filtered messages.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void exportCsvBtn_Click(object sender, EventArgs e)
         {
             string rutaCSV = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ASTERIX.csv");
 
-            // Verifica si el archivo original existe
             if (!File.Exists(rutaCSV))
             {
                 MessageBox.Show("The CSV file was not found.");
                 return;
             }
 
-            // Crear un SaveFileDialog para que el usuario elija el nombre y ubicación del nuevo archivo
             SaveFileDialog saveFileDialog = new SaveFileDialog
             {
                 Filter = "CSV Files (*.csv)|*.csv",
                 Title = "Save Filtered CSV File",
-                FileName = "FilteredASTERIX.csv" // Nombre por defecto
+                FileName = "FilteredASTERIX.csv" 
             };
 
-            // Mostrar el diálogo y comprobar si el usuario selecciona un nombre de archivo
             if (saveFileDialog.ShowDialog() != DialogResult.OK)
             {
-                return; // Si el usuario cancela, no se hace nada
+                return; 
             }
-
-            //Show();
-            //Task oTask = new Task(SL);
-            //oTask.Start();
-            //await oTask;
 
             string newCsvPath = saveFileDialog.FileName;
 
-            // Crear un HashSet con las claves de mensajes filtrados para búsqueda rápida
             HashSet<string> filteredKeys = new HashSet<string>(
                 FiltredMessages.Select(msg => $"{msg[0]}|{msg[1]}|{msg[2]}|{msg[3]}|{msg[4]}|{msg[5]}|{msg[6]}"));
 
-            // Leer y filtrar el archivo original
             var filteredLines = new List<string>();
             using (StreamReader reader = new StreamReader(rutaCSV))
             {
                 string header = reader.ReadLine();
-                filteredLines.Add(header); // Añadir encabezado
+                filteredLines.Add(header); 
 
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
-                    // Separar la línea en columnas
                     string[] row = line.Split('\t').Select(e => e.Trim('\"')).ToArray();
                     string key = $"{row[4]}|{row[5]}|{row[6]}|{row[77]}|{row[8]}|{row[23]}|{row[35]}";
 
-                    // Si el mensaje está en el filtro, agregarlo a la lista
                     if (filteredKeys.Contains(key))
                     {
                         filteredLines.Add(line);
                     }
                 }
             }
-            // Guardar el nuevo CSV
             File.WriteAllLines(newCsvPath, filteredLines, Encoding.UTF8);
-            //Hide();
             MessageBox.Show("Filtered CSV exported successfully.");
 
         }
@@ -849,6 +841,13 @@ namespace Simulation
 
         }
 
+        /// <summary>
+        /// Filters messages based on two target identifiers (TI1 and TI2) and returns the filtered messages and any missing targets.
+        /// </summary>
+        /// <param name="allMessages"></param>
+        /// <param name="TI1"></param>
+        /// <param name="TI2"></param>
+        /// <returns></returns>
         public (List<List<object>> filtredMessages, List<string> missingTargets) Option8(List<List<object>> allMessages, string TI1, string TI2)
         {
             List<List<object>> filtredMessages = new List<List<object>>();
@@ -857,7 +856,6 @@ namespace Simulation
             bool ti1Found = false;
             bool ti2Found = false;
 
-            // Recorremos todos los mensajes
             foreach (var message in allMessages)
             {
 
@@ -876,7 +874,6 @@ namespace Simulation
 
             }
 
-            // Comprobamos si TI1 y TI2 están presentes
             if (!ti1Found)
                 missingTargets.Add(TI1);
             if (!ti2Found)
@@ -886,40 +883,39 @@ namespace Simulation
 
         }
 
-        // CALCULA LA DISTANCIA ENTRE AVIONES CADA SEGUNDO (DESDE EL PRIMER SEGUNDO DE FILTRED MESSAGES HASTA EL ÚLTIMO)
+        /// <summary>
+        /// Calculates the distance between airplanes every second (from the first second of filtered messages to the last).
+        /// </summary>
+        /// <param name="FiltredMessages"></param>
+        /// <param name="TI1"></param>
+        /// <param name="TI2"></param>
+        /// <returns></returns>
         public Dictionary<int, double> CalculateDistanceForAircrafts(List<List<object>> FiltredMessages, string TI1, string TI2)
         {
-            Dictionary<string, PointLatLng> previousPositions = new Dictionary<string, PointLatLng>(); // Almacena las últimas posiciones conocidas
-            Dictionary<int, double> distancesBySecond = new Dictionary<int, double>(); // Diccionario para almacenar las distancias por segundo
+            Dictionary<string, PointLatLng> previousPositions = new Dictionary<string, PointLatLng>(); 
+            Dictionary<int, double> distancesBySecond = new Dictionary<int, double>(); 
 
 
-            // Determinar el primer y último segundo basado en FiltredMessages
             int sec = Convert.ToInt32(FiltredMessages.First()[0]);
             int maxsec = Convert.ToInt32(FiltredMessages.Last()[0]);
 
             for (int i = sec; i <= maxsec; i++)
             {
-                // Obtener aviones para el segundo actual
                 List<List<object>> aircraftsInCurrentSecond = AircraftsPerSecond(FiltredMessages, i);
 
-                // Recorremos todos los mensajes
                 foreach (var message in aircraftsInCurrentSecond)
                 {
                     string TI = Convert.ToString(message[8]);
                     double latitude = Convert.ToDouble(message[1]);
                     double longitude = Convert.ToDouble(message[2]);
 
-                    // Filtramos los mensajes de los aviones TI1 y TI2
                     if (TI == TI1 || TI == TI2)
                     {
-
-                        // Variables para almacenar las posiciones de TI1 y TI2
                         PointLatLng positionTI1 = default;
                         PointLatLng positionTI2 = default;
                         PointLatLng stereographicPositionTI1;
                         PointLatLng stereographicPositionTI2;
 
-                        // Asignar posiciones basadas en el mensaje actual
                         if (TI == TI1)
                         {
                             positionTI1 = new PointLatLng(latitude, longitude);
@@ -930,19 +926,17 @@ namespace Simulation
 
                         }
 
-                        // Utilizar la última posición conocida si uno de los aviones no tiene datos nuevos
                         if (positionTI1.Lat == 0 && previousPositions.ContainsKey(TI1))
                             positionTI1 = previousPositions[TI1];
                         if (positionTI2.Lat == 0 && previousPositions.ContainsKey(TI2))
                             positionTI2 = previousPositions[TI2];
 
-                        // Calcular la distancia si ambas posiciones están disponibles
                         if (positionTI1.Lat != 0 && positionTI2.Lat != 0)
                         {
                             stereographicPositionTI1 = GetStereographic(positionTI1);
                             stereographicPositionTI2 = GetStereographic(positionTI2);
                             double distance = CalculateDistance(stereographicPositionTI1, stereographicPositionTI2);
-                            distancesBySecond[i] = distance; // Almacena la distancia para el segundo actual
+                            distancesBySecond[i] = distance; 
 
                         }
                         else
@@ -951,7 +945,6 @@ namespace Simulation
 
                         }
 
-                        // Guardar las posiciones actuales como últimas conocidas
                         if (positionTI1.Lat != 0)
                             previousPositions[TI1] = positionTI1;
                         if (positionTI2.Lat != 0)
@@ -971,6 +964,10 @@ namespace Simulation
 
         }
 
+        /// <summary>
+        /// Updates the FiltredMessages and restarts the simulation.
+        /// </summary>
+        /// <param name="filtredMessages"></param>
         public void SetTargetAddresses(List<List<object>> filtredMessages)
         {
 
@@ -979,6 +976,11 @@ namespace Simulation
 
         }
 
+        /// <summary>
+        /// Converts a geographical position (latitude, longitude) into stereographic coordinates using a specific projection center.
+        /// </summary>
+        /// <param name="position"></param>
+        /// <returns></returns>
         public PointLatLng GetStereographic(PointLatLng position)
         {
             CoordinatesWGS84 coordinatesWGS84 = new CoordinatesWGS84();
@@ -1007,10 +1009,15 @@ namespace Simulation
             Coordinates_cart = geoUtils.change_geocentric2system_cartesian(Coordinates_geocentric);
             Coordinates_ster = geoUtils.change_system_cartesian2stereographic(Coordinates_cart);
 
-            // Devolver una nueva posición con las coordenadas estereográficas
             return new PointLatLng(Coordinates_ster.U, Coordinates_ster.V);
         }
 
+        /// <summary>
+        /// Calculates the distance (in nautical miles) between two stereographic positions.
+        /// </summary>
+        /// <param name="stereographicPositionTI1"></param>
+        /// <param name="stereographicPositionTI2"></param>
+        /// <returns></returns>
         public double CalculateDistance(PointLatLng stereographicPositionTI1, PointLatLng stereographicPositionTI2)
         {
             double distance;

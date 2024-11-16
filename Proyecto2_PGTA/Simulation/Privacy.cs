@@ -42,12 +42,15 @@ namespace Simulation
             pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
         }
 
+        /// <summary>
+        /// Adjusts dynamically the size and position of the form's controls based on whether it is maximized or in its normal size.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Privacy_Resiz(object sender, EventArgs e)
         {
-            // Verificamos si el formulario está maximizado o no
             if (this.WindowState == FormWindowState.Maximized)
             {
-                // Redimensionamos los controles cuando el formulario está maximizado
                 resize_Control(button1, recBut1);
                 resize_Control(label1, recLbl1);
                 resize_Control(label2, recLbl2);
@@ -59,7 +62,6 @@ namespace Simulation
             }
             else if (this.WindowState == FormWindowState.Normal)
             {
-                // Cuando el formulario vuelve a tamaño normal, restauramos el tamaño original de los controles
                 restore_ControlSize(button1, recBut1);
                 restore_ControlSize(label1, recLbl1);
                 restore_ControlSize(label2, recLbl2);
@@ -71,18 +73,26 @@ namespace Simulation
             }
         }
 
-        // Método para restaurar el tamaño original de los controles
+        /// <summary>
+        /// Restores the original position, size, and font of a control.
+        /// </summary>
+        /// <param name="control"></param>
+        /// <param name="originalRect"></param>
         private void restore_ControlSize(Control control, Rectangle originalRect)
         {
             control.Location = originalRect.Location;
             control.Size = originalRect.Size;
 
-            // Restauramos el tamaño de la fuente original
-            control.Font = new Font(control.Font.FontFamily, 10, control.Font.Style); // Ajusta el tamaño de la fuente original si es necesario
+            control.Font = new Font(control.Font.FontFamily, 10, control.Font.Style); 
 
             pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
             pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
         }
+        /// <summary>
+        /// Dynamically resizes and repositions a control based on the current size of the form relative to its original size.
+        /// </summary>
+        /// <param name="control"></param>
+        /// <param name="rect"></param>
         private void resize_Control(Control control, Rectangle rect)
         {
             float xRatio = (float)(this.Width) / (float)(formOriginalSize.Width);
@@ -97,23 +107,24 @@ namespace Simulation
             control.Location = new Point(newX, newY);
             control.Size = new Size(newWidth, newHeight);
 
-            // Ajustar tamaño de la fuente
-            float fontSizeRatio = Math.Min(xRatio, yRatio); // Escala basada en la menor proporción
+            float fontSizeRatio = Math.Min(xRatio, yRatio); 
             control.Font = new Font(control.Font.FontFamily, control.Font.Size * fontSizeRatio, control.Font.Style);
 
             pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
             pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
 
         }
+        /// <summary>
+        /// Loads the theme setting and applies dark or light mode based on the stored preference.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Privacy_Load(object sender, EventArgs e)
         {
-            // Cargar el estado del tema guardado
             isDarkMode = Properties.Settings1.Default.IsDarkMode;
 
-            // Aplicar el tema según el estado guardado
             ApplyTheme();
 
-            // Si el modo oscuro está activo, aplicarlo
             if (isDarkMode)
             {
                 Theme.SetDarkMode(this);
@@ -124,9 +135,11 @@ namespace Simulation
             }
         }
 
+        /// <summary>
+        /// Changes the form’s background based on the selected theme.
+        /// </summary>
         private void ApplyTheme()
         {
-            // Aplica el tema al formulario actual
             if (isDarkMode)
             {
                 this.BackColor = Color.FromArgb(45, 45, 48);
@@ -139,8 +152,6 @@ namespace Simulation
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Welcome Welc = new Welcome();
-            // Oculta el Principal
             this.Hide();
         }
     }

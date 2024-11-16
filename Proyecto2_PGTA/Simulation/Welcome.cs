@@ -137,7 +137,6 @@ namespace Simulation
             recCont1 = new Rectangle(AboutUsContainer.Location, AboutUsContainer.Size);
             recCont2 = new Rectangle(SettingsContainer.Location, SettingsContainer.Size);
             recCont3 = new Rectangle(HelpContainer.Location, HelpContainer.Size);
-            //recSb1 = new Rectangle(sidebar.Location, sidebar.Size);
             int minWidthSb = recPanel17.Right - sidebar.Left;
             int maxWidthSb = recPanel16.Right - sidebar.Left;
 
@@ -148,6 +147,11 @@ namespace Simulation
             pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
         }
 
+        /// <summary>
+        /// Adjusts dynamically the size and position of the form's controls based on whether it is maximized or in its normal size.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Welcome_Resiz(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Maximized)
@@ -273,16 +277,18 @@ namespace Simulation
             }
         }
 
+        /// <summary>
+        /// Restores the original position, size, and font of a control, and adjusts the minimum and maximum limits of the sidebar.
+        /// </summary>
+        /// <param name="control"></param>
+        /// <param name="originalRect"></param>
         private void restore_ControlSize(Control control, Rectangle originalRect)
         {
             control.Location = originalRect.Location;
             control.Size = originalRect.Size;
-
-            // Restauramos el tamaño de la fuente original
             control.Font = new Font(control.Font.FontFamily, 10, control.Font.Style);
 
             int rightPosition = control.Left + control.Width;
-
             if (control == panel14)
             {
                 int minWidthSb = rightPosition - sidebar.Left;
@@ -300,6 +306,11 @@ namespace Simulation
             sidebarExpand = true;
 
         }
+        /// <summary>
+        /// Dynamically resizes and repositions a control based on the current size of the form relative to its original size.
+        /// </summary>
+        /// <param name="control"></param>
+        /// <param name="rect"></param>
         private void resize_Control(Control control, Rectangle rect)
         {
             float xRatio = (float)(this.Width) / (float)(formOriginalSize.Width);
@@ -314,8 +325,7 @@ namespace Simulation
             control.Location = new Point(newX, newY);
             control.Size = new Size(newWidth, newHeight);
 
-            // Ajustar tamaño de la fuente
-            float fontSizeRatio = Math.Min(xRatio, yRatio); // Escala basada en la menor proporción
+            float fontSizeRatio = Math.Min(xRatio, yRatio); 
             control.Font = new Font(control.Font.FontFamily, control.Font.Size * fontSizeRatio, control.Font.Style);
 
             int rightPosition = control.Left + control.Width;
@@ -339,6 +349,9 @@ namespace Simulation
 
         }
 
+        /// <summary>
+        /// Adjusts the minimum and maximum size limits of the "About Us" container based on related panels.
+        /// </summary>
         private void AdjustAboutUsContainer1Size()
         {
 
@@ -355,6 +368,9 @@ namespace Simulation
             sidebarExpand = true;
         }
 
+        /// <summary>
+        /// Adjusts the minimum and maximum size limits of the "Settings" container based on related panels.
+        /// </summary>
         private void AdjustAboutUsContainer2Size()
         {
 
@@ -370,6 +386,9 @@ namespace Simulation
             sidebarExpand = true;
         }
 
+        /// <summary>
+        /// Adjusts the minimum and maximum size limits of the "Help" container based on related panels.
+        /// </summary>
         private void AdjustAboutUsContainer3Size()
         {
             int minHeightCont3 = panel5.Bottom - panel5.Top;
@@ -383,24 +402,27 @@ namespace Simulation
 
             sidebarExpand = true;
         }
+
         private void StartBtn_Click(object sender, EventArgs e)
         {
-            // Crear una instancia de ImportAst antes de mostrarla
             ImportAst importAst = new ImportAst(this);
-            //this.Enabled = false;
             importAst.ShowDialog();
             
         }
 
+        /// <summary>
+        /// Handles the animation of the sidebar’s expansion and contraction, ensuring that the limits are not exceeded.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SidebarTimer_Tick(object sender, EventArgs e)
         {
-            // Expansión y contracción del sidebar con los nuevos límites
             if (sidebarExpand)
             {
                 sidebar.Width -= 10;
                 if (sidebar.Width <= sidebar.MinimumSize.Width)
                 {
-                    sidebar.Width = sidebar.MinimumSize.Width; // Asegura que no se pase del mínimo
+                    sidebar.Width = sidebar.MinimumSize.Width; 
                     sidebarExpand = false;
                     SidebarTimer.Stop();
                 }
@@ -410,13 +432,18 @@ namespace Simulation
                 sidebar.Width += 10;
                 if (sidebar.Width >= sidebar.MaximumSize.Width)
                 {
-                    sidebar.Width = sidebar.MaximumSize.Width; // Asegura que no se pase del máximo
+                    sidebar.Width = sidebar.MaximumSize.Width; 
                     sidebarExpand = true;
                     SidebarTimer.Stop();
                 }
             }
         }
 
+        /// <summary>
+        /// Expands or contracts the "About Us" container with animation, based on defined limits.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AboutUsTimer_Tick(object sender, EventArgs e)
         {
             if (AbouUsCollapse)
@@ -439,6 +466,11 @@ namespace Simulation
             }
         }
 
+        /// <summary>
+        /// Expands or contracts the "Settings" container with animation, based on defined limits.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SettingsTimer_Tick(object sender, EventArgs e)
         {
             if (SettingsCollapse)
@@ -461,6 +493,11 @@ namespace Simulation
             }
         }
 
+        /// <summary>
+        /// Expands or contracts the "Help" container with animation, based on defined limits.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void HelpTimer_Tick(object sender, EventArgs e)
         {
             if (HelpCollapse)
@@ -483,15 +520,17 @@ namespace Simulation
             }
         }
 
+        /// <summary>
+        /// Loads and applies the theme state (dark or light) when the form is loaded.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Welcome_Load(object sender, EventArgs e)
         {
-            // Cargar el estado del tema guardado
             isDarkMode = Properties.Settings1.Default.IsDarkMode;
 
-            // Aplicar el tema al cargar el formulario
             ApplyTheme();
 
-            // Si el modo oscuro está activo, aplicarlo
             if (isDarkMode)
             {
                 Theme.SetDarkMode(this);
@@ -503,9 +542,11 @@ namespace Simulation
 
         }
 
+        /// <summary>
+        /// Changes the form’s background based on the selected theme.
+        /// </summary>
         private void ApplyTheme()
         {
-            // Aplica el tema al formulario actual
             if (isDarkMode)
             {
                 this.BackColor = Color.FromArgb(45, 45, 48);
@@ -516,39 +557,56 @@ namespace Simulation
             }
         }
 
+        /// <summary>
+        /// Starts the animation for the "Settings" container.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonSettings_Click_1(object sender, EventArgs e)
         {
             SettingsTimer.Start();
         }
 
+        /// <summary>
+        /// Starts the animation for the "About Us" container.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonAboutUs_Click_1(object sender, EventArgs e)
         {
             AboutUsTimer.Start();
         }
 
+        /// <summary>
+        /// Displays a message indicating that the user is already on the main screen.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click_1(object sender, EventArgs e)
         {
             MessageBox.Show("Ya estas en la pantalla Home.", "Instrucciones de uso", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        /// <summary>
+        /// Starts the animation for the "Help" container.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonHelp_Click_1(object sender, EventArgs e)
         {
             HelpTimer.Start();
         }
 
-        private void buttonPPolicy_Click_1(object sender, EventArgs e)
-        {
-            MessageBox.Show("Group 9 PGTA 2024" +
-                "\n\t 2024 AsterixDecoder.org");
-        }
-
+        /// <summary>
+        /// Toggles between light and dark mode, saving the theme state.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button3_Click_1(object sender, EventArgs e)
         {
-            // Cambia el estado del modo oscuro
             isDarkMode = !isDarkMode;
-            ApplyTheme(); // Aplica el nuevo tema
+            ApplyTheme(); 
 
-            // Guarda el estado del tema
             Properties.Settings1.Default.IsDarkMode = isDarkMode;
             Properties.Settings1.Default.Save();
         }
@@ -556,53 +614,36 @@ namespace Simulation
         private void buttonGroup_Click_1(object sender, EventArgs e)
         {
             Group9 Group = new Group9();
-            // Abrir el Mapa
             Group.Show();
         }
 
         private void buttonContactUs_Click_1(object sender, EventArgs e)
         {
             Contact Contact = new Contact();
-            // Abrir el Mapa
             Contact.Show();
         }
 
         private void buttonTutorial_Click_1(object sender, EventArgs e)
         {
             Tutorial Tut = new Tutorial();
-            // Abrir el Mapa
             Tut.Show();
         }
 
         private void buttonQRVideoT_Click_1(object sender, EventArgs e)
         {
             VideoTutorial VideoTut = new VideoTutorial();
-            // Abrir el Mapa
             VideoTut.Show();
         }
 
         private void menuButton_Click_1(object sender, EventArgs e)
         {
-
-            // Set timer interval to lowest to make it smoother
             SidebarTimer.Start();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             Privacy PPrivacy = new Privacy();
-            // Abrir el Mapa
             PPrivacy.Show();
-        }
-
-        private void panel19_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void sidebar_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

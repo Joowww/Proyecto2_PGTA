@@ -59,6 +59,11 @@ namespace Simulation
             pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
         }
 
+        /// <summary>
+        /// Adjusts dynamically the size and position of the form's controls based on whether it is maximized or in its normal size.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GeographicFilter_Resiz(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Maximized)
@@ -93,18 +98,27 @@ namespace Simulation
             }
         }
 
+        /// <summary>
+        /// Restores the original position, size, and font of a control.
+        /// </summary>
+        /// <param name="control"></param>
+        /// <param name="originalRect"></param>
         private void restore_ControlSize(Control control, Rectangle originalRect)
         {
             control.Location = originalRect.Location;
             control.Size = originalRect.Size;
 
-            // Restauramos el tamaño de la fuente original
             control.Font = new Font(control.Font.FontFamily, 10, control.Font.Style);
 
             pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
             pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
 
         }
+        /// <summary>
+        /// Dynamically resizes and repositions a control based on the current size of the form relative to its original size.
+        /// </summary>
+        /// <param name="control"></param>
+        /// <param name="rect"></param>
         private void resize_Control(Control control, Rectangle rect)
         {
             float xRatio = (float)(this.Width) / (float)(formOriginalSize.Width);
@@ -119,21 +133,24 @@ namespace Simulation
             control.Location = new Point(newX, newY);
             control.Size = new Size(newWidth, newHeight);
 
-            // Ajustar tamaño de la fuente
-            float fontSizeRatio = Math.Min(xRatio, yRatio); // Escala basada en la menor proporción
+            float fontSizeRatio = Math.Min(xRatio, yRatio); 
             control.Font = new Font(control.Font.FontFamily, control.Font.Size * fontSizeRatio, control.Font.Style);
 
             pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
             pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
         }
 
+        /// <summary>
+        /// Validates and applies latitude and longitude values from text boxes, checking for errors like empty fields, invalid formats, and out-of-range values. If valid, it updates the coordinates and closes the form.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void applyBtn_Click(object sender, EventArgs e)
         {
             cancel = false;
             try
             {
 
-                // Check if any field is empty
                 if (string.IsNullOrWhiteSpace(textBox1.Text) || string.IsNullOrWhiteSpace(textBox2.Text) ||
                     string.IsNullOrWhiteSpace(textBox3.Text) || string.IsNullOrWhiteSpace(textBox4.Text))
                 {
@@ -146,7 +163,6 @@ namespace Simulation
                 MinLongitude = double.Parse(textBox3.Text);
                 MaxLongitude = double.Parse(textBox4.Text);
 
-                // Validate that minimum values are less than maximum values
                 if (MinLatitude > MaxLatitude)
                 {
                     throw new ArgumentException("Minimum latitude cannot be greater than maximum latitude.");
@@ -173,41 +189,44 @@ namespace Simulation
             }
             catch (FormatException)
             {
-                // Handles the case when input is not a valid number
                 MessageBox.Show("Please enter valid numeric values for latitude and longitude.", "Format Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                // Handles any other unexpected errors
                 MessageBox.Show($"An unexpected error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
 
+        /// <summary>
+        /// Sets default latitude and longitude values, then populates text boxes with these values.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void autofillBtn_Click(object sender, EventArgs e)
         {
-            // Asignar valores predeterminados
             MinLatitude = 40.9;
             MaxLatitude = 41.7;
             MinLongitude = 1.5;
             MaxLongitude = 2.6;
 
-            // Mostrar los valores en los textboxes
             textBox1.Text = MinLatitude.ToString();
             textBox2.Text = MaxLatitude.ToString();
             textBox3.Text = MinLongitude.ToString();
             textBox4.Text = MaxLongitude.ToString();
         }
 
+        /// <summary>
+        /// Loads the theme setting and applies dark or light mode based on the stored preference.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GeographicFilter_Load(object sender, EventArgs e)
         {
-            // Cargar el estado del tema guardado
             isDarkMode = Properties.Settings1.Default.IsDarkMode;
 
-            // Aplicar el tema según el estado guardado
             ApplyTheme();
 
-            // Si el modo oscuro está activo, aplicarlo
             if (isDarkMode)
             {
                 Theme.SetDarkMode(this);
@@ -217,9 +236,11 @@ namespace Simulation
                 Theme.SetLightMode(this);
             }
         }
+        /// <summary>
+        /// Changes the form’s background based on the selected theme.
+        /// </summary>
         private void ApplyTheme()
         {
-            // Aplica el tema al formulario actual
             if (isDarkMode)
             {
                 this.BackColor = Color.FromArgb(45, 45, 48);

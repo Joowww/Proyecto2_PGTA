@@ -250,7 +250,6 @@
             sidebar.Name = "sidebar";
             sidebar.Size = new Size(247, 2000);
             sidebar.TabIndex = 11;
-            sidebar.Paint += sidebar_Paint;
             // 
             // panel1
             // 
@@ -372,7 +371,6 @@
             panel19.Name = "panel19";
             panel19.Size = new Size(95, 40);
             panel19.TabIndex = 24;
-            panel19.Paint += panel19_Paint;
             // 
             // pictureBox15
             // 

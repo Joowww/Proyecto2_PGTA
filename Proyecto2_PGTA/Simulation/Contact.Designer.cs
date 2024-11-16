@@ -71,7 +71,6 @@
             label7.Size = new Size(326, 28);
             label7.TabIndex = 25;
             label7.Text = "•  paula.valle@estudiantat.upc.edu";
-            label7.Click += label7_Click;
             // 
             // label6
             // 
