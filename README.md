@@ -30,4 +30,5 @@ The ASTERIX CAT048 Decoder is an application developed in C# to decode ASTERIX d
 ```bash
 git clone https://github.com/Joowww/Proyecto2_PGTA.git
 cd Proyecto2_PGTA
-### 2.3
+```
+### 2.3 Dependencies
