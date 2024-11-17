@@ -27,10 +27,10 @@ The ASTERIX CAT048 Decoder is an application developed in C# to decode ASTERIX d
 - [.NET 6 SDK](https://dotnet.microsoft.com/es-es/download/dotnet/6.0) or higher.
 - Clone this repository and open it in a C# compatible development environment (e.g., Visual Studio or Visual Studio Code).
 ### 2.2 Cloning the repository
+
 ```bash
 git clone https://github.com/Joowww/Proyecto2_PGTA.git
 cd Proyecto2_PGTA
 ```
 ### 2.3 Dependencies
 The main dependencies of this project are:
-- 
