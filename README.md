@@ -52,6 +52,18 @@ dotnet restore
 
 &nbsp;&nbsp;&nbsp;&nbsp; II. Import your own file: If you prefer, you can also select and upload an .ast file from your computer.
 
+**3. Main Menu**: The dropdown menu allows you to return to the welcome menu using the "Home" button, so you can select a file again. It also gives you access to the "Help" and "Settings" functionalities.
+
+On this screen, you must also choose the type of filtering (or choose not to filter and simulate with all the data).
+
+The different types of filters you will encounter are:
+- **Filter to remove "pure blanks"**: This filter works by checking the Type of the Target Report in Data Item 020 and removing messages that are not “Mode S Roll-Call” or “Mode S Roll Call + PSR.” In summary, only messages originating from Mode S interrogations or Mode S interrogations reinforced with primary interrogation are kept.
+- **Filter to remove fixed transponders**: Fixed transponders are identified as those with the code “7777” in Mode-3/A. This filter is applied by accessing the Mode-3/A code from Data Item 070 and removing any messages where the code is “7777.”
+- **Geographic filter to restrict data to specific latitude and longitude ranges**: This filter sets specific latitude and longitude limits, displaying only messages that fall within these boundaries.
+- **Altitude filter to eliminate flights above 6000 feet**: This filter compares the altitude (corrected with QNH) to 6000 feet. If the altitude is above this threshold, the message is removed.
+- **Filter to remove "on ground" flights**: Data Item 230 provides the Flight Status, which indicates whether the aircraft is “on ground.”
+<em>NOTE: In this step, no matter what you choose, the planes with a Target Address set to "null" will be removed</em>.
+
 <a id="end"></a>
 In addition to this user guide, the software includes an option to access a video tutorial that explains how to use the main functionalities.
 
