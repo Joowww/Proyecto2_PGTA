@@ -65,6 +65,12 @@ The different types of filters you will encounter are:
 
 <em>NOTE: In this step, no matter what you choose, the planes with a Target Address set to "null" will be removed</em>.
 
+**4. Simulation**: This interface allows you to visualize the flight simulation on a map, with the option to change the map provider according to your preferences. You can activate automatic mode to run the simulation continuously, adjusting the speed with the scroll wheel, or manually move the flights step by step every second using the "Move" button. You also have the option to restart the simulation with "Restart," apply different filters, and export the data in CSV format.
+
+<em>NOTE: The simulation shows the corrected altitude (altitude relative to sea level adjusted with the QNH, when applicable)</em>.
+
+**5. Extra functionality**: When you press the "Extra functionality" button on the map interface, a tab will open with a brief explanation of the functionality, followed by a form to enter the necessary data.
+
 <a id="end"></a>
 In addition to this user guide, the software includes an option to access a video tutorial that explains how to use the main functionalities.
 
