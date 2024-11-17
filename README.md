@@ -32,3 +32,5 @@ git clone https://github.com/Joowww/Proyecto2_PGTA.git
 cd Proyecto2_PGTA
 ```
 ### 2.3 Dependencies
+The main dependencies of this project are:
+- 
