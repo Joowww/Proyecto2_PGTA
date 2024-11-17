@@ -34,3 +34,12 @@ cd Proyecto2_PGTA
 ```
 ### 2.3 Dependencies
 The main dependencies of this project are:
+- **Accord** (Version 3.8.0): Library for image processing, machine learning, statistical analysis, etc.
+- **Accord.Math** (Version 3.8.0): Extension of Accord.NET for mathematical operations.
+- **VisioForge.DotNet.Core.Redist.Base.x64** (Version 15.10.22): Library for video and multimedia manipulation.
+- **Zen.Barcode.Rendering.Framework** (Version 3.1.10729.1): Library for generating barcodes in .NET.
+
+This project uses NuGet to manage dependencies. After cloning the repository, make sure to restore all necessary dependencies by running the following command in the terminal or command line from the project folder:
+```bash
+dotnet restore
+```
