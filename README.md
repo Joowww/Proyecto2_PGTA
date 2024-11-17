@@ -47,8 +47,9 @@ dotnet restore
 **1. Welcome Menu**: The welcome menu includes a dropdown with several buttons. There is an “About Us” button that displays the names of the group members as well as their institutional email addresses. Next, there is a “Settings” button. Clicking this button allows you to customize the appearance of the application. You can switch the form’s theme between dark mode and light mode. Finally, there is the “Help” button, which is mentioned at the end of the manual. [[click]](#end)
 
 m
-m
-m
+m,,,
+mmmm
+, ., ,
 
 <a id="end"></a>
 In addition to this user guide, the software includes an option to access a video tutorial that explains how to use the main functionalities.
