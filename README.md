@@ -47,7 +47,9 @@ dotnet restore
 **1. Welcome Menu**: The welcome menu includes a dropdown with several buttons. There is an “About Us” button that displays the names of the group members as well as their institutional email addresses. Next, there is a “Settings” button. Clicking this button allows you to customize the appearance of the application. You can switch the form’s theme between dark mode and light mode. Finally, there is the “Help” button, which is mentioned at the end of the manual. [click](#end)
 
 **2. Import the Asterix file**: Once you click "Start" on the welcome menu, you need to import an Asterix file. It only allows importing files with the .ast extension. You have two options to do this:
+
 &nbsp;&nbsp;&nbsp;&nbsp; I. Select a predefined file: You can choose one of the two Asterix files provided within the application.
+
 &nbsp;&nbsp;&nbsp;&nbsp; II. Import your own file: If you prefer, you can also select and upload an .ast file from your computer.
 
 <a id="end"></a>
