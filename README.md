@@ -23,6 +23,10 @@ The ASTERIX CAT048 Decoder is an application developed in C# to decode ASTERIX d
 - **Extra functionality:** Allows the input of two target identifications to simultaneously display the trajectories of two planes and calculate the distance between them on each antenna rotation.
 
 ## 2. Installation
-### Prerequisites
+### 2.1 Prerequisites
 - [.NET 6 SDK](https://dotnet.microsoft.com/es-es/download/dotnet/6.0) or higher.
 - Clone this repository and open it in a C# compatible development environment (e.g., Visual Studio or Visual Studio Code).
+### 2.2 Cloning the repository
+```bash
+git clone https://github.com/Joowww/Proyecto2_PGTA.git
+cd Proyecto2_PGTA
