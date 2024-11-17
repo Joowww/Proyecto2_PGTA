@@ -62,6 +62,7 @@ The different types of filters you will encounter are:
 - **Geographic filter to restrict data to specific latitude and longitude ranges**: This filter sets specific latitude and longitude limits, displaying only messages that fall within these boundaries.
 - **Altitude filter to eliminate flights above 6000 feet**: This filter compares the altitude (corrected with QNH) to 6000 feet. If the altitude is above this threshold, the message is removed.
 - **Filter to remove "on ground" flights**: Data Item 230 provides the Flight Status, which indicates whether the aircraft is “on ground.”
+
 <em>NOTE: In this step, no matter what you choose, the planes with a Target Address set to "null" will be removed</em>.
 
 <a id="end"></a>
