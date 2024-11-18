@@ -60,11 +60,15 @@ dotnet restore
 
 **3. Main Menu**: The dropdown menu allows you to return to the welcome menu using the "Home" button, so you can select a file again. It also gives you access to the "Help" and "Settings" functionalities.
 
-![Main 1](./Main%20Menu%201.png)
+<p align="center">
+  <img src="./Main%20Menu%201.png" alt="Main 1" width="400">
+</p>
 
 On this screen, you must also choose the type of filtering (or choose not to filter and simulate with all the data).
 
-![Main 2](./Main%20Menu%202.png)
+<p align="center">
+  <img src="./Main%20Menu%202.png" alt="Main 2" width="400">
+</p>
 
 The different types of filters you will encounter are:
 - **Filter to remove "pure blanks"**: This filter works by checking the Type of the Target Report in Data Item 020 and removing messages that are not “Mode S Roll-Call” or “Mode S Roll Call + PSR.” In summary, only messages originating from Mode S interrogations or Mode S interrogations reinforced with primary interrogation are kept.
@@ -77,20 +81,26 @@ The different types of filters you will encounter are:
 
 **4. Simulation**: This interface allows you to visualize the flight simulation on a map, with the option to change the map provider according to your preferences. You can activate automatic mode to run the simulation continuously, adjusting the speed with the scroll wheel, or manually move the flights step by step every second using the "Move" button. You also have the option to restart the simulation with "Restart," apply different filters, and export the data in CSV format.
 
-![Simulation](./Simulation.png)
+<p align="center">
+  <img src="./Simulation.png" alt="Simulation" width="400">
+</p>
 
 <em>NOTE: The simulation shows the corrected altitude (altitude relative to sea level adjusted with the QNH, when applicable)</em>.
 
 **5. Extra functionality**: When you press the "Extra functionality" button on the map interface, a tab will open with a brief explanation of the functionality, followed by a form to enter the necessary data.
 
-![Extra](./Extra%20Functionality.png)
+<p align="center">
+  <img src="./Extra%20Functionality.png" alt="Extra" width="400">
+</p>
 
 <a id="end"></a>
 In addition to this user guide, the software includes an option to access a video tutorial that explains how to use the main functionalities.
 
 - **Acces to the video**: In the application interface, you will find a dropdown menu, within which there is a "Help" button where you can access a summarized tutorial of the main functionalities or the mentioned video tutorial.
 
-![Tutorial](./Tutorial.png)
+<p align="center">
+  <img src="./Tutorial.png" alt="Tutorial" width="400">
+</p>
 
 <em>NOTE: Make sure you have internet access to view the video tutorial, as it is streamed from an online source (YouTube)</em>.
 
@@ -104,7 +114,9 @@ We began this project with four group members: Marina Martín Ferrer, Joel Moren
 
 The table below shows the objectives, who completed them, as well as the dates and hours dedicated.
 
-![Planning](./Planning.jpg)
+<p align="center">
+  <img src="./Planning.jpg" alt="Planning" width="700">
+</p>
 
 ## 6. ASTERIX Executable
 
