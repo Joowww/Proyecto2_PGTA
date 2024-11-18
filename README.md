@@ -11,7 +11,7 @@ The ASTERIX CAT048 Decoder is an application developed in C# to decode ASTERIX d
 - Exporting decoded data to CSV format.
 ### 1.2 Data Filtering
 - Application of data filters and combinations of them.
-    - Filter to remove "pure blanks" fixed transponders.
+    - Filter to remove "pure blanks" and fixed transponders.
     - Geographic filter to restrict data to specific latitude and longitude ranges.
     - Altitude filter to eliminate flights above 6000 feet.
     - Filter to remove "on ground" flights.
