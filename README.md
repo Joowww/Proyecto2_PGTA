@@ -55,7 +55,7 @@ dotnet restore
 &nbsp;&nbsp;&nbsp;&nbsp; II. Import your own file: If you prefer, you can also select and upload an .ast file from your computer.
 
 <p align="center">
-  <img src="./Import%20Ast.png" alt="Import" width="300">
+  <img src="./Import%20Ast.png" alt="Import" width="700">
 </p>
 
 **3. Main Menu**: The dropdown menu allows you to return to the welcome menu using the "Home" button, so you can select a file again. It also gives you access to the "Help" and "Settings" functionalities.
