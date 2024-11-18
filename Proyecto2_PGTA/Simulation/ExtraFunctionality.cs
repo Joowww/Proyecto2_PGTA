@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -24,6 +25,8 @@ namespace Simulation
         private Rectangle recLbl2;
         private Rectangle recLbl3;
         private Rectangle recPtb1;
+
+        private bool isCancelButtonClicked = false;
 
         public ExtraFunctionality(Mapa mapa_)
         {
@@ -155,8 +158,19 @@ namespace Simulation
 
         private void cancelBtn_Click(object sender, EventArgs e)
         {
+            isCancelButtonClicked = true;
             mapa.Enabled = true;
             this.Close();
+        }
+
+        private void ExtraFunctionality_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing && !isCancelButtonClicked) 
+            {
+                e.Cancel = true;  
+                MessageBox.Show("No puedes cerrar el formulario de esta manera.");
+            }
+            isCancelButtonClicked = false;
         }
     }
 }

@@ -202,7 +202,9 @@
             Controls.Add(label1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Group9";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Group9";
+            FormClosing += Group9_FormClosing;
             Load += Group9_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             ResumeLayout(false);

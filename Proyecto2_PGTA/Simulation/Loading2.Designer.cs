@@ -35,6 +35,7 @@
             // 
             // miLoad
             // 
+            miLoad.BackgroundImageLayout = ImageLayout.None;
             miLoad.Location = new Point(53, 145);
             miLoad.Name = "miLoad";
             miLoad.Size = new Size(264, 209);

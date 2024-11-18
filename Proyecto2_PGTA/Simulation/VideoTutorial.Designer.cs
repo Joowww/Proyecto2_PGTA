@@ -121,7 +121,9 @@
             Controls.Add(pictureBox2);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "VideoTutorial";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "VideoTutorial";
+            FormClosing += VideoTutorial_FormClosing;
             Load += VideoTutorial_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();

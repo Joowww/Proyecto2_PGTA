@@ -101,7 +101,9 @@
             Controls.Add(checkedListBox1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "CombinedFilters";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "CombinedFilters";
+            FormClosing += CombinedFilters_FormClosing;
             Load += CombinedFilters_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             ResumeLayout(false);

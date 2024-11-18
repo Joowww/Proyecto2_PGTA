@@ -167,6 +167,7 @@
             Name = "Target";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Target";
+            FormClosing += Target_FormClosing;
             Load += Target_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             ResumeLayout(false);

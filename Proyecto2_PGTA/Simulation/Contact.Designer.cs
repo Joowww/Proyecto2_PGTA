@@ -166,7 +166,9 @@
             Controls.Add(label2);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Contact";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Contact";
+            FormClosing += Contact_FormClosing;
             Load += Contact_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             ResumeLayout(false);

@@ -26,6 +26,8 @@ namespace Simulation
         private Rectangle recLbl7;
         private Rectangle recLbl8;
         private Rectangle recPtb1;
+
+        private bool isCancelButtonClicked = false;
         public Contact()
         {
             InitializeComponent();
@@ -115,7 +117,7 @@ namespace Simulation
             control.Location = new Point(newX, newY);
             control.Size = new Size(newWidth, newHeight);
 
-            float fontSizeRatio = Math.Min(xRatio, yRatio); 
+            float fontSizeRatio = Math.Min(xRatio, yRatio);
             control.Font = new Font(control.Font.FontFamily, control.Font.Size * fontSizeRatio, control.Font.Style);
 
             pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
@@ -124,6 +126,7 @@ namespace Simulation
         }
         private void buttonClose_Click(object sender, EventArgs e)
         {
+            isCancelButtonClicked = true;
             this.Hide();
         }
 
@@ -160,6 +163,16 @@ namespace Simulation
             {
                 this.BackColor = Color.White;
             }
+        }
+
+        private void Contact_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing && !isCancelButtonClicked)
+            {
+                e.Cancel = true;
+                MessageBox.Show("No puedes cerrar el formulario de esta manera.");
+            }
+            isCancelButtonClicked = false;
         }
     }
 }

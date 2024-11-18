@@ -267,7 +267,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(125, 60);
+            label1.Location = new Point(148, 61);
             label1.Name = "label1";
             label1.Size = new Size(65, 28);
             label1.TabIndex = 11;
@@ -333,7 +333,7 @@
             button2.Padding = new Padding(5, 0, 0, 0);
             button2.Size = new Size(128, 60);
             button2.TabIndex = 11;
-            button2.Text = "Home";
+            button2.Text = "  Home";
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click_1;
             // 
@@ -448,7 +448,7 @@
             buttonAboutUs.Padding = new Padding(5, 0, 0, 0);
             buttonAboutUs.Size = new Size(131, 60);
             buttonAboutUs.TabIndex = 11;
-            buttonAboutUs.Text = "About us";
+            buttonAboutUs.Text = "      About us";
             buttonAboutUs.UseVisualStyleBackColor = false;
             buttonAboutUs.Click += buttonAboutUs_Click_1;
             // 
@@ -613,7 +613,7 @@
             buttonSettings.Padding = new Padding(5, 0, 0, 0);
             buttonSettings.Size = new Size(134, 60);
             buttonSettings.TabIndex = 11;
-            buttonSettings.Text = "Settings";
+            buttonSettings.Text = "    Settings";
             buttonSettings.UseVisualStyleBackColor = false;
             buttonSettings.Click += buttonSettings_Click_1;
             // 
@@ -831,7 +831,7 @@
             button4.Padding = new Padding(5, 0, 0, 0);
             button4.Size = new Size(133, 60);
             button4.TabIndex = 12;
-            button4.Text = "Privacy ";
+            button4.Text = "     Privacy ";
             button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click;
             // 
@@ -851,6 +851,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Welcome";
             Text = "Welcome";
+            FormClosing += Welcome_FormClosing;
             Load += Welcome_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();

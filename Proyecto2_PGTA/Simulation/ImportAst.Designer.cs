@@ -172,6 +172,7 @@
             Controls.Add(groupBox1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ImportAst";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ImportAst";
             Load += ImportAst_Load_1;
             groupBox1.ResumeLayout(false);

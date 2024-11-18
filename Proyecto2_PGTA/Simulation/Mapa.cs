@@ -17,6 +17,8 @@ using GMap.NET.MapProviders;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using MultiCAT6.Utils;
+using System.IO;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
@@ -29,21 +31,22 @@ namespace Simulation
         public GMapControl mapControl;
         List<List<object>> FiltredMessages { get; set; }
         public List<List<object>> AllMessages { get; set; }
+        public List<List<object>> AllMessages2 { get; set; }
 
         public bool extra = false;
+
+        private string lastTime = "";
         public Dictionary<int, double> DistancesBySecond { get; private set; } = new Dictionary<int, double>();
 
-        public string TI1 { get; set; }
-        public string TI2 { get; set; }
         private bool isDarkMode;
 
 
         private int currentSecond;
-        private int maxSecond; 
-        public GMapOverlay markersOverlay; 
+        private int maxSecond;
+        public GMapOverlay markersOverlay;
         public GMapOverlay routeOverlay;
-        private Dictionary<string, GMarkerGoogle> aircraftMarkers; 
-        private Dictionary<string, PointLatLng> previousPositions; 
+        private Dictionary<string, GMarkerGoogle> aircraftMarkers;
+        private Dictionary<string, PointLatLng> previousPositions;
 
         private System.Windows.Forms.Timer simulationTimer;
 
@@ -69,12 +72,13 @@ namespace Simulation
         private Rectangle recPanel2;
         private Rectangle recDgv1;
 
-        public Mapa(List<List<object>> filtredMessages, List<List<object>> allMessages, int selectedIndexOption, Principal _principal)
+        public Mapa(List<List<object>> filtredMessages, List<List<object>> allMessages, List<List<object>> allMessages2, int selectedIndexOption, Principal _principal)
         {
             InitializeComponent();
 
             FiltredMessages = filtredMessages;
             AllMessages = allMessages;
+            AllMessages2 = allMessages2;
             principal = _principal;
 
             mapControl = new GMapControl();
@@ -106,7 +110,7 @@ namespace Simulation
             if (FiltredMessages.Count > 0)
             {
                 currentSecond = Convert.ToInt32(FiltredMessages[0][0]);
-                maxSecond = FiltredMessages.Max(aircraft => Convert.ToInt32(aircraft[0])); 
+                maxSecond = FiltredMessages.Max(aircraft => Convert.ToInt32(aircraft[0]));
             }
 
             markersOverlay = new GMapOverlay("markers");
@@ -117,11 +121,11 @@ namespace Simulation
             mapControl.Overlays.Add(routeOverlay);
 
             simulationTimer = new System.Windows.Forms.Timer();
-            simulationTimer.Interval = 1000; 
+            simulationTimer.Interval = 1000;
             simulationTimer.Tick += SimulationTimer_Tick;
 
-            trackBar1.Minimum = 1; 
-            trackBar1.Maximum = 15; 
+            trackBar1.Minimum = 1;
+            trackBar1.Maximum = 15;
             trackBar1.Value = 1;
             trackBar1.Scroll += trackBar1_Scroll;
 
@@ -255,7 +259,7 @@ namespace Simulation
             control.Location = new Point(newX, newY);
             control.Size = new Size(newWidth, newHeight);
 
-            float fontSizeRatio = Math.Min(xRatio, yRatio); 
+            float fontSizeRatio = Math.Min(xRatio, yRatio);
             control.Font = new Font(control.Font.FontFamily, control.Font.Size * fontSizeRatio, control.Font.Style);
 
             pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
@@ -282,13 +286,10 @@ namespace Simulation
                 Theme.SetLightMode(this);
             }
 
-
             mapControl.Position = new PointLatLng(41.298, 2.080);
-
             mapControl.MinZoom = 1;
             mapControl.MaxZoom = 30;
             mapControl.Zoom = 8;
-
             mapControl.Update();
 
             List<List<object>> initialAircrafts = new List<List<object>>();
@@ -296,12 +297,12 @@ namespace Simulation
             for (int i = 0; i < 4; i++)
             {
                 List<List<object>> result = AircraftsPerSecond(FiltredMessages, currentSecond + i);
-                PaintAircrafts(result);
                 initialAircrafts.AddRange(result);
             }
 
-            UpdateDataGridView(initialAircrafts);
+            PaintAircrafts(initialAircrafts);
 
+            UpdateDataGridView(initialAircrafts);
             UpdateTime(initialAircrafts);
             mapControl.Refresh();
 
@@ -338,9 +339,30 @@ namespace Simulation
         /// <param name="aircrafts"></param>
         private void UpdateTime(List<List<object>> aircrafts)
         {
-            var lastAircraft = aircrafts[aircrafts.Count - 1];
-            string time = Convert.ToString(lastAircraft[9]);
-            label5.Text = time;
+
+            if (aircrafts != null && aircrafts.Count > 0)
+            {
+
+                var lastAircraft = aircrafts[aircrafts.Count - 1];
+                string time = Convert.ToString(lastAircraft[9]);
+
+                label5.Text = time;
+                lastTime = time;
+            }
+            else
+            {
+
+                if (!string.IsNullOrEmpty(lastTime))
+                {
+                    label5.Text = lastTime;
+                }
+                else
+                {
+                    label5.Text = "";
+                }
+
+            }
+
         }
 
         /// <summary>
@@ -353,7 +375,6 @@ namespace Simulation
             if (currentSecond <= maxSecond)
             {
                 List<List<object>> result = AircraftsPerSecond(FiltredMessages, currentSecond);
-
                 PaintAircrafts(result);
 
                 UpdateDataGridView(result);
@@ -362,16 +383,15 @@ namespace Simulation
                 if (extra == true)
                 {
                     double distancia = DistancesBySecond[currentSecond];
-                    label4.Text = $"Distance = {distancia:F2} NM"; 
+                    label4.Text = $"Distance = {distancia:F2} NM";
                 }
 
                 mapControl.Refresh();
-
                 currentSecond++;
             }
             else
             {
-                simulationTimer.Stop(); 
+                simulationTimer.Stop();
                 AutomaticBtn.Text = "Automatic";
                 MessageBox.Show("The simulation has finished");
             }
@@ -393,10 +413,34 @@ namespace Simulation
 
                 if (timeAircraft == second)
                 {
-                    aircraftsSecond.Add(aircraft);  
+                    aircraftsSecond.Add(aircraft);
                 }
             }
             return aircraftsSecond;
+        }
+
+        /// <summary>
+        /// Loads an embedded image from the current assembly as a Bitmap, throwing an exception if not found.
+        /// </summary>
+        /// <param name="resourceName"></param>
+        /// <returns></returns>
+        /// <exception cref="FileNotFoundException"></exception>
+        private Bitmap LoadEmbeddedImage(string resourceName)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            string fullResourceName = $"Simulation.{resourceName}";
+
+            using (Stream stream = assembly.GetManifestResourceStream(fullResourceName))
+            {
+                if (stream != null)
+                {
+                    return new Bitmap(stream);
+                }
+                else
+                {
+                    throw new FileNotFoundException($"No se encontró el recurso incrustado: {fullResourceName}");
+                }
+            }
         }
 
         /// <summary>
@@ -405,6 +449,7 @@ namespace Simulation
         /// <param name="aircrafts"></param>
         private void PaintAircrafts(List<List<object>> aircrafts)
         {
+
             foreach (List<object> aircraft in aircrafts)
             {
                 double latitude = Convert.ToDouble(aircraft[1]);
@@ -451,7 +496,7 @@ namespace Simulation
                     {
                         if ((angleGRAD > 0 && angleGRAD < 45) || (angleGRAD > 90 && angleGRAD < 135) || (angleGRAD > -90 && angleGRAD < -45) || (angleGRAD > 180 && angleGRAD < 225))
                         {
-                            bitmap = new Bitmap("plane60.png");   
+                            bitmap = LoadEmbeddedImage("plane60.png");
 
                             if (angleGRAD > 0 && angleGRAD <= 45)
                             {
@@ -459,7 +504,7 @@ namespace Simulation
                             }
                             else if (angleGRAD > 90 && angleGRAD <= 135)
                             {
-                                bitmap.RotateFlip(RotateFlipType.Rotate270FlipNone); 
+                                bitmap.RotateFlip(RotateFlipType.Rotate270FlipNone);
                             }
                             else if (angleGRAD <= -45 && angleGRAD > -90)
                             {
@@ -467,13 +512,12 @@ namespace Simulation
                             }
                             else if (angleGRAD <= 225 && angleGRAD > 180)
                             {
-                                bitmap.RotateFlip(RotateFlipType.Rotate180FlipNone); 
+                                bitmap.RotateFlip(RotateFlipType.Rotate180FlipNone);
                             }
                         }
-
                         else if ((angleGRAD > 45 && angleGRAD < 90) || (angleGRAD > 135 && angleGRAD < 180) || (angleGRAD > -45 && angleGRAD < 0) || (angleGRAD > 225 && angleGRAD < 270))
                         {
-                            bitmap = new Bitmap("plane30.png");  
+                            bitmap = LoadEmbeddedImage("plane30.png");
 
                             if (angleGRAD > 45 && angleGRAD < 90)
                             {
@@ -481,7 +525,7 @@ namespace Simulation
                             }
                             else if (angleGRAD > 135 && angleGRAD < 180)
                             {
-                                bitmap.RotateFlip(RotateFlipType.Rotate270FlipNone); 
+                                bitmap.RotateFlip(RotateFlipType.Rotate270FlipNone);
                             }
                             else if (angleGRAD < 0 && angleGRAD > -45)
                             {
@@ -489,18 +533,17 @@ namespace Simulation
                             }
                             else if (angleGRAD < 270 && angleGRAD > 225)
                             {
-                                bitmap.RotateFlip(RotateFlipType.Rotate180FlipNone); 
+                                bitmap.RotateFlip(RotateFlipType.Rotate180FlipNone);
                             }
                         }
                     }
-
                     else
                     {
-                        bitmap = new Bitmap("plane0.png");
+                        bitmap = LoadEmbeddedImage("plane0.png");
 
                         if (angleGRAD == 0)
                         {
-                            // No se aplica rotación adicional
+                            // No additional rotation is applied
                         }
                         else if (angleGRAD == 90)
                         {
@@ -535,7 +578,6 @@ namespace Simulation
                     aircraftMarkers[TA] = marker;
 
                     previousPositions[TA] = Position;
-
                 }
             }
             mapControl.Invalidate();
@@ -611,6 +653,9 @@ namespace Simulation
         private void CloseBtn_Click(object sender, EventArgs e)
         {
             CloseApp CloseAPP = new CloseApp(this);
+            simulationTimer.Stop();
+            AutomaticBtn.Text = "Automatic";
+            MoveBtn.Enabled = true;
             this.Enabled = false;
             CloseAPP.Show();
         }
@@ -645,7 +690,7 @@ namespace Simulation
 
                 mapControl.Refresh();
 
-                trackBar1.Value = 1; 
+                trackBar1.Value = 1;
 
                 simulationTimer.Interval = 1000;
 
@@ -660,7 +705,7 @@ namespace Simulation
                 if (extra == true)
                 {
                     double distancia = DistancesBySecond[currentSecond - 1];
-                    label4.Text = $"Distance = {distancia:F2} NM"; // Limita a 2 decimales
+                    label4.Text = $"Distance = {distancia:F2} NM"; 
                 }
             }
 
@@ -692,11 +737,13 @@ namespace Simulation
             {
                 simulationTimer.Start();
                 AutomaticBtn.Text = "Pause";
+                MoveBtn.Enabled = false;
             }
             else if (AutomaticBtn.Text == "Pause")
             {
                 simulationTimer.Stop();
                 AutomaticBtn.Text = "Automatic";
+                MoveBtn.Enabled = true;
             }
 
         }
@@ -720,8 +767,8 @@ namespace Simulation
         {
             int trackBarValue = trackBar1.Value;
 
-            int minInterval = 1000; 
-            int maxInterval = 1; 
+            int minInterval = 1000;
+            int maxInterval = 1;
 
             simulationTimer.Interval = minInterval - (trackBarValue - 1) * (minInterval - maxInterval) / (trackBar1.Maximum - 1);
         }
@@ -784,50 +831,35 @@ namespace Simulation
         /// <param name="e"></param>
         private async void exportCsvBtn_Click(object sender, EventArgs e)
         {
-            string rutaCSV = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ASTERIX.csv");
-
-            if (!File.Exists(rutaCSV))
-            {
-                MessageBox.Show("The CSV file was not found.");
-                return;
-            }
 
             SaveFileDialog saveFileDialog = new SaveFileDialog
             {
-                Filter = "CSV Files (*.csv)|*.csv",
+                Filter = "CSV Files (.csv)|.csv",
                 Title = "Save Filtered CSV File",
-                FileName = "FilteredASTERIX.csv" 
+                FileName = "FilteredASTERIX.csv"
             };
 
             if (saveFileDialog.ShowDialog() != DialogResult.OK)
             {
-                return; 
+                return;
             }
 
             string newCsvPath = saveFileDialog.FileName;
 
-            HashSet<string> filteredKeys = new HashSet<string>(
-                FiltredMessages.Select(msg => $"{msg[0]}|{msg[1]}|{msg[2]}|{msg[3]}|{msg[4]}|{msg[5]}|{msg[6]}"));
-
-            var filteredLines = new List<string>();
-            using (StreamReader reader = new StreamReader(rutaCSV))
+            using (StreamWriter writer = new StreamWriter(newCsvPath, false, Encoding.UTF8))
             {
-                string header = reader.ReadLine();
-                filteredLines.Add(header); 
-
-                string line;
-                while ((line = reader.ReadLine()) != null)
+                if (AllMessages2.Count > 0)
                 {
-                    string[] row = line.Split('\t').Select(e => e.Trim('\"')).ToArray();
-                    string key = $"{row[4]}|{row[5]}|{row[6]}|{row[77]}|{row[8]}|{row[23]}|{row[35]}";
+                    var header = string.Join("\t", AllMessages2[0]); 
+                    writer.WriteLine(header); 
 
-                    if (filteredKeys.Contains(key))
+                    for (int i = 1; i < AllMessages2.Count; i++)  
                     {
-                        filteredLines.Add(line);
+                        string line = string.Join("\t", AllMessages2[i].Select(m => m.ToString()));  
+                        writer.WriteLine(line);  
                     }
                 }
             }
-            File.WriteAllLines(newCsvPath, filteredLines, Encoding.UTF8);
             MessageBox.Show("Filtered CSV exported successfully.");
 
         }
@@ -859,7 +891,7 @@ namespace Simulation
             foreach (var message in allMessages)
             {
 
-                string TI = Convert.ToString(message[8]);
+                string TI = Convert.ToString(message[8]).Trim();
 
                 if (TI == TI1)
                 {
@@ -892,8 +924,8 @@ namespace Simulation
         /// <returns></returns>
         public Dictionary<int, double> CalculateDistanceForAircrafts(List<List<object>> FiltredMessages, string TI1, string TI2)
         {
-            Dictionary<string, PointLatLng> previousPositions = new Dictionary<string, PointLatLng>(); 
-            Dictionary<int, double> distancesBySecond = new Dictionary<int, double>(); 
+            Dictionary<string, PointLatLng> previousPositions = new Dictionary<string, PointLatLng>();
+            Dictionary<int, double> distancesBySecond = new Dictionary<int, double>();
 
 
             int sec = Convert.ToInt32(FiltredMessages.First()[0]);
@@ -905,7 +937,7 @@ namespace Simulation
 
                 foreach (var message in aircraftsInCurrentSecond)
                 {
-                    string TI = Convert.ToString(message[8]);
+                    string TI = Convert.ToString(message[8]).Trim();
                     double latitude = Convert.ToDouble(message[1]);
                     double longitude = Convert.ToDouble(message[2]);
 
@@ -936,7 +968,7 @@ namespace Simulation
                             stereographicPositionTI1 = GetStereographic(positionTI1);
                             stereographicPositionTI2 = GetStereographic(positionTI2);
                             double distance = CalculateDistance(stereographicPositionTI1, stereographicPositionTI2);
-                            distancesBySecond[i] = distance; 
+                            distancesBySecond[i] = distance;
 
                         }
                         else
@@ -1028,5 +1060,35 @@ namespace Simulation
             return distance;
         }
 
+        /// <summary>
+        /// Close the entire app
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Mapa_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            simulationTimer.Stop();
+            AutomaticBtn.Text = "Automatic";
+            MoveBtn.Enabled = false;
+            this.Enabled = false;
+
+            DialogResult result = MessageBox.Show(
+                "Are you sure you want to close the application?",
+                "Confirm Exit",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                Environment.Exit(0); 
+            }
+            else if (result == DialogResult.No)
+            {
+                AutomaticBtn.Text = "Automatic";
+                MoveBtn.Enabled = true;
+                this.Enabled = true;
+                e.Cancel = true; 
+            }
+        }
     }
 }

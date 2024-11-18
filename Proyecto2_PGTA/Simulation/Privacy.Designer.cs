@@ -142,7 +142,9 @@
             Controls.Add(label1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Privacy";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Privacy";
+            FormClosing += Privacy_FormClosing;
             Load += Privacy_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();

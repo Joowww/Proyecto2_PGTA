@@ -28,6 +28,9 @@ namespace Simulation
         private string filePathAST;
         public int SelectedIndexOption { get; set; } = 0;
 
+        private List<List<Object>> allMessages = new List<List<Object>>();
+        private List<List<Object>> allMessages2 = new List<List<Object>>();
+
         private Size formOriginalSize;
         private Rectangle recBut1;
         private Rectangle recBut2;
@@ -406,7 +409,7 @@ namespace Simulation
                                     string binaryString = Convert.ToString(currentByte, 2).PadLeft(8, '0');
                                     char FX = binaryString[binaryString.Length - 1];
                                     if (FX == '0')
-                                        endOfDF = true; 
+                                        endOfDF = true;
                                     DataItem += binaryString;
                                 }
 
@@ -537,6 +540,47 @@ namespace Simulation
                                             }
                                         }
                                         messageTable.Rows.Add(newRow);
+
+                                        if (Variable048.TA != null)
+                                        {
+                                            List<object> message = new List<object>
+                                            {
+                                                Variable048.UTC_TIME_s,
+                                                Variable048.LAT_deg,
+                                                Variable048.LON_deg,
+                                                Variable048.Altitude_Corrected_m,
+                                                Variable048.TYP,
+                                                Variable048.MODE_3A,
+                                                Variable048.TA,
+                                                Variable048.STAT,
+                                                Variable048.TI,
+                                                Variable048.UTC_TIME
+                                            };
+                                            allMessages.Add(message);
+                                        }
+
+                                        if (Variable048.TA != null)
+                                        {
+                                            List<object> message2 = new List<object>();
+
+                                            if (allMessages2.Count == 0)
+                                            {
+                                                foreach (PropertyInfo property in typeof(CAT048).GetProperties())
+                                                {
+                                                    message2.Add(property.Name);
+                                                }
+                                                allMessages2.Add(message2);
+                                                message2 = new List<object>();
+                                            }
+                                            foreach (PropertyInfo property in typeof(CAT048).GetProperties())
+                                            {
+                                                var value = property.GetValue(Variable048);
+                                                message2.Add(value ?? "N/A");
+                                            }
+
+                                            allMessages2.Add(message2);
+                                        }
+
                                         endOfFSPEC = false;
                                         FSPEC = "";
                                         DataItem = "";
@@ -564,40 +608,10 @@ namespace Simulation
 
                 }
 
-                string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ASTERIX.csv"); // Save as output.csv in the bin folder
-
-                ExportDataTableToCSV(messageTable, filePath);
-
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error at reading the AST file: " + ex.Message);
-            }
-
-            static void ExportDataTableToCSV(DataTable table, string filePath)
-            {
-                using (StreamWriter SW = new StreamWriter(filePath))
-                {
-                    for (int i = 0; i < table.Columns.Count; i++)
-                    {
-                        SW.Write(table.Columns[i].ColumnName);  
-                        if (i < table.Columns.Count - 1)
-                            SW.Write("\t");  
-                    }
-                    SW.WriteLine();  
-
-                    foreach (DataRow row in table.Rows)
-                    {
-                        for (int i = 0; i < table.Columns.Count; i++)
-                        {
-                            string cellValue = row[i].ToString().Replace("\"", "\"\"");  
-                            SW.Write($"\"{cellValue}\"");  
-                            if (i < table.Columns.Count - 1)
-                                SW.Write("\t");  
-                        }
-                        SW.WriteLine();  
-                    }
-                }
             }
 
         }
@@ -617,7 +631,7 @@ namespace Simulation
             comboBox1.Items.Add("Removing flights above 6000 ft");
             comboBox1.Items.Add("Removing on ground flights");
             comboBox1.Items.Add("Combination of these");
-            comboBox1.SelectedIndex = 0; 
+            comboBox1.SelectedIndex = 0;
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
 
             isDarkMode = Properties.Settings1.Default.IsDarkMode;
@@ -642,110 +656,66 @@ namespace Simulation
         private async void SimulateBtn_Click(object sender, EventArgs e)
         {
             List<List<object>> filtredMessages = new List<List<object>>();
-            List<List<object>> allMessages = new List<List<object>>();
 
-            try
+
+            if (allMessages.Count == 0)
             {
-                string rutaCSV = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ASTERIX.csv");
-
-                if (!File.Exists(rutaCSV))
-                {
-                    MessageBox.Show("The CSV file was not found.");
-                    return; 
-                }
-
-                StreamReader file = new StreamReader(rutaCSV);
-                string line;
-                file.ReadLine();
-
-                while ((line = file.ReadLine()) != null)
-                {
-                    string[] row = line.Split('\t').Select(e => e.Trim('\"')).ToArray();
-
-                    int UTC_time_s = Convert.ToInt32(row[4]);
-                    double LAT = Convert.ToDouble(row[5]);
-                    double LON = Convert.ToDouble(row[6]);
-                    string Altitude_Corrected = Convert.ToString(row[77]);
-                    string TYP = Convert.ToString(row[8]);
-                    string MODE_3A = Convert.ToString(row[23]);
-                    string TA = Convert.ToString(row[35]);
-                    string STAT = Convert.ToString(row[70]);
-                    string TI = Convert.ToString(row[36]).Trim();
-                    string UTC_time = Convert.ToString(row[3]);
-
-                    if (TA != "N/A")
-                    {
-
-                        List<object> message = new List<object>();
-                        message.Add(UTC_time_s);
-                        message.Add(LAT);
-                        message.Add(LON);
-                        message.Add(Altitude_Corrected);
-                        message.Add(TYP);
-                        message.Add(MODE_3A);
-                        message.Add(TA);
-                        message.Add(STAT);
-                        message.Add(TI);
-                        message.Add(UTC_time);
-                        allMessages.Add(message);
-                    }
-
-                }
-
-                string selection = comboBox1.SelectedItem.ToString();
-
-                if (selection == "All data")
-                {
-                    filtredMessages = Option1(allMessages);
-                }
-                else if (selection == "Removing pure blanks")
-                {
-                    filtredMessages = Option2(allMessages);
-                }
-                else if (selection == "Removing fixed transponders")
-                {
-                    filtredMessages = Option3(allMessages);
-                }
-                else if (selection == "Geographic filter")
-                {
-                    filtredMessages = Option4(allMessages);
-
-                    if (filtredMessages == null)
-                    {
-                        return; 
-                    }
-                }
-                else if (selection == "Removing flights above 6000 ft")
-                {
-                    filtredMessages = Option5(allMessages);
-                }
-                else if (selection == "Removing on ground flights")
-                {
-                    filtredMessages = Option6(allMessages);
-                }
-                else if (selection == "Combination of these")
-                {
-                    filtredMessages = Option7(allMessages);
-
-                    if (filtredMessages == null)
-                    {
-                        return; 
-                    }
-                }
-                SelectedIndexOption = comboBox1.SelectedIndex;
+                MessageBox.Show("No data loaded. ");
+                return;
             }
-            catch (Exception ex)
+
+            string selection = comboBox1.SelectedItem.ToString();
+
+            if (selection == "All data")
             {
-                MessageBox.Show("There was an error reading the file: " + ex.Message);
+                filtredMessages = Option1(allMessages);
             }
+            else if (selection == "Removing pure blanks")
+            {
+                filtredMessages = Option2(allMessages);
+            }
+            else if (selection == "Removing fixed transponders")
+            {
+                filtredMessages = Option3(allMessages);
+            }
+            else if (selection == "Geographic filter")
+            {
+                filtredMessages = Option4(allMessages);
+
+                if (filtredMessages == null)
+                {
+                    return;
+                }
+            }
+            else if (selection == "Removing flights above 6000 ft")
+            {
+                filtredMessages = Option5(allMessages);
+            }
+            else if (selection == "Removing on ground flights")
+            {
+                filtredMessages = Option6(allMessages);
+            }
+            else if (selection == "Combination of these")
+            {
+                filtredMessages = Option7(allMessages);
+
+                if (filtredMessages == null)
+                {
+                    return;
+                }
+            }
+            SelectedIndexOption = comboBox1.SelectedIndex;
+
+
 
             if (filtredMessages != null)
             {
-                Mapa mapa = new Mapa(filtredMessages, allMessages, SelectedIndexOption, this);
+                Mapa mapa = new Mapa(filtredMessages, allMessages, allMessages2, SelectedIndexOption, this);
                 this.Hide();
                 mapa.Show();
             }
         }
+
 
         /// <summary>
         /// Returns all messages without any filtering.
@@ -772,15 +742,15 @@ namespace Simulation
 
             foreach (var message in allMessages)
             {
-                object TYP = message[4]; 
+                object TYP = message[4];
 
                 if (TYP.ToString() == "Mode S Roll-Call" || TYP.ToString() == "Mode S Roll-Call + PSR")
                 {
-                    filtredMessages.Add(message); 
+                    filtredMessages.Add(message);
                 }
             }
 
-            return filtredMessages; 
+            return filtredMessages;
         }
 
         /// <summary>
@@ -798,9 +768,9 @@ namespace Simulation
             {
                 object MODE_3A = message[5];
 
-                if (MODE_3A.ToString() != "7777")
+                if (MODE_3A != null && MODE_3A.ToString() != "7777")
                 {
-                    filtredMessages.Add(message); 
+                    filtredMessages.Add(message);
                 }
             }
             return filtredMessages;
@@ -822,7 +792,7 @@ namespace Simulation
                 throw new ArgumentNullException(nameof(allMessages), "The list of all messages cannot be null.");
             }
 
-            bool hasValidMessages = false; 
+            bool hasValidMessages = false;
 
             while (!hasValidMessages)
             {
@@ -861,7 +831,7 @@ namespace Simulation
                     if (latitude >= minLatitude && latitude <= maxLatitude &&
                         longitude >= minLongitude && longitude <= maxLongitude)
                     {
-                        filtredMessages.Add(message); 
+                        filtredMessages.Add(message);
                     }
                 }
                 if (filtredMessages.Count == 0 & Cancel == false)
@@ -898,7 +868,7 @@ namespace Simulation
                 string H = Convert.ToString(message[3]);
                 if (double.TryParse(H, out double h))
                 {
-                    h *= 3.280839895; 
+                    h *= 3.280839895;
                     if (h <= 6000)
                     {
                         filtredMessages.Add(message);
@@ -1071,7 +1041,7 @@ namespace Simulation
         private void button3_Click(object sender, EventArgs e)
         {
             isDarkMode = !isDarkMode;
-            ApplyTheme(); 
+            ApplyTheme();
 
             Properties.Settings1.Default.IsDarkMode = isDarkMode;
             Properties.Settings1.Default.Save();
@@ -1107,6 +1077,29 @@ namespace Simulation
         private void menuButton_Click(object sender, EventArgs e)
         {
             SidebarTimer.Start();
+        }
+
+        /// <summary>
+        /// Close the entire app
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Principal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+            "Are you sure you want to close the application?",
+            "Confirm Exit",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                Environment.Exit(0);
+            }
+            else if (result == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

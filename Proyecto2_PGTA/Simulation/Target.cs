@@ -28,6 +28,8 @@ namespace Simulation
         private Rectangle recLbl2;
         private Rectangle recLbl3;
         private Rectangle recPtb1;
+
+        private bool isCancelButtonClicked = false;
         public Target(Mapa mapa_)
         {
             InitializeComponent();
@@ -88,7 +90,7 @@ namespace Simulation
             control.Location = originalRect.Location;
             control.Size = originalRect.Size;
 
-            control.Font = new Font(control.Font.FontFamily, 10, control.Font.Style); // Ajusta el tamaño de la fuente original si es necesario
+            control.Font = new Font(control.Font.FontFamily, 10, control.Font.Style); 
 
             pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
             pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
@@ -112,7 +114,7 @@ namespace Simulation
             control.Location = new Point(newX, newY);
             control.Size = new Size(newWidth, newHeight);
 
-            float fontSizeRatio = Math.Min(xRatio, yRatio); 
+            float fontSizeRatio = Math.Min(xRatio, yRatio);
             control.Font = new Font(control.Font.FontFamily, control.Font.Size * fontSizeRatio, control.Font.Style);
 
             pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
@@ -141,7 +143,7 @@ namespace Simulation
                 if (string.IsNullOrEmpty(TI1) || string.IsNullOrEmpty(TI2))
                 {
                     MessageBox.Show("Please enter a target identification in both fields.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return; 
+                    return;
                 }
 
                 var (filteredMessages, missingTargets) = mapa.Option8(mapa.AllMessages, TI1, TI2);
@@ -231,8 +233,19 @@ namespace Simulation
 
         private void cancelBtn_Click(object sender, EventArgs e)
         {
+            isCancelButtonClicked = true;
             mapa.Enabled = true;
             this.Close();
+        }
+
+        private void Target_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing && !isCancelButtonClicked)
+            {
+                e.Cancel = true;
+                MessageBox.Show("No puedes cerrar el formulario de esta manera.");
+            }
+            isCancelButtonClicked = false;
         }
     }
 }

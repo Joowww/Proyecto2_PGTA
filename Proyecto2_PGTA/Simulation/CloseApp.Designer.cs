@@ -101,7 +101,9 @@
             Controls.Add(label1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "CloseApp";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "CloseApp";
+            FormClosing += CloseApp_FormClosing;
             Load += CloseApp_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             ResumeLayout(false);

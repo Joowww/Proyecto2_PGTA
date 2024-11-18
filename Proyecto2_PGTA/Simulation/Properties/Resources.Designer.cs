@@ -63,6 +63,16 @@ namespace Simulation.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Flying_airplane {
+            get {
+                object obj = ResourceManager.GetObject("Flying airplane", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap GifPrincipal {
             get {
                 object obj = ResourceManager.GetObject("GifPrincipal", resourceCulture);

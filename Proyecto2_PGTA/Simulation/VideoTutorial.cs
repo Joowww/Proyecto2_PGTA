@@ -22,7 +22,7 @@ namespace Simulation
         private Rectangle recLbl3;
         private Rectangle recPtb1;
         private Rectangle recPtb2;
-
+        private bool isCancelButtonClicked = false;
         public VideoTutorial()
         {
             InitializeComponent();
@@ -109,7 +109,7 @@ namespace Simulation
 
             if (control is PictureBox)
             {
-                (control as PictureBox).SizeMode = PictureBoxSizeMode.StretchImage; 
+                (control as PictureBox).SizeMode = PictureBoxSizeMode.StretchImage;
             }
             pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
             pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
@@ -180,7 +180,19 @@ namespace Simulation
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
+            isCancelButtonClicked = true;
             this.Hide();
+        }
+
+        private void VideoTutorial_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing && !isCancelButtonClicked)
+            {
+                e.Cancel = true;
+                MessageBox.Show("No puedes cerrar el formulario de esta manera.");
+            }
+            isCancelButtonClicked = false;
+
         }
     }
 }

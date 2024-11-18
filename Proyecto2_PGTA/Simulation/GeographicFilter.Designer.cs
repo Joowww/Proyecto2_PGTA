@@ -190,6 +190,7 @@
             Controls.Add(label1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "GeographicFilter";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "GeographicFilter";
             Load += GeographicFilter_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();

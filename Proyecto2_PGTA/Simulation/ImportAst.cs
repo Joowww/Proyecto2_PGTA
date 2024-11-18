@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
@@ -116,7 +117,7 @@ namespace Simulation
             control.Location = new Point(newX, newY);
             control.Size = new Size(newWidth, newHeight);
 
-            float fontSizeRatio = Math.Min(xRatio, yRatio); 
+            float fontSizeRatio = Math.Min(xRatio, yRatio);
             control.Font = new Font(control.Font.FontFamily, control.Font.Size * fontSizeRatio, control.Font.Style);
 
             pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
@@ -154,12 +155,12 @@ namespace Simulation
             }
         }
 
-        
+
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButton3.Checked == false)
             {
-                label1.Text = "";  
+                label1.Text = "";
             }
         }
 
@@ -175,16 +176,16 @@ namespace Simulation
                 if (Path.GetExtension(FilePathAST).ToLower() != ".ast")
                 {
                     MessageBox.Show("Please select a file with the .ast extension.", "File Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return; 
+                    return;
                 }
             }
             else if (radioButton1.Checked)
             {
-                FilePathAST = "230502-est-080001_BCN_60MN_08_09.ast";
+                FilePathAST = "230502-est-080001_BCN_60MN_08_09 (2).ast";
             }
             else if (radioButton2.Checked)
             {
-                FilePathAST = "230502-est-080001_BCN.ast";
+                FilePathAST = "230502-est-080001_BCN (1).ast";
             }
             else if (radioButton3.Checked && !string.IsNullOrEmpty(FilePathAST))
             {
@@ -202,11 +203,12 @@ namespace Simulation
             await oTask;
             Principal principal = new Principal(FilePathAST);
             principal.Show();
-            this.Close(); 
+            this.Close();
             welcome.Hide();
             Hide1();
 
         }
+
 
         /// <summary>
         /// Loads the theme setting and applies dark or light mode based on the stored preference.
@@ -268,6 +270,7 @@ namespace Simulation
         {
             this.Close();
         }
+
     }
 }
 

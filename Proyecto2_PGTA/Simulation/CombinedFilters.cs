@@ -25,6 +25,8 @@ namespace Simulation
         private Rectangle recBut2;
         private Rectangle recPtb1;
         private Rectangle recCb1;
+
+        private bool isCancelButtonClicked = false;
         public CombinedFilters(Principal principal_, List<List<object>> originalData)
         {
             InitializeComponent();
@@ -105,7 +107,7 @@ namespace Simulation
             control.Location = new Point(newX, newY);
             control.Size = new Size(newWidth, newHeight);
 
-            float fontSizeRatio = Math.Min(xRatio, yRatio); 
+            float fontSizeRatio = Math.Min(xRatio, yRatio);
             control.Font = new Font(control.Font.FontFamily, control.Font.Size * fontSizeRatio, control.Font.Style);
 
             pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
@@ -178,7 +180,7 @@ namespace Simulation
                     return principal.Option6(data);
 
                 default:
-                    return data; 
+                    return data;
             }
         }
 
@@ -220,8 +222,19 @@ namespace Simulation
 
         private void cancelBtn_Click(object sender, EventArgs e)
         {
+            isCancelButtonClicked = true;
             filteredData = null;
             this.Close();
+        }
+
+        private void CombinedFilters_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing && !isCancelButtonClicked)
+            {
+                e.Cancel = true;
+                MessageBox.Show("No puedes cerrar el formulario de esta manera.");
+            }
+            isCancelButtonClicked = false;
         }
     }
 }

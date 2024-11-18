@@ -325,7 +325,7 @@ namespace Simulation
             control.Location = new Point(newX, newY);
             control.Size = new Size(newWidth, newHeight);
 
-            float fontSizeRatio = Math.Min(xRatio, yRatio); 
+            float fontSizeRatio = Math.Min(xRatio, yRatio);
             control.Font = new Font(control.Font.FontFamily, control.Font.Size * fontSizeRatio, control.Font.Style);
 
             int rightPosition = control.Left + control.Width;
@@ -407,7 +407,7 @@ namespace Simulation
         {
             ImportAst importAst = new ImportAst(this);
             importAst.ShowDialog();
-            
+
         }
 
         /// <summary>
@@ -422,7 +422,7 @@ namespace Simulation
                 sidebar.Width -= 10;
                 if (sidebar.Width <= sidebar.MinimumSize.Width)
                 {
-                    sidebar.Width = sidebar.MinimumSize.Width; 
+                    sidebar.Width = sidebar.MinimumSize.Width;
                     sidebarExpand = false;
                     SidebarTimer.Stop();
                 }
@@ -432,7 +432,7 @@ namespace Simulation
                 sidebar.Width += 10;
                 if (sidebar.Width >= sidebar.MaximumSize.Width)
                 {
-                    sidebar.Width = sidebar.MaximumSize.Width; 
+                    sidebar.Width = sidebar.MaximumSize.Width;
                     sidebarExpand = true;
                     SidebarTimer.Stop();
                 }
@@ -605,7 +605,7 @@ namespace Simulation
         private void button3_Click_1(object sender, EventArgs e)
         {
             isDarkMode = !isDarkMode;
-            ApplyTheme(); 
+            ApplyTheme();
 
             Properties.Settings1.Default.IsDarkMode = isDarkMode;
             Properties.Settings1.Default.Save();
@@ -644,6 +644,29 @@ namespace Simulation
         {
             Privacy PPrivacy = new Privacy();
             PPrivacy.Show();
+        }
+
+        /// <summary>
+        /// Close the entire app
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Welcome_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+            "Are you sure you want to close the application?",
+            "Confirm Exit",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                Environment.Exit(0);
+            }
+            else if (result == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

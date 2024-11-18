@@ -124,7 +124,9 @@
             Controls.Add(label1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ExtraFunctionality";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ExtraFunctionality";
+            FormClosing += ExtraFunctionality_FormClosing;
             Load += ExtraFunctionality_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             ResumeLayout(false);

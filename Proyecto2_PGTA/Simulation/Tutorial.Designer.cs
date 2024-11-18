@@ -255,7 +255,9 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
             Name = "Tutorial";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Tutorial";
+            FormClosing += Tutorial_FormClosing;
             Load += Tutorial_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             ResumeLayout(false);

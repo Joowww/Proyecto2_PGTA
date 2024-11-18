@@ -166,7 +166,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(115, 60);
+            label2.Location = new Point(149, 60);
             label2.Name = "label2";
             label2.Size = new Size(65, 28);
             label2.TabIndex = 11;
@@ -347,7 +347,7 @@
             buttonSettings.Padding = new Padding(5, 0, 0, 0);
             buttonSettings.Size = new Size(135, 59);
             buttonSettings.TabIndex = 11;
-            buttonSettings.Text = "Settings";
+            buttonSettings.Text = "  Settings";
             buttonSettings.UseVisualStyleBackColor = false;
             buttonSettings.Click += buttonSettings_Click;
             // 
@@ -507,6 +507,7 @@
             Name = "Principal";
             Text = "Principal";
             WindowState = FormWindowState.Maximized;
+            FormClosing += Principal_FormClosing;
             Load += Form_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             sidebar.ResumeLayout(false);
