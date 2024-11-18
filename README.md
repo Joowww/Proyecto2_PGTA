@@ -58,7 +58,11 @@ dotnet restore
 
 **3. Main Menu**: The dropdown menu allows you to return to the welcome menu using the "Home" button, so you can select a file again. It also gives you access to the "Help" and "Settings" functionalities.
 
+![Main 1](./Main%20Menu%201.png)
+
 On this screen, you must also choose the type of filtering (or choose not to filter and simulate with all the data).
+
+![Main 2](./Main%20Menu%202.png)
 
 The different types of filters you will encounter are:
 - **Filter to remove "pure blanks"**: This filter works by checking the Type of the Target Report in Data Item 020 and removing messages that are not “Mode S Roll-Call” or “Mode S Roll Call + PSR.” In summary, only messages originating from Mode S interrogations or Mode S interrogations reinforced with primary interrogation are kept.
@@ -76,6 +80,8 @@ The different types of filters you will encounter are:
 <em>NOTE: The simulation shows the corrected altitude (altitude relative to sea level adjusted with the QNH, when applicable)</em>.
 
 **5. Extra functionality**: When you press the "Extra functionality" button on the map interface, a tab will open with a brief explanation of the functionality, followed by a form to enter the necessary data.
+
+![Extra](./Extra%20Functionality.png)
 
 <a id="end"></a>
 In addition to this user guide, the software includes an option to access a video tutorial that explains how to use the main functionalities.
