@@ -92,7 +92,7 @@ We began this project with four group members: Marina Martín Ferrer, Joel Moren
 
 The table below shows the objectives, who completed them, as well as the dates and hours dedicated.
 
-![Planning](./Planning.pdf)
+![Planning](./Planning.jpg)
 
 ## 6. ASTERIX Executable
 
