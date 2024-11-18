@@ -82,16 +82,14 @@ The different types of filters you will encounter are:
 **4. Simulation**: This interface allows you to visualize the flight simulation on a map, with the option to change the map provider according to your preferences. You can activate automatic mode to run the simulation continuously, adjusting the speed with the scroll wheel, or manually move the flights step by step every second using the "Move" button. You also have the option to restart the simulation with "Restart," apply different filters, and export the data in CSV format.
 
 <p align="center">
-  <img src="./Simulation.png" alt="Simulation" width="400">
+  <img src="./Simulation.png" alt="Simulation" width="800">
 </p>
 
 <em>NOTE: The simulation shows the corrected altitude (altitude relative to sea level adjusted with the QNH, when applicable)</em>.
 
 **5. Extra functionality**: When you press the "Extra functionality" button on the map interface, a tab will open with a brief explanation of the functionality, followed by a form to enter the necessary data.
 
-<p align="center">
-  <img src="./Extra%20Functionality.png" alt="Extra" width="400">
-</p>
+![Extra](./Extra%20Functionality.png)
 
 <a id="end"></a>
 In addition to this user guide, the software includes an option to access a video tutorial that explains how to use the main functionalities.
@@ -115,7 +113,7 @@ We began this project with four group members: Marina Martín Ferrer, Joel Moren
 The table below shows the objectives, who completed them, as well as the dates and hours dedicated.
 
 <p align="center">
-  <img src="./Planning.jpg" alt="Planning" width="700">
+  <img src="./Planning.jpg" alt="Planning" width="600">
 </p>
 
 ## 6. ASTERIX Executable
