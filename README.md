@@ -85,6 +85,8 @@ In addition to this user guide, the software includes an option to access a vide
 ## 4. Software Decoding Flow
 The flowchart outlines the process of reading and decoding an AST file containing structured binary data. It starts by opening the file, setting up a binary reader, and defining key variables like FSPEC and Data Items. The data is then processed based on its length (fixed, variable, or repetitive), ensuring flexible handling. Error-handling mechanisms are also included to ensure system robustness. This flowchart provides a clear and structured view for efficiently interpreting AST files.
 
+![SW Decoding](./SW%20Decoding%20Flow.png)
+
 ## 5. Project Planning
 We began this project with four group members: Marina Martín Ferrer, Joel Moreno de Toro, Paula Valle Bové, and Mireia Viladot Saló. Once we completed the ASTERIX decoding and CSV export, we divided the work. Two members continued with this project (Joel and Mireia), while the other two started Project 3.
 
