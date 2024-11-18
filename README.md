@@ -71,6 +71,8 @@ The different types of filters you will encounter are:
 
 **4. Simulation**: This interface allows you to visualize the flight simulation on a map, with the option to change the map provider according to your preferences. You can activate automatic mode to run the simulation continuously, adjusting the speed with the scroll wheel, or manually move the flights step by step every second using the "Move" button. You also have the option to restart the simulation with "Restart," apply different filters, and export the data in CSV format.
 
+![Simulation](./Simulation.png)
+
 <em>NOTE: The simulation shows the corrected altitude (altitude relative to sea level adjusted with the QNH, when applicable)</em>.
 
 **5. Extra functionality**: When you press the "Extra functionality" button on the map interface, a tab will open with a brief explanation of the functionality, followed by a form to enter the necessary data.
@@ -80,4 +82,13 @@ In addition to this user guide, the software includes an option to access a vide
 
 - **Acces to the video**: In the application interface, you will find a dropdown menu, within which there is a "Help" button where you can access a summarized tutorial of the main functionalities or the mentioned video tutorial.
 
+## 4. Software Decoding Flow
+The flowchart outlines the process of reading and decoding an AST file containing structured binary data. It starts by opening the file, setting up a binary reader, and defining key variables like FSPEC and Data Items. The data is then processed based on its length (fixed, variable, or repetitive), ensuring flexible handling. Error-handling mechanisms are also included to ensure system robustness. This flowchart provides a clear and structured view for efficiently interpreting AST files.
+
+## 5. Project Planning
+We began this project with four group members: Marina Martín Ferrer, Joel Moreno de Toro, Paula Valle Bové, and Mireia Viladot Saló. Once we completed the ASTERIX decoding and CSV export, we divided the work. Two members continued with this project (Joel and Mireia), while the other two started Project 3.
+
+The table below shows the objectives, who completed them, as well as the dates and hours dedicated.
+
+## 6. ASTERIX Executable
 
