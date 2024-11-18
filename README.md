@@ -20,6 +20,7 @@ The ASTERIX CAT048 Decoder is an application developed in C# to decode ASTERIX d
 - Simulation of positions at 1-second intervals.
 - Real-time adjustment of simulation speed.
 - Map provider change.
+- Modification of the data filter during simulation.
 - **Extra functionality:** Allows the input of two target identifications to simultaneously display the trajectories of two planes and calculate the distance between them on each antenna rotation.
 
 ## 2. Installation
