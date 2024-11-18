@@ -78,7 +78,7 @@ The different types of filters you will encounter are:
 - **Altitude filter to eliminate flights above 6000 feet**: This filter compares the altitude (corrected with QNH) to 6000 feet. If the altitude is above this threshold, the message is removed.
 - **Filter to remove "on ground" flights**: Data Item 230 provides the Flight Status, which indicates whether the aircraft is “on ground.”
 
-<em>NOTE: In this step, no matter what you choose, the planes with a Target Address set to "null" will be removed</em>.
+&nbsp;&nbsp;&nbsp;&nbsp; <em>NOTE: In this step, no matter what you choose, the planes with a Target Address set to "null" will be removed</em>.
 
 **4. Simulation**: This interface allows you to visualize the flight simulation on a map, with the option to change the map provider according to your preferences. You can activate automatic mode to run the simulation continuously, adjusting the speed with the scroll wheel, or manually move the flights step by step every second using the "Move" button. You also have the option to restart the simulation with "Restart," apply different filters, and export the data in CSV format.
 
@@ -86,7 +86,7 @@ The different types of filters you will encounter are:
   <img src="./Simulation.png" alt="Simulation" width="800">
 </p>
 
-<em>NOTE: The simulation shows the corrected altitude (altitude relative to sea level adjusted with the QNH, when applicable)</em>.
+&nbsp;&nbsp;&nbsp;&nbsp; <em>NOTE: The simulation shows the corrected altitude (altitude relative to sea level adjusted with the QNH, when applicable)</em>.
 
 **5. Extra functionality**: When you press the "Extra functionality" button on the map interface, a tab will open with a brief explanation of the functionality, followed by a form to enter the necessary data.
 
@@ -101,12 +101,14 @@ In addition to this user guide, the software includes an option to access a vide
   <img src="./Tutorial.png" alt="Tutorial" width="400">
 </p>
 
-<em>NOTE: Make sure you have internet access to view the video tutorial, as it is streamed from an online source (YouTube)</em>.
+&nbsp;&nbsp;&nbsp;&nbsp; <em>NOTE: Make sure you have internet access to view the video tutorial, as it is streamed from an online source (YouTube)</em>.
 
 ## 4. Software Decoding Flow
 The flowchart outlines the process of reading and decoding an AST file containing structured binary data. It starts by opening the file, setting up a binary reader, and defining key variables like FSPEC and Data Items. The data is then processed based on its length (fixed, variable, or repetitive), ensuring flexible handling. Error-handling mechanisms are also included to ensure system robustness. This flowchart provides a clear and structured view for efficiently interpreting AST files.
 
-![SW Decoding](./SW%20Decoding%20Flow.jpeg)
+<p align="center">
+  <img src="./SW%20Decoding%20Flow.jpeg" alt="SW Decoding">
+</p>
 
 ## 5. Project Planning
 We began this project with four group members: Marina Martín Ferrer, Joel Moreno de Toro, Paula Valle Bové, and Mireia Viladot Saló. Once we completed the ASTERIX decoding and CSV export, we divided the work. Two members continued with this project (Joel and Mireia), while the other two started Project 3.
