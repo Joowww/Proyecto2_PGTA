@@ -82,6 +82,10 @@ In addition to this user guide, the software includes an option to access a vide
 
 - **Acces to the video**: In the application interface, you will find a dropdown menu, within which there is a "Help" button where you can access a summarized tutorial of the main functionalities or the mentioned video tutorial.
 
+![Tutorial](./Tutorial.png)
+
+<em>NOTE: Make sure you have internet access to view the video tutorial, as it is streamed from an online source (YouTube)</em>.
+
 ## 4. Software Decoding Flow
 The flowchart outlines the process of reading and decoding an AST file containing structured binary data. It starts by opening the file, setting up a binary reader, and defining key variables like FSPEC and Data Items. The data is then processed based on its length (fixed, variable, or repetitive), ensuring flexible handling. Error-handling mechanisms are also included to ensure system robustness. This flowchart provides a clear and structured view for efficiently interpreting AST files.
 
