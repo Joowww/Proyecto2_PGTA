@@ -174,7 +174,7 @@ namespace Simulation
             }
             catch (Exception ex)
             {
-                MessageBox.Show("No se pudo abrir el enlace: " + ex.Message);
+                MessageBox.Show("The link could not be opened.: " + ex.Message);
             }
         }
 
@@ -189,7 +189,7 @@ namespace Simulation
             if (e.CloseReason == CloseReason.UserClosing && !isCancelButtonClicked)
             {
                 e.Cancel = true;
-                MessageBox.Show("No puedes cerrar el formulario de esta manera.");
+                MessageBox.Show("You cannot close the form this way.");
             }
             isCancelButtonClicked = false;
 

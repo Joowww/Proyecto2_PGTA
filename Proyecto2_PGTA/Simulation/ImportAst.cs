@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
@@ -164,6 +165,14 @@ namespace Simulation
             }
         }
 
+        private void PrintMemoryUsage()
+        {
+            Process currentProcess = Process.GetCurrentProcess();
+            long memoryUsed = currentProcess.PrivateMemorySize64 / 1024 / 1024; // Convertir a MB
+            MessageBox.Show($"Memory Used: {memoryUsed} MB", "Memory Usage", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+
         /// <summary>
         /// Validates the file selection, shows a loading form, waits for 5 seconds, then opens the main form and closes the current one.
         /// </summary>
@@ -171,6 +180,7 @@ namespace Simulation
         /// <param name="e"></param>
         private async void acceptBtn_Click(object sender, EventArgs e)
         {
+            PrintMemoryUsage();
             if (radioButton3.Checked && !string.IsNullOrEmpty(FilePathAST))
             {
                 if (Path.GetExtension(FilePathAST).ToLower() != ".ast")
@@ -181,11 +191,11 @@ namespace Simulation
             }
             else if (radioButton1.Checked)
             {
-                FilePathAST = "230502-est-080001_BCN_60MN_08_09 (2).ast";
+                FilePathAST = ExtractEmbeddedFile("230502-est-080001_BCN_60MN_08_09 (3).ast");
             }
             else if (radioButton2.Checked)
             {
-                FilePathAST = "230502-est-080001_BCN (1).ast";
+                FilePathAST = ExtractEmbeddedFile("230502-est-080001_BCN (3).ast");
             }
             else if (radioButton3.Checked && !string.IsNullOrEmpty(FilePathAST))
             {
@@ -203,10 +213,40 @@ namespace Simulation
             await oTask;
             Principal principal = new Principal(FilePathAST);
             principal.Show();
+            PrintMemoryUsage();
             this.Close();
             welcome.Hide();
             Hide1();
 
+        }
+
+        /// <summary>
+        /// Extracts an embedded file and returns its file path.
+        /// </summary>
+        /// <param name="resourceName">Name of the embedded resource.</param>
+        /// <returns>Path to the temporary file where the resource is saved.</returns>
+        private string ExtractEmbeddedFile(string resourceName)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+
+            string namespacePrefix = this.GetType().Namespace;
+            string fullResourceName = $"{namespacePrefix}.{resourceName}";
+            
+            using (Stream resourceStream = assembly.GetManifestResourceStream(fullResourceName))
+            {
+                if (resourceStream == null)
+                {
+                    throw new FileNotFoundException($"Embedded file not found: {fullResourceName}");
+                }
+
+                string tempFilePath = Path.Combine(Path.GetTempPath(), resourceName);
+                using (var fileStream = new FileStream(tempFilePath, FileMode.Create, FileAccess.Write))
+                {
+                    resourceStream.CopyTo(fileStream);
+                }
+
+                return tempFilePath;
+            }
         }
 
 

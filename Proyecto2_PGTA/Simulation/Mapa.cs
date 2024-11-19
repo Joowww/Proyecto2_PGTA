@@ -419,6 +419,20 @@ namespace Simulation
             return aircraftsSecond;
         }
 
+        private readonly Dictionary<string, Bitmap> cachedImages = new Dictionary<string, Bitmap>();
+
+        private Dictionary<string, Bitmap> cachedBitmaps = new Dictionary<string, Bitmap>();
+
+        private Bitmap LoadAndCacheBitmap(string resourceName)
+        {
+            if (!cachedBitmaps.ContainsKey(resourceName))
+            {
+                cachedBitmaps[resourceName] = LoadEmbeddedImage(resourceName);
+            }
+            return cachedBitmaps[resourceName];
+        }
+
+
         /// <summary>
         /// Loads an embedded image from the current assembly as a Bitmap, throwing an exception if not found.
         /// </summary>
@@ -427,6 +441,25 @@ namespace Simulation
         /// <exception cref="FileNotFoundException"></exception>
         private Bitmap LoadEmbeddedImage(string resourceName)
         {
+            //var assembly = Assembly.GetExecutingAssembly();
+            //string fullResourceName = $"Simulation.{resourceName}";
+
+            //using (Stream stream = assembly.GetManifestResourceStream(fullResourceName))
+            //{
+            //    if (stream != null)
+            //    {
+            //        return new Bitmap(stream);
+            //    }
+            //    else
+            //    {
+            //        throw new FileNotFoundException($"No se encontró el recurso incrustado: {fullResourceName}");
+            //    }
+            //}
+
+            if (cachedImages.ContainsKey(resourceName))
+            {
+                return cachedImages[resourceName];
+            }
             var assembly = Assembly.GetExecutingAssembly();
             string fullResourceName = $"Simulation.{resourceName}";
 
@@ -434,11 +467,13 @@ namespace Simulation
             {
                 if (stream != null)
                 {
-                    return new Bitmap(stream);
+                    var bitmap = new Bitmap(stream);
+                    cachedImages[resourceName] = bitmap;
+                    return bitmap;
                 }
                 else
                 {
-                    throw new FileNotFoundException($"No se encontró el recurso incrustado: {fullResourceName}");
+                    throw new FileNotFoundException($"Embedded resource not found: {fullResourceName}");
                 }
             }
         }
@@ -581,6 +616,7 @@ namespace Simulation
                 }
             }
             mapControl.Invalidate();
+
         }
 
         /// <summary>

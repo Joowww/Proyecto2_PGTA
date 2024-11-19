@@ -198,7 +198,7 @@ namespace Simulation
             if (e.CloseReason == CloseReason.UserClosing && !isCancelButtonClicked)
             {
                 e.Cancel = true;
-                MessageBox.Show("No puedes cerrar el formulario de esta manera.");
+                MessageBox.Show("You cannot close the form this way.");
             }
             isCancelButtonClicked = false;
         }

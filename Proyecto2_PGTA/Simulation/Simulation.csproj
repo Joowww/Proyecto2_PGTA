@@ -10,6 +10,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="230502-est-080001_BCN %283%29.ast" />
+    <None Remove="230502-est-080001_BCN_60MN_08_09 %283%29.ast" />
     <None Remove="Images\plane0.png" />
     <None Remove="Images\plane30.png" />
     <None Remove="Images\plane60.png" />
@@ -31,6 +33,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="230502-est-080001_BCN (3).ast" />
+    <EmbeddedResource Include="230502-est-080001_BCN_60MN_08_09 (3).ast" />
     <EmbeddedResource Include="plane0.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </EmbeddedResource>
