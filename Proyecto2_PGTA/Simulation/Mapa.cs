@@ -72,9 +72,17 @@ namespace Simulation
         private Rectangle recPanel2;
         private Rectangle recDgv1;
 
+        private Dictionary<string, PlaneImage> planeImages = new Dictionary<string, PlaneImage>();
+
         public Mapa(List<List<object>> filtredMessages, List<List<object>> allMessages, List<List<object>> allMessages2, int selectedIndexOption, Principal _principal)
         {
             InitializeComponent();
+
+            int scaleFactor = 30; // Define tu factor de escala aquí
+
+            planeImages["plane0"] = LoadAndScaleImageWithOffset("plane0.png", scaleFactor);
+            planeImages["plane30"] = LoadAndScaleImageWithOffset("plane30.png", scaleFactor);
+            planeImages["plane60"] = LoadAndScaleImageWithOffset("plane60.png", scaleFactor);
 
             FiltredMessages = filtredMessages;
             AllMessages = allMessages;
@@ -271,6 +279,13 @@ namespace Simulation
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        /// 
+
+        public class PlaneImage
+        {
+            public Bitmap Image { get; set; } 
+            public Point Offset { get; set; } 
+        }
         private void Mapa_Load(object sender, EventArgs e)
         {
             isDarkMode = Properties.Settings1.Default.IsDarkMode;
@@ -419,19 +434,6 @@ namespace Simulation
             return aircraftsSecond;
         }
 
-        private readonly Dictionary<string, Bitmap> cachedImages = new Dictionary<string, Bitmap>();
-
-        private Dictionary<string, Bitmap> cachedBitmaps = new Dictionary<string, Bitmap>();
-
-        private Bitmap LoadAndCacheBitmap(string resourceName)
-        {
-            if (!cachedBitmaps.ContainsKey(resourceName))
-            {
-                cachedBitmaps[resourceName] = LoadEmbeddedImage(resourceName);
-            }
-            return cachedBitmaps[resourceName];
-        }
-
 
         /// <summary>
         /// Loads an embedded image from the current assembly as a Bitmap, throwing an exception if not found.
@@ -439,8 +441,26 @@ namespace Simulation
         /// <param name="resourceName"></param>
         /// <returns></returns>
         /// <exception cref="FileNotFoundException"></exception>
+        /// 
+
+        private PlaneImage LoadAndScaleImageWithOffset(string resourceName, int scaleFactor)
+        {
+
+            Bitmap original = LoadEmbeddedImage(resourceName);
+            int newWidth = original.Width / scaleFactor;
+            int newHeight = original.Height / scaleFactor;
+            Bitmap scaledImage = new Bitmap(original, new Size(newWidth, newHeight));
+            int offsetX = scaledImage.Width / 2;
+            int offsetY = scaledImage.Height / 2;
+            return new PlaneImage
+            {
+                Image = scaledImage,
+                Offset = new Point(-offsetX, -offsetY)
+            };
+        }
         private Bitmap LoadEmbeddedImage(string resourceName)
         {
+
             var assembly = Assembly.GetExecutingAssembly();
             string fullResourceName = $"Simulation.{resourceName}";
 
@@ -455,27 +475,7 @@ namespace Simulation
                     throw new FileNotFoundException($"No se encontró el recurso incrustado: {fullResourceName}");
                 }
             }
-
-            //if (cachedImages.ContainsKey(resourceName))
-            //{
-            //    return cachedImages[resourceName];
-            //}
-            //var assembly = Assembly.GetExecutingAssembly();
-            //string fullResourceName = $"Simulation.{resourceName}";
-
-            //using (Stream stream = assembly.GetManifestResourceStream(fullResourceName))
-            //{
-            //    if (stream != null)
-            //    {
-            //        var bitmap = new Bitmap(stream);
-            //        cachedImages[resourceName] = bitmap;
-            //        return bitmap;
-            //    }
-            //    else
-            //    {
-            //        throw new FileNotFoundException($"Embedded resource not found: {fullResourceName}");
-            //    }
-            //}
+                  
         }
 
         /// <summary>
@@ -525,85 +525,73 @@ namespace Simulation
                         }
                     }
 
-                    Bitmap bitmap = null;
-
-                    if (angleGRAD != 0 && angleGRAD != 90 && angleGRAD != 180 && angleGRAD != -90)
+                    string imageKey = angleGRAD switch
                     {
-                        if ((angleGRAD > 0 && angleGRAD < 45) || (angleGRAD > 90 && angleGRAD < 135) || (angleGRAD > -90 && angleGRAD < -45) || (angleGRAD > 180 && angleGRAD < 225))
-                        {
-                            bitmap = LoadEmbeddedImage("plane60.png");
+                        > 0 and < 45 or > 90 and <135 or  > -90 and <-45 or > 180 and <225 => "plane60",
+                        > 45 and < 90 or > 135 and < 180 or > -45 and <0 or >225 and <270 => "plane30",
+                        _ => "plane0"
+                    };
 
-                            if (angleGRAD > 0 && angleGRAD <= 45)
-                            {
-                                //north-east 
-                            }
-                            else if (angleGRAD > 90 && angleGRAD <= 135)
-                            {
-                                bitmap.RotateFlip(RotateFlipType.Rotate270FlipNone);
-                            }
-                            else if (angleGRAD <= -45 && angleGRAD > -90)
-                            {
-                                bitmap.RotateFlip(RotateFlipType.Rotate90FlipNone);
-                            }
-                            else if (angleGRAD <= 225 && angleGRAD > 180)
-                            {
-                                bitmap.RotateFlip(RotateFlipType.Rotate180FlipNone);
-                            }
-                        }
-                        else if ((angleGRAD > 45 && angleGRAD < 90) || (angleGRAD > 135 && angleGRAD < 180) || (angleGRAD > -45 && angleGRAD < 0) || (angleGRAD > 225 && angleGRAD < 270))
-                        {
-                            bitmap = LoadEmbeddedImage("plane30.png");
+                    PlaneImage planeImage = planeImages[imageKey]; // Usar la imagen precargada
+                    Bitmap bitmap = (Bitmap)planeImage.Image.Clone();
 
-                            if (angleGRAD > 45 && angleGRAD < 90)
-                            {
-                                //north-east 
-                            }
-                            else if (angleGRAD > 135 && angleGRAD < 180)
-                            {
-                                bitmap.RotateFlip(RotateFlipType.Rotate270FlipNone);
-                            }
-                            else if (angleGRAD < 0 && angleGRAD > -45)
-                            {
-                                bitmap.RotateFlip(RotateFlipType.Rotate90FlipNone);
-                            }
-                            else if (angleGRAD < 270 && angleGRAD > 225)
-                            {
-                                bitmap.RotateFlip(RotateFlipType.Rotate180FlipNone);
-                            }
-                        }
-                    }
-                    else
+                    if (angleGRAD > 0 && angleGRAD <= 45)
                     {
-                        bitmap = LoadEmbeddedImage("plane0.png");
-
-                        if (angleGRAD == 0)
-                        {
-                            // No additional rotation is applied
-                        }
-                        else if (angleGRAD == 90)
-                        {
-                            bitmap.RotateFlip(RotateFlipType.Rotate270FlipXY);
-                        }
-                        else if (angleGRAD == 180)
-                        {
-                            bitmap.RotateFlip(RotateFlipType.Rotate180FlipY);
-                        }
-                        else if (angleGRAD == -90)
-                        {
-                            bitmap.RotateFlip(RotateFlipType.Rotate270FlipNone);
-                        }
+                        //north-east 
                     }
 
-                    int newWidth = bitmap.Width / 30;
-                    int newHeight = bitmap.Height / 30;
-                    Bitmap resizedBitmap = new Bitmap(bitmap, new Size(newWidth, newHeight));
+                    if (angleGRAD > 90 && angleGRAD <= 135)
+                    {
+                        bitmap.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                    }
+                    if (angleGRAD <= -45 && angleGRAD > -90)
+                    {
+                        bitmap.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                    }
+                    if (angleGRAD <= 225 && angleGRAD > 180)
+                    {
+                        bitmap.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                    }
 
-                    int offsetX = resizedBitmap.Width / 2;
-                    int offsetY = resizedBitmap.Height / 2;
+                    if (angleGRAD > 45 && angleGRAD < 90)
+                    {
+                        //north-east 
+                    }
+                    if (angleGRAD > 135 && angleGRAD < 180)
+                    {
+                        bitmap.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                    }
+                    if (angleGRAD < 0 && angleGRAD > -45)
+                    {
+                        bitmap.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                    }
+                    if (angleGRAD < 270 && angleGRAD > 225)
+                    {
+                        bitmap.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                    }
+                    if (angleGRAD == 0)
+                    {
+                        // No additional rotation is applied
+                    }
+                    if (angleGRAD == 90)
+                    {
+                        bitmap.RotateFlip(RotateFlipType.Rotate270FlipXY);
+                    }
+                    if (angleGRAD == 180)
+                    {
+                        bitmap.RotateFlip(RotateFlipType.Rotate180FlipY);
+                    }
+                    if (angleGRAD == -90)
+                    {
+                        bitmap.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                    }
 
-                    GMarkerGoogle marker = new GMarkerGoogle(Position, resizedBitmap);
 
-                    marker.Offset = new Point(-offsetX, -offsetY);
+                    
+                    GMarkerGoogle marker = new GMarkerGoogle(Position, bitmap)
+                    {
+                        Offset = planeImage.Offset // Offset precalculado
+                    };
 
                     marker.ToolTip = new GMap.NET.WindowsForms.ToolTips.GMapRoundedToolTip(marker);
                     marker.ToolTipText = $"Target identification: {TI}\nTarget address: {TA}\nLatitude (°): {latitude}\nLongitude (°): {longitude}\nCorrected Altitude (m): {Altitude_corrected}";

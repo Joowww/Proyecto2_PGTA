@@ -1,0 +1,8 @@
+C:\Users\34652\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Simulation\bin\Release\net6.0-windows\win-x86\publish\Simulation.pdb
+C:\Users\34652\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Simulation\bin\Release\net6.0-windows\win-x86\publish\Accord.dll.config
+C:\Users\34652\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Simulation\bin\Release\net6.0-windows\win-x86\publish\Images\plane0.png
+C:\Users\34652\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Simulation\bin\Release\net6.0-windows\win-x86\publish\Images\plane30.png
+C:\Users\34652\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Simulation\bin\Release\net6.0-windows\win-x86\publish\Images\plane60.png
+C:\Users\34652\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Simulation\bin\Release\net6.0-windows\win-x86\publish\Simulation.dll.config
+C:\Users\34652\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Simulation\bin\Release\net6.0-windows\win-x86\publish\AstDecoder.pdb
+C:\Users\34652\Documents\GitHub\Proyecto2_PGTA\Proyecto2_PGTA\Simulation\bin\Release\net6.0-windows\win-x86\publish\Simulation.exe
