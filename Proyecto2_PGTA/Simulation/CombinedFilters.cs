@@ -21,55 +21,74 @@ namespace Simulation
         public bool cancel { get; set; }
 
         private Size formOriginalSize;
-        private Rectangle recBut1;
-        private Rectangle recBut2;
-        private Rectangle recPtb1;
-        private Rectangle recCb1;
-
+        private Dictionary<string, Rectangle> controlRectangles = new Dictionary<string, Rectangle>();
         private bool isCancelButtonClicked = false;
+
         public CombinedFilters(Principal principal_, List<List<object>> originalData)
         {
             InitializeComponent();
             this.principal = principal_;
             this.data = originalData;
 
-            checkedListBox1.Items.Add("Removing pure blanks");
-            checkedListBox1.Items.Add("Removing fixed transponders");
-            checkedListBox1.Items.Add("Geographic filter");
-            checkedListBox1.Items.Add("Removing flights above 6000 ft");
-            checkedListBox1.Items.Add("Removing on ground flights");
-
+            string[] filterOptions = {
+            "Removing pure blanks",
+            "Removing fixed transponders",
+            "Geographic filter",
+            "Removing flights above 6000 ft",
+            "Removing on ground flights"
+            };
+            checkedListBox1.Items.AddRange(filterOptions);
             this.Resize += CombinedFilters_Resiz;
             formOriginalSize = this.Size;
-            recBut1 = new Rectangle(acceptBtn.Location, acceptBtn.Size);
-            recBut2 = new Rectangle(cancelBtn.Location, cancelBtn.Size);
-            recPtb1 = new Rectangle(pictureBox7.Location, pictureBox7.Size);
-            recCb1 = new Rectangle(checkedListBox1.Location, checkedListBox1.Size);
+            InitializeControlRectangles();
+            AdjustPictureBoxPosition();
+        }
 
+        private void InitializeControlRectangles()
+        {
+            controlRectangles.Add("acceptBtn", new Rectangle(acceptBtn.Location, acceptBtn.Size));
+            controlRectangles.Add("cancelBtn", new Rectangle(cancelBtn.Location, cancelBtn.Size));
+            controlRectangles.Add("pictureBox7", new Rectangle(pictureBox7.Location, pictureBox7.Size));
+            controlRectangles.Add("checkedListBox1", new Rectangle(checkedListBox1.Location, checkedListBox1.Size));
+        }
+
+        private void AdjustPictureBoxPosition()
+        {
             pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
             pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
         }
 
-        /// <summary>
-        /// Adjusts dynamically the size and position of the form's controls based on whether it is maximized or in its normal size.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void CombinedFilters_Resiz(object sender, EventArgs e)
         {
-            if (this.WindowState == FormWindowState.Maximized)
+            bool isMaximized = this.WindowState == FormWindowState.Maximized;
+
+            foreach (var control in controlRectangles)
             {
-                resize_Control(acceptBtn, recBut1);
-                resize_Control(cancelBtn, recBut2);
-                resize_Control(pictureBox7, recPtb1);
-                resize_Control(checkedListBox1, recCb1);
+                if (isMaximized)
+                {
+                    resize_Control(GetControlByName(control.Key), control.Value);
+                }
+                else
+                {
+                    restore_ControlSize(GetControlByName(control.Key), control.Value);
+                }
             }
-            else if (this.WindowState == FormWindowState.Normal)
+        }
+
+        private Control GetControlByName(string controlName)
+        {
+            switch (controlName)
             {
-                restore_ControlSize(acceptBtn, recBut1);
-                restore_ControlSize(cancelBtn, recBut2);
-                restore_ControlSize(pictureBox7, recPtb1);
-                restore_ControlSize(checkedListBox1, recCb1);
+                case "acceptBtn":
+                    return acceptBtn;
+                case "cancelBtn":
+                    return cancelBtn;
+                case "pictureBox7":
+                    return pictureBox7;
+                case "checkedListBox1":
+                    return checkedListBox1;
+                default:
+                    return null;
             }
         }
 
@@ -82,27 +101,25 @@ namespace Simulation
         {
             control.Location = originalRect.Location;
             control.Size = originalRect.Size;
-
             control.Font = new Font(control.Font.FontFamily, 10, control.Font.Style);
 
-            pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
-            pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
+            AdjustPictureBoxPosition(); 
         }
+
         /// <summary>
         /// Dynamically resizes and repositions a control based on the current size of the form relative to its original size.
         /// </summary>
         /// <param name="control"></param>
-        /// <param name="rect"></param>
-        private void resize_Control(Control control, Rectangle rect)
+        /// <param name="originalRect"></param>
+        private void resize_Control(Control control, Rectangle originalRect)
         {
             float xRatio = (float)(this.Width) / (float)(formOriginalSize.Width);
             float yRatio = (float)(this.Height) / (float)(formOriginalSize.Height);
 
-            int newX = (int)(rect.X * xRatio);
-            int newY = (int)(rect.Y * yRatio);
-
-            int newWidth = (int)(rect.Width * xRatio);
-            int newHeight = (int)(rect.Height * yRatio);
+            int newX = (int)(originalRect.X * xRatio);
+            int newY = (int)(originalRect.Y * yRatio);
+            int newWidth = (int)(originalRect.Width * xRatio);
+            int newHeight = (int)(originalRect.Height * yRatio);
 
             control.Location = new Point(newX, newY);
             control.Size = new Size(newWidth, newHeight);
@@ -110,9 +127,9 @@ namespace Simulation
             float fontSizeRatio = Math.Min(xRatio, yRatio);
             control.Font = new Font(control.Font.FontFamily, control.Font.Size * fontSizeRatio, control.Font.Style);
 
-            pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
-            pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
+            AdjustPictureBoxPosition(); 
         }
+
 
         /// <summary>
         /// Returns the filtered data list.
@@ -130,6 +147,7 @@ namespace Simulation
         private void acceptBtn_Click(object sender, EventArgs e)
         {
             cancel = false;
+            isCancelButtonClicked = true;
 
             var selectedFilters = checkedListBox1.CheckedItems.Cast<string>().ToList();
 
@@ -145,6 +163,7 @@ namespace Simulation
 
                 this.Close();
                 principal.Enabled = false;
+                isCancelButtonClicked = true;
 
             }
             else
@@ -153,7 +172,6 @@ namespace Simulation
             }
 
         }
-
         /// <summary>
         /// Applies specific filters based on the filter name passed as a parameter.
         /// </summary>
@@ -195,14 +213,7 @@ namespace Simulation
 
             ApplyTheme();
 
-            if (isDarkMode)
-            {
-                Theme.SetDarkMode(this);
-            }
-            else
-            {
-                Theme.SetLightMode(this);
-            }
+            (isDarkMode ? (Action<Control>)Theme.SetDarkMode : Theme.SetLightMode)(this);
         }
 
         /// <summary>
@@ -210,14 +221,7 @@ namespace Simulation
         /// </summary>
         private void ApplyTheme()
         {
-            if (isDarkMode)
-            {
-                this.BackColor = Color.FromArgb(45, 45, 48);
-            }
-            else
-            {
-                this.BackColor = Color.White;
-            }
+            this.BackColor = isDarkMode ? Color.FromArgb(45, 45, 48) : Color.White;
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)

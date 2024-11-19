@@ -278,17 +278,13 @@ namespace Simulation
         }
 
         /// <summary>
-        /// Restores the original position, size, and font of a control, and adjusts the minimum and maximum limits of the sidebar.
+        /// Adjusts the sidebar size based on the control's position and updates the position of pictureBox7.
         /// </summary>
         /// <param name="control"></param>
-        /// <param name="originalRect"></param>
-        private void restore_ControlSize(Control control, Rectangle originalRect)
+        private void AdjustSidebarSize(Control control)
         {
-            control.Location = originalRect.Location;
-            control.Size = originalRect.Size;
-            control.Font = new Font(control.Font.FontFamily, 10, control.Font.Style);
-
             int rightPosition = control.Left + control.Width;
+
             if (control == panel14)
             {
                 int minWidthSb = rightPosition - sidebar.Left;
@@ -300,12 +296,27 @@ namespace Simulation
                 int maxWidthSb = rightPosition - sidebar.Left;
                 sidebar.MaximumSize = new Size(maxWidthSb, sidebar.Height);
             }
+
             pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
             pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
 
             sidebarExpand = true;
-
         }
+
+        /// <summary>
+        ///  Restores the original position, size, and font of a control, and adjusts the minimum and maximum limits of the sidebar.
+        /// </summary>
+        /// <param name="control"></param>
+        /// <param name="originalRect"></param>
+        private void restore_ControlSize(Control control, Rectangle originalRect)
+        {
+            control.Location = originalRect.Location;
+            control.Size = originalRect.Size;
+            control.Font = new Font(control.Font.FontFamily, 10, control.Font.Style);
+
+            AdjustSidebarSize(control);
+        }
+
         /// <summary>
         /// Dynamically resizes and repositions a control based on the current size of the form relative to its original size.
         /// </summary>
@@ -328,79 +339,36 @@ namespace Simulation
             float fontSizeRatio = Math.Min(xRatio, yRatio);
             control.Font = new Font(control.Font.FontFamily, control.Font.Size * fontSizeRatio, control.Font.Style);
 
-            int rightPosition = control.Left + control.Width;
-
-            if (control == panel14)
-            {
-                int minWidthSb = rightPosition - sidebar.Left;
-                sidebar.MinimumSize = new Size(minWidthSb, sidebar.Height);
-            }
-
-            if (control == panel5)
-            {
-                int maxWidthSb = rightPosition - sidebar.Left;
-                sidebar.MaximumSize = new Size(maxWidthSb, sidebar.Height);
-            }
-
-            pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
-            pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
-
-            sidebarExpand = true;
-
+            AdjustSidebarSize(control);
         }
 
-        /// <summary>
-        /// Adjusts the minimum and maximum size limits of the "About Us" container based on related panels.
-        /// </summary>
+        private void AdjustContainerSize(Control container, Panel topPanel, Panel bottomPanel, Panel widthPanel)
+        {
+            int minHeight = topPanel.Bottom - topPanel.Top;
+            int maxHeight = bottomPanel.Bottom - topPanel.Top;
+
+            int minWidth = panel17.Right - sidebar.Left;
+            int maxWidth = widthPanel.Right - sidebar.Left;
+
+            container.MinimumSize = new Size(minWidth, minHeight);
+            container.MaximumSize = new Size(maxWidth, maxHeight);
+
+            sidebarExpand = true;
+        }
+
         private void AdjustAboutUsContainer1Size()
         {
-
-            int minHeightCont1 = panel3.Bottom - panel3.Top;
-            int maxHeightCont1 = panel8.Bottom - panel3.Top;
-
-            int minWidthCont1 = panel17.Right - sidebar.Left;
-            int maxWidthCont1 = panel3.Right - sidebar.Left;
-
-
-            AboutUsContainer.MinimumSize = new Size(minWidthCont1, minHeightCont1);
-            AboutUsContainer.MaximumSize = new Size(maxWidthCont1, maxHeightCont1);
-
-            sidebarExpand = true;
+            AdjustContainerSize(AboutUsContainer, panel3, panel8, panel3);
         }
 
-        /// <summary>
-        /// Adjusts the minimum and maximum size limits of the "Settings" container based on related panels.
-        /// </summary>
         private void AdjustAboutUsContainer2Size()
         {
-
-            int minHeightCont2 = panel4.Bottom - panel4.Top;
-            int maxHeightCont2 = panel10.Bottom - panel4.Top;
-
-            int minWidthCont1 = panel17.Right - sidebar.Left;
-            int maxWidthCont1 = panel3.Right - sidebar.Left;
-
-            SettingsContainer.MinimumSize = new Size(minWidthCont1, minHeightCont2);
-            SettingsContainer.MaximumSize = new Size(maxWidthCont1, maxHeightCont2);
-
-            sidebarExpand = true;
+            AdjustContainerSize(SettingsContainer, panel4, panel10, panel3);
         }
 
-        /// <summary>
-        /// Adjusts the minimum and maximum size limits of the "Help" container based on related panels.
-        /// </summary>
         private void AdjustAboutUsContainer3Size()
         {
-            int minHeightCont3 = panel5.Bottom - panel5.Top;
-            int maxHeightCont3 = panel13.Bottom - panel5.Top;
-
-            int minWidthCont1 = panel17.Right - sidebar.Left;
-            int maxWidthCont1 = panel3.Right - sidebar.Left;
-
-            HelpContainer.MinimumSize = new Size(minWidthCont1, minHeightCont3);
-            HelpContainer.MaximumSize = new Size(maxWidthCont1, maxHeightCont3);
-
-            sidebarExpand = true;
+            AdjustContainerSize(HelpContainer, panel5, panel13, panel3);
         }
 
         private void StartBtn_Click(object sender, EventArgs e)

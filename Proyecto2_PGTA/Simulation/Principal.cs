@@ -616,7 +616,6 @@ namespace Simulation
 
         }
 
-
         /// <summary>
         /// Initializes the combo box with filtering options and sets the theme (dark or light) based on the saved preference.
         /// </summary>
@@ -638,14 +637,7 @@ namespace Simulation
 
             ApplyTheme();
 
-            if (isDarkMode)
-            {
-                Theme.SetDarkMode(this);
-            }
-            else
-            {
-                Theme.SetLightMode(this);
-            }
+            (isDarkMode ? (Action<Control>)Theme.SetDarkMode : Theme.SetLightMode)(this);
         }
 
         /// <summary>
@@ -941,14 +933,7 @@ namespace Simulation
         /// </summary>
         private void ApplyTheme()
         {
-            if (isDarkMode)
-            {
-                this.BackColor = Color.FromArgb(45, 45, 48);
-            }
-            else
-            {
-                this.BackColor = Color.White;
-            }
+            this.BackColor = isDarkMode ? Color.FromArgb(45, 45, 48) : Color.White;
         }
 
         private void HomeBtn_Click(object sender, EventArgs e)

@@ -15,31 +15,23 @@ namespace Simulation
     {
         private bool isDarkMode;
         private Size formOriginalSize;
-        private Rectangle recBut1;
-        private Rectangle recLbl1;
-        private Rectangle recLbl2;
-        private Rectangle recLbl3;
-        private Rectangle recLbl4;
-        private Rectangle recLbl5;
-        private Rectangle recPtb1;
-        private Rectangle recPtb2;
+        private Dictionary<Control, Rectangle> controlRectangles = new Dictionary<Control, Rectangle>();
         private bool isCancelButtonClicked = false;
         public Privacy()
         {
             InitializeComponent();
             this.Resize += Privacy_Resiz;
             formOriginalSize = this.Size;
-            recBut1 = new Rectangle(button1.Location, button1.Size);
-            recLbl1 = new Rectangle(label1.Location, label1.Size);
-            recLbl2 = new Rectangle(label2.Location, label2.Size);
-            recLbl3 = new Rectangle(label3.Location, label3.Size);
-            recLbl4 = new Rectangle(label4.Location, label4.Size);
-            recLbl5 = new Rectangle(label5.Location, label5.Size);
-            recPtb1 = new Rectangle(pictureBox1.Location, pictureBox1.Size);
-            recPtb2 = new Rectangle(pictureBox7.Location, pictureBox7.Size);
+            controlRectangles.Add(button1, new Rectangle(button1.Location, button1.Size));
+            controlRectangles.Add(label1, new Rectangle(label1.Location, label1.Size));
+            controlRectangles.Add(label2, new Rectangle(label2.Location, label2.Size));
+            controlRectangles.Add(label3, new Rectangle(label3.Location, label3.Size));
+            controlRectangles.Add(label4, new Rectangle(label4.Location, label4.Size));
+            controlRectangles.Add(label5, new Rectangle(label5.Location, label5.Size));
+            controlRectangles.Add(pictureBox1, new Rectangle(pictureBox1.Location, pictureBox1.Size));
+            controlRectangles.Add(pictureBox7, new Rectangle(pictureBox7.Location, pictureBox7.Size));
 
-            pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
-            pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
+            AdjustPictureBoxPosition();
         }
 
         /// <summary>
@@ -49,70 +41,61 @@ namespace Simulation
         /// <param name="e"></param>
         private void Privacy_Resiz(object sender, EventArgs e)
         {
-            if (this.WindowState == FormWindowState.Maximized)
+            bool isResize = this.WindowState == FormWindowState.Maximized;
+
+            foreach (var control in controlRectangles)
             {
-                resize_Control(button1, recBut1);
-                resize_Control(label1, recLbl1);
-                resize_Control(label2, recLbl2);
-                resize_Control(label3, recLbl3);
-                resize_Control(label4, recLbl4);
-                resize_Control(label5, recLbl5);
-                resize_Control(pictureBox1, recPtb1);
-                resize_Control(pictureBox7, recPtb2);
-            }
-            else if (this.WindowState == FormWindowState.Normal)
-            {
-                restore_ControlSize(button1, recBut1);
-                restore_ControlSize(label1, recLbl1);
-                restore_ControlSize(label2, recLbl2);
-                restore_ControlSize(label3, recLbl3);
-                restore_ControlSize(label4, recLbl4);
-                restore_ControlSize(label5, recLbl5);
-                restore_ControlSize(pictureBox1, recPtb1);
-                restore_ControlSize(pictureBox7, recPtb2);
+                ResizeOrRestoreControl(control.Key, control.Value, isResize);
             }
         }
 
         /// <summary>
-        /// Restores the original position, size, and font of a control.
+        /// Dynamically resizes, repositions, or restores the original position, size, and font of a control based on the current size of the form relative to its original size.
         /// </summary>
         /// <param name="control"></param>
         /// <param name="originalRect"></param>
-        private void restore_ControlSize(Control control, Rectangle originalRect)
+        /// <param name="isResize"></param>
+        private void ResizeOrRestoreControl(Control control, Rectangle originalRect, bool isResize)
         {
-            control.Location = originalRect.Location;
-            control.Size = originalRect.Size;
+            float xRatio = (float)this.Width / formOriginalSize.Width;
+            float yRatio = (float)this.Height / formOriginalSize.Height;
 
-            control.Font = new Font(control.Font.FontFamily, 10, control.Font.Style);
+            if (isResize)
+            {
+                control.Location = new Point((int)(originalRect.X * xRatio), (int)(originalRect.Y * yRatio));
+                control.Size = new Size((int)(originalRect.Width * xRatio), (int)(originalRect.Height * yRatio));
 
-            pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
-            pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
+                if (control is System.Windows.Forms.Label label)
+                {
+                    float fontSizeRatio = Math.Min(xRatio, yRatio);
+                    control.Font = new Font(control.Font.FontFamily, control.Font.Size * fontSizeRatio, control.Font.Style);
+                }
+
+                if (control is PictureBox pictureBox)
+                {
+                    pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
+            }
+            else
+            {
+                control.Location = originalRect.Location;
+                control.Size = originalRect.Size;
+                control.Font = new Font(control.Font.FontFamily, 10, control.Font.Style);
+
+                if (control is PictureBox pictureBox)
+                {
+                    pictureBox.SizeMode = PictureBoxSizeMode.Normal;
+                }
+            }
         }
+
         /// <summary>
-        /// Dynamically resizes and repositions a control based on the current size of the form relative to its original size.
+        /// Adjusts the position of a PictureBox to stay in the bottom-right corner of the form.
         /// </summary>
-        /// <param name="control"></param>
-        /// <param name="rect"></param>
-        private void resize_Control(Control control, Rectangle rect)
+        private void AdjustPictureBoxPosition()
         {
-            float xRatio = (float)(this.Width) / (float)(formOriginalSize.Width);
-            float yRatio = (float)(this.Height) / (float)(formOriginalSize.Height);
-
-            int newX = (int)(rect.X * xRatio);
-            int newY = (int)(rect.Y * yRatio);
-
-            int newWidth = (int)(rect.Width * xRatio);
-            int newHeight = (int)(rect.Height * yRatio);
-
-            control.Location = new Point(newX, newY);
-            control.Size = new Size(newWidth, newHeight);
-
-            float fontSizeRatio = Math.Min(xRatio, yRatio);
-            control.Font = new Font(control.Font.FontFamily, control.Font.Size * fontSizeRatio, control.Font.Style);
-
             pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
             pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
-
         }
         /// <summary>
         /// Loads the theme setting and applies dark or light mode based on the stored preference.
@@ -125,14 +108,7 @@ namespace Simulation
 
             ApplyTheme();
 
-            if (isDarkMode)
-            {
-                Theme.SetDarkMode(this);
-            }
-            else
-            {
-                Theme.SetLightMode(this);
-            }
+            (isDarkMode ? (Action<Control>)Theme.SetDarkMode : Theme.SetLightMode)(this);
         }
 
         /// <summary>
@@ -140,14 +116,7 @@ namespace Simulation
         /// </summary>
         private void ApplyTheme()
         {
-            if (isDarkMode)
-            {
-                this.BackColor = Color.FromArgb(45, 45, 48);
-            }
-            else
-            {
-                this.BackColor = Color.White;
-            }
+            this.BackColor = isDarkMode ? Color.FromArgb(45, 45, 48) : Color.White;
         }
 
         private void button1_Click(object sender, EventArgs e)

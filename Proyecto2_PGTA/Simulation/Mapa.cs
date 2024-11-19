@@ -441,25 +441,6 @@ namespace Simulation
         /// <exception cref="FileNotFoundException"></exception>
         private Bitmap LoadEmbeddedImage(string resourceName)
         {
-            //var assembly = Assembly.GetExecutingAssembly();
-            //string fullResourceName = $"Simulation.{resourceName}";
-
-            //using (Stream stream = assembly.GetManifestResourceStream(fullResourceName))
-            //{
-            //    if (stream != null)
-            //    {
-            //        return new Bitmap(stream);
-            //    }
-            //    else
-            //    {
-            //        throw new FileNotFoundException($"No se encontró el recurso incrustado: {fullResourceName}");
-            //    }
-            //}
-
-            if (cachedImages.ContainsKey(resourceName))
-            {
-                return cachedImages[resourceName];
-            }
             var assembly = Assembly.GetExecutingAssembly();
             string fullResourceName = $"Simulation.{resourceName}";
 
@@ -467,15 +448,34 @@ namespace Simulation
             {
                 if (stream != null)
                 {
-                    var bitmap = new Bitmap(stream);
-                    cachedImages[resourceName] = bitmap;
-                    return bitmap;
+                    return new Bitmap(stream);
                 }
                 else
                 {
-                    throw new FileNotFoundException($"Embedded resource not found: {fullResourceName}");
+                    throw new FileNotFoundException($"No se encontró el recurso incrustado: {fullResourceName}");
                 }
             }
+
+            //if (cachedImages.ContainsKey(resourceName))
+            //{
+            //    return cachedImages[resourceName];
+            //}
+            //var assembly = Assembly.GetExecutingAssembly();
+            //string fullResourceName = $"Simulation.{resourceName}";
+
+            //using (Stream stream = assembly.GetManifestResourceStream(fullResourceName))
+            //{
+            //    if (stream != null)
+            //    {
+            //        var bitmap = new Bitmap(stream);
+            //        cachedImages[resourceName] = bitmap;
+            //        return bitmap;
+            //    }
+            //    else
+            //    {
+            //        throw new FileNotFoundException($"Embedded resource not found: {fullResourceName}");
+            //    }
+            //}
         }
 
         /// <summary>

@@ -220,18 +220,15 @@ namespace Simulation
 
         }
 
-        /// <summary>
-        /// Extracts an embedded file and returns its file path.
-        /// </summary>
-        /// <param name="resourceName">Name of the embedded resource.</param>
-        /// <returns>Path to the temporary file where the resource is saved.</returns>
+
+
         private string ExtractEmbeddedFile(string resourceName)
         {
             var assembly = Assembly.GetExecutingAssembly();
 
             string namespacePrefix = this.GetType().Namespace;
             string fullResourceName = $"{namespacePrefix}.{resourceName}";
-            
+
             using (Stream resourceStream = assembly.GetManifestResourceStream(fullResourceName))
             {
                 if (resourceStream == null)

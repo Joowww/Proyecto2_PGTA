@@ -15,101 +15,99 @@ namespace Simulation
 {
     public partial class Target : Form
     {
-
         private Mapa mapa;
         private bool isDarkMode;
         private Size formOriginalSize;
-        private Rectangle recBut1;
-        private Rectangle recBut2;
-        private Rectangle recBut3;
-        private Rectangle recTxt1;
-        private Rectangle recTxt2;
-        private Rectangle recLbl1;
-        private Rectangle recLbl2;
-        private Rectangle recLbl3;
-        private Rectangle recPtb1;
-
+        private Dictionary<Control, Rectangle> controlRectangles = new Dictionary<Control, Rectangle>();
         private bool isCancelButtonClicked = false;
+
         public Target(Mapa mapa_)
         {
             InitializeComponent();
             this.mapa = mapa_;
             this.Resize += Target_Resiz;
             formOriginalSize = this.Size;
-            recBut1 = new Rectangle(acceptBtn.Location, acceptBtn.Size);
-            recBut2 = new Rectangle(cancelBtn.Location, cancelBtn.Size);
-            recBut3 = new Rectangle(autofillBtn.Location, autofillBtn.Size);
-            recTxt1 = new Rectangle(textBox1.Location, textBox1.Size);
-            recTxt2 = new Rectangle(textBox2.Location, textBox2.Size);
-            recLbl1 = new Rectangle(label1.Location, label1.Size);
-            recLbl2 = new Rectangle(label3.Location, label3.Size);
-            recLbl3 = new Rectangle(label5.Location, label5.Size);
-            recPtb1 = new Rectangle(pictureBox7.Location, pictureBox7.Size);
+            InitializeControlRectangles();
+            AdjustPictureBox7Position();
+        }
+
+        /// <summary>
+        /// Initializes the rectangles for all controls to be resized.
+        /// </summary>
+        private void InitializeControlRectangles()
+        {
+            controlRectangles.Add(acceptBtn, new Rectangle(acceptBtn.Location, acceptBtn.Size));
+            controlRectangles.Add(cancelBtn, new Rectangle(cancelBtn.Location, cancelBtn.Size));
+            controlRectangles.Add(autofillBtn, new Rectangle(autofillBtn.Location, autofillBtn.Size));
+            controlRectangles.Add(textBox1, new Rectangle(textBox1.Location, textBox1.Size));
+            controlRectangles.Add(textBox2, new Rectangle(textBox2.Location, textBox2.Size));
+            controlRectangles.Add(label1, new Rectangle(label1.Location, label1.Size));
+            controlRectangles.Add(label3, new Rectangle(label3.Location, label3.Size));
+            controlRectangles.Add(label5, new Rectangle(label5.Location, label5.Size));
+            controlRectangles.Add(pictureBox7, new Rectangle(pictureBox7.Location, pictureBox7.Size));
+        }
+
+        /// <summary>
+        /// Adjusts the position of pictureBox7 when the window is resized.
+        /// </summary>
+        private void AdjustPictureBox7Position()
+        {
             pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
             pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
         }
+
         /// <summary>
-        /// Adjusts dynamically the size and position of the form's controls based on whether it is maximized or in its normal size.
+        /// Dynamically adjusts the size and position of controls based on the window state.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void Target_Resiz(object sender, EventArgs e)
         {
-            if (this.WindowState == FormWindowState.Maximized)
+            bool isMaximized = this.WindowState == FormWindowState.Maximized;
+
+            foreach (var control in controlRectangles)
             {
-                resize_Control(acceptBtn, recBut1);
-                resize_Control(cancelBtn, recBut2);
-                resize_Control(autofillBtn, recBut3);
-                resize_Control(textBox1, recTxt1);
-                resize_Control(textBox2, recTxt2);
-                resize_Control(label3, recLbl2);
-                resize_Control(label1, recLbl1);
-                resize_Control(label5, recLbl3);
-                resize_Control(pictureBox7, recPtb1);
-            }
-            else if (this.WindowState == FormWindowState.Normal)
-            {
-                restore_ControlSize(acceptBtn, recBut1);
-                restore_ControlSize(cancelBtn, recBut2);
-                restore_ControlSize(autofillBtn, recBut3);
-                restore_ControlSize(textBox1, recTxt1);
-                restore_ControlSize(textBox2, recTxt2);
-                restore_ControlSize(label3, recLbl2);
-                restore_ControlSize(label1, recLbl1);
-                restore_ControlSize(label5, recLbl3);
-                restore_ControlSize(pictureBox7, recPtb1);
+                AdjustControlSize(control.Key, control.Value, isMaximized);
             }
         }
+
         /// <summary>
-        /// Restores the original position, size, and font of a control.
+        /// Adjusts the size and position of a control based on the form's state.
         /// </summary>
-        /// <param name="control"></param>
-        /// <param name="originalRect"></param>
-        private void restore_ControlSize(Control control, Rectangle originalRect)
+        private void AdjustControlSize(Control control, Rectangle originalRect, bool isMaximized)
+        {
+            if (isMaximized)
+            {
+                ResizeControl(control, originalRect);
+            }
+            else
+            {
+                RestoreControlSize(control, originalRect);
+            }
+        }
+
+        /// <summary>
+        /// Restores the original size and position of a control.
+        /// </summary>
+        private void RestoreControlSize(Control control, Rectangle originalRect)
         {
             control.Location = originalRect.Location;
             control.Size = originalRect.Size;
+            control.Font = new Font(control.Font.FontFamily, 10, control.Font.Style);
 
-            control.Font = new Font(control.Font.FontFamily, 10, control.Font.Style); 
-
-            pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
-            pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
+            AdjustPictureBox7Position(); 
         }
+
         /// <summary>
-        /// Dynamically resizes and repositions a control based on the current size of the form relative to its original size.
+        /// Dynamically resizes the size and position of a control based on the current size of the form.
         /// </summary>
-        /// <param name="control"></param>
-        /// <param name="rect"></param>
-        private void resize_Control(Control control, Rectangle rect)
+        private void ResizeControl(Control control, Rectangle originalRect)
         {
             float xRatio = (float)(this.Width) / (float)(formOriginalSize.Width);
             float yRatio = (float)(this.Height) / (float)(formOriginalSize.Height);
 
-            int newX = (int)(rect.X * xRatio);
-            int newY = (int)(rect.Y * yRatio);
-
-            int newWidth = (int)(rect.Width * xRatio);
-            int newHeight = (int)(rect.Height * yRatio);
+            int newX = (int)(originalRect.X * xRatio);
+            int newY = (int)(originalRect.Y * yRatio);
+            int newWidth = (int)(originalRect.Width * xRatio);
+            int newHeight = (int)(originalRect.Height * yRatio);
 
             control.Location = new Point(newX, newY);
             control.Size = new Size(newWidth, newHeight);
@@ -117,9 +115,9 @@ namespace Simulation
             float fontSizeRatio = Math.Min(xRatio, yRatio);
             control.Font = new Font(control.Font.FontFamily, control.Font.Size * fontSizeRatio, control.Font.Style);
 
-            pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
-            pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
+            AdjustPictureBox7Position(); 
         }
+
         /// <summary>
         /// Validates target identification inputs, clears overlays, and attempts to filter messages. If targets are missing, shows an error. If valid, calculates distances for the selected targets and hides the form.
         /// </summary>
@@ -128,11 +126,8 @@ namespace Simulation
         public void acceptBtn_Click(object sender, EventArgs e)
         {
             mapa.extra = true;
-
             mapa.markersOverlay.Markers.Clear();
-
             mapa.routeOverlay.Routes.Clear();
-
             mapa.mapControl.Refresh();
 
             try
@@ -148,29 +143,9 @@ namespace Simulation
 
                 var (filteredMessages, missingTargets) = mapa.Option8(mapa.AllMessages, TI1, TI2);
 
-                if (missingTargets.Count != 0)
+                if (missingTargets.Any())
                 {
-                    if (missingTargets.Count == 1)
-                    {
-                        if (missingTargets[0] == TI1)
-                        {
-                            MessageBox.Show($"The target identification '{TI1}' is not found in the Asterix. Please enter another identification.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            textBox1.Clear();
-                        }
-                        else if (missingTargets[0] == TI2)
-                        {
-                            MessageBox.Show($"The target identification '{TI2}' is not found in the Asterix. Please enter another identification.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            textBox2.Clear();
-                        }
-
-                    }
-                    else if (missingTargets.Count == 2)
-                    {
-
-                        MessageBox.Show("Neither of the two target identifications entered is found in the Asterix. Please enter two different identifications.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        textBox1.Clear();
-                        textBox2.Clear();
-                    }
+                    HandleMissingTargets(missingTargets, TI1, TI2);
                     return;
                 }
 
@@ -179,13 +154,42 @@ namespace Simulation
 
                 mapa.Enabled = true;
                 this.Hide();
-
-
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"An unexpected error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Handles the logic for displaying error messages when one or both target identifications are missing, clearing the corresponding textboxes as needed.
+        /// </summary>
+        /// <param name="missingTargets"></param>
+        /// <param name="TI1"></param>
+        /// <param name="TI2"></param>
+        private void HandleMissingTargets(List<string> missingTargets, string TI1, string TI2)
+        {
+            if (missingTargets.Count == 1)
+            {
+                string missingTarget = missingTargets[0];
+                string targetMessage = $"The target identification '{missingTarget}' is not found in the Asterix. Please enter another identification.";
+
+                if (missingTarget == TI1)
+                {
+                    MessageBox.Show(targetMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    textBox1.Clear();
+                }
+                else
+                {
+                    MessageBox.Show(targetMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    textBox2.Clear();
+                }
+            }
+            else if (missingTargets.Count == 2)
+            {
+                MessageBox.Show("Neither of the two target identifications entered is found in the Asterix. Please enter two different identifications.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                textBox1.Clear();
+                textBox2.Clear();
             }
         }
 
@@ -206,14 +210,7 @@ namespace Simulation
 
             ApplyTheme();
 
-            if (isDarkMode)
-            {
-                Theme.SetDarkMode(this);
-            }
-            else
-            {
-                Theme.SetLightMode(this);
-            }
+            (isDarkMode ? (Action<Control>)Theme.SetDarkMode : Theme.SetLightMode)(this);
         }
 
         /// <summary>
@@ -221,14 +218,7 @@ namespace Simulation
         /// </summary>
         private void ApplyTheme()
         {
-            if (isDarkMode)
-            {
-                this.BackColor = Color.FromArgb(45, 45, 48);
-            }
-            else
-            {
-                this.BackColor = Color.White;
-            }
+            this.BackColor = isDarkMode ? Color.FromArgb(45, 45, 48) : Color.White;
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)

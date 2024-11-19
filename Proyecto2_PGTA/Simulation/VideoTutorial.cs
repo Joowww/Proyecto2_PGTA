@@ -13,15 +13,10 @@ namespace Simulation
 {
     public partial class VideoTutorial : Form
     {
-        private bool isDarkMode;
 
+        private bool isDarkMode;
         private Size formOriginalSize;
-        private Rectangle recBut1;
-        private Rectangle recLbl1;
-        private Rectangle recLbl2;
-        private Rectangle recLbl3;
-        private Rectangle recPtb1;
-        private Rectangle recPtb2;
+        private Rectangle recBut1, recLbl1, recLbl2, recLbl3, recPtb1, recPtb2;
         private bool isCancelButtonClicked = false;
         public VideoTutorial()
         {
@@ -35,8 +30,7 @@ namespace Simulation
             recPtb1 = new Rectangle(pictureBox2.Location, pictureBox2.Size);
             recPtb2 = new Rectangle(pictureBox7.Location, pictureBox7.Size);
 
-            pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
-            pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
+            AdjustPictureBoxPosition();
         }
 
         /// <summary>
@@ -48,69 +42,67 @@ namespace Simulation
         {
             if (this.WindowState == FormWindowState.Maximized)
             {
-                resize_Control(buttonClose, recBut1);
-                resize_Control(label1, recLbl1);
-                resize_Control(label2, recLbl2);
-                resize_Control(label3, recLbl3);
-                resize_Control(pictureBox2, recPtb1);
-                resize_Control(pictureBox7, recPtb2);
+                ResizeOrRestoreControl(buttonClose, recBut1, true);
+                ResizeOrRestoreControl(label1, recLbl1, true);
+                ResizeOrRestoreControl(label2, recLbl2, true);
+                ResizeOrRestoreControl(label3, recLbl3, true);
+                ResizeOrRestoreControl(pictureBox2, recPtb1, true);
+                ResizeOrRestoreControl(pictureBox7, recPtb2, true);
             }
             else if (this.WindowState == FormWindowState.Normal)
             {
-                restore_ControlSize(buttonClose, recBut1);
-                restore_ControlSize(label1, recLbl1);
-                restore_ControlSize(label2, recLbl2);
-                restore_ControlSize(label3, recLbl3);
-                restore_ControlSize(pictureBox2, recPtb1);
-                restore_ControlSize(pictureBox7, recPtb2);
+                ResizeOrRestoreControl(buttonClose, recBut1, false);
+                ResizeOrRestoreControl(label1, recLbl1, false);
+                ResizeOrRestoreControl(label2, recLbl2, false);
+                ResizeOrRestoreControl(label3, recLbl3, false);
+                ResizeOrRestoreControl(pictureBox2, recPtb1, false);
+                ResizeOrRestoreControl(pictureBox7, recPtb2, false);
             }
+            AdjustPictureBoxPosition();
         }
 
         /// <summary>
-        /// Restores the original position, size, and font of a control.
+        /// Dynamically resizes, repositions, or restores the original position, size, and font of a control based on the current size of the form relative to its original size.
         /// </summary>
         /// <param name="control"></param>
         /// <param name="originalRect"></param>
-        private void restore_ControlSize(Control control, Rectangle originalRect)
+        /// <param name="isResize"></param>
+        private void ResizeOrRestoreControl(Control control, Rectangle originalRect, bool isResize)
         {
-            control.Location = originalRect.Location;
-            control.Size = originalRect.Size;
-            control.Font = new Font(control.Font.FontFamily, 10, control.Font.Style);
+            float xRatio = (float)this.Width / formOriginalSize.Width;
+            float yRatio = (float)this.Height / formOriginalSize.Height;
 
-            if (control is PictureBox)
+            if (isResize)
             {
-                (control as PictureBox).SizeMode = PictureBoxSizeMode.Normal;
-            }
+                control.Location = new Point((int)(originalRect.X * xRatio), (int)(originalRect.Y * yRatio));
+                control.Size = new Size((int)(originalRect.Width * xRatio), (int)(originalRect.Height * yRatio));
 
-            pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
-            pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
+                float fontSizeRatio = Math.Min(xRatio, yRatio);
+                control.Font = new Font(control.Font.FontFamily, control.Font.Size * fontSizeRatio, control.Font.Style);
+
+                if (control is PictureBox pictureBox)
+                {
+                    pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
+            }
+            else
+            {
+                control.Location = originalRect.Location;
+                control.Size = originalRect.Size;
+                control.Font = new Font(control.Font.FontFamily, 10, control.Font.Style);
+
+                if (control is PictureBox pictureBox)
+                {
+                    pictureBox.SizeMode = PictureBoxSizeMode.Normal;
+                }
+            }
         }
+
         /// <summary>
-        /// Dynamically resizes and repositions a control based on the current size of the form relative to its original size.
+        /// Adjusts the position of a PictureBox to stay in the bottom-right corner of the form.
         /// </summary>
-        /// <param name="control"></param>
-        /// <param name="rect"></param>
-        private void resize_Control(Control control, Rectangle rect)
+        private void AdjustPictureBoxPosition()
         {
-            float xRatio = (float)(this.Width) / (float)(formOriginalSize.Width);
-            float yRatio = (float)(this.Height) / (float)(formOriginalSize.Height);
-
-            int newX = (int)(rect.X * xRatio);
-            int newY = (int)(rect.Y * yRatio);
-
-            int newWidth = (int)(rect.Width * xRatio);
-            int newHeight = (int)(rect.Height * yRatio);
-
-            control.Location = new Point(newX, newY);
-            control.Size = new Size(newWidth, newHeight);
-
-            float fontSizeRatio = Math.Min(xRatio, yRatio);
-            control.Font = new Font(control.Font.FontFamily, control.Font.Size * fontSizeRatio, control.Font.Style);
-
-            if (control is PictureBox)
-            {
-                (control as PictureBox).SizeMode = PictureBoxSizeMode.StretchImage;
-            }
             pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
             pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
         }
@@ -122,21 +114,16 @@ namespace Simulation
         /// <param name="e"></param>
         private void VideoTutorial_Load(object sender, EventArgs e)
         {
-            Zen.Barcode.CodeQrBarcodeDraw QR = Zen.Barcode.BarcodeDrawFactory.CodeQr;
-            pictureBox2.Image = QR.Draw("https://youtu.be/3tG5lqbTUQI", 10);
+
+            pictureBox2.Image = Zen.Barcode.BarcodeDrawFactory.CodeQr
+                        .Draw("https://youtu.be/3tG5lqbTUQI", 10);
 
             isDarkMode = Properties.Settings1.Default.IsDarkMode;
 
             ApplyTheme();
 
-            if (isDarkMode)
-            {
-                Theme.SetDarkMode(this);
-            }
-            else
-            {
-                Theme.SetLightMode(this);
-            }
+            (isDarkMode ? (Action<Control>)Theme.SetDarkMode : Theme.SetLightMode)(this);
+
         }
 
         /// <summary>
@@ -144,14 +131,7 @@ namespace Simulation
         /// </summary>
         private void ApplyTheme()
         {
-            if (isDarkMode)
-            {
-                this.BackColor = Color.FromArgb(45, 45, 48);
-            }
-            else
-            {
-                this.BackColor = Color.White;
-            }
+            this.BackColor = isDarkMode ? Color.FromArgb(45, 45, 48) : Color.White;
         }
 
         /// <summary>
@@ -165,12 +145,11 @@ namespace Simulation
 
             try
             {
-                var psi = new System.Diagnostics.ProcessStartInfo
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
                 {
                     FileName = url,
                     UseShellExecute = true
-                };
-                System.Diagnostics.Process.Start(psi);
+                });
             }
             catch (Exception ex)
             {
