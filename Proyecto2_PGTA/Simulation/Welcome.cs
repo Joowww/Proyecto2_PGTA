@@ -552,7 +552,7 @@ namespace Simulation
         /// <param name="e"></param>
         private void button2_Click_1(object sender, EventArgs e)
         {
-            MessageBox.Show("Ya estas en la pantalla Home.", "Instrucciones de uso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("You are now on the Home screen.", "Instrucciones de uso", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         /// <summary>

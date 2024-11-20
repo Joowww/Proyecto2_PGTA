@@ -689,8 +689,6 @@ namespace Simulation
             }
             SelectedIndexOption = comboBox1.SelectedIndex;
 
-
-
             if (filtredMessages != null)
             {
                 Mapa mapa = new Mapa(filtredMessages, allMessages, allMessages2, SelectedIndexOption, this);

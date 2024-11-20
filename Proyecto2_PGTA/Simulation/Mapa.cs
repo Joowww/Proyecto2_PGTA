@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using GMap.NET;
 using GMap.NET.WindowsForms.Markers;
 using GMap.NET.WindowsForms;
-using System.Drawing; // Para el tipo Color
+using System.Drawing; 
 using AstDecoder;
 using Accord.Statistics;
 using GMap.NET.MapProviders;
@@ -80,7 +80,7 @@ namespace Simulation
         {
             InitializeComponent();
 
-            int scaleFactor = 30; // Define tu factor de escala aquí
+            int scaleFactor = 30; 
 
             planeImages["plane0"] = LoadAndScaleImageWithOffset("plane0.png", scaleFactor);
             planeImages["plane30"] = LoadAndScaleImageWithOffset("plane30.png", scaleFactor);
@@ -452,12 +452,9 @@ namespace Simulation
             int newWidth = original.Width / scaleFactor;
             int newHeight = original.Height / scaleFactor;
             Bitmap scaledImage = new Bitmap(original, new Size(newWidth, newHeight));
-            //int offsetX = scaledImage.Width / 2;
-            //int offsetY = scaledImage.Height / 2;
             return new PlaneImage
             {
                 Image = scaledImage,
-                //Offset = new Point(-offsetX, -offsetY)
                 Offset = Point.Empty
             };
         }
@@ -535,7 +532,7 @@ namespace Simulation
                         _ => "plane0"
                     };
 
-                    PlaneImage planeImage = planeImages[imageKey]; // Usar la imagen precargada
+                    PlaneImage planeImage = planeImages[imageKey]; 
                     Bitmap bitmap = (Bitmap)planeImage.Image.Clone();
 
                     if (angleGRAD > 0 && angleGRAD <= 45)
@@ -882,9 +879,8 @@ namespace Simulation
 
             try
             {
-                // Crear un índice para FiltredMessages
                 var filteredIndex = FiltredMessages
-                    .Where(row1 => row1.Count > 8) // Validar filas con suficientes columnas
+                    .Where(row1 => row1.Count > 8) 
                     .ToDictionary(
                         row1 => (UTC_time_s: row1[0]?.ToString(), Lat: row1[1]?.ToString(), Lon: row1[2]?.ToString()),
                         row1 => true
@@ -892,24 +888,20 @@ namespace Simulation
 
                 using (StreamWriter writer = new StreamWriter(newCsvPath, false, Encoding.UTF8))
                 {
-                    // Escribir el encabezado (toma de AllMessages2)
-                    var header = string.Join("\t", AllMessages2[0]); // Usar ',' como delimitador
+                    var header = string.Join("\t", AllMessages2[0]); 
                     writer.WriteLine(header);
 
-                    // Iterar por las filas de AllMessages2 (excluyendo el encabezado)
                     foreach (var row2 in AllMessages2.Skip(1))
                     {
-                        if (row2.Count <= 35) continue; // Validar que tenga suficientes columnas
+                        if (row2.Count <= 35) continue; 
 
-                        // Extraer valores clave de AllMessages2
                         var UTC_time_s2 = row2[3].ToString();
                         var lat2 = row2[4]?.ToString();
                         var lon2 = row2[5]?.ToString();
 
-                        // Verificar si hay coincidencia en el índice
                         if (filteredIndex.ContainsKey((UTC_time_s2, lat2, lon2)))
                         {
-                            string line = string.Join("\t", row2.Select(m => m?.ToString() ?? string.Empty)); // Convertir la fila en CSV
+                            string line = string.Join("\t", row2.Select(m => m?.ToString() ?? string.Empty)); 
                             writer.WriteLine(line);
                         }
                     }

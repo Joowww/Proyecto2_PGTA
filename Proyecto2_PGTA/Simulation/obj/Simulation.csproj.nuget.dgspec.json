@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Simulation\\Simulation.csproj": {}
+    "C:\\Users\\joelm\\OneDrive\\Documentos\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Simulation\\Simulation.csproj": {}
   },
   "projects": {
-    "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj": {
+    "C:\\Users\\joelm\\OneDrive\\Documentos\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj",
+        "projectUniqueName": "C:\\Users\\joelm\\OneDrive\\Documentos\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj",
         "projectName": "AstDecoder",
-        "projectPath": "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj",
-        "packagesPath": "C:\\Users\\34652\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\obj\\",
+        "projectPath": "C:\\Users\\joelm\\OneDrive\\Documentos\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj",
+        "packagesPath": "C:\\Users\\joelm\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\joelm\\OneDrive\\Documentos\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\34652\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\joelm\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -73,21 +73,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Simulation\\Simulation.csproj": {
+    "C:\\Users\\joelm\\OneDrive\\Documentos\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Simulation\\Simulation.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Simulation\\Simulation.csproj",
+        "projectUniqueName": "C:\\Users\\joelm\\OneDrive\\Documentos\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Simulation\\Simulation.csproj",
         "projectName": "AsterixPro",
-        "projectPath": "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Simulation\\Simulation.csproj",
-        "packagesPath": "C:\\Users\\34652\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Simulation\\obj\\",
+        "projectPath": "C:\\Users\\joelm\\OneDrive\\Documentos\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Simulation\\Simulation.csproj",
+        "packagesPath": "C:\\Users\\joelm\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\joelm\\OneDrive\\Documentos\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Simulation\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\34652\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\joelm\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -101,8 +101,8 @@
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj": {
-                "projectPath": "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj"
+              "C:\\Users\\joelm\\OneDrive\\Documentos\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj": {
+                "projectPath": "C:\\Users\\joelm\\OneDrive\\Documentos\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj"
               }
             }
           }
@@ -145,7 +145,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

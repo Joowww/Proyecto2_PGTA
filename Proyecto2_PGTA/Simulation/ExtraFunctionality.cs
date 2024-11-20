@@ -37,6 +37,9 @@ namespace Simulation
             controlRectangles.Add(label3, new Rectangle(label3.Location, label3.Size));
             controlRectangles.Add(pictureBox7, new Rectangle(pictureBox7.Location, pictureBox7.Size));
         }
+        /// <summary>
+        /// Adjusts the position of a PictureBox to stay in the bottom-right corner of the form.
+        /// </summary>
         private void AdjustPictureBox7Position()
         {
             pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;

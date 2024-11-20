@@ -135,7 +135,7 @@ namespace Simulation
         }
 
         /// <summary>
-        /// browseBtn_Click sets radioButton3 checked, opens a file dialog to select a file, sets FilePathAST and updates label1 with the selected file name.
+        /// Sets radioButton3 checked, opens a file dialog to select a file, sets FilePathAST and updates label1 with the selected file name.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -165,13 +165,6 @@ namespace Simulation
             }
         }
 
-        private void PrintMemoryUsage()
-        {
-            Process currentProcess = Process.GetCurrentProcess();
-            long memoryUsed = currentProcess.PrivateMemorySize64 / 1024 / 1024; // Convertir a MB
-            MessageBox.Show($"Memory Used: {memoryUsed} MB", "Memory Usage", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
 
         /// <summary>
         /// Validates the file selection, shows a loading form, waits for 5 seconds, then opens the main form and closes the current one.
@@ -180,7 +173,6 @@ namespace Simulation
         /// <param name="e"></param>
         private async void acceptBtn_Click(object sender, EventArgs e)
         {
-            PrintMemoryUsage();
             if (radioButton3.Checked && !string.IsNullOrEmpty(FilePathAST))
             {
                 if (Path.GetExtension(FilePathAST).ToLower() != ".ast")
@@ -213,7 +205,6 @@ namespace Simulation
             await oTask;
             Principal principal = new Principal(FilePathAST);
             principal.Show();
-            PrintMemoryUsage();
             this.Close();
             welcome.Hide();
             Hide1();
@@ -222,6 +213,12 @@ namespace Simulation
 
 
 
+        /// <summary>
+        /// Extracts an embedded resource file from the assembly and saves it to a temporary file, returning its file path.
+        /// </summary>
+        /// <param name="resourceName"></param>
+        /// <returns></returns>
+        /// <exception cref="FileNotFoundException"></exception>
         private string ExtractEmbeddedFile(string resourceName)
         {
             var assembly = Assembly.GetExecutingAssembly();

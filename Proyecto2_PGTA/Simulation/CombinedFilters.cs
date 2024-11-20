@@ -52,12 +52,20 @@ namespace Simulation
             controlRectangles.Add("checkedListBox1", new Rectangle(checkedListBox1.Location, checkedListBox1.Size));
         }
 
+        /// <summary>
+        /// Adjusts the position of a PictureBox to stay in the bottom-right corner of the form.
+        /// </summary>
         private void AdjustPictureBoxPosition()
         {
             pictureBox7.Left = this.ClientSize.Width - pictureBox7.Width - 15;
             pictureBox7.Top = this.ClientSize.Height - pictureBox7.Height - 15;
         }
 
+        /// <summary>
+        /// Adjusts dynamically the size and position of the form's controls based on whether it is maximized or in its normal size.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CombinedFilters_Resiz(object sender, EventArgs e)
         {
             bool isMaximized = this.WindowState == FormWindowState.Maximized;

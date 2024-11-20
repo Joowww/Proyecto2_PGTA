@@ -125,10 +125,7 @@ namespace Simulation
         /// <param name="e"></param>
         public void acceptBtn_Click(object sender, EventArgs e)
         {
-            mapa.extra = true;
-            mapa.markersOverlay.Markers.Clear();
-            mapa.routeOverlay.Routes.Clear();
-            mapa.mapControl.Refresh();
+
 
             try
             {
@@ -145,9 +142,15 @@ namespace Simulation
 
                 if (missingTargets.Any())
                 {
+
                     HandleMissingTargets(missingTargets, TI1, TI2);
                     return;
                 }
+
+                mapa.extra = true;
+                mapa.markersOverlay.Markers.Clear();
+                mapa.routeOverlay.Routes.Clear();
+                mapa.mapControl.Refresh();
 
                 mapa.CalculateDistanceForAircrafts(filteredMessages, TI1, TI2);
                 mapa.SetTargetAddresses(filteredMessages);
