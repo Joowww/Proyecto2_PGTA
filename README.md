@@ -120,8 +120,8 @@ The table below shows the objectives, who completed them, as well as the dates a
 </p>
 
 ## 6. ASTERIX Executable
-Click the link below to download the executable file:
+Click the link below to download the executable (.exe):
 
 [Download ASTERIX Executable](https://drive.google.com/file/d/1JaufUr8Xvk_RaFXECmjmXFyXyX53iZQ8/view?usp=drive_link)
 
-&nbsp;&nbsp;&nbsp;&nbsp; <em>NOTE: Access to the linked folder is restricted. Only users with the necessary permissions will be able to download the file</em>. 
+&nbsp;&nbsp;&nbsp;&nbsp; <em>NOTE: Access to the file is restricted. Only users with the necessary permissions will be able to download the .exe</em>. 
