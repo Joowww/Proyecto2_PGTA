@@ -309,7 +309,6 @@ namespace Simulation
         /// </summary>
         private void StartSimulation()
         {
-            string outputFilePath = "TextFile1.txt";
 
             DataTable messageTable = new DataTable();
 
@@ -332,15 +331,7 @@ namespace Simulation
                         byte CAT = fileBytes[0];
 
                         byte[] fileBytes2 = decoder.ReadBytes((int)filestream.Length);
-                        using (StreamWriter writer = new StreamWriter(outputFilePath, false))
-
-                            for (int i = 0; i < fileBytes2.Length; i++)
-                            {
-                                string binaryString = Convert.ToString(fileBytes2[i], 2).PadLeft(8, '0');
-
-                                writer.Write(binaryString + " ");
-                            }
-
+                        
                         bool endOfFSPEC = false;
                         string FSPEC = "";
 
