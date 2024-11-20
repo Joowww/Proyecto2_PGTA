@@ -124,4 +124,6 @@ Click the link below to download the executable (.exe):
 
 [Download ASTERIX Executable](https://drive.google.com/file/d/1JaufUr8Xvk_RaFXECmjmXFyXyX53iZQ8/view?usp=drive_link)
 
-&nbsp;&nbsp;&nbsp;&nbsp; <em>NOTE: Access to the file is restricted. Only users with the necessary permissions will be able to download the executable</em>. 
+&nbsp;&nbsp;&nbsp;&nbsp; <em>NOTE 1: Access to the file is restricted. Only users with the necessary permissions will be able to download the executable</em>. 
+
+&nbsp;&nbsp;&nbsp;&nbsp; <em>NOTE 2: The ASTERIX executable is approximately 200 MB. Since it is from an unknown publisher, your PC's protection may flag it as unsafe. It is important to proceed by selecting "Run anyway"</em>.
