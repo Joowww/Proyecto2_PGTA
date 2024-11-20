@@ -22,6 +22,8 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
+using Microsoft.VisualBasic.Logging;
+using static System.Net.WebRequestMethods;
 
 namespace Simulation
 {
@@ -450,12 +452,13 @@ namespace Simulation
             int newWidth = original.Width / scaleFactor;
             int newHeight = original.Height / scaleFactor;
             Bitmap scaledImage = new Bitmap(original, new Size(newWidth, newHeight));
-            int offsetX = scaledImage.Width / 2;
-            int offsetY = scaledImage.Height / 2;
+            //int offsetX = scaledImage.Width / 2;
+            //int offsetY = scaledImage.Height / 2;
             return new PlaneImage
             {
                 Image = scaledImage,
-                Offset = new Point(-offsetX, -offsetY)
+                //Offset = new Point(-offsetX, -offsetY)
+                Offset = Point.Empty
             };
         }
         private Bitmap LoadEmbeddedImage(string resourceName)
@@ -586,11 +589,13 @@ namespace Simulation
                         bitmap.RotateFlip(RotateFlipType.Rotate270FlipNone);
                     }
 
+                    int offsetX = bitmap.Width / 2;
+                    int offsetY = bitmap.Height / 2;
+                    Point adjustedOffset = new Point(-offsetX, -offsetY);
 
-                    
                     GMarkerGoogle marker = new GMarkerGoogle(Position, bitmap)
                     {
-                        Offset = planeImage.Offset // Offset precalculado
+                        Offset = adjustedOffset 
                     };
 
                     marker.ToolTip = new GMap.NET.WindowsForms.ToolTips.GMapRoundedToolTip(marker);
@@ -855,7 +860,6 @@ namespace Simulation
         /// <param name="e"></param>
         private async void exportCsvBtn_Click(object sender, EventArgs e)
         {
-
             SaveFileDialog saveFileDialog = new SaveFileDialog
             {
                 Filter = "CSV Files (.csv)|.csv",
@@ -870,24 +874,54 @@ namespace Simulation
 
             string newCsvPath = saveFileDialog.FileName;
 
-            using (StreamWriter writer = new StreamWriter(newCsvPath, false, Encoding.UTF8))
+            if (FiltredMessages == null || FiltredMessages.Count == 0 || AllMessages2 == null || AllMessages2.Count == 0)
             {
-                if (AllMessages2.Count > 0)
-                {
-                    var header = string.Join("\t", AllMessages2[0]); 
-                    writer.WriteLine(header); 
+                MessageBox.Show("No data available to export.");
+                return;
+            }
 
-                    for (int i = 1; i < AllMessages2.Count; i++)  
+            try
+            {
+                // Crear un índice para FiltredMessages
+                var filteredIndex = FiltredMessages
+                    .Where(row1 => row1.Count > 8) // Validar filas con suficientes columnas
+                    .ToDictionary(
+                        row1 => (UTC_time_s: row1[0]?.ToString(), Lat: row1[1]?.ToString(), Lon: row1[2]?.ToString()),
+                        row1 => true
+                    );
+
+                using (StreamWriter writer = new StreamWriter(newCsvPath, false, Encoding.UTF8))
+                {
+                    // Escribir el encabezado (toma de AllMessages2)
+                    var header = string.Join("\t", AllMessages2[0]); // Usar ',' como delimitador
+                    writer.WriteLine(header);
+
+                    // Iterar por las filas de AllMessages2 (excluyendo el encabezado)
+                    foreach (var row2 in AllMessages2.Skip(1))
                     {
-                        string line = string.Join("\t", AllMessages2[i].Select(m => m.ToString()));  
-                        writer.WriteLine(line);  
+                        if (row2.Count <= 35) continue; // Validar que tenga suficientes columnas
+
+                        // Extraer valores clave de AllMessages2
+                        var UTC_time_s2 = row2[3].ToString();
+                        var lat2 = row2[4]?.ToString();
+                        var lon2 = row2[5]?.ToString();
+
+                        // Verificar si hay coincidencia en el índice
+                        if (filteredIndex.ContainsKey((UTC_time_s2, lat2, lon2)))
+                        {
+                            string line = string.Join("\t", row2.Select(m => m?.ToString() ?? string.Empty)); // Convertir la fila en CSV
+                            writer.WriteLine(line);
+                        }
                     }
                 }
+
+                MessageBox.Show("Filtered CSV exported successfully.");
             }
-            MessageBox.Show("Filtered CSV exported successfully.");
-
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error exporting CSV: {ex.Message}");
+            }
         }
-
         private void extraFunctionalityBtn_Click(object sender, EventArgs e)
         {
 
