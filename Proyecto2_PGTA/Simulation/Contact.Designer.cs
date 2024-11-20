@@ -129,9 +129,9 @@
             label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label2.Location = new Point(199, 121);
             label2.Name = "label2";
-            label2.Size = new Size(436, 28);
+            label2.Size = new Size(369, 28);
             label2.TabIndex = 19;
-            label2.Text = "•  alejandro.curiel.molina@estudiantat.upc.edu";
+            label2.Text = "•  alejandro.curiel@estudiantat.upc.edu";
             // 
             // buttonClose
             // 
