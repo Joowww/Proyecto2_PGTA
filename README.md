@@ -31,7 +31,6 @@ The ASTERIX CAT048 Decoder is an application developed in C# to decode ASTERIX d
 
 ```bash
 git clone https://github.com/Joowww/Proyecto2_PGTA.git
-cd Proyecto2_PGTA
 ```
 ### 2.3 Dependencies
 The main dependencies of this project are:
@@ -40,10 +39,6 @@ The main dependencies of this project are:
 - **VisioForge.DotNet.Core.Redist.Base.x64** (Version 15.10.22): Library for video and multimedia manipulation.
 - **Zen.Barcode.Rendering.Framework** (Version 3.1.10729.1): Library for generating barcodes in .NET.
 
-This project uses NuGet to manage dependencies. After cloning the repository, make sure to restore all necessary dependencies by running the following command in the terminal or command line from the project folder:
-```bash
-dotnet restore
-```
 ## 3. User Manual and Usage Guide
 **1. Welcome Menu**: The welcome menu includes a dropdown with several buttons. There is an “About Us” button that displays the names of the group members as well as their institutional email addresses. Next, there is a “Settings” button. Clicking this button allows you to customize the appearance of the application. You can switch the form’s theme between dark mode and light mode. Finally, there is the “Help” button, which is mentioned at the end of the manual. [click](#end)
 
