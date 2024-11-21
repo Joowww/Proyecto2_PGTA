@@ -331,7 +331,7 @@ namespace Simulation
                         byte CAT = fileBytes[0];
 
                         byte[] fileBytes2 = decoder.ReadBytes((int)filestream.Length);
-                        
+
                         bool endOfFSPEC = false;
                         string FSPEC = "";
 

@@ -102,12 +102,12 @@
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(382, 119);
+            label1.Location = new Point(359, 119);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(400, 28);
+            label1.Size = new Size(447, 28);
             label1.TabIndex = 2;
-            label1.Text = "How would you like to import the csv file?";
+            label1.Text = "How would you like to import the ASTERIX file?";
             // 
             // SimulateBtn
             // 
@@ -147,7 +147,7 @@
             sidebar.Controls.Add(HelpContainer);
             sidebar.Location = new Point(-1, -1);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(309, 2000);
+            sidebar.Size = new Size(96, 2000);
             sidebar.TabIndex = 11;
             // 
             // panel1
