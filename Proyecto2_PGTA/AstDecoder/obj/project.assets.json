@@ -55,6 +55,61 @@
           "lib/Zen.Barcode.Core.dll": {}
         }
       }
+    },
+    "net6.0/win-x86": {
+      "Accord/3.8.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Accord.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Accord.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/Accord.targets": {}
+        }
+      },
+      "Accord.Math/3.8.0": {
+        "type": "package",
+        "dependencies": {
+          "Accord": "3.8.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Accord.Math.Core.dll": {
+            "related": ".xml"
+          },
+          "lib/netstandard2.0/Accord.Math.dll": {
+            "related": ".Core.xml;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Accord.Math.Core.dll": {
+            "related": ".xml"
+          },
+          "lib/netstandard2.0/Accord.Math.dll": {
+            "related": ".Core.xml;.xml"
+          }
+        }
+      },
+      "VisioForge.DotNet.Core.Redist.Base.x64/15.10.22": {
+        "type": "package",
+        "build": {
+          "build/VisioForge.DotNet.Core.Redist.Base.x64.targets": {}
+        }
+      },
+      "Zen.Barcode.Rendering.Framework/3.1.10729.1": {
+        "type": "package",
+        "compile": {
+          "lib/Zen.Barcode.Core.dll": {}
+        },
+        "runtime": {
+          "lib/Zen.Barcode.Core.dll": {}
+        }
+      }
     }
   },
   "libraries": {
@@ -278,12 +333,31 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Runtime.win-x86",
+            "version": "[6.0.8, 6.0.8]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Runtime.win-x86",
+            "version": "[6.0.8, 6.0.8]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Runtime.win-x86",
+            "version": "[6.0.8, 6.0.8]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+      }
+    },
+    "runtimes": {
+      "win-x86": {
+        "#import": []
       }
     }
   },

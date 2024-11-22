@@ -1,13 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "n3cIqxm3syN4MRnMKHxgNb7/pMu0RmRRh5xDbaHpPHHuJ981hDKe//YQs3FalK1UPzkbFGkceNnb4GAf2HEerQ==",
+  "dgSpecHash": "CtGVpeAkYGP1skA3VwiTxDomkDF4U77vPIrgm2nLjbuWGm3mxtFL1sXGFFebeUuSve5CRmH9YucQFWJc6jwpuQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\34652\\.nuget\\packages\\accord\\3.8.0\\accord.3.8.0.nupkg.sha512",
     "C:\\Users\\34652\\.nuget\\packages\\accord.math\\3.8.0\\accord.math.3.8.0.nupkg.sha512",
     "C:\\Users\\34652\\.nuget\\packages\\visioforge.dotnet.core.redist.base.x64\\15.10.22\\visioforge.dotnet.core.redist.base.x64.15.10.22.nupkg.sha512",
-    "C:\\Users\\34652\\.nuget\\packages\\zen.barcode.rendering.framework\\3.1.10729.1\\zen.barcode.rendering.framework.3.1.10729.1.nupkg.sha512"
+    "C:\\Users\\34652\\.nuget\\packages\\zen.barcode.rendering.framework\\3.1.10729.1\\zen.barcode.rendering.framework.3.1.10729.1.nupkg.sha512",
+    "C:\\Users\\34652\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x86\\6.0.8\\microsoft.netcore.app.runtime.win-x86.6.0.8.nupkg.sha512",
+    "C:\\Users\\34652\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x86\\6.0.8\\microsoft.windowsdesktop.app.runtime.win-x86.6.0.8.nupkg.sha512",
+    "C:\\Users\\34652\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x86\\6.0.8\\microsoft.aspnetcore.app.runtime.win-x86.6.0.8.nupkg.sha512"
   ],
   "logs": [
     {
