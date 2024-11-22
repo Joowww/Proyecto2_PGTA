@@ -539,13 +539,15 @@ namespace Simulation
                                                 Variable048.UTC_TIME_s,
                                                 Variable048.LAT_deg,
                                                 Variable048.LON_deg,
-                                                Variable048.Altitude_Corrected_m,
+                                                Variable048.Altitude_m,
                                                 Variable048.TYP,
                                                 Variable048.MODE_3A,
                                                 Variable048.TA,
                                                 Variable048.STAT,
                                                 Variable048.TI,
-                                                Variable048.UTC_TIME
+                                                Variable048.UTC_TIME,
+                                                Variable048.FL,
+                                                Variable048.ModeC_corrected
                                             };
                                             allMessages.Add(message);
                                         }
@@ -554,18 +556,24 @@ namespace Simulation
                                         {
                                             List<object> message2 = new List<object>();
 
+                                            // Obtener las propiedades de CAT048
+                                            PropertyInfo[] allProperties = typeof(CAT048).GetProperties();
+
+                                            // Añadir encabezados si es la primera vez
                                             if (allMessages2.Count == 0)
                                             {
-                                                foreach (PropertyInfo property in typeof(CAT048).GetProperties())
+                                                foreach (PropertyInfo propertyInfo in allProperties.Take(allProperties.Length - 1)) // Excluir la última propiedad
                                                 {
-                                                    message2.Add(property.Name);
+                                                    message2.Add(propertyInfo.Name);
                                                 }
                                                 allMessages2.Add(message2);
                                                 message2 = new List<object>();
                                             }
-                                            foreach (PropertyInfo property in typeof(CAT048).GetProperties())
+
+                                            // Añadir los valores excluyendo la última propiedad
+                                            foreach (PropertyInfo propertyInfo in allProperties.Take(allProperties.Length - 1))
                                             {
-                                                var value = property.GetValue(Variable048);
+                                                var value = propertyInfo.GetValue(Variable048);
                                                 message2.Add(value ?? "N/A");
                                             }
 

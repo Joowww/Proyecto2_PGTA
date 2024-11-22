@@ -143,7 +143,7 @@ namespace Simulation
             dataGridView1.Columns[0].Name = "Time (s)";
             dataGridView1.Columns[1].Name = "Latitude (°)";
             dataGridView1.Columns[2].Name = "Longitude (°)";
-            dataGridView1.Columns[3].Name = "Corrected Altitude (m)";
+            dataGridView1.Columns[3].Name = "Altitude";
             dataGridView1.Columns[4].Name = "Type";
             dataGridView1.Columns[5].Name = "Target address";
             dataGridView1.Columns[6].Name = "Target identification";
@@ -339,10 +339,15 @@ namespace Simulation
                 int time = Convert.ToInt32(aircraft[0]);
                 double latitude = Convert.ToDouble(aircraft[1]);
                 double longitude = Convert.ToDouble(aircraft[2]);
-                string height = Convert.ToString(aircraft[3]);
+                string FL = Convert.ToString(aircraft[10]);
+                string ModeC = Convert.ToString(aircraft[11]);
                 string type = Convert.ToString(aircraft[4]);
                 string ta = Convert.ToString(aircraft[6]);
                 string ti = Convert.ToString(aircraft[8]);
+
+                string height = !string.IsNullOrEmpty(ModeC)
+                ? $"{Math.Round(Convert.ToDouble(ModeC), 2)} ft"
+                : (!string.IsNullOrEmpty(FL) ? $"FL={FL}" : "N/A");
 
                 dataGridView1.Rows.Add(time, latitude, longitude, height, type, ta, ti);
             }
@@ -489,7 +494,8 @@ namespace Simulation
             {
                 double latitude = Convert.ToDouble(aircraft[1]);
                 double longitude = Convert.ToDouble(aircraft[2]);
-                string Altitude_corrected = Convert.ToString(aircraft[3]);
+                string FL = Convert.ToString(aircraft[10]);
+                string ModeC = Convert.ToString(aircraft[11]);
                 string TA = Convert.ToString(aircraft[6]);
                 string TI = Convert.ToString(aircraft[8]);
 
@@ -596,9 +602,10 @@ namespace Simulation
                     };
 
                     marker.ToolTip = new GMap.NET.WindowsForms.ToolTips.GMapRoundedToolTip(marker);
-                    marker.ToolTipText = $"Target identification: {TI}\nTarget address: {TA}\nLatitude (°): {latitude}\nLongitude (°): {longitude}\nCorrected Altitude (m): {Altitude_corrected}";
+                    marker.ToolTipText = $"Target identification: {TI}\nTarget address: {TA}\nLatitude (°): {latitude}\nLongitude (°): {longitude}\nAltitude: {(!string.IsNullOrEmpty(ModeC) ? $"{Math.Round(Convert.ToDouble(ModeC), 2)} ft" : (!string.IsNullOrEmpty(FL) ? $"FL={FL}" : "N/A"))}";
 
                     markersOverlay.Markers.Add(marker);
+
 
                     aircraftMarkers[TA] = marker;
 

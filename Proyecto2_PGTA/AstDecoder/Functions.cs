@@ -131,7 +131,7 @@ namespace AstDecoder
         public string B1A { get; set; }
         public string B1B { get; set; }
 
-        public string Altitude_Corrected_m { get; set; }
+        public string Altitude_m { get; set; }
     }
 
     public class Function
@@ -1130,19 +1130,19 @@ namespace AstDecoder
                 if ((barometricPressure >= 1013 && barometricPressure <= 1013.3)||barometricPressure == 0) 
                 { 
                     PRES = true;
-                    Variable048.Altitude_Corrected_m = Convert.ToString(flightLevel * 100 * 0.3048);
+                    Variable048.Altitude_m = Convert.ToString(flightLevel * 100 * 0.3048);
                 }
                 // QNH correction if the altitude is less than 6000 feet
                 if (PRES == false && altitude < 6000 && barometricPressure != 0)
                 {
                     double modeC = altitude + (Convert.ToDouble(barometricPressure) - 1013.2) * 30;
                     Variable048.ModeC_corrected = Convert.ToString(modeC);
-                    Variable048.Altitude_Corrected_m = Convert.ToString(modeC * 0.3048);
+                    Variable048.Altitude_m = Convert.ToString(modeC * 0.3048);
 
                 }
                 if (PRES == false && altitude >= 6000)
                 {
-                    Variable048.Altitude_Corrected_m = Convert.ToString(flightLevel * 100 * 0.3048);
+                    Variable048.Altitude_m = Convert.ToString(flightLevel * 100 * 0.3048);
                 }
                 if (altitude <= 0)
                     Altitude = 0;
