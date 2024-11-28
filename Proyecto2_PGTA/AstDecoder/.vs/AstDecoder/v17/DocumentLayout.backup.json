@@ -3,11 +3,17 @@
   "WorkspaceRootPath": "C:\\Users\\marin\\OneDrive\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6AB66F39-9A30-4BFE-B15A-7D251D5D9CC8}|..\\Main\\Main.csproj|c:\\users\\marin\\onedrive\\documents\\github\\proyecto2_pgta\\proyecto2_pgta\\main\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{9A9A5CE7-0C90-467D-B7D3-DD218BFF29EE}|AstDecoder.csproj|c:\\users\\marin\\onedrive\\documents\\github\\proyecto2_pgta\\proyecto2_pgta\\astdecoder\\functions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9A9A5CE7-0C90-467D-B7D3-DD218BFF29EE}|AstDecoder.csproj|solutionrelative:functions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55022E58-57CF-47F4-A9EB-5985A262CE28}|..\\Simulation\\Simulation.csproj|c:\\users\\marin\\onedrive\\documents\\github\\proyecto2_pgta\\proyecto2_pgta\\simulation\\principal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55022E58-57CF-47F4-A9EB-5985A262CE28}|..\\Simulation\\Simulation.csproj|c:\\users\\marin\\onedrive\\documents\\github\\proyecto2_pgta\\proyecto2_pgta\\simulation\\mapa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55022E58-57CF-47F4-A9EB-5985A262CE28}|..\\Simulation\\Simulation.csproj|c:\\users\\marin\\onedrive\\documents\\github\\proyecto2_pgta\\proyecto2_pgta\\simulation\\mapa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -17,30 +23,54 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\marin\\OneDrive\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Main\\Program.cs",
-              "RelativeDocumentMoniker": "..\\Main\\Program.cs",
-              "ToolTip": "C:\\Users\\marin\\OneDrive\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Main\\Program.cs*",
-              "RelativeToolTip": "..\\Main\\Program.cs*",
-              "ViewState": "AgIAAFoBAAAAAAAAAAAAwFQBAAApAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "Mapa.cs",
+              "DocumentMoniker": "C:\\Users\\marin\\OneDrive\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Simulation\\Mapa.cs",
+              "RelativeDocumentMoniker": "..\\Simulation\\Mapa.cs",
+              "ToolTip": "C:\\Users\\marin\\OneDrive\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Simulation\\Mapa.cs",
+              "RelativeToolTip": "..\\Simulation\\Mapa.cs",
+              "ViewState": "AgIAAL4AAAAAAAAAAAAkwE4AAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T15:06:11.529Z",
+              "WhenOpened": "2024-11-28T08:05:14.821Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Mapa.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\marin\\OneDrive\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Simulation\\Mapa.cs",
+              "RelativeDocumentMoniker": "..\\Simulation\\Mapa.cs",
+              "ToolTip": "C:\\Users\\marin\\OneDrive\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Simulation\\Mapa.cs [Design]",
+              "RelativeToolTip": "..\\Simulation\\Mapa.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-28T08:05:06.2Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Principal.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\marin\\OneDrive\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Simulation\\Principal.cs",
+              "RelativeDocumentMoniker": "..\\Simulation\\Principal.cs",
+              "ToolTip": "C:\\Users\\marin\\OneDrive\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Simulation\\Principal.cs [Design]",
+              "RelativeToolTip": "..\\Simulation\\Principal.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-28T08:04:39.933Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "Functions.cs",
               "DocumentMoniker": "C:\\Users\\marin\\OneDrive\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\Functions.cs",
               "RelativeDocumentMoniker": "Functions.cs",
               "ToolTip": "C:\\Users\\marin\\OneDrive\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\Functions.cs",
               "RelativeToolTip": "Functions.cs",
-              "ViewState": "AgIAAEoDAAAAAAAAAAD4v1oDAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAGIEAAAAAAAAAAAuwHcEAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-01T07:03:19.073Z",
               "EditorCaption": ""

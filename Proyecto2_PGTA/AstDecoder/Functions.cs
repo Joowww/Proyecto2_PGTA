@@ -1110,6 +1110,7 @@ namespace AstDecoder
         /// <param name="Variable048"></param>
         public void H (CAT048 Variable048)
         {
+            double BPbcn = 1018.0;
             // Barometric pressure from variable 048
             double barometricPressure = Convert.ToDouble(Variable048.BP_hPa);
             // Initialize corrected altitude to 0
@@ -1126,8 +1127,14 @@ namespace AstDecoder
                 // Variable to indicate if the pressure is in a specific range
                 bool PRES = false;
 
-                // Check if the barometric pressure is within the range of 1013 to 1013.3 hPa or is zero
-                if ((barometricPressure >= 1013 && barometricPressure <= 1013.3)||barometricPressure == 0) 
+                // Check if FL < 6000 and BP = 1013 or 0, set BP to LEBL BP
+                if (altitude < 6000 && ((barometricPressure >= 1013 && barometricPressure <= 1013.3) || barometricPressure == 0))
+                { 
+                    barometricPressure = BPbcn;
+                }
+
+                // Check if the barometric pressure is within the range of 1013 to 1013.3 hPa or is zero and FL > 6000
+                if ((barometricPressure >= 1013 && barometricPressure <= 1013.3) ||barometricPressure == 0) 
                 { 
                     PRES = true;
                     Variable048.Altitude_m = Convert.ToString(flightLevel * 100 * 0.3048);

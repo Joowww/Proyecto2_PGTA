@@ -55,61 +55,6 @@
           "lib/Zen.Barcode.Core.dll": {}
         }
       }
-    },
-    "net6.0/win-x86": {
-      "Accord/3.8.0": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/Accord.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.0/Accord.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "build/Accord.targets": {}
-        }
-      },
-      "Accord.Math/3.8.0": {
-        "type": "package",
-        "dependencies": {
-          "Accord": "3.8.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/Accord.Math.Core.dll": {
-            "related": ".xml"
-          },
-          "lib/netstandard2.0/Accord.Math.dll": {
-            "related": ".Core.xml;.xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.0/Accord.Math.Core.dll": {
-            "related": ".xml"
-          },
-          "lib/netstandard2.0/Accord.Math.dll": {
-            "related": ".Core.xml;.xml"
-          }
-        }
-      },
-      "VisioForge.DotNet.Core.Redist.Base.x64/15.10.22": {
-        "type": "package",
-        "build": {
-          "build/VisioForge.DotNet.Core.Redist.Base.x64.targets": {}
-        }
-      },
-      "Zen.Barcode.Rendering.Framework/3.1.10729.1": {
-        "type": "package",
-        "compile": {
-          "lib/Zen.Barcode.Core.dll": {}
-        },
-        "runtime": {
-          "lib/Zen.Barcode.Core.dll": {}
-        }
-      }
     }
   },
   "libraries": {
@@ -267,19 +212,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\34652\\.nuget\\packages\\": {}
+    "C:\\Users\\marin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj",
+      "projectUniqueName": "C:\\Users\\marin\\OneDrive\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj",
       "projectName": "AstDecoder",
-      "projectPath": "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj",
-      "packagesPath": "C:\\Users\\34652\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\obj\\",
+      "projectPath": "C:\\Users\\marin\\OneDrive\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj",
+      "packagesPath": "C:\\Users\\marin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\marin\\OneDrive\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\34652\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\marin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -299,6 +244,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -335,16 +285,16 @@
         "warn": true,
         "downloadDependencies": [
           {
-            "name": "Microsoft.AspNetCore.App.Runtime.win-x86",
-            "version": "[6.0.8, 6.0.8]"
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[6.0.33, 6.0.33]"
           },
           {
-            "name": "Microsoft.NETCore.App.Runtime.win-x86",
-            "version": "[6.0.8, 6.0.8]"
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[6.0.33, 6.0.33]"
           },
           {
-            "name": "Microsoft.WindowsDesktop.App.Runtime.win-x86",
-            "version": "[6.0.8, 6.0.8]"
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[6.0.33, 6.0.33]"
           }
         ],
         "frameworkReferences": {
@@ -352,12 +302,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
-      }
-    },
-    "runtimes": {
-      "win-x86": {
-        "#import": []
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   },
@@ -366,7 +311,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "El paquete \"Zen.Barcode.Rendering.Framework 3.1.10729.1\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\" en lugar de la plataforma de destino del proyecto \"net6.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
+      "message": "Package 'Zen.Barcode.Rendering.Framework 3.1.10729.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
       "libraryId": "Zen.Barcode.Rendering.Framework",
       "targetGraphs": [
         "net6.0"

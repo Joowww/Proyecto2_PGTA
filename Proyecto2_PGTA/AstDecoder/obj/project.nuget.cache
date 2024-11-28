@@ -1,23 +1,23 @@
 {
   "version": 2,
-  "dgSpecHash": "CtGVpeAkYGP1skA3VwiTxDomkDF4U77vPIrgm2nLjbuWGm3mxtFL1sXGFFebeUuSve5CRmH9YucQFWJc6jwpuQ==",
+  "dgSpecHash": "Kve60cU2Wz4=",
   "success": true,
-  "projectFilePath": "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj",
+  "projectFilePath": "C:\\Users\\marin\\OneDrive\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\34652\\.nuget\\packages\\accord\\3.8.0\\accord.3.8.0.nupkg.sha512",
-    "C:\\Users\\34652\\.nuget\\packages\\accord.math\\3.8.0\\accord.math.3.8.0.nupkg.sha512",
-    "C:\\Users\\34652\\.nuget\\packages\\visioforge.dotnet.core.redist.base.x64\\15.10.22\\visioforge.dotnet.core.redist.base.x64.15.10.22.nupkg.sha512",
-    "C:\\Users\\34652\\.nuget\\packages\\zen.barcode.rendering.framework\\3.1.10729.1\\zen.barcode.rendering.framework.3.1.10729.1.nupkg.sha512",
-    "C:\\Users\\34652\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x86\\6.0.8\\microsoft.netcore.app.runtime.win-x86.6.0.8.nupkg.sha512",
-    "C:\\Users\\34652\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x86\\6.0.8\\microsoft.windowsdesktop.app.runtime.win-x86.6.0.8.nupkg.sha512",
-    "C:\\Users\\34652\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x86\\6.0.8\\microsoft.aspnetcore.app.runtime.win-x86.6.0.8.nupkg.sha512"
+    "C:\\Users\\marin\\.nuget\\packages\\accord\\3.8.0\\accord.3.8.0.nupkg.sha512",
+    "C:\\Users\\marin\\.nuget\\packages\\accord.math\\3.8.0\\accord.math.3.8.0.nupkg.sha512",
+    "C:\\Users\\marin\\.nuget\\packages\\visioforge.dotnet.core.redist.base.x64\\15.10.22\\visioforge.dotnet.core.redist.base.x64.15.10.22.nupkg.sha512",
+    "C:\\Users\\marin\\.nuget\\packages\\zen.barcode.rendering.framework\\3.1.10729.1\\zen.barcode.rendering.framework.3.1.10729.1.nupkg.sha512",
+    "C:\\Users\\marin\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.33\\microsoft.windowsdesktop.app.ref.6.0.33.nupkg.sha512",
+    "C:\\Users\\marin\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.33\\microsoft.netcore.app.ref.6.0.33.nupkg.sha512",
+    "C:\\Users\\marin\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.33\\microsoft.aspnetcore.app.ref.6.0.33.nupkg.sha512"
   ],
   "logs": [
     {
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "El paquete \"Zen.Barcode.Rendering.Framework 3.1.10729.1\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\" en lugar de la plataforma de destino del proyecto \"net6.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
+      "message": "Package 'Zen.Barcode.Rendering.Framework 3.1.10729.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
       "libraryId": "Zen.Barcode.Rendering.Framework",
       "targetGraphs": [
         "net6.0"

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Simulation\\Simulation.csproj": {}
+    "C:\\Users\\marin\\OneDrive\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Simulation\\Simulation.csproj": {}
   },
   "projects": {
-    "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj": {
+    "C:\\Users\\marin\\OneDrive\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj",
+        "projectUniqueName": "C:\\Users\\marin\\OneDrive\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj",
         "projectName": "AstDecoder",
-        "projectPath": "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj",
-        "packagesPath": "C:\\Users\\34652\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\obj\\",
+        "projectPath": "C:\\Users\\marin\\OneDrive\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj",
+        "packagesPath": "C:\\Users\\marin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\marin\\OneDrive\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\34652\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\marin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -34,6 +34,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -70,16 +75,16 @@
           "warn": true,
           "downloadDependencies": [
             {
-              "name": "Microsoft.AspNetCore.App.Runtime.win-x86",
-              "version": "[6.0.8, 6.0.8]"
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
             },
             {
-              "name": "Microsoft.NETCore.App.Runtime.win-x86",
-              "version": "[6.0.8, 6.0.8]"
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
             },
             {
-              "name": "Microsoft.WindowsDesktop.App.Runtime.win-x86",
-              "version": "[6.0.8, 6.0.8]"
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
             }
           ],
           "frameworkReferences": {
@@ -87,26 +92,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
-        }
-      },
-      "runtimes": {
-        "win-x86": {
-          "#import": []
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Simulation\\Simulation.csproj": {
+    "C:\\Users\\marin\\OneDrive\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Simulation\\Simulation.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Simulation\\Simulation.csproj",
+        "projectUniqueName": "C:\\Users\\marin\\OneDrive\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Simulation\\Simulation.csproj",
         "projectName": "AsterixPro",
-        "projectPath": "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Simulation\\Simulation.csproj",
-        "packagesPath": "C:\\Users\\34652\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Simulation\\obj\\",
+        "projectPath": "C:\\Users\\marin\\OneDrive\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Simulation\\Simulation.csproj",
+        "packagesPath": "C:\\Users\\marin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\marin\\OneDrive\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Simulation\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\34652\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\marin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -120,8 +120,8 @@
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj": {
-                "projectPath": "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj"
+              "C:\\Users\\marin\\OneDrive\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj": {
+                "projectPath": "C:\\Users\\marin\\OneDrive\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj"
               }
             }
           }
@@ -130,6 +130,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -158,16 +163,20 @@
           "warn": true,
           "downloadDependencies": [
             {
-              "name": "Microsoft.AspNetCore.App.Runtime.win-x86",
-              "version": "[6.0.8, 6.0.8]"
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
             },
             {
-              "name": "Microsoft.NETCore.App.Runtime.win-x86",
-              "version": "[6.0.8, 6.0.8]"
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[6.0.33, 6.0.33]"
             },
             {
-              "name": "Microsoft.WindowsDesktop.App.Runtime.win-x86",
-              "version": "[6.0.8, 6.0.8]"
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
             }
           ],
           "frameworkReferences": {
@@ -178,12 +187,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
-        }
-      },
-      "runtimes": {
-        "win-x86": {
-          "#import": []
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
