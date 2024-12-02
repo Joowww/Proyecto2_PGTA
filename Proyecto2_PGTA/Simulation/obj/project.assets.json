@@ -885,19 +885,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\marin\\.nuget\\packages\\": {}
+    "C:\\Users\\paula\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\marin\\OneDrive\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Simulation\\Simulation.csproj",
+      "projectUniqueName": "C:\\Users\\paula\\Desktop\\4A\\PGTA\\Proyecto2_PGTA\\Proyecto2_PGTA\\Proyecto2_PGTA\\Simulation\\Simulation.csproj",
       "projectName": "AsterixPro",
-      "projectPath": "C:\\Users\\marin\\OneDrive\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Simulation\\Simulation.csproj",
-      "packagesPath": "C:\\Users\\marin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\marin\\OneDrive\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Simulation\\obj\\",
+      "projectPath": "C:\\Users\\paula\\Desktop\\4A\\PGTA\\Proyecto2_PGTA\\Proyecto2_PGTA\\Proyecto2_PGTA\\Simulation\\Simulation.csproj",
+      "packagesPath": "C:\\Users\\paula\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\paula\\Desktop\\4A\\PGTA\\Proyecto2_PGTA\\Proyecto2_PGTA\\Proyecto2_PGTA\\Simulation\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\marin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\paula\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -911,8 +911,8 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "C:\\Users\\marin\\OneDrive\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj": {
-              "projectPath": "C:\\Users\\marin\\OneDrive\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj"
+            "C:\\Users\\paula\\Desktop\\4A\\PGTA\\Proyecto2_PGTA\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj": {
+              "projectPath": "C:\\Users\\paula\\Desktop\\4A\\PGTA\\Proyecto2_PGTA\\Proyecto2_PGTA\\Proyecto2_PGTA\\AstDecoder\\AstDecoder.csproj"
             }
           }
         }
@@ -987,7 +987,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'Zen.Barcode.Rendering.Framework 3.1.10729.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0-windows7.0'. This package may not be fully compatible with your project.",
+      "message": "El paquete \"Zen.Barcode.Rendering.Framework 3.1.10729.1\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\" en lugar de la plataforma de destino del proyecto \"net6.0-windows7.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
       "libraryId": "Zen.Barcode.Rendering.Framework",
       "targetGraphs": [
         "net6.0-windows7.0"
