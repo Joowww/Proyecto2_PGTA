@@ -199,10 +199,7 @@
           "Zen.Barcode.Rendering.Framework": "3.1.10729.1"
         },
         "runtime": {
-          "AstDecoder.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "AstDecoder.dll": {}
         }
       }
     }

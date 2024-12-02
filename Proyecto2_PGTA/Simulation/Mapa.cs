@@ -698,6 +698,7 @@ namespace Simulation
         /// </summary>
         private void RestartSimulation()
         {
+            MoveBtn.Enabled = true;
             markersOverlay.Markers.Clear();
             routeOverlay.Routes.Clear();
 
@@ -925,6 +926,9 @@ namespace Simulation
         {
 
             ExtraFunctionality extraFunctionality = new ExtraFunctionality(this);
+            simulationTimer.Stop();
+            AutomaticBtn.Text = "Automatic";
+            MoveBtn.Enabled = true;
             this.Enabled = false;
             extraFunctionality.Show();
 

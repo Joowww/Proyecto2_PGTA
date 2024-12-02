@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AsterixPro")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+579c43902405bd9c00a55f83fe07d624cc8cd068")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("AsterixPro")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AsterixPro")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -5,15 +5,15 @@
     <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
     <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
     <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
-    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\paula\.nuget\packages\</NuGetPackageFolders>
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\34652\.nuget\packages\</NuGetPackageFolders>
     <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
-    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.11.0</NuGetToolVersion>
+    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.3.0</NuGetToolVersion>
   </PropertyGroup>
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <SourceRoot Include="C:\Users\paula\.nuget\packages\" />
+    <SourceRoot Include="C:\Users\34652\.nuget\packages\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgZen_Barcode_Rendering_Framework Condition=" '$(PkgZen_Barcode_Rendering_Framework)' == '' ">C:\Users\paula\.nuget\packages\zen.barcode.rendering.framework\3.1.10729.1</PkgZen_Barcode_Rendering_Framework>
-    <PkgVisioForge_DotNet_Core_Redist_Base_x64 Condition=" '$(PkgVisioForge_DotNet_Core_Redist_Base_x64)' == '' ">C:\Users\paula\.nuget\packages\visioforge.dotnet.core.redist.base.x64\15.10.22</PkgVisioForge_DotNet_Core_Redist_Base_x64>
+    <PkgZen_Barcode_Rendering_Framework Condition=" '$(PkgZen_Barcode_Rendering_Framework)' == '' ">C:\Users\34652\.nuget\packages\zen.barcode.rendering.framework\3.1.10729.1</PkgZen_Barcode_Rendering_Framework>
+    <PkgVisioForge_DotNet_Core_Redist_Base_x64 Condition=" '$(PkgVisioForge_DotNet_Core_Redist_Base_x64)' == '' ">C:\Users\34652\.nuget\packages\visioforge.dotnet.core.redist.base.x64\15.10.22</PkgVisioForge_DotNet_Core_Redist_Base_x64>
   </PropertyGroup>
 </Project>
