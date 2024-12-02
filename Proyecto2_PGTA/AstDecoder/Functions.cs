@@ -1118,43 +1118,42 @@ namespace AstDecoder
             // Flight level from variable 048
             double flightLevel = Convert.ToDouble(Variable048.FL);
 
-            if (flightLevel != 0)
+
+            // Convert to feet
+            double altitude = Convert.ToDouble(flightLevel) * 100;
+            // Convert to meters
+            Altitude = altitude * 0.3048;
+            // Variable to indicate if the pressure is in a specific range
+            bool PRES = false;
+
+            // Check if FL < 6000 and BP = 1013 or 0, set BP to LEBL BP
+            if (altitude < 6000 && ((barometricPressure >= 1013 && barometricPressure <= 1013.3) || barometricPressure == 0))
+            { 
+                barometricPressure = BPbcn;
+            }
+
+            // Check if the barometric pressure is within the range of 1013 to 1013.3 hPa or is zero and FL > 6000
+            if ((barometricPressure >= 1013 && barometricPressure <= 1013.3) ||barometricPressure == 0) 
+            { 
+                PRES = true;
+                Variable048.Altitude_m = Convert.ToString(flightLevel * 100 * 0.3048);
+            }
+            // QNH correction if the altitude is less than 6000 feet
+            if (PRES == false && altitude < 6000 && barometricPressure != 0)
             {
-                // Convert to feet
-                double altitude = Convert.ToDouble(flightLevel) * 100;
-                // Convert to meters
-                Altitude = altitude * 0.3048;
-                // Variable to indicate if the pressure is in a specific range
-                bool PRES = false;
-
-                // Check if FL < 6000 and BP = 1013 or 0, set BP to LEBL BP
-                if (altitude < 6000 && ((barometricPressure >= 1013 && barometricPressure <= 1013.3) || barometricPressure == 0))
-                { 
-                    barometricPressure = BPbcn;
-                }
-
-                // Check if the barometric pressure is within the range of 1013 to 1013.3 hPa or is zero and FL > 6000
-                if ((barometricPressure >= 1013 && barometricPressure <= 1013.3) ||barometricPressure == 0) 
-                { 
-                    PRES = true;
-                    Variable048.Altitude_m = Convert.ToString(flightLevel * 100 * 0.3048);
-                }
-                // QNH correction if the altitude is less than 6000 feet
-                if (PRES == false && altitude < 6000 && barometricPressure != 0)
-                {
-                    double modeC = altitude + (Convert.ToDouble(barometricPressure) - 1013.2) * 30;
-                    Variable048.ModeC_corrected = Convert.ToString(modeC);
-                    Variable048.Altitude_m = Convert.ToString(modeC * 0.3048);
-
-                }
-                if (PRES == false && altitude >= 6000)
-                {
-                    Variable048.Altitude_m = Convert.ToString(flightLevel * 100 * 0.3048);
-                }
-                if (altitude <= 0)
-                    Altitude = 0;
+                double modeC = altitude + (Convert.ToDouble(barometricPressure) - 1013.2) * 30;
+                Variable048.ModeC_corrected = Convert.ToString(modeC);
+                Variable048.Altitude_m = Convert.ToString(modeC * 0.3048);
 
             }
+            if (PRES == false && altitude >= 6000)
+            {
+                Variable048.Altitude_m = Convert.ToString(flightLevel * 100 * 0.3048);
+            }
+            if (altitude <= 0)
+                Altitude = 0;
+
+            
             // Call LatitudeLongitud function with Variable048 and the corrected altitude
             LatitudeLongitud(Variable048, Altitude);
 
