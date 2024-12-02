@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "AClVBFAhtLvuUqpusxIJOCdudUH6r8V5RO3ET2SpO6DI8/ILX+Dkyy+ylznPYS7r6fZ2I8VHhaSeA+CXTn+AEg==",
+  "dgSpecHash": "0m816oQMmzuoePD6vAUNAWqjJtuM1eXM0dLv1kv/iL8qPI6sElfCj7i8BgQs4AbXzPXBjISHGI0gxtfHNmpmZw==",
   "success": true,
   "projectFilePath": "C:\\Users\\34652\\Documents\\GitHub\\Proyecto2_PGTA\\Proyecto2_PGTA\\Simulation\\Simulation.csproj",
   "expectedPackageFiles": [
@@ -21,7 +21,10 @@
     "C:\\Users\\34652\\.nuget\\packages\\system.security.accesscontrol\\4.6.0\\system.security.accesscontrol.4.6.0.nupkg.sha512",
     "C:\\Users\\34652\\.nuget\\packages\\system.security.principal.windows\\4.6.0\\system.security.principal.windows.4.6.0.nupkg.sha512",
     "C:\\Users\\34652\\.nuget\\packages\\visioforge.dotnet.core.redist.base.x64\\15.10.22\\visioforge.dotnet.core.redist.base.x64.15.10.22.nupkg.sha512",
-    "C:\\Users\\34652\\.nuget\\packages\\zen.barcode.rendering.framework\\3.1.10729.1\\zen.barcode.rendering.framework.3.1.10729.1.nupkg.sha512"
+    "C:\\Users\\34652\\.nuget\\packages\\zen.barcode.rendering.framework\\3.1.10729.1\\zen.barcode.rendering.framework.3.1.10729.1.nupkg.sha512",
+    "C:\\Users\\34652\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x86\\6.0.8\\microsoft.netcore.app.runtime.win-x86.6.0.8.nupkg.sha512",
+    "C:\\Users\\34652\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x86\\6.0.8\\microsoft.windowsdesktop.app.runtime.win-x86.6.0.8.nupkg.sha512",
+    "C:\\Users\\34652\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x86\\6.0.8\\microsoft.aspnetcore.app.runtime.win-x86.6.0.8.nupkg.sha512"
   ],
   "logs": [
     {
